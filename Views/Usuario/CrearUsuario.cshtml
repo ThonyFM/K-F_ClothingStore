@@ -1,0 +1,54 @@
+﻿@model Usuario 
+
+@{
+    ViewBag.Title = "Crear Usuario";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Crear", "Usuario", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreUsuario)
+        @Html.TextBoxFor(model => model.NombreUsuario, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.NombreUsuario)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ContrasenaHash)
+        @Html.PasswordFor(model => model.ContrasenaHash, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ContrasenaHash)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rol)
+        @Html.TextBoxFor(model => model.Rol, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Rol)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Estado)
+        @Html.TextBoxFor(model => model.Estado, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Estado)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaCreacion)
+        @Html.EditorFor(model => model.FechaCreacion, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.FechaCreacion)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaModificacion)
+        @Html.EditorFor(model => model.FechaModificacion, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.FechaModificacion)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear Usuario</button>
+}

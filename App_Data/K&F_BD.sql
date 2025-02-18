@@ -159,6 +159,11 @@ CREATE TABLE Usuario (
     FechaCreacion DATETIME DEFAULT GETDATE(),
     FechaModificacion DATETIME NULL
 );
+
+ALTER TABLE Persona
+ADD UsuarioID INT NULL,
+    CONSTRAINT FK_Persona_Usuario FOREIGN KEY (UsuarioID) REFERENCES Usuario(ID);
+
 GO
 
 
