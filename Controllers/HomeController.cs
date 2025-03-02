@@ -12,7 +12,10 @@ namespace K_F_ClothingStore.Controllers
         {
             _logger = logger;
         }
-
+        public IActionResult Registro()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();

@@ -944,3 +944,9 @@ BEGIN
     SELECT * FROM Proveedor;
 END
 GO
+CREATE PROCEDURE sp_GetUsuarioByNombreUsuario
+    @NombreUsuario NVARCHAR(50)
+AS
+BEGIN
+    SELECT * FROM Usuario WHERE NombreUsuario = @NombreUsuario;
+END

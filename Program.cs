@@ -1,7 +1,11 @@
+using K_F_ClothingStore.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<AccesoDatos>();
+builder.Services.AddSession(); // Agrega soporte para sesiones
 
 var app = builder.Build();
 
@@ -19,9 +23,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Auth}/{action=InicioSesion}/{id?}");
 
 app.Run();

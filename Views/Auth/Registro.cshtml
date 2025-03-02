@@ -1,0 +1,58 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Registro de Usuario</h3>
+                </div>
+                <div class="card-body">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["ErrorMessage"]
+                        </div>
+                    }
+
+                    @using (Html.BeginForm("Registro", "Auth", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.NombreUsuario, new { @class = "form-control", placeholder = "Introduce tu nombre de usuario", required = "required" })
+                            @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContrasenaHash, htmlAttributes: new { @class = "control-label" })
+                            @Html.PasswordFor(model => model.ContrasenaHash, new { @class = "form-control", placeholder = "Introduce tu contraseña", required = "required" })
+                            @Html.ValidationMessageFor(model => model.ContrasenaHash, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Introduce tu correo electrónico", required = "required", type = "email" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                            <a href="@Url.Action("InicioSesion", "Auth")" class="btn btn-secondary ml-2">¿Ya tienes una cuenta? Inicia sesión</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
