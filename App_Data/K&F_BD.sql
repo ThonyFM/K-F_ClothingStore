@@ -149,16 +149,7 @@ CREATE TABLE Proveedor (
     ModificadoPor NVARCHAR(50) NULL,
     CONSTRAINT FK_Proveedor_Direccion FOREIGN KEY (DireccionID) REFERENCES Direccion(ID)
 );
-CREATE TABLE Usuario (
-    ID INT IDENTITY(1,1) PRIMARY KEY,
-    NombreUsuario NVARCHAR(50) NOT NULL UNIQUE,
-    ContrasenaHash NVARCHAR(255) NOT NULL,
-    Email NVARCHAR(255) NOT NULL UNIQUE,
-    Rol NVARCHAR(50) NOT NULL,        
-    Estado NVARCHAR(50) NOT NULL,
-    FechaCreacion DATETIME DEFAULT GETDATE(),
-    FechaModificacion DATETIME NULL
-);
+
 
 ALTER TABLE Persona
 ADD UsuarioID INT NULL,
@@ -209,10 +200,10 @@ AS
 BEGIN
     SET NOCOUNT ON;
     
-    -- Verificar si la dirección está en uso
+    -- Verificar si la direcciï¿½n estï¿½ en uso
     IF EXISTS (SELECT 1 FROM Persona WHERE DireccionID = @ID)
     BEGIN
-        RAISERROR('No se puede eliminar la dirección porque está en uso.', 16, 1);
+        RAISERROR('No se puede eliminar la direcciï¿½n porque estï¿½ en uso.', 16, 1);
         RETURN;
     END
 
@@ -292,7 +283,7 @@ BEGIN
     -- Verificar si la persona es un cliente o empleado
     IF EXISTS (SELECT 1 FROM Cliente WHERE PersonaID = @ID) OR EXISTS (SELECT 1 FROM Empleado WHERE PersonaID = @ID)
     BEGIN
-        RAISERROR('No se puede eliminar la persona porque está asociada a un cliente o empleado.', 16, 1);
+        RAISERROR('No se puede eliminar la persona porque estï¿½ asociada a un cliente o empleado.', 16, 1);
         RETURN;
     END
 
@@ -950,3 +941,72 @@ AS
 BEGIN
     SELECT * FROM Usuario WHERE NombreUsuario = @NombreUsuario;
 END
+GO
+CREATE PROCEDURE BuscarPersonaPorCedula
+    @DocumentoIdentidad NVARCHAR(20)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+SELECT
+    p.ID,
+    p.Nombre1,
+    p.Nombre2,
+    p.Apellido1,
+    p.Apellido2,
+    p.DocumentoIdentidad,
+    p.Telefono,
+    p.Email,
+    p.FechaNacimiento,
+    p.Genero,
+    p.DireccionID,
+    d.Ciudad,
+    d.Estado,
+    d.CodigoPostal,
+    d.Pais,
+    d.TipoDireccion
+FROM Persona p
+         INNER JOIN Direccion d ON p.DireccionID = d.ID
+WHERE p.DocumentoIdentidad = @DocumentoIdentidad;
+END
+    GO
+CREATE PROCEDURE sp_ObtenerUsuarioPorEmail
+    @Email NVARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+SELECT
+    ID,
+    NombreUsuario,
+    ContrasenaHash,
+    Email,
+    Rol,
+    Estado,
+    FechaCreacion,
+    FechaModificacion
+FROM Usuario
+WHERE Email = @Email;
+END
+GO
+CREATE PROCEDURE sp_ObtenerUsuarioPorNombreUsuario
+    @NombreUsuario NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+SELECT ID, NombreUsuario, ContrasenaHash, Email, Rol, Estado, FechaCreacion, FechaModificacion
+FROM Usuario
+WHERE NombreUsuario = @NombreUsuario;
+END
+
+CREATE PROCEDURE sp_BuscarPersonaPorTelefono
+    @Telefono NVARCHAR(15)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+SELECT *
+FROM Persona
+WHERE Telefono = @Telefono;
+END;

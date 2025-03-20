@@ -1788,5 +1788,171 @@ namespace K_F_ClothingStore.Models
                 }
             }
         }
+        public Persona ObtenerPersonaPorCedula(string documentoIdentidad)
+{
+    Persona persona = null;
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        try
+        {
+            string query = "Exec BuscarPersonaPorCedula @DocumentoIdentidad";
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@DocumentoIdentidad", documentoIdentidad);
+                con.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        persona = new Persona
+                        {
+                            ID = reader.GetInt32(0),
+                            Nombre1 = reader.GetString(1),
+                            Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
+                            Apellido1 = reader.GetString(3),
+                            Apellido2 = reader.GetString(4),
+                            DocumentoIdentidad = reader.GetString(5),
+                            Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
+                            Email = reader.IsDBNull(7) ? null : reader.GetString(7),
+                            FechaNacimiento = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
+                            Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
+                            DireccionID = reader.GetInt32(10),
+                            CreadoPor = reader.GetString(11),
+                            FechaModificacion = reader.IsDBNull(12) ? (DateTime?)null : reader.GetDateTime(12),
+                            ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13)
+                        };
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al obtener la persona por cédula: " + ex.Message);
+        }
+    }
+    return persona;
+}
+        public Usuario ObtenerUsuarioPorEmail(string email)
+        {
+            Usuario usuario = null;
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "EXEC sp_ObtenerUsuarioPorEmail @Email";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                usuario = new Usuario
+                                {
+                                    ID = reader.GetInt32(0),
+                                    NombreUsuario = reader.GetString(1),
+                                    ContrasenaHash = reader.GetString(2),
+                                    Email = reader.GetString(3),
+                                    Rol = reader.GetString(4),
+                                    Estado = reader.GetString(5),
+                                    FechaCreacion = reader.GetDateTime(6),
+                                    FechaModificacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el usuario por email: " + ex.Message);
+                }
+            }
+            return usuario;
+        }
+        public Usuario ObtenerUsuarioPorNombre(string nombreUsuario)
+        {
+            Usuario usuario = null;
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "EXEC sp_ObtenerUsuarioPorNombreUsuario @NombreUsuario";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                usuario = new Usuario
+                                {
+                                    ID = reader.GetInt32(0),
+                                    NombreUsuario = reader.GetString(1),
+                                    ContrasenaHash = reader.GetString(2),
+                                    Email = reader.GetString(3),
+                                    Rol = reader.GetString(4),
+                                    Estado = reader.GetString(5),
+                                    FechaCreacion = reader.GetDateTime(6),
+                                    FechaModificacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el usuario por nombre de usuario: " + ex.Message);
+                }
+            }
+            return usuario;
+        }
+        public Persona ObtenerPersonaPorTelefono(string telefono)
+{
+    Persona persona = null;
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        try
+        {
+            string query = "Exec sp_BuscarPersonaPorTelefono @Telefono";
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@Telefono", telefono);
+                con.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        persona = new Persona
+                        {
+                            ID = reader.GetInt32(0),
+                            Nombre1 = reader.GetString(1),
+                            Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
+                            Apellido1 = reader.GetString(3),
+                            Apellido2 = reader.GetString(4),
+                            DocumentoIdentidad = reader.GetString(5),
+                            Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
+                            Email = reader.IsDBNull(7) ? null : reader.GetString(7),
+                            FechaNacimiento = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
+                            Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
+                            FechaCreacion = reader.GetDateTime(10),
+                            CreadoPor = reader.GetString(11),
+                            FechaModificacion = reader.IsDBNull(12) ? (DateTime?)null : reader.GetDateTime(12),
+                            ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13),
+                            DireccionID = reader.GetInt32(15)
+                        };
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al obtener la persona por teléfono: " + ex.Message);
+        }
+    }
+    return persona;
+}
+
     }
 }

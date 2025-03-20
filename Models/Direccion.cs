@@ -30,7 +30,7 @@ namespace K_F_ClothingStore.Models
 
         [Required]
         [StringLength(50)]
-        public string CreadoPor { get; set; }
+        public string CreadoPor { get; set; } = "Admin";
 
         public DateTime? FechaModificacion { get; set; }
 

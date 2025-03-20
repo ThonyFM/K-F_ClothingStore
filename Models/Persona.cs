@@ -38,8 +38,6 @@ namespace K_F_ClothingStore.Models
         [StringLength(50)]
         public string Genero { get; set; }
 
-        public DateTime FechaRegistro { get; set; } = DateTime.Now;
-
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         [Required]

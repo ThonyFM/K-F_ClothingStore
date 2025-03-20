@@ -21,29 +21,103 @@ namespace K_F_ClothingStore.Controllers
 
         // POST: Auth/Registro
         [HttpPost]
-        public IActionResult Registro(Usuario usuario)
+        public IActionResult Registro(RegistroViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(usuario);
-            }
-
+            bool seguro = false;
             try
             {
-                // Asegúrate de que el rol sea "Cliente" por defecto
-                usuario.Rol = "Cliente";
-                usuario.Estado = "Activo";
-
-                _acceso.AgregarUsuario(usuario);
-                TempData["SuccessMessage"] = "Registro exitoso. Por favor, inicia sesión.";
-                return RedirectToAction("InicioSesion");
+                _acceso.ObtenerPersonaPorCedula(model.Persona.DocumentoIdentidad);
+ 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["ErrorMessage"] = "Error al registrar el usuario: " + ex.Message;
-                return View(usuario);
+              seguro = true;
+              TempData["ErrorMessage"] = "El documento de indentidad ingresado ya pertenece a otra cuenta.";
             }
+            try
+            {
+                _acceso.ObtenerPersonaPorTelefono(model.Persona.Telefono);
+ 
+            }
+            catch (Exception)
+            {
+                seguro = true;
+                TempData["ErrorMessage"] = "El telefono ingresado ya pertenece a otra cuenta.";
+            }
+            
+                if (_acceso.ObtenerUsuarioPorEmail(model.Usuario.Email)!=null)
+                {
+                    seguro = true;
+                    TempData["ErrorMessage"] = "El Email ingresado ya pertenece a otra cuenta.";
+                }
+             
+            
+                if (_acceso.ObtenerUsuarioPorNombreUsuario(model.Usuario.NombreUsuario)!=null)
+                {
+                    seguro = true;
+                    TempData["ErrorMessage"] = "El Nombre de usuario ingresado ya pertenece a otra cuenta.";
+                }
+            
+          
+            if (seguro==false)
+            {
+                var usuario = new Usuario
+                {
+                    NombreUsuario = model.Usuario.NombreUsuario,
+                    ContrasenaHash = model.Usuario.ContrasenaHash,
+                    Email = model.Usuario.Email,
+                    Rol = "Cliente", 
+                    Estado = "Activo",
+
+                };
+                
+                _acceso.AgregarUsuario(usuario);
+                var direccion = new Direccion
+                {
+                    Ciudad = model.Direccion.Ciudad,
+                    Estado = model.Direccion.Estado,
+                    CodigoPostal = model.Direccion.CodigoPostal,
+                    Pais = model.Direccion.Pais,
+                    TipoDireccion = model.Direccion.TipoDireccion,
+                    CreadoPor = "Sistema" 
+                };
+                
+                _acceso.AgregarDireccion(direccion); 
+                
+                var persona = new Persona
+                {
+                    Nombre1 = model.Persona.Nombre1,
+                    Nombre2 = model.Persona.Nombre2,
+                    Apellido1 = model.Persona.Apellido1,
+                    Apellido2 = model.Persona.Apellido2,
+                    DocumentoIdentidad = model.Persona.DocumentoIdentidad,
+                    Telefono = model.Persona.Telefono,
+                    Email = model.Usuario.Email,
+                    FechaNacimiento = model.Persona.FechaNacimiento,
+                    Genero = model.Persona.Genero,
+                    DireccionID = direccion.ID, 
+                    CreadoPor = "Sistema"
+                };
+                
+                _acceso.AgregarPersona(persona);
+                
+                var cliente = new Cliente
+                {
+                    PersonaID = persona.ID,
+                    CodigoCliente = direccion.ID, 
+                    Estado = "Activo", 
+                    CreadoPor = "Sistema" 
+                };
+                
+                _acceso.AgregarCliente(cliente);
+                
+                TempData["SuccessMessage"] = "Usuario registrado exitosamente.";
+                return RedirectToAction("InicioSesion", "Auth");
+                
+            }
+                return View(model);
         }
+        
 
         // GET: Auth/InicioSesion
         public IActionResult InicioSesion()
@@ -67,7 +141,7 @@ namespace K_F_ClothingStore.Controllers
 
                 // Guardar el usuario en la sesión
                 HttpContext.Session.SetString("UsuarioID", usuario.ID.ToString());
-                HttpContext.Session.SetString("Rol", usuario.Rol); // Guardar el rol del usuario
+                HttpContext.Session.SetString("Rol", usuario.Rol); 
 
                 TempData["SuccessMessage"] = "Inicio de sesión exitoso.";
                 return RedirectToAction("Index", "Home");

@@ -31,6 +31,21 @@ namespace K_F_ClothingStore.Models
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
         public DateTime? FechaModificacion { get; set; }
+
+        public Usuario()
+        {
+            
+        }
+        public Usuario(int id, string nombreUsuario, string contrasenaHash, string email, string rol, string estado, DateTime? fechaModificacion)
+        {
+            ID = id;
+            NombreUsuario = nombreUsuario;
+            ContrasenaHash = contrasenaHash;
+            Email = email;
+            Rol = rol;
+            Estado = estado;
+            FechaModificacion = fechaModificacion;
+        }
     }
 
 }
