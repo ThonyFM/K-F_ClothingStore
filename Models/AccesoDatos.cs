@@ -1,15 +1,17 @@
-﻿using System.Data.SqlClient;
-using System.Collections.Generic;
+﻿namespace K_F_ClothingStore.Models {
+    using System.Data;
+    using System.Data.SqlClient;
 
-namespace K_F_ClothingStore.Models
-{
-    public class AccesoDatos
-    {
+    public class AccesoDatos {
         private readonly string _conexion;
 
         public AccesoDatos(IConfiguration configuracion)
         {
             _conexion = configuracion.GetConnectionString("DefaultConnection");
+        }
+        public AccesoDatos()
+        {
+           
         }
 
         // Métodos para la tabla Direccion
@@ -28,7 +30,7 @@ namespace K_F_ClothingStore.Models
                         cmd.Parameters.AddWithValue("@Pais", direccion.Pais);
                         cmd.Parameters.AddWithValue("@TipoDireccion", direccion.TipoDireccion);
                         cmd.Parameters.AddWithValue("@CreadoPor", direccion.CreadoPor);
-                        cmd.Parameters.Add("@NewID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         direccion.ID = (int)cmd.Parameters["@NewID"].Value;
@@ -58,16 +60,16 @@ namespace K_F_ClothingStore.Models
                             {
                                 direcciones.Add(new Direccion
                                 {
-                                    ID = reader.GetInt32(0),
-                                    Ciudad = reader.GetString(1),
-                                    Estado = reader.GetString(2),
-                                    CodigoPostal = reader.GetString(3),
-                                    Pais = reader.GetString(4),
-                                    TipoDireccion = reader.IsDBNull(5) ? null : reader.GetString(5),
-                                    FechaCreacion = reader.GetDateTime(6),
-                                    CreadoPor = reader.GetString(7),
-                                    FechaModificacion = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                                    ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
+                                    ID = reader.GetInt32(i: 0),
+                                    Ciudad = reader.GetString(i: 1),
+                                    Estado = reader.GetString(i: 2),
+                                    CodigoPostal = reader.GetString(i: 3),
+                                    Pais = reader.GetString(i: 4),
+                                    TipoDireccion = reader.IsDBNull(i: 5) ? null : reader.GetString(i: 5),
+                                    FechaCreacion = reader.GetDateTime(i: 6),
+                                    CreadoPor = reader.GetString(i: 7),
+                                    FechaModificacion = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    ModificadoPor = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9)
                                 });
                             }
                         }
@@ -99,16 +101,16 @@ namespace K_F_ClothingStore.Models
                             {
                                 direccion = new Direccion
                                 {
-                                    ID = reader.GetInt32(0),
-                                    Ciudad = reader.GetString(1),
-                                    Estado = reader.GetString(2),
-                                    CodigoPostal = reader.GetString(3),
-                                    Pais = reader.GetString(4),
-                                    TipoDireccion = reader.IsDBNull(5) ? null : reader.GetString(5),
-                                    FechaCreacion = reader.GetDateTime(6),
-                                    CreadoPor = reader.GetString(7),
-                                    FechaModificacion = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                                    ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
+                                    ID = reader.GetInt32(i: 0),
+                                    Ciudad = reader.GetString(i: 1),
+                                    Estado = reader.GetString(i: 2),
+                                    CodigoPostal = reader.GetString(i: 3),
+                                    Pais = reader.GetString(i: 4),
+                                    TipoDireccion = reader.IsDBNull(i: 5) ? null : reader.GetString(i: 5),
+                                    FechaCreacion = reader.GetDateTime(i: 6),
+                                    CreadoPor = reader.GetString(i: 7),
+                                    FechaModificacion = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    ModificadoPor = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9)
                                 };
                             }
                         }
@@ -191,7 +193,7 @@ namespace K_F_ClothingStore.Models
                         cmd.Parameters.AddWithValue("@Genero", persona.Genero);
                         cmd.Parameters.AddWithValue("@DireccionID", persona.DireccionID);
                         cmd.Parameters.AddWithValue("@CreadoPor", persona.CreadoPor);
-                        cmd.Parameters.Add("@NewID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         persona.ID = (int)cmd.Parameters["@NewID"].Value;
@@ -221,20 +223,20 @@ namespace K_F_ClothingStore.Models
                             {
                                 personas.Add(new Persona
                                 {
-                                    ID = reader.GetInt32(0),
-                                    Nombre1 = reader.GetString(1),
-                                    Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                    Apellido1 = reader.GetString(3),
-                                    Apellido2 = reader.GetString(4),
-                                    DocumentoIdentidad = reader.GetString(5),
-                                    Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
-                                    Email = reader.IsDBNull(7) ? null : reader.GetString(7),
-                                    FechaNacimiento = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                                    Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                    DireccionID = reader.GetInt32(10),
-                                    CreadoPor = reader.GetString(11),
-                                    FechaModificacion = reader.IsDBNull(12) ? (DateTime?)null : reader.GetDateTime(12),
-                                    ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13)
+                                    ID = reader.GetInt32(i: 0),
+                                    Nombre1 = reader.GetString(i: 1),
+                                    Nombre2 = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
+                                    Apellido1 = reader.GetString(i: 3),
+                                    Apellido2 = reader.GetString(i: 4),
+                                    DocumentoIdentidad = reader.GetString(i: 5),
+                                    Telefono = reader.IsDBNull(i: 6) ? null : reader.GetString(i: 6),
+                                    Email = reader.IsDBNull(i: 7) ? null : reader.GetString(i: 7),
+                                    FechaNacimiento = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    Genero = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
+                                    DireccionID = reader.GetInt32(i: 10),
+                                    CreadoPor = reader.GetString(i: 11),
+                                    FechaModificacion = reader.IsDBNull(i: 12) ? null : reader.GetDateTime(i: 12),
+                                    ModificadoPor = reader.IsDBNull(i: 13) ? null : reader.GetString(i: 13)
                                 });
                             }
                         }
@@ -266,20 +268,20 @@ namespace K_F_ClothingStore.Models
                             {
                                 persona = new Persona
                                 {
-                                    ID = reader.GetInt32(0),
-                                    Nombre1 = reader.GetString(1),
-                                    Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                    Apellido1 = reader.GetString(3),
-                                    Apellido2 = reader.GetString(4),
-                                    DocumentoIdentidad = reader.GetString(5),
-                                    Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
-                                    Email = reader.IsDBNull(7) ? null : reader.GetString(7),
-                                    FechaNacimiento = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                                    Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                    DireccionID = reader.GetInt32(10),
-                                    CreadoPor = reader.GetString(11),
-                                    FechaModificacion = reader.IsDBNull(12) ? (DateTime?)null : reader.GetDateTime(12),
-                                    ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13)
+                                    ID = reader.GetInt32(i: 0),
+                                    Nombre1 = reader.GetString(i: 1),
+                                    Nombre2 = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
+                                    Apellido1 = reader.GetString(i: 3),
+                                    Apellido2 = reader.GetString(i: 4),
+                                    DocumentoIdentidad = reader.GetString(i: 5),
+                                    Telefono = reader.IsDBNull(i: 6) ? null : reader.GetString(i: 6),
+                                    Email = reader.IsDBNull(i: 7) ? null : reader.GetString(i: 7),
+                                    FechaNacimiento = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    Genero = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
+                                    DireccionID = reader.GetInt32(i: 10),
+                                    CreadoPor = reader.GetString(i: 11),
+                                    FechaModificacion = reader.IsDBNull(i: 12) ? null : reader.GetDateTime(i: 12),
+                                    ModificadoPor = reader.IsDBNull(i: 13) ? null : reader.GetString(i: 13)
                                 };
                             }
                         }
@@ -359,7 +361,7 @@ namespace K_F_ClothingStore.Models
                         cmd.Parameters.AddWithValue("@CodigoCliente", cliente.CodigoCliente);
                         cmd.Parameters.AddWithValue("@Estado", cliente.Estado);
                         cmd.Parameters.AddWithValue("@CreadoPor", cliente.CreadoPor);
-                        cmd.Parameters.Add("@NewID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         cliente.ID = (int)cmd.Parameters["@NewID"].Value;
@@ -389,14 +391,14 @@ namespace K_F_ClothingStore.Models
                             {
                                 clientes.Add(new Cliente
                                 {
-                                    ID = reader.GetInt32(0),
-                                    PersonaID = reader.GetInt32(1),
-                                    CodigoCliente = reader.GetInt32(2),
-                                    Estado = reader.GetString(3),
-                                    CreadoPor = reader.GetString(4),
-                                    FechaCreacion = reader.GetDateTime(5),
-                                    FechaModificacion = reader.IsDBNull(6) ? (DateTime?)null : reader.GetDateTime(6),
-                                    ModificadoPor = reader.IsDBNull(7) ? null : reader.GetString(7)
+                                    ID = reader.GetInt32(i: 0),
+                                    PersonaID = reader.GetInt32(i: 1),
+                                    CodigoCliente = reader.GetInt32(i: 2),
+                                    Estado = reader.GetString(i: 3),
+                                    CreadoPor = reader.GetString(i: 4),
+                                    FechaCreacion = reader.GetDateTime(i: 5),
+                                    FechaModificacion = reader.IsDBNull(i: 6) ? null : reader.GetDateTime(i: 6),
+                                    ModificadoPor = reader.IsDBNull(i: 7) ? null : reader.GetString(i: 7)
                                 });
                             }
                         }
@@ -428,14 +430,14 @@ namespace K_F_ClothingStore.Models
                             {
                                 cliente = new Cliente
                                 {
-                                    ID = reader.GetInt32(0),
-                                    PersonaID = reader.GetInt32(1),
-                                    CodigoCliente = reader.GetInt32(2),
-                                    Estado = reader.GetString(3),
-                                    CreadoPor = reader.GetString(4),
-                                    FechaCreacion = reader.GetDateTime(5),
-                                    FechaModificacion = reader.IsDBNull(6) ? (DateTime?)null : reader.GetDateTime(6),
-                                    ModificadoPor = reader.IsDBNull(7) ? null : reader.GetString(7)
+                                    ID = reader.GetInt32(i: 0),
+                                    PersonaID = reader.GetInt32(i: 1),
+                                    CodigoCliente = reader.GetInt32(i: 2),
+                                    Estado = reader.GetString(i: 3),
+                                    CreadoPor = reader.GetString(i: 4),
+                                    FechaCreacion = reader.GetDateTime(i: 5),
+                                    FechaModificacion = reader.IsDBNull(i: 6) ? null : reader.GetDateTime(i: 6),
+                                    ModificadoPor = reader.IsDBNull(i: 7) ? null : reader.GetString(i: 7)
                                 };
                             }
                         }
@@ -510,7 +512,7 @@ namespace K_F_ClothingStore.Models
                         cmd.Parameters.AddWithValue("@Salario", empleado.Salario);
                         cmd.Parameters.AddWithValue("@Estado", empleado.Estado);
                         cmd.Parameters.AddWithValue("@CreadoPor", empleado.CreadoPor);
-                        cmd.Parameters.Add("@NewID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         empleado.ID = (int)cmd.Parameters["@NewID"].Value;
@@ -540,16 +542,16 @@ namespace K_F_ClothingStore.Models
                             {
                                 empleados.Add(new Empleado
                                 {
-                                    ID = reader.GetInt32(0),
-                                    PersonaID = reader.GetInt32(1),
-                                    Puesto = reader.GetString(2),
-                                    FechaContratacion = reader.GetDateTime(3),
-                                    Salario = reader.GetDecimal(4),
-                                    Estado = reader.GetString(5),
-                                    CreadoPor = reader.GetString(6),
-                                    FechaCreacion = reader.GetDateTime(7),
-                                    FechaModificacion = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                                    ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
+                                    ID = reader.GetInt32(i: 0),
+                                    PersonaID = reader.GetInt32(i: 1),
+                                    Puesto = reader.GetString(i: 2),
+                                    FechaContratacion = reader.GetDateTime(i: 3),
+                                    Salario = reader.GetDecimal(i: 4),
+                                    Estado = reader.GetString(i: 5),
+                                    CreadoPor = reader.GetString(i: 6),
+                                    FechaCreacion = reader.GetDateTime(i: 7),
+                                    FechaModificacion = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    ModificadoPor = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9)
                                 });
                             }
                         }
@@ -581,16 +583,16 @@ namespace K_F_ClothingStore.Models
                             {
                                 empleado = new Empleado
                                 {
-                                    ID = reader.GetInt32(0),
-                                    PersonaID = reader.GetInt32(1),
-                                    Puesto = reader.GetString(2),
-                                    FechaContratacion = reader.GetDateTime(3),
-                                    Salario = reader.GetDecimal(4),
-                                    Estado = reader.GetString(5),
-                                    CreadoPor = reader.GetString(6),
-                                    FechaCreacion = reader.GetDateTime(7),
-                                    FechaModificacion = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                                    ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
+                                    ID = reader.GetInt32(i: 0),
+                                    PersonaID = reader.GetInt32(i: 1),
+                                    Puesto = reader.GetString(i: 2),
+                                    FechaContratacion = reader.GetDateTime(i: 3),
+                                    Salario = reader.GetDecimal(i: 4),
+                                    Estado = reader.GetString(i: 5),
+                                    CreadoPor = reader.GetString(i: 6),
+                                    FechaCreacion = reader.GetDateTime(i: 7),
+                                    FechaModificacion = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    ModificadoPor = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9)
                                 };
                             }
                         }
@@ -698,18 +700,18 @@ namespace K_F_ClothingStore.Models
                             {
                                 productos.Add(new Producto
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreProducto = reader.GetString(1),
-                                    Genero = reader.GetString(2),
-                                    SegmentoEdad = reader.GetString(3),
-                                    TipoProducto = reader.GetString(4),
-                                    Color = reader.GetString(5),
-                                    Talla = reader.GetString(6),
-                                    UnidadesDisponibles = reader.GetInt32(7),
-                                    Precio = reader.GetDecimal(8),
-                                    Descripcion = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                    FechaCreacion = reader.GetDateTime(10),
-                                    FechaModificacion = reader.IsDBNull(11) ? (DateTime?)null : reader.GetDateTime(11)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreProducto = reader.GetString(i: 1),
+                                    Genero = reader.GetString(i: 2),
+                                    SegmentoEdad = reader.GetString(i: 3),
+                                    TipoProducto = reader.GetString(i: 4),
+                                    Color = reader.GetString(i: 5),
+                                    Talla = reader.GetString(i: 6),
+                                    UnidadesDisponibles = reader.GetInt32(i: 7),
+                                    Precio = reader.GetDecimal(i: 8),
+                                    Descripcion = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
+                                    FechaCreacion = reader.GetDateTime(i: 10),
+                                    FechaModificacion = reader.IsDBNull(i: 11) ? null : reader.GetDateTime(i: 11)
                                 });
                             }
                         }
@@ -741,18 +743,18 @@ namespace K_F_ClothingStore.Models
                             {
                                 producto = new Producto
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreProducto = reader.GetString(1),
-                                    Genero = reader.GetString(2),
-                                    SegmentoEdad = reader.GetString(3),
-                                    TipoProducto = reader.GetString(4),
-                                    Color = reader.GetString(5),
-                                    Talla = reader.GetString(6),
-                                    UnidadesDisponibles = reader.GetInt32(7),
-                                    Precio = reader.GetDecimal(8),
-                                    Descripcion = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                    FechaCreacion = reader.GetDateTime(10),
-                                    FechaModificacion = reader.IsDBNull(11) ? (DateTime?)null : reader.GetDateTime(11)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreProducto = reader.GetString(i: 1),
+                                    Genero = reader.GetString(i: 2),
+                                    SegmentoEdad = reader.GetString(i: 3),
+                                    TipoProducto = reader.GetString(i: 4),
+                                    Color = reader.GetString(i: 5),
+                                    Talla = reader.GetString(i: 6),
+                                    UnidadesDisponibles = reader.GetInt32(i: 7),
+                                    Precio = reader.GetDecimal(i: 8),
+                                    Descripcion = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
+                                    FechaCreacion = reader.GetDateTime(i: 10),
+                                    FechaModificacion = reader.IsDBNull(i: 11) ? null : reader.GetDateTime(i: 11)
                                 };
                             }
                         }
@@ -860,13 +862,13 @@ namespace K_F_ClothingStore.Models
                             {
                                 ventas.Add(new Venta
                                 {
-                                    VentaID = reader.GetInt32(0),
-                                    EmpleadoID = reader.GetInt32(1),
-                                    ClienteID = reader.GetInt32(2),
-                                    ProductoID = reader.GetInt32(3),
-                                    Cantidad = reader.GetInt32(4),
-                                    Total = reader.GetDecimal(5),
-                                    Fecha = reader.GetDateTime(6)
+                                    VentaID = reader.GetInt32(i: 0),
+                                    EmpleadoID = reader.GetInt32(i: 1),
+                                    ClienteID = reader.GetInt32(i: 2),
+                                    ProductoID = reader.GetInt32(i: 3),
+                                    Cantidad = reader.GetInt32(i: 4),
+                                    Total = reader.GetDecimal(i: 5),
+                                    Fecha = reader.GetDateTime(i: 6)
                                 });
                             }
                         }
@@ -898,13 +900,13 @@ namespace K_F_ClothingStore.Models
                             {
                                 venta = new Venta
                                 {
-                                    VentaID = reader.GetInt32(0),
-                                    EmpleadoID = reader.GetInt32(1),
-                                    ClienteID = reader.GetInt32(2),
-                                    ProductoID = reader.GetInt32(3),
-                                    Cantidad = reader.GetInt32(4),
-                                    Total = reader.GetDecimal(5),
-                                    Fecha = reader.GetDateTime(6)
+                                    VentaID = reader.GetInt32(i: 0),
+                                    EmpleadoID = reader.GetInt32(i: 1),
+                                    ClienteID = reader.GetInt32(i: 2),
+                                    ProductoID = reader.GetInt32(i: 3),
+                                    Cantidad = reader.GetInt32(i: 4),
+                                    Total = reader.GetDecimal(i: 5),
+                                    Fecha = reader.GetDateTime(i: 6)
                                 };
                             }
                         }
@@ -1010,18 +1012,18 @@ namespace K_F_ClothingStore.Models
                             {
                                 facturas.Add(new Factura
                                 {
-                                    ID = reader.GetInt32(0),
-                                    ClienteID = reader.GetInt32(1),
-                                    EmpleadoID = reader.GetInt32(2),
-                                    FechaEmision = reader.GetDateTime(3),
-                                    Total = reader.GetDecimal(4),
-                                    MetodoPago = reader.GetString(5),
-                                    Estado = reader.GetString(6),
-                                    DescuentoID = reader.IsDBNull(7) ? (int?)null : reader.GetInt32(7),
-                                    CreadoPor = reader.GetString(8),
-                                    FechaCreacion = reader.GetDateTime(9),
-                                    FechaModificacion = reader.IsDBNull(10) ? (DateTime?)null : reader.GetDateTime(10),
-                                    ModificadoPor = reader.IsDBNull(11) ? null : reader.GetString(11)
+                                    ID = reader.GetInt32(i: 0),
+                                    ClienteID = reader.GetInt32(i: 1),
+                                    EmpleadoID = reader.GetInt32(i: 2),
+                                    FechaEmision = reader.GetDateTime(i: 3),
+                                    Total = reader.GetDecimal(i: 4),
+                                    MetodoPago = reader.GetString(i: 5),
+                                    Estado = reader.GetString(i: 6),
+                                    DescuentoID = reader.IsDBNull(i: 7) ? null : reader.GetInt32(i: 7),
+                                    CreadoPor = reader.GetString(i: 8),
+                                    FechaCreacion = reader.GetDateTime(i: 9),
+                                    FechaModificacion = reader.IsDBNull(i: 10) ? null : reader.GetDateTime(i: 10),
+                                    ModificadoPor = reader.IsDBNull(i: 11) ? null : reader.GetString(i: 11)
                                 });
                             }
                         }
@@ -1053,18 +1055,18 @@ namespace K_F_ClothingStore.Models
                             {
                                 factura = new Factura
                                 {
-                                    ID = reader.GetInt32(0),
-                                    ClienteID = reader.GetInt32(1),
-                                    EmpleadoID = reader.GetInt32(2),
-                                    FechaEmision = reader.GetDateTime(3),
-                                    Total = reader.GetDecimal(4),
-                                    MetodoPago = reader.GetString(5),
-                                    Estado = reader.GetString(6),
-                                    DescuentoID = reader.IsDBNull(7) ? (int?)null : reader.GetInt32(7),
-                                    CreadoPor = reader.GetString(8),
-                                    FechaCreacion = reader.GetDateTime(9),
-                                    FechaModificacion = reader.IsDBNull(10) ? (DateTime?)null : reader.GetDateTime(10),
-                                    ModificadoPor = reader.IsDBNull(11) ? null : reader.GetString(11)
+                                    ID = reader.GetInt32(i: 0),
+                                    ClienteID = reader.GetInt32(i: 1),
+                                    EmpleadoID = reader.GetInt32(i: 2),
+                                    FechaEmision = reader.GetDateTime(i: 3),
+                                    Total = reader.GetDecimal(i: 4),
+                                    MetodoPago = reader.GetString(i: 5),
+                                    Estado = reader.GetString(i: 6),
+                                    DescuentoID = reader.IsDBNull(i: 7) ? null : reader.GetInt32(i: 7),
+                                    CreadoPor = reader.GetString(i: 8),
+                                    FechaCreacion = reader.GetDateTime(i: 9),
+                                    FechaModificacion = reader.IsDBNull(i: 10) ? null : reader.GetDateTime(i: 10),
+                                    ModificadoPor = reader.IsDBNull(i: 11) ? null : reader.GetString(i: 11)
                                 };
                             }
                         }
@@ -1142,7 +1144,7 @@ namespace K_F_ClothingStore.Models
                         cmd.Parameters.AddWithValue("@Cantidad", detalleFactura.Cantidad);
                         cmd.Parameters.AddWithValue("@PrecioUnitario", detalleFactura.PrecioUnitario);
                         cmd.Parameters.AddWithValue("@Subtotal", detalleFactura.Subtotal);
-                        cmd.Parameters.Add("@NewID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         detalleFactura.ID = (int)cmd.Parameters["@NewID"].Value;
@@ -1172,12 +1174,12 @@ namespace K_F_ClothingStore.Models
                             {
                                 detallesFactura.Add(new DetalleFactura
                                 {
-                                    ID = reader.GetInt32(0),
-                                    FacturaID = reader.GetInt32(1),
-                                    ProductoID = reader.GetInt32(2),
-                                    Cantidad = reader.GetInt32(3),
-                                    PrecioUnitario = reader.GetDecimal(4),
-                                    Subtotal = reader.GetDecimal(5)
+                                    ID = reader.GetInt32(i: 0),
+                                    FacturaID = reader.GetInt32(i: 1),
+                                    ProductoID = reader.GetInt32(i: 2),
+                                    Cantidad = reader.GetInt32(i: 3),
+                                    PrecioUnitario = reader.GetDecimal(i: 4),
+                                    Subtotal = reader.GetDecimal(i: 5)
                                 });
                             }
                         }
@@ -1209,12 +1211,12 @@ namespace K_F_ClothingStore.Models
                             {
                                 detalleFactura = new DetalleFactura
                                 {
-                                    ID = reader.GetInt32(0),
-                                    FacturaID = reader.GetInt32(1),
-                                    ProductoID = reader.GetInt32(2),
-                                    Cantidad = reader.GetInt32(3),
-                                    PrecioUnitario = reader.GetDecimal(4),
-                                    Subtotal = reader.GetDecimal(5)
+                                    ID = reader.GetInt32(i: 0),
+                                    FacturaID = reader.GetInt32(i: 1),
+                                    ProductoID = reader.GetInt32(i: 2),
+                                    Cantidad = reader.GetInt32(i: 3),
+                                    PrecioUnitario = reader.GetDecimal(i: 4),
+                                    Subtotal = reader.GetDecimal(i: 5)
                                 };
                             }
                         }
@@ -1292,7 +1294,7 @@ namespace K_F_ClothingStore.Models
                         cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
                         cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
                         cmd.Parameters.AddWithValue("@CreadoPor", devolucion.CreadoPor);
-                        cmd.Parameters.Add("@NewID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         devolucion.ID = (int)cmd.Parameters["@NewID"].Value;
@@ -1322,18 +1324,18 @@ namespace K_F_ClothingStore.Models
                             {
                                 devoluciones.Add(new Devolucion
                                 {
-                                    ID = reader.GetInt32(0),
-                                    FacturaID = reader.GetInt32(1),
-                                    DetalleFacturaID = reader.GetInt32(2),
-                                    ProductoID = reader.GetInt32(3),
-                                    Cantidad = reader.GetInt32(4),
-                                    Motivo = reader.GetString(5),
-                                    FechaDevolucion = reader.GetDateTime(6),
-                                    Estado = reader.GetString(7),
-                                    CreadoPor = reader.GetString(8),
-                                    FechaCreacion = reader.GetDateTime(9),
-                                    FechaModificacion = reader.IsDBNull(10) ? (DateTime?)null : reader.GetDateTime(10),
-                                    ModificadoPor = reader.IsDBNull(11) ? null : reader.GetString(11)
+                                    ID = reader.GetInt32(i: 0),
+                                    FacturaID = reader.GetInt32(i: 1),
+                                    DetalleFacturaID = reader.GetInt32(i: 2),
+                                    ProductoID = reader.GetInt32(i: 3),
+                                    Cantidad = reader.GetInt32(i: 4),
+                                    Motivo = reader.GetString(i: 5),
+                                    FechaDevolucion = reader.GetDateTime(i: 6),
+                                    Estado = reader.GetString(i: 7),
+                                    CreadoPor = reader.GetString(i: 8),
+                                    FechaCreacion = reader.GetDateTime(i: 9),
+                                    FechaModificacion = reader.IsDBNull(i: 10) ? null : reader.GetDateTime(i: 10),
+                                    ModificadoPor = reader.IsDBNull(i: 11) ? null : reader.GetString(i: 11)
                                 });
                             }
                         }
@@ -1365,18 +1367,18 @@ namespace K_F_ClothingStore.Models
                             {
                                 devolucion = new Devolucion
                                 {
-                                    ID = reader.GetInt32(0),
-                                    FacturaID = reader.GetInt32(1),
-                                    DetalleFacturaID = reader.GetInt32(2),
-                                    ProductoID = reader.GetInt32(3),
-                                    Cantidad = reader.GetInt32(4),
-                                    Motivo = reader.GetString(5),
-                                    FechaDevolucion = reader.GetDateTime(6),
-                                    Estado = reader.GetString(7),
-                                    CreadoPor = reader.GetString(8),
-                                    FechaCreacion = reader.GetDateTime(9),
-                                    FechaModificacion = reader.IsDBNull(10) ? (DateTime?)null : reader.GetDateTime(10),
-                                    ModificadoPor = reader.IsDBNull(11) ? null : reader.GetString(11)
+                                    ID = reader.GetInt32(i: 0),
+                                    FacturaID = reader.GetInt32(i: 1),
+                                    DetalleFacturaID = reader.GetInt32(i: 2),
+                                    ProductoID = reader.GetInt32(i: 3),
+                                    Cantidad = reader.GetInt32(i: 4),
+                                    Motivo = reader.GetString(i: 5),
+                                    FechaDevolucion = reader.GetDateTime(i: 6),
+                                    Estado = reader.GetString(i: 7),
+                                    CreadoPor = reader.GetString(i: 8),
+                                    FechaCreacion = reader.GetDateTime(i: 9),
+                                    FechaModificacion = reader.IsDBNull(i: 10) ? null : reader.GetDateTime(i: 10),
+                                    ModificadoPor = reader.IsDBNull(i: 11) ? null : reader.GetString(i: 11)
                                 };
                             }
                         }
@@ -1484,17 +1486,17 @@ namespace K_F_ClothingStore.Models
                             {
                                 proveedores.Add(new Proveedor
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreEmpresa = reader.GetString(1),
-                                    NombreContacto = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                    Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                    Email = reader.IsDBNull(4) ? null : reader.GetString(4),
-                                    DireccionID = reader.GetInt32(5),
-                                    Estado = reader.GetString(6),
-                                    CreadoPor = reader.GetString(7),
-                                    FechaCreacion = reader.GetDateTime(8),
-                                    FechaModificacion = reader.IsDBNull(9) ? (DateTime?)null : reader.GetDateTime(9),
-                                    ModificadoPor = reader.IsDBNull(10) ? null : reader.GetString(10)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreEmpresa = reader.GetString(i: 1),
+                                    NombreContacto = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
+                                    Telefono = reader.IsDBNull(i: 3) ? null : reader.GetString(i: 3),
+                                    Email = reader.IsDBNull(i: 4) ? null : reader.GetString(i: 4),
+                                    DireccionID = reader.GetInt32(i: 5),
+                                    Estado = reader.GetString(i: 6),
+                                    CreadoPor = reader.GetString(i: 7),
+                                    FechaCreacion = reader.GetDateTime(i: 8),
+                                    FechaModificacion = reader.IsDBNull(i: 9) ? null : reader.GetDateTime(i: 9),
+                                    ModificadoPor = reader.IsDBNull(i: 10) ? null : reader.GetString(i: 10)
                                 });
                             }
                         }
@@ -1526,17 +1528,17 @@ namespace K_F_ClothingStore.Models
                             {
                                 proveedor = new Proveedor
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreEmpresa = reader.GetString(1),
-                                    NombreContacto = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                    Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                    Email = reader.IsDBNull(4) ? null : reader.GetString(4),
-                                    DireccionID = reader.GetInt32(5),
-                                    Estado = reader.GetString(6),
-                                    CreadoPor = reader.GetString(7),
-                                    FechaCreacion = reader.GetDateTime(8),
-                                    FechaModificacion = reader.IsDBNull(9) ? (DateTime?)null : reader.GetDateTime(9),
-                                    ModificadoPor = reader.IsDBNull(10) ? null : reader.GetString(10)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreEmpresa = reader.GetString(i: 1),
+                                    NombreContacto = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
+                                    Telefono = reader.IsDBNull(i: 3) ? null : reader.GetString(i: 3),
+                                    Email = reader.IsDBNull(i: 4) ? null : reader.GetString(i: 4),
+                                    DireccionID = reader.GetInt32(i: 5),
+                                    Estado = reader.GetString(i: 6),
+                                    CreadoPor = reader.GetString(i: 7),
+                                    FechaCreacion = reader.GetDateTime(i: 8),
+                                    FechaModificacion = reader.IsDBNull(i: 9) ? null : reader.GetDateTime(i: 9),
+                                    ModificadoPor = reader.IsDBNull(i: 10) ? null : reader.GetString(i: 10)
                                 };
                             }
                         }
@@ -1616,14 +1618,14 @@ namespace K_F_ClothingStore.Models
                             {
                                 usuario = new Usuario
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreUsuario = reader.GetString(1),
-                                    ContrasenaHash = reader.GetString(2),
-                                    Email = reader.GetString(3),
-                                    Rol = reader.GetString(4),
-                                    Estado = reader.GetString(5),
-                                    FechaCreacion = reader.GetDateTime(6),
-                                    FechaModificacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreUsuario = reader.GetString(i: 1),
+                                    ContrasenaHash = reader.GetString(i: 2),
+                                    Email = reader.GetString(i: 3),
+                                    Rol = reader.GetString(i: 4),
+                                    Estado = reader.GetString(i: 5),
+                                    FechaCreacion = reader.GetDateTime(i: 6),
+                                    FechaModificacion = reader.IsDBNull(i: 7) ? null : reader.GetDateTime(i: 7)
                                 };
                             }
                         }
@@ -1652,7 +1654,7 @@ namespace K_F_ClothingStore.Models
                         cmd.Parameters.AddWithValue("@Email", usuario.Email);
                         cmd.Parameters.AddWithValue("@Rol", usuario.Rol);
                         cmd.Parameters.AddWithValue("@Estado", usuario.Estado);
-                        cmd.Parameters.Add("@NewID", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
                         con.Open();
                         cmd.ExecuteNonQuery();
                         usuario.ID = (int)cmd.Parameters["@NewID"].Value;
@@ -1682,14 +1684,14 @@ namespace K_F_ClothingStore.Models
                             {
                                 usuarios.Add(new Usuario
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreUsuario = reader.GetString(1),
-                                    ContrasenaHash = reader.GetString(2),
-                                    Email = reader.GetString(3),
-                                    Rol = reader.GetString(4),
-                                    Estado = reader.GetString(5),
-                                    FechaCreacion = reader.GetDateTime(6),
-                                    FechaModificacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreUsuario = reader.GetString(i: 1),
+                                    ContrasenaHash = reader.GetString(i: 2),
+                                    Email = reader.GetString(i: 3),
+                                    Rol = reader.GetString(i: 4),
+                                    Estado = reader.GetString(i: 5),
+                                    FechaCreacion = reader.GetDateTime(i: 6),
+                                    FechaModificacion = reader.IsDBNull(i: 7) ? null : reader.GetDateTime(i: 7)
                                 });
                             }
                         }
@@ -1721,14 +1723,14 @@ namespace K_F_ClothingStore.Models
                             {
                                 usuario = new Usuario
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreUsuario = reader.GetString(1),
-                                    ContrasenaHash = reader.GetString(2),
-                                    Email = reader.GetString(3),
-                                    Rol = reader.GetString(4),
-                                    Estado = reader.GetString(5),
-                                    FechaCreacion = reader.GetDateTime(6),
-                                    FechaModificacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreUsuario = reader.GetString(i: 1),
+                                    ContrasenaHash = reader.GetString(i: 2),
+                                    Email = reader.GetString(i: 3),
+                                    Rol = reader.GetString(i: 4),
+                                    Estado = reader.GetString(i: 5),
+                                    FechaCreacion = reader.GetDateTime(i: 6),
+                                    FechaModificacion = reader.IsDBNull(i: 7) ? null : reader.GetDateTime(i: 7)
                                 };
                             }
                         }
@@ -1789,49 +1791,49 @@ namespace K_F_ClothingStore.Models
             }
         }
         public Persona ObtenerPersonaPorCedula(string documentoIdentidad)
-{
-    Persona persona = null;
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        try
         {
-            string query = "Exec BuscarPersonaPorCedula @DocumentoIdentidad";
-            using (SqlCommand cmd = new SqlCommand(query, con))
+            Persona persona = null;
+            using (SqlConnection con = new SqlConnection(_conexion))
             {
-                cmd.Parameters.AddWithValue("@DocumentoIdentidad", documentoIdentidad);
-                con.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                try
                 {
-                    if (reader.Read())
+                    string query = "Exec BuscarPersonaPorCedula @DocumentoIdentidad";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        persona = new Persona
+                        cmd.Parameters.AddWithValue("@DocumentoIdentidad", documentoIdentidad);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            ID = reader.GetInt32(0),
-                            Nombre1 = reader.GetString(1),
-                            Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
-                            Apellido1 = reader.GetString(3),
-                            Apellido2 = reader.GetString(4),
-                            DocumentoIdentidad = reader.GetString(5),
-                            Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
-                            Email = reader.IsDBNull(7) ? null : reader.GetString(7),
-                            FechaNacimiento = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                            Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
-                            DireccionID = reader.GetInt32(10),
-                            CreadoPor = reader.GetString(11),
-                            FechaModificacion = reader.IsDBNull(12) ? (DateTime?)null : reader.GetDateTime(12),
-                            ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13)
-                        };
+                            if (reader.Read())
+                            {
+                                persona = new Persona
+                                {
+                                    ID = reader.GetInt32(i: 0),
+                                    Nombre1 = reader.GetString(i: 1),
+                                    Nombre2 = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
+                                    Apellido1 = reader.GetString(i: 3),
+                                    Apellido2 = reader.GetString(i: 4),
+                                    DocumentoIdentidad = reader.GetString(i: 5),
+                                    Telefono = reader.IsDBNull(i: 6) ? null : reader.GetString(i: 6),
+                                    Email = reader.IsDBNull(i: 7) ? null : reader.GetString(i: 7),
+                                    FechaNacimiento = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    Genero = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
+                                    DireccionID = reader.GetInt32(i: 10),
+                                    CreadoPor = reader.GetString(i: 11),
+                                    FechaModificacion = reader.IsDBNull(i: 12) ? null : reader.GetDateTime(i: 12),
+                                    ModificadoPor = reader.IsDBNull(i: 13) ? null : reader.GetString(i: 13)
+                                };
+                            }
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener la persona por cédula: " + ex.Message);
+                }
             }
+            return persona;
         }
-        catch (Exception ex)
-        {
-            throw new Exception("Error al obtener la persona por cédula: " + ex.Message);
-        }
-    }
-    return persona;
-}
         public Usuario ObtenerUsuarioPorEmail(string email)
         {
             Usuario usuario = null;
@@ -1850,14 +1852,14 @@ namespace K_F_ClothingStore.Models
                             {
                                 usuario = new Usuario
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreUsuario = reader.GetString(1),
-                                    ContrasenaHash = reader.GetString(2),
-                                    Email = reader.GetString(3),
-                                    Rol = reader.GetString(4),
-                                    Estado = reader.GetString(5),
-                                    FechaCreacion = reader.GetDateTime(6),
-                                    FechaModificacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreUsuario = reader.GetString(i: 1),
+                                    ContrasenaHash = reader.GetString(i: 2),
+                                    Email = reader.GetString(i: 3),
+                                    Rol = reader.GetString(i: 4),
+                                    Estado = reader.GetString(i: 5),
+                                    FechaCreacion = reader.GetDateTime(i: 6),
+                                    FechaModificacion = reader.IsDBNull(i: 7) ? null : reader.GetDateTime(i: 7)
                                 };
                             }
                         }
@@ -1888,14 +1890,14 @@ namespace K_F_ClothingStore.Models
                             {
                                 usuario = new Usuario
                                 {
-                                    ID = reader.GetInt32(0),
-                                    NombreUsuario = reader.GetString(1),
-                                    ContrasenaHash = reader.GetString(2),
-                                    Email = reader.GetString(3),
-                                    Rol = reader.GetString(4),
-                                    Estado = reader.GetString(5),
-                                    FechaCreacion = reader.GetDateTime(6),
-                                    FechaModificacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7)
+                                    ID = reader.GetInt32(i: 0),
+                                    NombreUsuario = reader.GetString(i: 1),
+                                    ContrasenaHash = reader.GetString(i: 2),
+                                    Email = reader.GetString(i: 3),
+                                    Rol = reader.GetString(i: 4),
+                                    Estado = reader.GetString(i: 5),
+                                    FechaCreacion = reader.GetDateTime(i: 6),
+                                    FechaModificacion = reader.IsDBNull(i: 7) ? null : reader.GetDateTime(i: 7)
                                 };
                             }
                         }
@@ -1909,50 +1911,94 @@ namespace K_F_ClothingStore.Models
             return usuario;
         }
         public Persona ObtenerPersonaPorTelefono(string telefono)
-{
-    Persona persona = null;
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        try
         {
-            string query = "Exec sp_BuscarPersonaPorTelefono @Telefono";
-            using (SqlCommand cmd = new SqlCommand(query, con))
+            Persona persona = null;
+            using (SqlConnection con = new SqlConnection(_conexion))
             {
-                cmd.Parameters.AddWithValue("@Telefono", telefono);
-                con.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                try
                 {
-                    if (reader.Read())
+                    string query = "Exec sp_BuscarPersonaPorTelefono @Telefono";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        persona = new Persona
+                        cmd.Parameters.AddWithValue("@Telefono", telefono);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            ID = reader.GetInt32(0),
-                            Nombre1 = reader.GetString(1),
-                            Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
-                            Apellido1 = reader.GetString(3),
-                            Apellido2 = reader.GetString(4),
-                            DocumentoIdentidad = reader.GetString(5),
-                            Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
-                            Email = reader.IsDBNull(7) ? null : reader.GetString(7),
-                            FechaNacimiento = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
-                            Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
-                            FechaCreacion = reader.GetDateTime(10),
-                            CreadoPor = reader.GetString(11),
-                            FechaModificacion = reader.IsDBNull(12) ? (DateTime?)null : reader.GetDateTime(12),
-                            ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13),
-                            DireccionID = reader.GetInt32(15)
-                        };
+                            if (reader.Read())
+                            {
+                                persona = new Persona
+                                {
+                                    ID = reader.GetInt32(i: 0),
+                                    Nombre1 = reader.GetString(i: 1),
+                                    Nombre2 = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
+                                    Apellido1 = reader.GetString(i: 3),
+                                    Apellido2 = reader.GetString(i: 4),
+                                    DocumentoIdentidad = reader.GetString(i: 5),
+                                    Telefono = reader.IsDBNull(i: 6) ? null : reader.GetString(i: 6),
+                                    Email = reader.IsDBNull(i: 7) ? null : reader.GetString(i: 7),
+                                    FechaNacimiento = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
+                                    Genero = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
+                                    FechaCreacion = reader.GetDateTime(i: 10),
+                                    CreadoPor = reader.GetString(i: 11),
+                                    FechaModificacion = reader.IsDBNull(i: 12) ? null : reader.GetDateTime(i: 12),
+                                    ModificadoPor = reader.IsDBNull(i: 13) ? null : reader.GetString(i: 13),
+                                    DireccionID = reader.GetInt32(i: 15)
+                                };
+                            }
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener la persona por teléfono: " + ex.Message);
+                }
             }
+            return persona;
         }
-        catch (Exception ex)
+        public List<Producto> ObtenerTodosLosProductos()
         {
-            throw new Exception("Error al obtener la persona por teléfono: " + ex.Message);
+            List<Producto> listaProductos = new List<Producto>();
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "Exec sp_GetTodosLosProductos";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        con.Open();
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                listaProductos.Add(new Producto
+                                {
+                                    ID = Convert.ToInt32(dr["ID"]),
+                                    NombreProducto = dr["NombreProducto"].ToString(),
+                                    Genero = dr["Genero"].ToString(),
+                                    SegmentoEdad = dr["SegmentoEdad"].ToString(),
+                                    TipoProducto = dr["TipoProducto"].ToString(),
+                                    Color = dr["Color"].ToString(),
+                                    Talla = dr["Talla"].ToString(),
+                                    UnidadesDisponibles = Convert.ToInt32(dr["UnidadesDisponibles"]),
+                                    Precio = Convert.ToDecimal(dr["Precio"]),
+                                    Descripcion = dr["Descripcion"] == DBNull.Value ? null : dr["Descripcion"].ToString(),
+                                    ImagenUrl = dr["ImagenUrl"] == DBNull.Value ? null : dr["ImagenUrl"].ToString(),  // 🔹 Agregar esta línea
+                                    FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]),
+                                    FechaModificacion = dr["FechaModificacion"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FechaModificacion"])
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener los productos: " + ex.Message);
+                }
+            }
+            return listaProductos;
         }
-    }
-    return persona;
-}
+
+
 
     }
 }

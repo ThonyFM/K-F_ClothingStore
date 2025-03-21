@@ -1,24 +1,15 @@
-﻿using K_F_ClothingStore.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-namespace K_F_ClothingStore.Controllers
-{
-    public class AuthController : Controller
-    {
+﻿namespace K_F_ClothingStore.Controllers {
+    using Microsoft.AspNetCore.Mvc;
+    using Models;
+    using System.Diagnostics;
+    public class AuthController : Controller {
         private readonly AccesoDatos _acceso;
-
         public AuthController(AccesoDatos acceso)
         {
             _acceso = acceso;
         }
- 
         // GET: Auth/Registro
-        public IActionResult Registro()
-        {
-            return View();
-        }
-
+        public IActionResult Registro() => View();
         // POST: Auth/Registro
         [HttpPost]
         public IActionResult Registro(RegistroViewModel model)
@@ -27,64 +18,56 @@ namespace K_F_ClothingStore.Controllers
             try
             {
                 _acceso.ObtenerPersonaPorCedula(model.Persona.DocumentoIdentidad);
- 
+
             }
             catch (Exception)
             {
-              seguro = true;
-              TempData["ErrorMessage"] = "El documento de indentidad ingresado ya pertenece a otra cuenta.";
+                seguro = true;
+                TempData["ErrorMessage"] = "El documento de indentidad ingresado ya pertenece a otra cuenta.";
             }
             try
             {
                 _acceso.ObtenerPersonaPorTelefono(model.Persona.Telefono);
- 
+
             }
             catch (Exception)
             {
                 seguro = true;
                 TempData["ErrorMessage"] = "El telefono ingresado ya pertenece a otra cuenta.";
             }
-            
-                if (_acceso.ObtenerUsuarioPorEmail(model.Usuario.Email)!=null)
-                {
-                    seguro = true;
-                    TempData["ErrorMessage"] = "El Email ingresado ya pertenece a otra cuenta.";
-                }
-             
-            
-                if (_acceso.ObtenerUsuarioPorNombreUsuario(model.Usuario.NombreUsuario)!=null)
-                {
-                    seguro = true;
-                    TempData["ErrorMessage"] = "El Nombre de usuario ingresado ya pertenece a otra cuenta.";
-                }
-            
-          
-            if (seguro==false)
+            if (_acceso.ObtenerUsuarioPorEmail(model.Usuario.Email) != null)
             {
-                var usuario = new Usuario
+                seguro = true;
+                TempData["ErrorMessage"] = "El Email ingresado ya pertenece a otra cuenta.";
+            }
+            if (_acceso.ObtenerUsuarioPorNombreUsuario(model.Usuario.NombreUsuario) != null)
+            {
+                seguro = true;
+                TempData["ErrorMessage"] = "El Nombre de usuario ingresado ya pertenece a otra cuenta.";
+            }
+            if (seguro == false)
+            {
+                Usuario? usuario = new Usuario
                 {
                     NombreUsuario = model.Usuario.NombreUsuario,
                     ContrasenaHash = model.Usuario.ContrasenaHash,
                     Email = model.Usuario.Email,
-                    Rol = "Cliente", 
-                    Estado = "Activo",
+                    Rol = "Cliente",
+                    Estado = "Activo"
 
                 };
-                
                 _acceso.AgregarUsuario(usuario);
-                var direccion = new Direccion
+                Direccion? direccion = new Direccion
                 {
                     Ciudad = model.Direccion.Ciudad,
                     Estado = model.Direccion.Estado,
                     CodigoPostal = model.Direccion.CodigoPostal,
                     Pais = model.Direccion.Pais,
                     TipoDireccion = model.Direccion.TipoDireccion,
-                    CreadoPor = "Sistema" 
+                    CreadoPor = "Sistema"
                 };
-                
-                _acceso.AgregarDireccion(direccion); 
-                
-                var persona = new Persona
+                _acceso.AgregarDireccion(direccion);
+                Persona? persona = new Persona
                 {
                     Nombre1 = model.Persona.Nombre1,
                     Nombre2 = model.Persona.Nombre2,
@@ -95,54 +78,41 @@ namespace K_F_ClothingStore.Controllers
                     Email = model.Usuario.Email,
                     FechaNacimiento = model.Persona.FechaNacimiento,
                     Genero = model.Persona.Genero,
-                    DireccionID = direccion.ID, 
+                    DireccionID = direccion.ID,
                     CreadoPor = "Sistema"
                 };
-                
                 _acceso.AgregarPersona(persona);
-                
-                var cliente = new Cliente
+                Cliente? cliente = new Cliente
                 {
                     PersonaID = persona.ID,
-                    CodigoCliente = direccion.ID, 
-                    Estado = "Activo", 
-                    CreadoPor = "Sistema" 
+                    CodigoCliente = direccion.ID,
+                    Estado = "Activo",
+                    CreadoPor = "Sistema"
                 };
-                
                 _acceso.AgregarCliente(cliente);
-                
                 TempData["SuccessMessage"] = "Usuario registrado exitosamente.";
                 return RedirectToAction("InicioSesion", "Auth");
-                
+
             }
-                return View(model);
+            return View(model);
         }
-        
-
         // GET: Auth/InicioSesion
-        public IActionResult InicioSesion()
-        {
-            return View();
-        }
-
+        public IActionResult InicioSesion() => View();
         // POST: Auth/InicioSesion
         [HttpPost]
         public IActionResult InicioSesion(string nombreUsuario, string contrasenaHash)
         {
             try
             {
-                var usuario = _acceso.ObtenerUsuarioPorNombreUsuario(nombreUsuario);
-
+                Usuario? usuario = _acceso.ObtenerUsuarioPorNombreUsuario(nombreUsuario);
                 if (usuario == null || usuario.ContrasenaHash != contrasenaHash)
                 {
                     TempData["ErrorMessage"] = "Nombre de usuario o contraseña incorrectos.";
                     return View();
                 }
-
                 // Guardar el usuario en la sesión
                 HttpContext.Session.SetString("UsuarioID", usuario.ID.ToString());
-                HttpContext.Session.SetString("Rol", usuario.Rol); 
-
+                HttpContext.Session.SetString("Rol", usuario.Rol);
                 TempData["SuccessMessage"] = "Inicio de sesión exitoso.";
                 return RedirectToAction("Index", "Home");
             }
@@ -152,7 +122,6 @@ namespace K_F_ClothingStore.Controllers
                 return View();
             }
         }
-
         // GET: Auth/CerrarSesion
         public IActionResult CerrarSesion()
         {
@@ -160,13 +129,7 @@ namespace K_F_ClothingStore.Controllers
             TempData["SuccessMessage"] = "Sesión cerrada correctamente.";
             return RedirectToAction("InicioSesion");
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-        
-        
+        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

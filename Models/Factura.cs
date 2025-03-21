@@ -1,9 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace K_F_ClothingStore.Models {
+    using System.ComponentModel.DataAnnotations;
 
-namespace K_F_ClothingStore.Models
-{
-    public class Factura
-    {
+    public class Factura {
+        public Factura() {}
+
+        public Factura(int id, int clienteID, int empleadoID, decimal total, string metodoPago, string estado, int? descuentoID, string creadoPor)
+        {
+            ID = id;
+            ClienteID = clienteID;
+            EmpleadoID = empleadoID;
+            Total = total;
+            MetodoPago = metodoPago;
+            Estado = estado;
+            DescuentoID = descuentoID;
+            CreadoPor = creadoPor;
+        }
+
         [Key]
         public int ID { get; set; }
 
@@ -19,11 +31,11 @@ namespace K_F_ClothingStore.Models
         public decimal Total { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(maximumLength: 50)]
         public string MetodoPago { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(maximumLength: 50)]
         public string Estado { get; set; }
 
         public int? DescuentoID { get; set; }
@@ -33,24 +45,10 @@ namespace K_F_ClothingStore.Models
         public DateTime? FechaModificacion { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(maximumLength: 50)]
         public string CreadoPor { get; set; }
 
-        [StringLength(50)]
+        [StringLength(maximumLength: 50)]
         public string ModificadoPor { get; set; }
-
-        public Factura() { }
-
-        public Factura(int id, int clienteID, int empleadoID, decimal total, string metodoPago, string estado, int? descuentoID, string creadoPor)
-        {
-            ID = id;
-            ClienteID = clienteID;
-            EmpleadoID = empleadoID;
-            Total = total;
-            MetodoPago = metodoPago;
-            Estado = estado;
-            DescuentoID = descuentoID;
-            CreadoPor = creadoPor;
-        }
     }
 }

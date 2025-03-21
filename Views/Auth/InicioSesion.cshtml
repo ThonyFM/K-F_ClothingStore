@@ -25,21 +25,24 @@
 
                     @using (Html.BeginForm("InicioSesion", "Auth", FormMethod.Post, new { @class = "form-horizontal" }))
                     {
-                       
+
 
                         <div class="form-group">
                             <label for="nombreUsuario" class="control-label">Nombre de Usuario</label>
-                            <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" placeholder="Introduce tu nombre de usuario" required />
+                            <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control"
+                                   placeholder="Introduce tu nombre de usuario" required/>
                         </div>
 
                         <div class="form-group">
                             <label for="contrasenaHash" class="control-label">Contraseña</label>
-                            <input type="password" id="contrasenaHash" name="contrasenaHash" class="form-control" placeholder="Introduce tu contraseña" required />
+                            <input type="password" id="contrasenaHash" name="contrasenaHash" class="form-control"
+                                   placeholder="Introduce tu contraseña" required/>
                         </div>
 
                         <div class="form-group mt-3">
                             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                            <a href="@Url.Action("Registro", "Auth")" class="btn btn-secondary ml-2">¿No tienes una cuenta? Regístrate</a>
+                            <a href="@Url.Action("Registro", "Auth")" class="btn btn-secondary ml-2">¿No tienes una
+                                cuenta? Regístrate</a>
                         </div>
                     }
                 </div>

@@ -1,9 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace K_F_ClothingStore.Models {
+    using System.ComponentModel.DataAnnotations;
 
-namespace K_F_ClothingStore.Models
-{
-    public class Venta
-    {
+    public class Venta {
+        public Venta() {}
+
+        public Venta(int ventaID, int empleadoID, int clienteID, int productoID, int cantidad, decimal total)
+        {
+            VentaID = ventaID;
+            EmpleadoID = empleadoID;
+            ClienteID = clienteID;
+            ProductoID = productoID;
+            Cantidad = cantidad;
+            Total = total;
+        }
+
         [Key]
         public int VentaID { get; set; }
 
@@ -23,17 +33,5 @@ namespace K_F_ClothingStore.Models
         public decimal Total { get; set; }
 
         public DateTime Fecha { get; set; } = DateTime.Now;
-
-        public Venta() { }
-
-        public Venta(int ventaID, int empleadoID, int clienteID, int productoID, int cantidad, decimal total)
-        {
-            VentaID = ventaID;
-            EmpleadoID = empleadoID;
-            ClienteID = clienteID;
-            ProductoID = productoID;
-            Cantidad = cantidad;
-            Total = total;
-        }
     }
 }
