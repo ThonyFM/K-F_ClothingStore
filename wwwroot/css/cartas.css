@@ -1,0 +1,41 @@
+﻿.card {
+    width: 300px; /* Ancho fijo para las tarjetas */
+    height: 500px; /* Alto fijo para las tarjetas */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Espacio entre tarjetas */
+}
+
+.card-img-top {
+    width: 100%; /* La imagen ocupa el 100% del ancho de la tarjeta */
+    height: 200px; /* Alto fijo para la imagen */
+    object-fit: contain; /* Ajusta la imagen sin cortarla */
+    background-color: #f8f9fa; /* Fondo para imágenes con espacio sobrante */
+}
+
+.card-body {
+    flex-grow: 1; /* El cuerpo de la tarjeta ocupa el espacio restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.2rem; /* Tamaño del título */
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.9rem; /* Tamaño del texto */
+    margin-bottom: 10px;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.btn {
+    width: 100%; /* Los botones ocupan el 100% del ancho */
+    margin-top: 10px;
+}

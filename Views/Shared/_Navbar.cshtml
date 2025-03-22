@@ -8,8 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacidad</a></li>
+                <li class="nav-item"><a href="@Url.Action("Index", "Home")" class="nav-link">Inicio</a></li>
                 @if (Context.Session.GetString("Rol") == "Admin")
                 {
                     <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
@@ -18,7 +17,6 @@
                 }
                 @if (Context.Session.GetString("Rol") == "Cliente")
                 {
-                    <li class="nav-item"><a class="nav-link" asp-controller="Cliente" asp-action="Perfil">Perfil</a></li>
                     <li class="nav-item">  <a href="@Url.Action("MiCarrito", "Carrito")" class="nav-link">Mi Carrito</a></li>
                 }
             </ul>
