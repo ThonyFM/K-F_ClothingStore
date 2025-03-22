@@ -1223,4 +1223,50 @@ FROM
 WHERE
     Email = @Email;
 END
+GO
+CREATE PROCEDURE sp_ObtenerClientePorPersonaID
+    @PersonaID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
 
+SELECT
+    ID,
+    PersonaID,
+    CodigoCliente,
+    Estado,
+    CreadoPor,
+    FechaCreacion,
+    FechaModificacion,
+    ModificadoPor
+FROM Cliente
+WHERE PersonaID = @PersonaID;
+END;
+GO
+CREATE PROCEDURE sp_ObtenerCarritoPorClienteID
+    @ClienteID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+SELECT
+    C.ID AS CarritoID,
+    C.ClienteID,
+    C.ProductoID,
+    P.NombreProducto,
+    P.Genero,
+    P.SegmentoEdad,
+    P.TipoProducto,
+    P.Color,
+    P.Talla,
+    P.Precio,
+    P.ImagenUrl,
+    P.Descripcion,
+    C.Cantidad,
+    C.FechaAgregado,
+    C.FechaModificacion
+FROM CarritoCompras C
+         INNER JOIN Producto P ON C.ProductoID = P.ID
+WHERE C.ClienteID = @ClienteID;
+END;
+GO  

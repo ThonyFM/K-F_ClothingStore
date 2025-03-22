@@ -2051,6 +2051,195 @@
             }
             return persona;
         }
+        public CarritoCompras ObtenerCarritoPorClienteYProducto(int clienteID, int productoID)
+        {
+            CarritoCompras carrito = null;
+
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "Exec sp_GetCarritoPorClienteYProducto @ClienteID, @ProductoID";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        cmd.Parameters.AddWithValue("@ProductoID", productoID);
+
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                carrito = new CarritoCompras
+                                {
+                                    ID = reader.GetInt32(0),
+                                    ClienteID = reader.GetInt32(1),
+                                    ProductoID = reader.GetInt32(2),
+                                    Cantidad = reader.GetInt32(3),
+                                    FechaAgregado = reader.GetDateTime(4),
+                                    FechaModificacion = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5)
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el carrito de compras: " + ex.Message);
+                }
+            }
+
+            return carrito;
+        }
+
+
+        public void ActualizarCantidadCarrito(int clienteID, int productoID, int nuevaCantidad)
+        {
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "EXEC sp_ActualizarCantidadCarrito @ClienteID, @ProductoID, @NuevaCantidad";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        cmd.Parameters.AddWithValue("@ProductoID", productoID);
+                        cmd.Parameters.AddWithValue("@NuevaCantidad", nuevaCantidad);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al actualizar la cantidad en el carrito: " + ex.Message);
+                }
+            }
+        }
+
+
+        public void AgregarAlCarrito(int clienteID, int productoID, int cantidad)
+        {
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "EXEC sp_AgregarAlCarrito @ClienteID, @ProductoID, @Cantidad";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        cmd.Parameters.AddWithValue("@ProductoID", productoID);
+                        cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al agregar al carrito: " + ex.Message);
+                }
+            }
+        }
+        public Cliente ObtenerClientePorPersonaID(int personaID)
+        {
+            Cliente cliente = null;
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "Exec sp_ObtenerClientePorPersonaID @PersonaID";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@PersonaID", personaID);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                cliente = new Cliente
+                                {
+                                    ID = reader.GetInt32(0),
+                                    PersonaID = reader.GetInt32(1),
+                                    CodigoCliente = reader.GetInt32(2),
+                                    Estado = reader.GetString(3),
+                                    CreadoPor = reader.GetString(4),
+                                    FechaCreacion = reader.GetDateTime(5),
+                                    FechaModificacion = reader.IsDBNull(6) ? (DateTime?)null : reader.GetDateTime(6),
+                                    ModificadoPor = reader.IsDBNull(7) ? null : reader.GetString(7)
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el cliente por PersonaID: " + ex.Message);
+                }
+            }
+            return cliente;
+        }
+        public List<CarritoItem> ObtenerCarritoPorClienteID(int clienteID)
+        {
+            List<CarritoItem> carrito = new List<CarritoItem>();
+
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "EXEC sp_ObtenerCarritoPorClienteID @ClienteID";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                carrito.Add(new CarritoItem
+                                {
+                                    ProductoID = reader.GetInt32(2),
+                                    NombreProducto = reader.GetString(3),
+                                    Precio = reader.GetDecimal(9),
+                                    ImagenUrl = reader.IsDBNull(10) ? null : reader.GetString(10),
+                                    Descripcion = reader.IsDBNull(11) ? null : reader.GetString(11),
+                                    Cantidad = reader.GetInt32(12),
+                                  
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el carrito: " + ex.Message);
+                }
+            }
+
+            return carrito;
+        }
+        public void EliminarProductoCarrito(int clienteID, int productoID)
+        {
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "EXEC sp_EliminarProductoCarrito @ClienteID, @ProductoID";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        cmd.Parameters.AddWithValue("@ProductoID", productoID);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al eliminar el producto del carrito: " + ex.Message);
+                }
+            }
+        }
+
 
 
     }

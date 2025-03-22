@@ -112,10 +112,12 @@
                 // Guardar el usuario en la sesión
                 Persona? persona = _acceso.ObtenerPersonaPorEmail(usuario.Email);
                 Direccion? direccion = _acceso.ObtenerDireccionPorId(persona.DireccionID);
-                HttpContext.Session.SetString("TipoDireccion", direccion.TipoDireccion.ToString());
+                Cliente? cliente = _acceso.ObtenerClientePorPersonaID(persona.ID);
+                HttpContext.Session.SetString("TipoDireccion", direccion.TipoDireccion);
                 HttpContext.Session.SetString("PersonaID", persona.ID.ToString());
                 HttpContext.Session.SetString("Nombre", persona.Nombre1+" "+persona.Apellido1+" "+persona.Apellido2);
                 HttpContext.Session.SetString("UsuarioID", usuario.ID.ToString());
+                HttpContext.Session.SetString("ClienteID", cliente.ID.ToString());
                 HttpContext.Session.SetString("Telefono", persona.Telefono);
                 HttpContext.Session.SetString("Email", usuario.Email);
                 HttpContext.Session.SetString("Usuario", usuario.NombreUsuario);

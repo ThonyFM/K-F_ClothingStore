@@ -19,7 +19,7 @@ namespace K_F_ClothingStore.Controllers
         {
             try
             {
-                string ID = HttpContext.Session.GetString("UsuarioID");
+                string ID = HttpContext.Session.GetString("ClienteID");
 
                 if (string.IsNullOrEmpty(ID))
                 {

@@ -1,35 +1,4 @@
-﻿<script>
-    document.getElementById("userMenu").addEventListener("click", async function (event) {
-        event.preventDefault(); // Prevent default behavior (e.g., page reload)
-        try {
-            // Show loading state
-            document.getElementById("userNombre").textContent = "Cargando...";
-            document.getElementById("userTelefono").textContent = "Cargando...";
-            document.getElementById("userDireccion").textContent = "Cargando...";
-
-            // Fetch user data
-            var response = await fetch('/Usuario/o');
-            if (!response.ok) {
-                throw new Error("Error al obtener los datos del usuario");
-            }
-
-            var data = await response.json();
-
-            if (data.success) {
-                // Update dropdown content
-                document.getElementById("userNombre").textContent = "Nombre: " + data.usuario.Nombre;
-                document.getElementById("userTelefono").textContent = "Teléfono: " + data.usuario.Telefono;
-                document.getElementById("userDireccion").textContent = "Dirección: " + data.usuario.Direccion;
-            } else {
-                alert("Error: " + data.message);
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Hubo un problema al cargar los datos del usuario.");
-        }
-    });
-</script>
-
+﻿
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">K_F_ClothingStore</a>
@@ -50,7 +19,7 @@
                 @if (Context.Session.GetString("Rol") == "Cliente")
                 {
                     <li class="nav-item"><a class="nav-link" asp-controller="Cliente" asp-action="Perfil">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Cliente" asp-action="Compras">Mis Compras</a></li>
+                    <li class="nav-item">  <a href="@Url.Action("MiCarrito", "Carrito")" class="nav-link">Mi Carrito</a></li>
                 }
             </ul>
 
@@ -67,6 +36,7 @@
                     <p id="userDireccion">Tipo Dirección: @Context.Session.GetString("TipoDireccion")</p>
                     <p id="userRol">Rol: @Context.Session.GetString("Rol")</p>
                     <a class="btn btn-primary w-100" asp-controller="Cliente" asp-action="Perfil">Ver Perfil</a>
+                    <a class="btn btn-primary w-100" asp-controller="Carrito" asp-action="MiCarrito">Ver mi carrito</a>
                 </div>
             </div>
         </div>
