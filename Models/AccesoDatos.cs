@@ -106,12 +106,17 @@
                                     Estado = reader.GetString(i: 2),
                                     CodigoPostal = reader.GetString(i: 3),
                                     Pais = reader.GetString(i: 4),
-                                    TipoDireccion = reader.IsDBNull(i: 5) ? null : reader.GetString(i: 5),
+                                    TipoDireccion = reader.GetString(i: 5),
                                     FechaCreacion = reader.GetDateTime(i: 6),
                                     CreadoPor = reader.GetString(i: 7),
                                     FechaModificacion = reader.IsDBNull(i: 8) ? null : reader.GetDateTime(i: 8),
                                     ModificadoPor = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9)
                                 };
+                            }
+                            else
+                            {
+                                // Manejo cuando no se encuentra la dirección
+                                throw new Exception($"No se encontró la dirección con ID: {id}");
                             }
                         }
                     }
@@ -123,6 +128,7 @@
             }
             return direccion;
         }
+
 
         public void ActualizarDireccion(Direccion direccion)
         {
@@ -1600,7 +1606,7 @@
                 }
             }
         }
-        public Usuario ObtenerUsuarioPorNombreUsuario(string nombreUsuario)
+        public Usuario ObtenerUsuarioPorNombreUsuario(string? nombreUsuario)
         {
             Usuario usuario = null;
             using (SqlConnection con = new SqlConnection(_conexion))
@@ -1997,7 +2003,54 @@
             }
             return listaProductos;
         }
+// Método para obtener una persona por su email
+        public Persona ObtenerPersonaPorEmail(string email)
+        {
+            Persona persona = null;
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "Exec ObtenerPersonaPorEmail @Email";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                persona = new Persona
+                                {
+                                    ID = reader.GetInt32(i: 0),
+                                    Nombre1 = reader.GetString(i: 1),
+                                    Nombre2 = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
+                                    Apellido1 = reader.GetString(i: 3),
+                                    Apellido2 = reader.GetString(i: 4),
+                                    DocumentoIdentidad = reader.GetString(i: 5),
+                                    Telefono = reader.IsDBNull(i: 6) ? null : reader.GetString(i: 6),
+                                    Email = reader.GetString(i: 7),
+                                    FechaNacimiento = reader.IsDBNull(i: 8) ? (DateTime?)null : reader.GetDateTime(i: 8),
+                                    Genero = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
+                                    DireccionID = reader.GetInt32(i: 15) 
+                                };
 
+                            }
+                            else
+                            {
+                                // Si no se encuentra la persona, retornar null o lanzar una excepción personalizada
+                                throw new Exception("No se encontró una persona con ese correo electrónico.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener la persona por email: " + ex.Message);
+                }
+            }
+            return persona;
+        }
 
 
     }

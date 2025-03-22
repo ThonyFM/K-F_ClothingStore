@@ -1,4 +1,42 @@
-﻿@using System.Net.Mime
+﻿@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Cuando se hace clic en "Agregar al Carrito"
+            $('.agregar-carrito').on('click', function () {
+                var productoId = $(this).data('producto-id'); // Obtener el ID del producto
+                $('#productoId').val(productoId); // Asignar el ID al campo oculto del modal
+            });
+
+            // Cuando se confirma la acción en el modal
+            $('#btnConfirmarAgregar').on('click', function () {
+                var productoId = $('#productoId').val();
+                var cantidad = $('#cantidad').val();
+
+                // Enviar la solicitud al servidor
+                $.ajax({
+                    url: '@Url.Action("AgregarAlCarrito", "Carrito")',
+                    type: 'POST',
+                    data: {
+                        productoId: productoId,
+                        cantidad: cantidad
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            alert('Producto agregado al carrito correctamente.');
+                            $('#agregarCarritoModal').modal('hide'); // Cerrar el modal
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Hubo un error al agregar el producto al carrito.');
+                    }
+                });
+            });
+        });
+    </script>
+}
+
 @model List<K_F_ClothingStore.Models.Producto>
 
 
@@ -39,6 +77,29 @@
                                <p class="card-text">@producto.Descripcion</p>
                                <p class="fw-bold">$@producto.Precio</p>
                                <a href="@Url.Action("AgregarAlCarrito", "Carrito", new { id = producto.ID })" class="btn btn-success">Agregar al Carrito</a>
+                           </div>
+                           <div class="modal fade" id="agregarCarritoModal" tabindex="-1" aria-labelledby="agregarCarritoModalLabel" aria-hidden="true">
+                               <div class="modal-dialog">
+                                   <div class="modal-content">
+                                       <div class="modal-header">
+                                           <h5 class="modal-title" id="agregarCarritoModalLabel">Agregar al Carrito</h5>
+                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                       </div>
+                                       <div class="modal-body">
+                                           <form id="formAgregarCarrito">
+                                               <input type="hidden" id="productoId" name="productoId" />
+                                               <div class="form-group">
+                                                   <label for="cantidad">Cantidad:</label>
+                                                   <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" value="1" required />
+                                               </div>
+                                           </form>
+                                       </div>
+                                       <div class="modal-footer">
+                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                           <button type="button" class="btn btn-primary" id="btnConfirmarAgregar">Agregar</button>
+                                       </div>
+                                   </div>
+                               </div>
                            </div>
                        </div>
             </div>

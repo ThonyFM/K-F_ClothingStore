@@ -6,7 +6,7 @@
         {
 
         }
-        public Usuario(int id, string nombreUsuario, string contrasenaHash, string email, string rol, string estado, DateTime? fechaModificacion)
+        public Usuario(int id, string? nombreUsuario, string contrasenaHash, string email, string rol, string estado, DateTime? fechaModificacion)
         {
             ID = id;
             NombreUsuario = nombreUsuario;
@@ -22,7 +22,7 @@
 
         [Required]
         [StringLength(maximumLength: 50)]
-        public string NombreUsuario { get; set; }
+        public string? NombreUsuario { get; set; }
 
         [Required]
         [StringLength(maximumLength: 255)]

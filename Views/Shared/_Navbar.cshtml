@@ -1,4 +1,36 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+﻿<script>
+    document.getElementById("userMenu").addEventListener("click", async function (event) {
+        event.preventDefault(); // Prevent default behavior (e.g., page reload)
+        try {
+            // Show loading state
+            document.getElementById("userNombre").textContent = "Cargando...";
+            document.getElementById("userTelefono").textContent = "Cargando...";
+            document.getElementById("userDireccion").textContent = "Cargando...";
+
+            // Fetch user data
+            var response = await fetch('/Usuario/o');
+            if (!response.ok) {
+                throw new Error("Error al obtener los datos del usuario");
+            }
+
+            var data = await response.json();
+
+            if (data.success) {
+                // Update dropdown content
+                document.getElementById("userNombre").textContent = "Nombre: " + data.usuario.Nombre;
+                document.getElementById("userTelefono").textContent = "Teléfono: " + data.usuario.Telefono;
+                document.getElementById("userDireccion").textContent = "Dirección: " + data.usuario.Direccion;
+            } else {
+                alert("Error: " + data.message);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Hubo un problema al cargar los datos del usuario.");
+        }
+    });
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">K_F_ClothingStore</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -24,15 +56,16 @@
 
             <!-- Burbuja de usuario -->
             <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown">
-                    <img src="/images/user-icon.png" class="rounded-circle" width="40" height="40" alt="User"/>
+                <button class="btn btn-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/images/user-icon.png" class="rounded-circle" width="40" height="40" alt="@Context.Session.GetString("Usuario")"/>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="userMenu">
-                    <p class="text-center"><strong>@Context.Session.GetString("Correo")</strong></p>
+                    <p class="text-center"><strong>@Context.Session.GetString("Email")</strong></p>
                     <hr>
-                    <p>Nombre: @Context.Session.GetString("Nombre")</p>
-                    <p>Teléfono: @Context.Session.GetString("Telefono")</p>
-                    <p>Dirección: @Context.Session.GetString("Direccion")</p>
+                    <p id="userNombre">Nombre: @Context.Session.GetString("Nombre")</p>
+                    <p id="userTelefono">Teléfono: @Context.Session.GetString("Telefono")</p>
+                    <p id="userDireccion">Tipo Dirección: @Context.Session.GetString("TipoDireccion")</p>
+                    <p id="userRol">Rol: @Context.Session.GetString("Rol")</p>
                     <a class="btn btn-primary w-100" asp-controller="Cliente" asp-action="Perfil">Ver Perfil</a>
                 </div>
             </div>

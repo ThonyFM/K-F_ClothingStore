@@ -53,6 +53,7 @@
 
         [StringLength(maximumLength: 50)]
         public string Genero { get; set; }
+        
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
@@ -64,8 +65,7 @@
 
         [StringLength(maximumLength: 50)]
         public string ModificadoPor { get; set; }
-
-        [Required]
+        
         public int DireccionID { get; set; }
 
         public int? UsuarioID { get; set; }

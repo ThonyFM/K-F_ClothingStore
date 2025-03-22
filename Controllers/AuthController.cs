@@ -100,10 +100,9 @@
         public IActionResult InicioSesion() => View();
         // POST: Auth/InicioSesion
         [HttpPost]
-        public IActionResult InicioSesion(string nombreUsuario, string contrasenaHash)
+        public IActionResult InicioSesion(string? nombreUsuario, string contrasenaHash)
         {
-            try
-            {
+            
                 Usuario? usuario = _acceso.ObtenerUsuarioPorNombreUsuario(nombreUsuario);
                 if (usuario == null || usuario.ContrasenaHash != contrasenaHash)
                 {
@@ -111,16 +110,19 @@
                     return View();
                 }
                 // Guardar el usuario en la sesión
+                Persona? persona = _acceso.ObtenerPersonaPorEmail(usuario.Email);
+                Direccion? direccion = _acceso.ObtenerDireccionPorId(persona.DireccionID);
+                HttpContext.Session.SetString("TipoDireccion", direccion.TipoDireccion.ToString());
+                HttpContext.Session.SetString("PersonaID", persona.ID.ToString());
+                HttpContext.Session.SetString("Nombre", persona.Nombre1+" "+persona.Apellido1+" "+persona.Apellido2);
                 HttpContext.Session.SetString("UsuarioID", usuario.ID.ToString());
+                HttpContext.Session.SetString("Telefono", persona.Telefono);
+                HttpContext.Session.SetString("Email", usuario.Email);
+                HttpContext.Session.SetString("Usuario", usuario.NombreUsuario);
                 HttpContext.Session.SetString("Rol", usuario.Rol);
                 TempData["SuccessMessage"] = "Inicio de sesión exitoso.";
                 return RedirectToAction("Index", "Home");
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = "Error al iniciar sesión: " + ex.Message;
-                return View();
-            }
+           
         }
         // GET: Auth/CerrarSesion
         public IActionResult CerrarSesion()

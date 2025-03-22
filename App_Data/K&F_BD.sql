@@ -168,7 +168,18 @@ ALTER TABLE Persona
     CONSTRAINT FK_Persona_Usuario FOREIGN KEY (UsuarioID) REFERENCES Usuario(ID);
 
 GO
-
+CREATE TABLE CarritoCompras
+(
+    ID                INT IDENTITY(1,1) PRIMARY KEY,
+    ClienteID         INT NOT NULL,
+    ProductoID        INT NOT NULL,
+    Cantidad          INT NOT NULL,
+    FechaAgregado     DATETIME DEFAULT GETDATE(),
+    FechaModificacion DATETIME NULL,
+    CONSTRAINT FK_CarritoCompras_Cliente FOREIGN KEY (ClienteID) REFERENCES Cliente (ID),
+    CONSTRAINT FK_CarritoCompras_Producto FOREIGN KEY (ProductoID) REFERENCES Producto (ID)
+);
+GO
 
 CREATE PROCEDURE sp_InsertDireccion @Ciudad NVARCHAR(50),
     @Estado NVARCHAR(50),
@@ -1186,3 +1197,30 @@ SELECT
 FROM Producto;
 END;
 GO
+CREATE PROCEDURE ObtenerPersonaPorEmail
+    @Email NVARCHAR(255)
+AS
+BEGIN
+SELECT
+    ID,
+    Nombre1,
+    Nombre2,
+    Apellido1,
+    Apellido2,
+    DocumentoIdentidad,
+    Telefono,
+    Email,
+    FechaNacimiento,
+    Genero,
+    FechaRegistro,
+    FechaCreacion,
+    CreadoPor,
+    FechaModificacion,
+    ModificadoPor,
+    DireccionID
+FROM
+    Persona
+WHERE
+    Email = @Email;
+END
+
