@@ -103,19 +103,15 @@ CREATE TABLE Factura
 (
     ID                INT IDENTITY(1,1) PRIMARY KEY,
     ClienteID         INT NOT NULL,
-    EmpleadoID        INT NOT NULL,
-    FechaEmision      DATETIME DEFAULT GETDATE(),
     Total             DECIMAL,
     MetodoPago        NVARCHAR(50) NOT NULL,
     Estado            NVARCHAR(50) NOT NULL,
-    DescuentoID       INT NULL,
     FechaCreacion     DATETIME DEFAULT GETDATE(),
     FechaModificacion DATETIME NULL,
     CreadoPor         NVARCHAR(50) NOT NULL,
     ModificadoPor     NVARCHAR(50) NULL,
-    CONSTRAINT FK_Factura_Cliente FOREIGN KEY (ClienteID) REFERENCES Cliente (ID),
-    CONSTRAINT FK_Factura_Empleado FOREIGN KEY (EmpleadoID) REFERENCES Empleado (ID),
-    CONSTRAINT FK_Factura_Descuento FOREIGN KEY (DescuentoID) REFERENCES Descuento (ID)
+    CONSTRAINT FK_Factura_Cliente FOREIGN KEY (ClienteID) REFERENCES Cliente (ID)
+
 );
 CREATE TABLE DetalleFactura
 (
@@ -1269,4 +1265,33 @@ FROM CarritoCompras C
          INNER JOIN Producto P ON C.ProductoID = P.ID
 WHERE C.ClienteID = @ClienteID;
 END;
-GO  
+GO
+CREATE PROCEDURE sp_EliminarCarritoPorCliente
+    @ClienteID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+DELETE FROM CarritoCompras
+WHERE ClienteID = @ClienteID;
+END;
+GO
+CREATE PROCEDURE ObtenerDetallesFacturaPorFacturaID
+    @FacturaID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+SELECT
+    DF.ID,
+    DF.FacturaID,
+    DF.ProductoID,
+    P.NombreProducto,
+    DF.Cantidad,
+    DF.PrecioUnitario,
+    DF.Subtotal
+FROM DetalleFactura DF
+         INNER JOIN Producto P ON DF.ProductoID = P.ID
+WHERE DF.FacturaID = @FacturaID;
+END;
+
