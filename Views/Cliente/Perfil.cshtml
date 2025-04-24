@@ -1,0 +1,176 @@
+﻿@model K_F_ClothingStore.Models.RegistroViewModel
+@{
+    ViewData["Title"] = "Perfil de Usuario";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Perfil del Usuario</h2>
+
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["mensaje"]</div>
+    }
+
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger text-center">@TempData["error"]</div>
+    }
+
+    <form asp-action="GuardarPerfil" method="post" id="guardarForm">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" name="Usuario.ID" value="@Model.Usuario?.ID" />
+        <input type="hidden" name="Persona.ID" value="@Model.Persona?.ID" />
+        <input type="hidden" name="Direccion.ID" value="@Model.Direccion?.ID" />
+        <input type="hidden" name="Cliente.ID" value="@Model.Cliente?.ID" />
+
+        <div class="row justify-content-center">
+            <!-- Información Personal -->
+            <div class="col-md-5">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Información Personal</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Primer Nombre</label>
+                            <input name="Persona.Nombre1" value="@Model.Persona?.Nombre1" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Segundo Nombre</label>
+                            <input name="Persona.Nombre2" value="@Model.Persona?.Nombre2" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Primer Apellido</label>
+                            <input name="Persona.Apellido1" value="@Model.Persona?.Apellido1" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Segundo Apellido</label>
+                            <input name="Persona.Apellido2" value="@Model.Persona?.Apellido2" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono</label>
+                            <input name="Persona.Telefono" value="@Model.Persona?.Telefono" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input name="Persona.Email" value="@Model.Persona?.Email" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Género</label>
+                            <select name="Persona.Genero" class="form-control">
+                                <option value="">Seleccione...</option>
+                                <option value="Masculino" @(Model.Persona?.Genero == "Masculino" ? "selected" : "")>Masculino</option>
+                                <option value="Femenino" @(Model.Persona?.Genero == "Femenino" ? "selected" : "")>Femenino</option>
+                                <option value="Otro" @(Model.Persona?.Genero == "Otro" ? "selected" : "")>Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dirección -->
+            <div class="col-md-5">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">Dirección</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Ciudad</label>
+                            <input name="Direccion.Ciudad" value="@Model.Direccion?.Ciudad" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Estado</label>
+                            <input name="Direccion.Estado" value="@Model.Direccion?.Estado" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Código Postal</label>
+                            <input name="Direccion.CodigoPostal" value="@Model.Direccion?.CodigoPostal" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">País</label>
+                            <input name="Direccion.Pais" value="@Model.Direccion?.Pais" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de Dirección</label>
+                            <select name="Direccion.TipoDireccion" class="form-control">
+                                <option value="">Seleccione...</option>
+                                <option value="Casa" @(Model.Direccion?.TipoDireccion == "Casa" ? "selected" : "")>Casa</option>
+                                <option value="Trabajo" @(Model.Direccion?.TipoDireccion == "Trabajo" ? "selected" : "")>Trabajo</option>
+                                <option value="Otro" @(Model.Direccion?.TipoDireccion == "Otro" ? "selected" : "")>Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuenta -->
+            <div class="col-md-10">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Cuenta de Usuario</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Usuario</label>
+                            <input type="text" class="form-control" value="@Model.Usuario?.NombreUsuario" disabled />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rol</label>
+                            <input type="text" class="form-control" value="@Model.Usuario?.Rol" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-success me-2">Guardar Cambios</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarEliminacion">
+                    Eliminar mi cuenta
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal de confirmación para eliminar cuenta -->
+<div class="modal fade" id="confirmarEliminacion" tabindex="-1" aria-labelledby="confirmarEliminacionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="confirmarEliminacionLabel">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer y se perderán todos tus datos.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form asp-action="EliminarCuenta" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            // Validación de formulario
+            $('form').submit(function () {
+                if (!$(this).valid()) {
+                    $('.alert-danger').remove();
+                    $('<div class="alert alert-danger text-center">Por favor, corrige los errores en el formulario.</div>')
+                        .insertBefore('#guardarForm');
+                }
+            });
+        });
+    </script>
+}

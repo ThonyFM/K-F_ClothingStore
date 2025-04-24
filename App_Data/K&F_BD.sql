@@ -34,7 +34,7 @@ CREATE TABLE Persona
 );
 CREATE TABLE Cliente
 (
-    ID                INT IDENTITY(1,1) PRIMARY KEY,
+
     PersonaID         INT NOT NULL,
     CodigoCliente     INT NOT NULL,
     Estado            NVARCHAR(50) NOT NULL,

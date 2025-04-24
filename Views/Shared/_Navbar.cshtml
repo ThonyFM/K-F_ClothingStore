@@ -32,8 +32,8 @@
                     <p id="userTelefono">Teléfono: @Context.Session.GetString("Telefono")</p>
                     <p id="userDireccion">Tipo Dirección: @Context.Session.GetString("TipoDireccion")</p>
                     <p id="userRol">Rol: @Context.Session.GetString("Rol")</p>
-                    <a class="btn btn-primary w-100" asp-controller="Cliente" asp-action="Perfil">Ver Perfil</a>
-                    <a class="btn btn-primary w-100" asp-controller="Carrito" asp-action="MiCarrito">Ver mi carrito</a>
+                    <a href="@Url.Action("Perfil", "Cliente")" class="nav-link">Mi Perfil</a>
+                   <a href="@Url.Action("MiCarrito", "Carrito")" class="nav-link">Mi Carrito</a>
                 </div>
             </div>
         </div>

@@ -122,6 +122,7 @@
                 HttpContext.Session.SetString("Email", usuario.Email);
                 HttpContext.Session.SetString("Usuario", usuario.NombreUsuario);
                 HttpContext.Session.SetString("Rol", usuario.Rol);
+                HttpContext.Session.SetInt32("IdUsuario", usuario.ID);
                 TempData["SuccessMessage"] = "Inicio de sesión exitoso.";
                 return RedirectToAction("Index", "Home");
            

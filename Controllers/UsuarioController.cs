@@ -40,5 +40,10 @@ namespace K_F_ClothingStore.Controllers
                 return Json(new { success = false, message = "Error interno del servidor" });
             }
         }
+
+        public IActionResult Perfil()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

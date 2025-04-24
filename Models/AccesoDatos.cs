@@ -2,17 +2,15 @@
     using System.Data;
     using System.Data.SqlClient;
 
-    public class AccesoDatos {
+    public class AccesoDatos
+    {
         private readonly string _conexion;
 
         public AccesoDatos(IConfiguration configuracion)
         {
             _conexion = configuracion.GetConnectionString("DefaultConnection");
         }
-        public AccesoDatos()
-        {
-           
-        }
+
 
         // Métodos para la tabla Direccion
         public void AgregarDireccion(Direccion direccion)
@@ -21,7 +19,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertDireccion @Ciudad, @Estado, @CodigoPostal, @Pais, @TipoDireccion, @CreadoPor, @NewID OUTPUT";
+                    string query =
+                        "Exec sp_InsertDireccion @Ciudad, @Estado, @CodigoPostal, @Pais, @TipoDireccion, @CreadoPor, @NewID OUTPUT";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@Ciudad", direccion.Ciudad);
@@ -80,6 +79,7 @@
                     throw new Exception("Error al obtener las direcciones: " + ex.Message);
                 }
             }
+
             return direcciones;
         }
 
@@ -126,6 +126,7 @@
                     throw new Exception("Error al obtener la dirección: " + ex.Message);
                 }
             }
+
             return direccion;
         }
 
@@ -136,7 +137,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateDireccion @ID, @Ciudad, @Estado, @CodigoPostal, @Pais, @TipoDireccion, @ModificadoPor";
+                    string query =
+                        "Exec sp_UpdateDireccion @ID, @Ciudad, @Estado, @CodigoPostal, @Pais, @TipoDireccion, @ModificadoPor";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", direccion.ID);
@@ -185,7 +187,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertPersona @Nombre1, @Nombre2, @Apellido1, @Apellido2, @DocumentoIdentidad, @Telefono, @Email, @FechaNacimiento, @Genero, @DireccionID, @CreadoPor, @NewID OUTPUT";
+                    string query =
+                        "Exec sp_InsertPersona @Nombre1, @Nombre2, @Apellido1, @Apellido2, @DocumentoIdentidad, @Telefono, @Email, @FechaNacimiento, @Genero, @DireccionID, @CreadoPor, @NewID OUTPUT";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@Nombre1", persona.Nombre1);
@@ -253,6 +256,7 @@
                     throw new Exception("Error al obtener las personas: " + ex.Message);
                 }
             }
+
             return personas;
         }
 
@@ -298,6 +302,7 @@
                     throw new Exception("Error al obtener la persona: " + ex.Message);
                 }
             }
+
             return persona;
         }
 
@@ -307,7 +312,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdatePersona @ID, @Nombre1, @Nombre2, @Apellido1, @Apellido2, @Telefono, @Email, @FechaNacimiento, @Genero, @DireccionID, @ModificadoPor";
+                    string query =
+                        "Exec sp_UpdatePersona @ID, @Nombre1, @Nombre2, @Apellido1, @Apellido2, @Telefono, @Email, @FechaNacimiento, @Genero, @DireccionID, @ModificadoPor";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", persona.ID);
@@ -360,7 +366,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertCliente @PersonaID, @CodigoCliente, @Estado, @CreadoPor, @NewID OUTPUT";
+                    string query =
+                        "Exec sp_InsertCliente @PersonaID, @CodigoCliente, @Estado, @CreadoPor, @NewID OUTPUT";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@PersonaID", cliente.PersonaID);
@@ -415,6 +422,7 @@
                     throw new Exception("Error al obtener los clientes: " + ex.Message);
                 }
             }
+
             return clientes;
         }
 
@@ -454,6 +462,7 @@
                     throw new Exception("Error al obtener el cliente: " + ex.Message);
                 }
             }
+
             return cliente;
         }
 
@@ -509,7 +518,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertEmpleado @PersonaID, @Puesto, @FechaContratacion, @Salario, @Estado, @CreadoPor, @NewID OUTPUT";
+                    string query =
+                        "Exec sp_InsertEmpleado @PersonaID, @Puesto, @FechaContratacion, @Salario, @Estado, @CreadoPor, @NewID OUTPUT";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@PersonaID", empleado.PersonaID);
@@ -568,6 +578,7 @@
                     throw new Exception("Error al obtener los empleados: " + ex.Message);
                 }
             }
+
             return empleados;
         }
 
@@ -609,6 +620,7 @@
                     throw new Exception("Error al obtener el empleado: " + ex.Message);
                 }
             }
+
             return empleado;
         }
 
@@ -618,7 +630,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateEmpleado @ID, @Puesto, @FechaContratacion, @Salario, @Estado, @ModificadoPor";
+                    string query =
+                        "Exec sp_UpdateEmpleado @ID, @Puesto, @FechaContratacion, @Salario, @Estado, @ModificadoPor";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", empleado.ID);
@@ -666,7 +679,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertProducto @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion";
+                    string query =
+                        "Exec sp_InsertProducto @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
@@ -728,6 +742,7 @@
                     throw new Exception("Error al obtener los productos: " + ex.Message);
                 }
             }
+
             return productos;
         }
 
@@ -771,6 +786,7 @@
                     throw new Exception("Error al obtener el producto: " + ex.Message);
                 }
             }
+
             return producto;
         }
 
@@ -780,7 +796,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateProducto @ID, @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion";
+                    string query =
+                        "Exec sp_UpdateProducto @ID, @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", producto.ID);
@@ -885,6 +902,7 @@
                     throw new Exception("Error al obtener las ventas: " + ex.Message);
                 }
             }
+
             return ventas;
         }
 
@@ -923,6 +941,7 @@
                     throw new Exception("Error al obtener la venta: " + ex.Message);
                 }
             }
+
             return venta;
         }
 
@@ -932,7 +951,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateVenta @VentaID, @EmpleadoID, @ClienteID, @ProductoID, @Cantidad, @Total";
+                    string query =
+                        "Exec sp_UpdateVenta @VentaID, @EmpleadoID, @ClienteID, @ProductoID, @Cantidad, @Total";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@VentaID", venta.VentaID);
@@ -976,32 +996,32 @@
         // Métodos para la tabla Factura
         public int AgregarFactura(Factura factura)
         {
-                int facturaID = 0;
+            int facturaID = 0;
 
-                using (SqlConnection conexion = new SqlConnection(_conexion))
-                {
-                    SqlCommand comando = new SqlCommand("sp_InsertFactura", conexion);
-                    comando.CommandType = CommandType.StoredProcedure;
+            using (SqlConnection conexion = new SqlConnection(_conexion))
+            {
+                SqlCommand comando = new SqlCommand("sp_InsertFactura", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
 
-                    comando.Parameters.AddWithValue("@ClienteID", factura.ClienteID);
-                    comando.Parameters.AddWithValue("@Total", factura.Total);
-                    comando.Parameters.AddWithValue("@MetodoPago", factura.MetodoPago);
-                    comando.Parameters.AddWithValue("@Estado", factura.Estado);
-                    comando.Parameters.AddWithValue("@CreadoPor", factura.CreadoPor);
+                comando.Parameters.AddWithValue("@ClienteID", factura.ClienteID);
+                comando.Parameters.AddWithValue("@Total", factura.Total);
+                comando.Parameters.AddWithValue("@MetodoPago", factura.MetodoPago);
+                comando.Parameters.AddWithValue("@Estado", factura.Estado);
+                comando.Parameters.AddWithValue("@CreadoPor", factura.CreadoPor);
 
-                    // 🔹 Parámetro de salida para obtener el ID de la factura
-                    SqlParameter outputIdParam = new SqlParameter("@FacturaID", SqlDbType.Int);
-                    outputIdParam.Direction = ParameterDirection.Output;
-                    comando.Parameters.Add(outputIdParam);
+                // 🔹 Parámetro de salida para obtener el ID de la factura
+                SqlParameter outputIdParam = new SqlParameter("@FacturaID", SqlDbType.Int);
+                outputIdParam.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(outputIdParam);
 
-                    conexion.Open();
-                    comando.ExecuteNonQuery();
+                conexion.Open();
+                comando.ExecuteNonQuery();
 
-                    // 🔹 Obtener el ID de la factura
-                    facturaID = Convert.ToInt32(outputIdParam.Value);
-                }
+                // 🔹 Obtener el ID de la factura
+                facturaID = Convert.ToInt32(outputIdParam.Value);
+            }
 
-                return facturaID;
+            return facturaID;
         }
 
         public List<Factura> ObtenerFacturas()
@@ -1041,6 +1061,7 @@
                     throw new Exception("Error al obtener las facturas: " + ex.Message);
                 }
             }
+
             return facturas;
         }
 
@@ -1081,6 +1102,7 @@
                     throw new Exception("Error al obtener la factura: " + ex.Message);
                 }
             }
+
             return factura;
         }
 
@@ -1090,7 +1112,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateFactura @ID, @ClienteID, @EmpleadoID, @Total, @MetodoPago, @Estado, @DescuentoID, @ModificadoPor";
+                    string query =
+                        "Exec sp_UpdateFactura @ID, @ClienteID, @EmpleadoID, @Total, @MetodoPago, @Estado, @DescuentoID, @ModificadoPor";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", factura.ID);
@@ -1138,7 +1161,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertDetalleFactura @FacturaID, @ProductoID, @Cantidad, @PrecioUnitario, @Subtotal, @NewID OUTPUT";
+                    string query =
+                        "Exec sp_InsertDetalleFactura @FacturaID, @ProductoID, @Cantidad, @PrecioUnitario, @Subtotal, @NewID OUTPUT";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@FacturaID", detalleFactura.FacturaID);
@@ -1192,6 +1216,7 @@
                     throw new Exception("Error al obtener los detalles de factura: " + ex.Message);
                 }
             }
+
             return detallesFactura;
         }
 
@@ -1229,6 +1254,7 @@
                     throw new Exception("Error al obtener el detalle de factura: " + ex.Message);
                 }
             }
+
             return detalleFactura;
         }
 
@@ -1238,7 +1264,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateDetalleFactura @ID, @FacturaID, @ProductoID, @Cantidad, @PrecioUnitario, @Subtotal";
+                    string query =
+                        "Exec sp_UpdateDetalleFactura @ID, @FacturaID, @ProductoID, @Cantidad, @PrecioUnitario, @Subtotal";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", detalleFactura.ID);
@@ -1286,7 +1313,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertDevolucion @FacturaID, @DetalleFacturaID, @ProductoID, @Cantidad, @Motivo, @Estado, @CreadoPor, @NewID OUTPUT";
+                    string query =
+                        "Exec sp_InsertDevolucion @FacturaID, @DetalleFacturaID, @ProductoID, @Cantidad, @Motivo, @Estado, @CreadoPor, @NewID OUTPUT";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@FacturaID", devolucion.FacturaID);
@@ -1348,6 +1376,7 @@
                     throw new Exception("Error al obtener las devoluciones: " + ex.Message);
                 }
             }
+
             return devoluciones;
         }
 
@@ -1391,6 +1420,7 @@
                     throw new Exception("Error al obtener la devolución: " + ex.Message);
                 }
             }
+
             return devolucion;
         }
 
@@ -1400,7 +1430,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateDevolucion @ID, @FacturaID, @DetalleFacturaID, @ProductoID, @Cantidad, @Motivo, @Estado, @ModificadoPor";
+                    string query =
+                        "Exec sp_UpdateDevolucion @ID, @FacturaID, @DetalleFacturaID, @ProductoID, @Cantidad, @Motivo, @Estado, @ModificadoPor";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", devolucion.ID);
@@ -1450,7 +1481,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertProveedor @NombreEmpresa, @NombreContacto, @Telefono, @Email, @DireccionID, @Estado, @CreadoPor";
+                    string query =
+                        "Exec sp_InsertProveedor @NombreEmpresa, @NombreContacto, @Telefono, @Email, @DireccionID, @Estado, @CreadoPor";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@NombreEmpresa", proveedor.NombreEmpresa);
@@ -1509,6 +1541,7 @@
                     throw new Exception("Error al obtener los proveedores: " + ex.Message);
                 }
             }
+
             return proveedores;
         }
 
@@ -1551,6 +1584,7 @@
                     throw new Exception("Error al obtener el proveedor: " + ex.Message);
                 }
             }
+
             return proveedor;
         }
 
@@ -1560,7 +1594,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_UpdateProveedor @ID, @NombreEmpresa, @NombreContacto, @Telefono, @Email, @DireccionID, @Estado, @ModificadoPor";
+                    string query =
+                        "Exec sp_UpdateProveedor @ID, @NombreEmpresa, @NombreContacto, @Telefono, @Email, @DireccionID, @Estado, @ModificadoPor";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ID", proveedor.ID);
@@ -1602,6 +1637,7 @@
                 }
             }
         }
+
         public Usuario ObtenerUsuarioPorNombreUsuario(string? nombreUsuario)
         {
             Usuario usuario = null;
@@ -1638,6 +1674,7 @@
                     throw new Exception("Error al obtener el usuario: " + ex.Message);
                 }
             }
+
             return usuario;
         }
 
@@ -1648,7 +1685,8 @@
             {
                 try
                 {
-                    string query = "Exec sp_InsertUsuario @NombreUsuario, @ContrasenaHash, @Email, @Rol, @Estado, @NewID OUTPUT";
+                    string query =
+                        "Exec sp_InsertUsuario @NombreUsuario, @ContrasenaHash, @Email, @Rol, @Estado, @NewID OUTPUT";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
@@ -1704,6 +1742,7 @@
                     throw new Exception("Error al obtener los usuarios: " + ex.Message);
                 }
             }
+
             return usuarios;
         }
 
@@ -1743,6 +1782,7 @@
                     throw new Exception("Error al obtener el usuario: " + ex.Message);
                 }
             }
+
             return usuario;
         }
 
@@ -1772,26 +1812,6 @@
             }
         }
 
-        public void EliminarUsuario(int id)
-        {
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query = "Exec sp_DeleteUsuario @ID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", id);
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al eliminar el usuario: " + ex.Message);
-                }
-            }
-        }
         public Persona ObtenerPersonaPorCedula(string documentoIdentidad)
         {
             Persona persona = null;
@@ -1834,8 +1854,10 @@
                     throw new Exception("Error al obtener la persona por cédula: " + ex.Message);
                 }
             }
+
             return persona;
         }
+
         public Usuario ObtenerUsuarioPorEmail(string email)
         {
             Usuario usuario = null;
@@ -1872,8 +1894,10 @@
                     throw new Exception("Error al obtener el usuario por email: " + ex.Message);
                 }
             }
+
             return usuario;
         }
+
         public Usuario ObtenerUsuarioPorNombre(string nombreUsuario)
         {
             Usuario usuario = null;
@@ -1910,8 +1934,10 @@
                     throw new Exception("Error al obtener el usuario por nombre de usuario: " + ex.Message);
                 }
             }
+
             return usuario;
         }
+
         public Persona ObtenerPersonaPorTelefono(string telefono)
         {
             Persona persona = null;
@@ -1955,8 +1981,10 @@
                     throw new Exception("Error al obtener la persona por teléfono: " + ex.Message);
                 }
             }
+
             return persona;
         }
+
         public List<Producto> ObtenerTodosLosProductos()
         {
             List<Producto> listaProductos = new List<Producto>();
@@ -1983,10 +2011,16 @@
                                     Talla = dr["Talla"].ToString(),
                                     UnidadesDisponibles = Convert.ToInt32(dr["UnidadesDisponibles"]),
                                     Precio = Convert.ToDecimal(dr["Precio"]),
-                                    Descripcion = dr["Descripcion"] == DBNull.Value ? null : dr["Descripcion"].ToString(),
-                                    ImagenUrl = dr["ImagenUrl"] == DBNull.Value ? null : dr["ImagenUrl"].ToString(),  // 🔹 Agregar esta línea
+                                    Descripcion = dr["Descripcion"] == DBNull.Value
+                                        ? null
+                                        : dr["Descripcion"].ToString(),
+                                    ImagenUrl = dr["ImagenUrl"] == DBNull.Value
+                                        ? null
+                                        : dr["ImagenUrl"].ToString(), // 🔹 Agregar esta línea
                                     FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]),
-                                    FechaModificacion = dr["FechaModificacion"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FechaModificacion"])
+                                    FechaModificacion = dr["FechaModificacion"] == DBNull.Value
+                                        ? (DateTime?)null
+                                        : Convert.ToDateTime(dr["FechaModificacion"])
                                 });
                             }
                         }
@@ -1997,8 +2031,10 @@
                     throw new Exception("Error al obtener los productos: " + ex.Message);
                 }
             }
+
             return listaProductos;
         }
+
 // Método para obtener una persona por su email
         public Persona ObtenerPersonaPorEmail(string email)
         {
@@ -2018,23 +2054,22 @@
                             {
                                 persona = new Persona
                                 {
-                                    ID = reader.GetInt32(i: 0),
-                                    Nombre1 = reader.GetString(i: 1),
-                                    Nombre2 = reader.IsDBNull(i: 2) ? null : reader.GetString(i: 2),
-                                    Apellido1 = reader.GetString(i: 3),
-                                    Apellido2 = reader.GetString(i: 4),
-                                    DocumentoIdentidad = reader.GetString(i: 5),
-                                    Telefono = reader.IsDBNull(i: 6) ? null : reader.GetString(i: 6),
-                                    Email = reader.GetString(i: 7),
-                                    FechaNacimiento = reader.IsDBNull(i: 8) ? (DateTime?)null : reader.GetDateTime(i: 8),
-                                    Genero = reader.IsDBNull(i: 9) ? null : reader.GetString(i: 9),
-                                    DireccionID = reader.GetInt32(i: 15) 
-                                };
+                                    ID = reader.GetInt32(0),
+                                    Nombre1 = reader.GetString(1),
+                                    Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
+                                    Apellido1 = reader.GetString(3),
+                                    Apellido2 = reader.GetString(4),
+                                    DocumentoIdentidad = reader.GetString(5),
+                                    Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    Email = reader.GetString(7),
+                                    FechaNacimiento = reader.IsDBNull(8) ? (DateTime?)null : reader.GetDateTime(8),
+                                    Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
 
+                                    DireccionID = reader.GetInt32(14)
+                                };
                             }
                             else
                             {
-                                // Si no se encuentra la persona, retornar null o lanzar una excepción personalizada
                                 throw new Exception("No se encontró una persona con ese correo electrónico.");
                             }
                         }
@@ -2045,8 +2080,10 @@
                     throw new Exception("Error al obtener la persona por email: " + ex.Message);
                 }
             }
+
             return persona;
         }
+
         public CarritoCompras ObtenerCarritoPorClienteYProducto(int clienteID, int productoID)
         {
             CarritoCompras carrito = null;
@@ -2098,7 +2135,8 @@
                     string query = "EXEC sp_ActualizarCantidadCarrito @ClienteID, @ProductoID, @NuevaCantidad";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+
+
                         cmd.Parameters.AddWithValue("@ProductoID", productoID);
                         cmd.Parameters.AddWithValue("@NuevaCantidad", nuevaCantidad);
 
@@ -2137,6 +2175,7 @@
                 }
             }
         }
+
         public Cliente ObtenerClientePorPersonaID(int personaID)
         {
             Cliente cliente = null;
@@ -2173,8 +2212,10 @@
                     throw new Exception("Error al obtener el cliente por PersonaID: " + ex.Message);
                 }
             }
+
             return cliente;
         }
+
         public List<CarritoItem> ObtenerCarritoPorClienteID(int clienteID)
         {
             List<CarritoItem> carrito = new List<CarritoItem>();
@@ -2200,7 +2241,7 @@
                                     ImagenUrl = reader.IsDBNull(10) ? null : reader.GetString(10),
                                     Descripcion = reader.IsDBNull(11) ? null : reader.GetString(11),
                                     Cantidad = reader.GetInt32(12),
-                                  
+
                                 });
                             }
                         }
@@ -2214,6 +2255,7 @@
 
             return carrito;
         }
+
         public void EliminarProductoCarrito(int clienteID, int productoID)
         {
             using (SqlConnection con = new SqlConnection(_conexion))
@@ -2235,6 +2277,7 @@
                 }
             }
         }
+
         public void EliminarCarritoPorCliente(int clienteID)
         {
             using (SqlConnection con = new SqlConnection(_conexion))
@@ -2255,12 +2298,13 @@
                 }
             }
         }
-       
+
         public List<DetalleFactura> ObtenerDetallesFacturaPorFacturaID(int facturaId)
         {
             var detallesFactura = new List<DetalleFactura>();
 
-            using (SqlConnection con = new SqlConnection(_conexion))
+            using (SqlConnection con = new SqlConnection(
+                       ))
             {
                 try
                 {
@@ -2299,7 +2343,146 @@
             return detallesFactura;
         }
 
+public RegistroViewModel ObtenerPerfilUsuario(int usuarioId)
+{
+    RegistroViewModel perfil = new RegistroViewModel();
+
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        using (SqlCommand cmd = new SqlCommand("sp_ObtenerPerfilUsuario", con))
+        {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+
+            con.Open();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    perfil.Usuario = new Usuario
+                    {
+                        ID = Convert.ToInt32(reader["ID"]),
+                        NombreUsuario = reader["NombreUsuario"].ToString(),
+                        ContrasenaHash = reader["ContrasenaHash"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Rol = reader["Rol"].ToString(),
+                        Estado = reader["Estado"].ToString(),
+                    };
+
+                    perfil.Persona = new Persona
+                    {
+                        ID = Convert.ToInt32(reader["ID"]),
+                        Nombre1 = reader["Nombre1"].ToString(),
+                        Nombre2 = reader["Nombre2"].ToString(),
+                        Apellido1 = reader["Apellido1"].ToString(),
+                        Apellido2 = reader["Apellido2"].ToString(),
+                        Telefono = reader["Telefono"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        Genero = reader["Genero"].ToString(),
+                        DireccionID = Convert.ToInt32(reader["ID"])
+                    };
+
+                    perfil.Cliente = new Cliente
+                    {
+                        ID = Convert.ToInt32(reader["ID"]),
+                        PersonaID = Convert.ToInt32(reader["ID"])
+                    };
+
+                    perfil.Direccion = new Direccion
+                    {
+                        ID = Convert.ToInt32(reader["ID"]),
+                        Ciudad = reader["Ciudad"].ToString(),
+                        Estado = reader["Estado"].ToString(),
+                        CodigoPostal = reader["CodigoPostal"].ToString(),
+                        Pais = reader["Pais"].ToString(),
+                        TipoDireccion = reader["TipoDireccion"].ToString()
+                    };
+                }
+            }
+        }
+    }
+
+    return perfil;
+}
 
 
+public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
+{
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        SqlCommand cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        cmd.Parameters.AddWithValue("@UsuarioID", perfil.Usuario.ID);
+        cmd.Parameters.AddWithValue("@NombreUsuario", perfil.Usuario.NombreUsuario);
+        cmd.Parameters.AddWithValue("@Email", perfil.Usuario.Email);
+        cmd.Parameters.AddWithValue("@Rol", perfil.Usuario.Rol);
+
+        cmd.Parameters.AddWithValue("@PersonaID", perfil.Persona.ID);
+        cmd.Parameters.AddWithValue("@Nombre1", perfil.Persona.Nombre1);
+        cmd.Parameters.AddWithValue("@Nombre2", perfil.Persona.Nombre2 ?? "");
+        cmd.Parameters.AddWithValue("@Apellido1", perfil.Persona.Apellido1);
+        cmd.Parameters.AddWithValue("@Apellido2", perfil.Persona.Apellido2 ?? "");
+        cmd.Parameters.AddWithValue("@Telefono", perfil.Persona.Telefono);
+        cmd.Parameters.AddWithValue("@Genero", perfil.Persona.Genero);
+
+        cmd.Parameters.AddWithValue("@DireccionID", perfil.Direccion.ID);
+        cmd.Parameters.AddWithValue("@Ciudad", perfil.Direccion.Ciudad);
+        cmd.Parameters.AddWithValue("@Estado", perfil.Direccion.Estado);
+        cmd.Parameters.AddWithValue("@CodigoPostal", perfil.Direccion.CodigoPostal);
+        cmd.Parameters.AddWithValue("@Pais", perfil.Direccion.Pais);
+        cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion);
+
+        con.Open();
+        return cmd.ExecuteNonQuery() > 0;
     }
 }
+public bool EliminarPerfilUsuario(int usuarioId)
+{
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        SqlCommand cmd = new SqlCommand("sp_EliminarPerfilUsuario", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+
+        con.Open();
+        return cmd.ExecuteNonQuery() > 0;
+    }
+}
+
+// Este método debe buscar una persona con base en el ID de usuario, usando el campo Email como nexo
+public Persona ObtenerPersonaPorUsuarioId(int usuarioId)
+{
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        SqlCommand cmd = new SqlCommand("SELECT * FROM Persona WHERE Email = (SELECT Email FROM Usuario WHERE ID = @UsuarioID)", con);
+        cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+
+        con.Open();
+        using (SqlDataReader reader = cmd.ExecuteReader())
+        {
+            if (reader.Read())
+            {
+                return new Persona
+                {
+                    ID = (int)reader["ID"],
+                    Nombre1 = reader["Nombre1"].ToString(),
+                    Nombre2 = reader["Nombre2"] as string,
+                    Apellido1 = reader["Apellido1"].ToString(),
+                    Apellido2 = reader["Apellido2"].ToString(),
+                    DocumentoIdentidad = reader["DocumentoIdentidad"].ToString(),
+                    Telefono = reader["Telefono"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]),
+                    Genero = reader["Genero"].ToString(),
+                    DireccionID = (int)reader["DireccionID"]
+                };
+            }
+        }
+    }
+    throw new Exception("No se encontró la persona asociada a este usuario");
+}
+
+}
+    }
+

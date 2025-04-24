@@ -41,7 +41,7 @@
         [StringLength(maximumLength: 50)]
         public string Estado { get; set; } = "Activo"; // Por defecto, el estado será "Activo"
 
-        public DateTime FechaCreacion { get; set; } = DateTime.Now;
+        public DateTime? FechaCreacion { get; set; } = DateTime.Now;
 
         public DateTime? FechaModificacion { get; set; }
     }
