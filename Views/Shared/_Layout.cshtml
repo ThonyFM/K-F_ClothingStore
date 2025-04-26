@@ -1,39 +1,111 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - K_F_ClothingStore</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/K_F_ClothingStore.styles.css" asp-append-version="true"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+﻿@using Microsoft.AspNetCore.Http
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - K_F_ClothingStore</title>
+
+    <!-- ✅ Bootstrap CSS ÚNICO -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- Tu CSS personalizado -->
+    <link rel="stylesheet" href="~/css/estilos_personalizados.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Estilo animado para el dropdown -->
+    <style>
+        .dropdown-menu {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.25s ease-in-out;
+        }
+        .dropdown-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
+
 <body>
-<header>
-    @if (ViewContext.RouteData.Values["controller"].ToString() != "Auth" ||
-         (ViewContext.RouteData.Values["action"].ToString() != "InicioSesion" &&
-          ViewContext.RouteData.Values["action"].ToString() != "Registro"))
-    {
-        @await Html.PartialAsync("_Navbar")
-    }
-</header>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">K_F_ClothingStore</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Inicio</a></li>
+
+                @if (Context.Session.GetString("Rol") == "Admin")
+                {
+                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Usuarios">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Reportes">Reportes</a></li>
+                }
+
+
+
+                <a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a>
+                
+            </ul>
+
+            <!-- BURBUJA USUARIO -->
+            @if (Context.Session.GetString("Email") != null)
+            {
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/images/user-icon.png" class="rounded-circle" width="30" height="30" alt="Usuario" />
+                        <span class="fw-bold">Usuario</span>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-end p-3 text-start" aria-labelledby="userMenu">
+                        <p class="fw-bold text-center">@Context.Session.GetString("Email")</p>
+                        <hr />
+                        <p><strong>Nombre:</strong> @Context.Session.GetString("Nombre")</p>
+                        <p><strong>Teléfono:</strong> @Context.Session.GetString("Telefono")</p>
+                        <p><strong>Dirección:</strong> @Context.Session.GetString("TipoDireccion")</p>
+                        <p><strong>Rol:</strong> @Context.Session.GetString("Rol")</p>
+                        <hr />
+                        <a class="nav-link" href="@Url.Action("Perfil", "Cliente")">Mi Perfil</a>
+                        <a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a>
+                        <a class="nav-link text-danger" href="@Url.Action("CerrarSesion", "Auth")">Cerrar sesión</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a href="@Url.Action("InicioSesion", "Auth")" class="btn btn-outline-primary">Iniciar Sesión</a>
+            }
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENIDO PRINCIPAL -->
 <div class="container">
-    <main role="main" class="pb-3">
+    <main role="main" class="pb-4 fade-in">
         @RenderBody()
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2025 - K_F_ClothingStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<!-- FOOTER -->
+<footer class="border-top footer text-muted mt-5">
+    <div class="container text-center py-3">
+        &copy; 2025 - K_F_ClothingStore - <a asp-controller="Home" asp-action="Privacy">Política de Privacidad</a>
     </div>
 </footer>
+
+<!-- ✅ SCRIPTS CORRECTOS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
