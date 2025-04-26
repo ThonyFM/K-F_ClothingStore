@@ -1,4 +1,5 @@
-﻿namespace K_F_ClothingStore.Models {
+﻿namespace K_F_ClothingStore.Models
+{
     using System.Data;
     using System.Data.SqlClient;
 
@@ -2135,8 +2136,6 @@
                     string query = "EXEC sp_ActualizarCantidadCarrito @ClienteID, @ProductoID, @NuevaCantidad";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-
-
                         cmd.Parameters.AddWithValue("@ProductoID", productoID);
                         cmd.Parameters.AddWithValue("@NuevaCantidad", nuevaCantidad);
 
@@ -2241,7 +2240,6 @@
                                     ImagenUrl = reader.IsDBNull(10) ? null : reader.GetString(10),
                                     Descripcion = reader.IsDBNull(11) ? null : reader.GetString(11),
                                     Cantidad = reader.GetInt32(12),
-
                                 });
                             }
                         }
@@ -2303,8 +2301,7 @@
         {
             var detallesFactura = new List<DetalleFactura>();
 
-            using (SqlConnection con = new SqlConnection(
-                       ))
+            using (SqlConnection con = new SqlConnection(_conexion))
             {
                 try
                 {
@@ -2343,7 +2340,8 @@
             return detallesFactura;
         }
 
-public RegistroViewModel ObtenerPerfilUsuario(int usuarioId)
+
+ public RegistroViewModel ObtenerPerfilUsuario(int usuarioId)
 {
     RegistroViewModel perfil = new RegistroViewModel();
 
@@ -2361,38 +2359,37 @@ public RegistroViewModel ObtenerPerfilUsuario(int usuarioId)
                 {
                     perfil.Usuario = new Usuario
                     {
-                        ID = Convert.ToInt32(reader["ID"]),
+                        ID = Convert.ToInt32(reader["UsuarioID"]),
                         NombreUsuario = reader["NombreUsuario"].ToString(),
                         ContrasenaHash = reader["ContrasenaHash"].ToString(),
-                        Email = reader["Email"].ToString(),
+                        Email = reader["UsuarioEmail"].ToString(), // ✅ Corregido
                         Rol = reader["Rol"].ToString(),
-                        Estado = reader["Estado"].ToString(),
+                        Estado = reader["Estado"].ToString()
                     };
 
                     perfil.Persona = new Persona
                     {
-                        ID = Convert.ToInt32(reader["ID"]),
+                        ID = Convert.ToInt32(reader["PersonaID"]),
                         Nombre1 = reader["Nombre1"].ToString(),
                         Nombre2 = reader["Nombre2"].ToString(),
                         Apellido1 = reader["Apellido1"].ToString(),
                         Apellido2 = reader["Apellido2"].ToString(),
                         Telefono = reader["Telefono"].ToString(),
-                        Email = reader["Email"].ToString(),
+                        Email = reader["PersonaEmail"].ToString(), // ✅ Corregido
                         Genero = reader["Genero"].ToString(),
-                        DireccionID = Convert.ToInt32(reader["ID"])
+                        DireccionID = Convert.ToInt32(reader["DireccionID"])
                     };
-
                     perfil.Cliente = new Cliente
                     {
-                        ID = Convert.ToInt32(reader["ID"]),
-                        PersonaID = Convert.ToInt32(reader["ID"])
+                        ID = Convert.ToInt32(reader["ClienteID"]),
+                        PersonaID = Convert.ToInt32(reader["PersonaID"])
                     };
 
                     perfil.Direccion = new Direccion
                     {
-                        ID = Convert.ToInt32(reader["ID"]),
+                        ID = Convert.ToInt32(reader["DireccionID"]),
                         Ciudad = reader["Ciudad"].ToString(),
-                        Estado = reader["Estado"].ToString(),
+                        Estado = reader["EstadoDireccion"].ToString(),
                         CodigoPostal = reader["CodigoPostal"].ToString(),
                         Pais = reader["Pais"].ToString(),
                         TipoDireccion = reader["TipoDireccion"].ToString()
@@ -2404,85 +2401,66 @@ public RegistroViewModel ObtenerPerfilUsuario(int usuarioId)
 
     return perfil;
 }
-
-
 public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
 {
     using (SqlConnection con = new SqlConnection(_conexion))
+    using (SqlCommand cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con))
     {
-        SqlCommand cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con);
         cmd.CommandType = CommandType.StoredProcedure;
-
+        
+        // Parámetros de Usuario
         cmd.Parameters.AddWithValue("@UsuarioID", perfil.Usuario.ID);
         cmd.Parameters.AddWithValue("@NombreUsuario", perfil.Usuario.NombreUsuario);
-        cmd.Parameters.AddWithValue("@Email", perfil.Usuario.Email);
-        cmd.Parameters.AddWithValue("@Rol", perfil.Usuario.Rol);
-
+        cmd.Parameters.AddWithValue("@Email", perfil.Usuario.Email); // Para referencia, no se actualiza
+        
+        // Parámetros de Persona
         cmd.Parameters.AddWithValue("@PersonaID", perfil.Persona.ID);
         cmd.Parameters.AddWithValue("@Nombre1", perfil.Persona.Nombre1);
-        cmd.Parameters.AddWithValue("@Nombre2", perfil.Persona.Nombre2 ?? "");
+        cmd.Parameters.AddWithValue("@Nombre2", perfil.Persona.Nombre2 ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@Apellido1", perfil.Persona.Apellido1);
-        cmd.Parameters.AddWithValue("@Apellido2", perfil.Persona.Apellido2 ?? "");
-        cmd.Parameters.AddWithValue("@Telefono", perfil.Persona.Telefono);
-        cmd.Parameters.AddWithValue("@Genero", perfil.Persona.Genero);
-
+        cmd.Parameters.AddWithValue("@Apellido2", perfil.Persona.Apellido2 ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@Telefono", perfil.Persona.Telefono ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@Genero", perfil.Persona.Genero ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@PersonaEmail", perfil.Persona.Email ?? (object)DBNull.Value);
+        
+        // Parámetros de Dirección
         cmd.Parameters.AddWithValue("@DireccionID", perfil.Direccion.ID);
-        cmd.Parameters.AddWithValue("@Ciudad", perfil.Direccion.Ciudad);
-        cmd.Parameters.AddWithValue("@Estado", perfil.Direccion.Estado);
-        cmd.Parameters.AddWithValue("@CodigoPostal", perfil.Direccion.CodigoPostal);
-        cmd.Parameters.AddWithValue("@Pais", perfil.Direccion.Pais);
-        cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion);
-
+        cmd.Parameters.AddWithValue("@Ciudad", perfil.Direccion.Ciudad ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@EstadoDireccion", perfil.Direccion.Estado ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@CodigoPostal", perfil.Direccion.CodigoPostal ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@Pais", perfil.Direccion.Pais ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion ?? (object)DBNull.Value);
+        
+        // Parámetro de retorno
+        SqlParameter returnValue = new SqlParameter("@ReturnValue", SqlDbType.Int);
+        returnValue.Direction = ParameterDirection.ReturnValue;
+        cmd.Parameters.Add(returnValue);
+        
         con.Open();
-        return cmd.ExecuteNonQuery() > 0;
+        cmd.ExecuteNonQuery();
+        
+        return (int)returnValue.Value == 1;
     }
 }
 public bool EliminarPerfilUsuario(int usuarioId)
 {
     using (SqlConnection con = new SqlConnection(_conexion))
+    using (SqlCommand cmd = new SqlCommand("sp_EliminarPerfilUsuario", con))
     {
-        SqlCommand cmd = new SqlCommand("sp_EliminarPerfilUsuario", con);
         cmd.CommandType = CommandType.StoredProcedure;
         cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
-
+        
+        // Parámetro de retorno
+        SqlParameter returnValue = new SqlParameter("@ReturnValue", SqlDbType.Int);
+        returnValue.Direction = ParameterDirection.ReturnValue;
+        cmd.Parameters.Add(returnValue);
+        
         con.Open();
-        return cmd.ExecuteNonQuery() > 0;
+        cmd.ExecuteNonQuery();
+        
+        return (int)returnValue.Value == 1;
     }
 }
 
-// Este método debe buscar una persona con base en el ID de usuario, usando el campo Email como nexo
-public Persona ObtenerPersonaPorUsuarioId(int usuarioId)
-{
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        SqlCommand cmd = new SqlCommand("SELECT * FROM Persona WHERE Email = (SELECT Email FROM Usuario WHERE ID = @UsuarioID)", con);
-        cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
-
-        con.Open();
-        using (SqlDataReader reader = cmd.ExecuteReader())
-        {
-            if (reader.Read())
-            {
-                return new Persona
-                {
-                    ID = (int)reader["ID"],
-                    Nombre1 = reader["Nombre1"].ToString(),
-                    Nombre2 = reader["Nombre2"] as string,
-                    Apellido1 = reader["Apellido1"].ToString(),
-                    Apellido2 = reader["Apellido2"].ToString(),
-                    DocumentoIdentidad = reader["DocumentoIdentidad"].ToString(),
-                    Telefono = reader["Telefono"].ToString(),
-                    Email = reader["Email"].ToString(),
-                    FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]),
-                    Genero = reader["Genero"].ToString(),
-                    DireccionID = (int)reader["DireccionID"]
-                };
-            }
-        }
     }
-    throw new Exception("No se encontró la persona asociada a este usuario");
 }
-
-}
-    }
-
