@@ -7,76 +7,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - K_F_ClothingStore</title>
 
-    <!-- ✅ Bootstrap CSS ÚNICO -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-
-    <!-- Tu CSS personalizado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="~/css/estilos_personalizados.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-    <!-- Estilo animado para el dropdown -->
     <style>
         .dropdown-menu {
             opacity: 0;
             transform: translateY(10px);
-            transition: all 0.25s ease-in-out;
+            transition: all 0.3s ease;
         }
         .dropdown-menu.show {
             opacity: 1;
             transform: translateY(0);
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8) !important;
+            transition: all 0.3s ease-in-out;
+        }
+        .navbar:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .navbar-brand:hover {
+            transform: scale(1.05);
+            color: #0d6efd !important;
+        }
+        footer {
+            background-color: #f8f9fa;
+        }
+        #scrollTopButton {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: none;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        #scrollTopButton:hover {
+            background-color: #084298;
         }
     </style>
 </head>
 
 <body>
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
-    <div class="container-fluid">
-        <a class="navbar-brand" asp-controller="Home" asp-action="Index">K_F_ClothingStore</a>
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top" role="navigation">
+    <div class="container">
+        <a class="navbar-brand text-primary" asp-controller="Home" asp-action="Index">K_F_ClothingStore</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Inicio</a></li>
-
                 @if (Context.Session.GetString("Rol") == "Admin")
                 {
                     <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Usuarios">Usuarios</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Reportes">Reportes</a></li>
                 }
-
-
-
-                <a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a>
-                
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a></li>
             </ul>
 
-            <!-- BURBUJA USUARIO -->
             @if (Context.Session.GetString("Email") != null)
             {
                 <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle d-flex align-items-center gap-2" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/images/user-icon.png" class="rounded-circle" width="30" height="30" alt="Usuario" />
-                        <span class="fw-bold">Usuario</span>
+                    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center gap-2" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/images/user-icon.png" class="rounded-circle" width="32" height="32" alt="Usuario" />
+                        <span>@Context.Session.GetString("Nombre")</span>
                     </button>
-
-                    <div class="dropdown-menu dropdown-menu-end p-3 text-start" aria-labelledby="userMenu">
-                        <p class="fw-bold text-center">@Context.Session.GetString("Email")</p>
-                        <hr />
-                        <p><strong>Nombre:</strong> @Context.Session.GetString("Nombre")</p>
-                        <p><strong>Teléfono:</strong> @Context.Session.GetString("Telefono")</p>
-                        <p><strong>Dirección:</strong> @Context.Session.GetString("TipoDireccion")</p>
-                        <p><strong>Rol:</strong> @Context.Session.GetString("Rol")</p>
-                        <hr />
-                        <a class="nav-link" href="@Url.Action("Perfil", "Cliente")">Mi Perfil</a>
-                        <a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a>
-                        <a class="nav-link text-danger" href="@Url.Action("CerrarSesion", "Auth")">Cerrar sesión</a>
-                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                        <li class="text-center fw-bold">@Context.Session.GetString("Email")</li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="@Url.Action("Perfil", "Cliente")"><i class="fas fa-user"></i> Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("MiCarrito", "Carrito")"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
+                        <li><a class="dropdown-item text-danger" href="@Url.Action("CerrarSesion", "Auth")"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+                    </ul>
                 </div>
             }
             else
@@ -88,24 +123,40 @@
 </nav>
 
 <!-- CONTENIDO PRINCIPAL -->
-<div class="container">
-    <main role="main" class="pb-4 fade-in">
+<div class="container my-5">
+    <main role="main" class="fade-in">
         @RenderBody()
     </main>
 </div>
 
+<!-- BOTÓN SCROLL TO TOP -->
+<button id="scrollTopButton" title="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
 <!-- FOOTER -->
-<footer class="border-top footer text-muted mt-5">
-    <div class="container text-center py-3">
-        &copy; 2025 - K_F_ClothingStore - <a asp-controller="Home" asp-action="Privacy">Política de Privacidad</a>
+<footer class="text-muted py-3 mt-5" role="contentinfo">
+    <div class="container text-center">
+        &copy; 2025 - K_F_ClothingStore | <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-primary">Política de Privacidad</a>
     </div>
 </footer>
 
-<!-- ✅ SCRIPTS CORRECTOS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+<script>
+    const scrollTopButton = document.getElementById('scrollTopButton');
 
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollTopButton.style.display = 'block';
+        } else {
+            scrollTopButton.style.display = 'none';
+        }
+    });
+
+    scrollTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

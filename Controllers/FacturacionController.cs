@@ -129,60 +129,90 @@ namespace K_F_ClothingStore.Controllers
 
             return View(model);
         }
-        public IActionResult DescargarFactura(string facturaId)
+  public IActionResult DescargarFactura(string facturaId)
+{
+    facturaId = HttpContext.Session.GetString("FacturaID");
+    var factura = _acceso.ObtenerFacturaPorId(Convert.ToInt32(facturaId));
+    if (factura == null) return NotFound("Factura no encontrada");
+
+    var detalles = _acceso.ObtenerDetallesFacturaPorFacturaID(Convert.ToInt32(facturaId));
+    if (detalles == null) return NotFound("Detalles de la factura no encontrados");
+
+    var cliente = _acceso.ObtenerClientePorId(factura.ClienteID);
+    if (cliente == null) return NotFound("Cliente no encontrado");
+
+    using (MemoryStream ms = new MemoryStream())
+    {
+        using (PdfWriter writer = new PdfWriter(ms))
         {
-            facturaId = HttpContext.Session.GetString("FacturaID");
-            var factura = _acceso.ObtenerFacturaPorId(Convert.ToInt32( facturaId) );
-            if (factura == null) return NotFound("Factura no encontrada");
-
-            var detalles = _acceso.ObtenerDetallesFacturaPorFacturaID(Convert.ToInt32( facturaId));
-            if (detalles == null) return NotFound("Detalles de la factura no encontrados");
-
-            var cliente = _acceso.ObtenerClientePorId(factura.ClienteID);
-            if (cliente == null) return NotFound("Cliente no encontrado");
-
-            using (MemoryStream ms = new MemoryStream())
+            using (PdfDocument pdf = new PdfDocument(writer))
             {
-                using (PdfWriter writer = new PdfWriter(ms))
+                Document document = new Document(pdf);
+                document.SetMargins(40, 40, 60, 40);
+
+                PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+                PdfFont regularFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+
+                // Título
+                document.Add(new Paragraph("Factura Electrónica")
+                    .SetFont(boldFont)
+                    .SetFontSize(22)
+                    .SetFontColor(iText.Kernel.Colors.ColorConstants.BLUE)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetMarginBottom(20));
+
+                // Información de Factura
+                document.Add(new Paragraph($"Factura ID: {factura.ID}")
+                    .SetFont(regularFont));
+                document.Add(new Paragraph($"Fecha de emisión: {factura.FechaCreacion:dd/MM/yyyy}")
+                    .SetFont(regularFont));
+                document.Add(new Paragraph($"Método de Pago: {factura.MetodoPago}")
+                    .SetFont(regularFont));
+                document.Add(new Paragraph($"Estado: {factura.Estado}")
+                    .SetFont(regularFont));
+                document.Add(new Paragraph("\n"));
+
+                // Tabla de Detalles
+                Table table = new Table(UnitValue.CreatePercentArray(new float[] { 4, 2, 2, 2 }))
+                    .UseAllAvailableWidth()
+                    .SetMarginBottom(20);
+
+                table.AddHeaderCell(new Cell().Add(new Paragraph("Producto").SetFont(boldFont)).SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY));
+                table.AddHeaderCell(new Cell().Add(new Paragraph("Cantidad").SetFont(boldFont)).SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY));
+                table.AddHeaderCell(new Cell().Add(new Paragraph("Precio Unitario").SetFont(boldFont)).SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY));
+                table.AddHeaderCell(new Cell().Add(new Paragraph("Subtotal").SetFont(boldFont)).SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY));
+
+                bool alternar = false;
+                foreach (var detalle in detalles)
                 {
-                    using (PdfDocument pdf = new PdfDocument(writer))
-                    {
-                        Document document = new Document(pdf);
-                        PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-
-                        document.Add(new Paragraph("Factura Electrónica")
-                            .SetFont(boldFont)
-                            .SetFontSize(20)
-                            .SetTextAlignment(TextAlignment.CENTER));
-
-                        document.Add(new Paragraph($"Factura ID: {factura.ID}"));
-                        document.Add(new Paragraph($"Fecha de emisión: {factura.FechaCreacion:dd/MM/yyyy}"));
-                        document.Add(new Paragraph($"Método de Pago: {factura.MetodoPago}"));
-                        document.Add(new Paragraph($"Estado: {factura.Estado}"));
-                        document.Add(new Paragraph("\n"));
-
-                        Table table = new Table(4).UseAllAvailableWidth();
-                        table.AddHeaderCell(new Cell().Add(new Paragraph("Producto").SetFont(boldFont)));
-                        table.AddHeaderCell(new Cell().Add(new Paragraph("Cantidad").SetFont(boldFont)));
-                        table.AddHeaderCell(new Cell().Add(new Paragraph("Precio Unitario").SetFont(boldFont)));
-                        table.AddHeaderCell(new Cell().Add(new Paragraph("Subtotal").SetFont(boldFont)));
-
-                        foreach (var detalle in detalles)
-                        {
-                            table.AddCell(new Cell().Add(new Paragraph($"Producto {detalle.ProductoID}")));
-                            table.AddCell(new Cell().Add(new Paragraph(detalle.Cantidad.ToString())));
-                            table.AddCell(new Cell().Add(new Paragraph($"${detalle.PrecioUnitario:F2}")));
-                            table.AddCell(new Cell().Add(new Paragraph($"${detalle.Subtotal:F2}")));
-                        }
-
-                        document.Add(table);
-                        document.Add(new Paragraph($"Total a pagar: ${factura.Total:F2}")
-                            .SetFont(boldFont)
-                            .SetTextAlignment(TextAlignment.RIGHT));
-                    }
+                    var background = alternar ? iText.Kernel.Colors.ColorConstants.WHITE : iText.Kernel.Colors.ColorConstants.LIGHT_GRAY;
+                    table.AddCell(new Cell().Add(new Paragraph($"Producto {detalle.ProductoID}")).SetBackgroundColor(background));
+                    table.AddCell(new Cell().Add(new Paragraph(detalle.Cantidad.ToString())).SetBackgroundColor(background).SetTextAlignment(TextAlignment.CENTER));
+                    table.AddCell(new Cell().Add(new Paragraph($"₡{detalle.PrecioUnitario:N2}")).SetBackgroundColor(background).SetTextAlignment(TextAlignment.RIGHT));
+                    table.AddCell(new Cell().Add(new Paragraph($"₡{detalle.Subtotal:N2}")).SetBackgroundColor(background).SetTextAlignment(TextAlignment.RIGHT));
+                    alternar = !alternar;
                 }
-                return File(ms.ToArray(), "application/pdf", $"Factura_{facturaId}.pdf");
+
+                document.Add(table);
+
+                // Total
+                document.Add(new Paragraph($"Total a Pagar: ₡{factura.Total:N2}")
+                    .SetFont(boldFont)
+                    .SetFontSize(16)
+                    .SetFontColor(iText.Kernel.Colors.ColorConstants.GREEN)
+                    .SetTextAlignment(TextAlignment.RIGHT));
+
+                // Pie de página
+                document.Add(new Paragraph("\nGracias por su compra.\nFactura generada electrónicamente el " + DateTime.Now.ToString("dd/MM/yyyy"))
+                    .SetFont(regularFont)
+                    .SetFontSize(10)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetMarginTop(30));
             }
         }
+        return File(ms.ToArray(), "application/pdf", $"Factura_{facturaId}.pdf");
+    }
+}
+
     }
 }

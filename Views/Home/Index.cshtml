@@ -1,92 +1,64 @@
 ﻿@section Scripts {
     <script>
         $(document).ready(function () {
-            // Cuando se hace clic en "Agregar al Carrito"
             $('.agregar-carrito').on('click', function () {
-                var productoId = $(this).data('producto-id'); // Obtener el ID del producto
-                $('#productoId').val(productoId); // Asignar el ID al campo oculto del modal
+                $('#productoId').val($(this).data('producto-id'));
             });
 
-            // Cuando se confirma la acción en el modal
             $('#btnConfirmarAgregar').on('click', function () {
                 var productoId = $('#productoId').val();
                 var cantidad = $('#cantidad').val();
 
-                // Enviar la solicitud al servidor
                 $.ajax({
                     url: '@Url.Action("AgregarAlCarrito", "Carrito")',
                     type: 'POST',
-                    data: {
-                        productoId: productoId,
-                        cantidad: cantidad
-                    },
+                    data: { productoId: productoId, cantidad: cantidad },
                     success: function (response) {
                         if (response.success) {
-                            alert('Producto agregado al carrito correctamente.');
-
-                            // Cerrar el modal y eliminar el fondo opaco
-                            var modalElement = document.getElementById('agregarCarritoModal');
-                            var modal = bootstrap.Modal.getInstance(modalElement);
-                            modal.close(); // Cierra el modal
-                          
-                            // Eliminar el fondo opaco y restaurar el estado de la página
-                            $('body').removeClass('modal-open');
-                            $('.modal-backdrop').remove();
-
-                            // Reiniciar el formulario dentro del modal
+                            Swal.fire('¡Éxito!', 'Producto agregado al carrito correctamente.', 'success');
+                            bootstrap.Modal.getInstance($('#agregarCarritoModal')).hide();
                             $('#formAgregarCarrito').trigger('reset');
                         } else {
-                            alert('Error: ' + response.message);
+                            Swal.fire('Error', response.message, 'error');
                         }
                     },
                     error: function () {
-                        alert('Hubo un error al agregar el producto al carrito.');
+                        Swal.fire('Error', 'Hubo un error al agregar el producto al carrito.', 'error');
                     }
                 });
             });
 
-            // Reiniciar el modal cuando se cierra
             $('#agregarCarritoModal').on('hidden.bs.modal', function () {
-                $(this).find('form').trigger('reset'); // Reiniciar el formulario
+                $(this).find('form').trigger('reset');
             });
         });
     </script>
 }
+
 @model List<K_F_ClothingStore.Models.Producto>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Productos";
 }
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<header>
     <link rel="stylesheet" href="~/css/sytles.css" />
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"]</title>
-    <link href="~/css/site.css" rel="stylesheet"/>
-    <link href="/css/cartas.css" rel="stylesheet">
-</head>
-<body>
+</header>
 
-<!-- Sección de productos -->
-<div class="container mt-4">
-    <h2 class="text-center">Nuestros Productos</h2>
-    <div class="row">
+<div class="container py-5">
+    <h2 class="text-center mb-5">Nuestros Productos</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var producto in Model)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    @{
-                        var imagenRuta = Url.Content("~/Img/" + producto.ImagenUrl);
-                    }
-                    <img src="@imagenRuta" class="card-img-top" alt="@producto.NombreProducto">
-                    <div class="card-body">
+            <div class="col">
+                <div class="card h-100 shadow rounded-4">
+                    <img src="@Url.Content("~/Img/" + producto.ImagenUrl)" class="card-img-top rounded-top-4" alt="@producto.NombreProducto">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">@producto.NombreProducto</h5>
-                        <p class="card-text">@producto.Descripcion</p>
-                        <p class="fw-bold">$@producto.Precio</p>
-                        <a href="#" class="btn btn-success agregar-carrito" data-bs-toggle="modal" data-bs-target="#agregarCarritoModal" data-producto-id="@producto.ID">Agregar al Carrito</a>
+                        <p class="card-text flex-grow-1">@producto.Descripcion</p>
+                        <h6 class="text-primary mb-3">$@producto.Precio.ToString("N2")</h6>
+                        <button class="btn btn-success agregar-carrito mt-auto" data-bs-toggle="modal" data-bs-target="#agregarCarritoModal" data-producto-id="@producto.ID">
+                            <i class="fa fa-cart-plus"></i> Agregar al Carrito
+                        </button>
                     </div>
                 </div>
             </div>
@@ -94,20 +66,20 @@
     </div>
 </div>
 
-<!-- Modal para agregar al carrito -->
-<div class="modal fade" id="agregarCarritoModal" tabindex="-1" aria-labelledby="agregarCarritoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<!-- Modal -->
+<div class="modal fade" id="agregarCarritoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="agregarCarritoModalLabel">Agregar al Carrito</h5>
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Agregar Producto al Carrito</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="formAgregarCarrito">
                     <input type="hidden" id="productoId" name="productoId" />
-                    <div class="form-group">
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" value="1" required />
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad:</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" value="1" required />
                     </div>
                 </form>
             </div>
@@ -119,5 +91,4 @@
     </div>
 </div>
 
-</body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

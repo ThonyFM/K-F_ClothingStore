@@ -2,12 +2,19 @@
 @{
     ViewData["Title"] = "Perfil de Usuario";
 }
-<head>
-    <link rel="stylesheet" href="~/css/sytles.css" />
-</head>
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Perfil del Usuario</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - K_F_ClothingStore</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/estilos_personalizados.css" />
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h2 class="text-center mb-5">👤 Perfil del Usuario</h2>
 
     @if (TempData["mensaje"] != null)
     {
@@ -18,11 +25,9 @@
         <div class="alert alert-danger text-center">@TempData["error"]</div>
     }
 
-    <!-- FORMULARIO PARA ACTUALIZAR PERFIL -->
-    <form asp-controller="Cliente" asp-action="GuardarPerfil" method="post">
+    <form asp-controller="Cliente" asp-action="GuardarPerfil" method="post" class="row g-4">
         @Html.AntiForgeryToken()
 
-        <!-- IDs ocultos -->
         <input type="hidden" name="Usuario.ID" value="@Model.Usuario?.ID" />
         <input type="hidden" name="Persona.ID" value="@Model.Persona?.ID" />
         <input type="hidden" name="Direccion.ID" value="@Model.Direccion?.ID" />
@@ -30,113 +35,109 @@
         <input type="hidden" name="Usuario.Email" value="@Model.Usuario?.Email" />
         <input type="hidden" name="Usuario.Rol" value="@Model.Usuario?.Rol" />
 
-        <div class="row justify-content-center">
-            <!-- Cuenta de Usuario -->
-            <div class="col-md-10">
-                <div class="card mb-4 shadow-sm">
-                    <div class="card-header bg-dark text-white">
-                        <h5 class="mb-0">Cuenta de Usuario</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3">
+        <!-- Información de la Cuenta -->
+        <div class="col-12">
+            <div class="card shadow rounded-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Cuenta de Usuario</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
                             <label class="form-label">Nombre de Usuario</label>
                             <input type="text" class="form-control" value="@Model.Usuario?.NombreUsuario" readonly />
                         </div>
-                        <div class="mb-3">
+                        <div class="col-md-6">
                             <label class="form-label">Rol</label>
                             <input type="text" class="form-control" value="@Model.Usuario?.Rol" readonly />
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Información Personal -->
-            <div class="col-md-5">
-                <div class="card mb-4 shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Información Personal</h5>
+        <!-- Información Personal -->
+        <div class="col-md-6">
+            <div class="card shadow rounded-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Información Personal</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Primer Nombre</label>
+                        <input name="Persona.Nombre1" value="@Model.Persona?.Nombre1" class="form-control" />
                     </div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label class="form-label">Primer Nombre</label>
-                            <input name="Persona.Nombre1" value="@Model.Persona?.Nombre1" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Segundo Nombre</label>
-                            <input name="Persona.Nombre2" value="@Model.Persona?.Nombre2" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Primer Apellido</label>
-                            <input name="Persona.Apellido1" value="@Model.Persona?.Apellido1" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Segundo Apellido</label>
-                            <input name="Persona.Apellido2" value="@Model.Persona?.Apellido2" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Teléfono</label>
-                            <input name="Persona.Telefono" value="@Model.Persona?.Telefono" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input name="Persona.Email" value="@Model.Persona?.Email" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Género</label>
-                            <select name="Persona.Genero" class="form-control">
-                                <option value="">Seleccione...</option>
-                                <option value="Masculino" @(Model.Persona?.Genero == "Masculino" ? "selected" : "")>Masculino</option>
-                                <option value="Femenino" @(Model.Persona?.Genero == "Femenino" ? "selected" : "")>Femenino</option>
-                                <option value="Otro" @(Model.Persona?.Genero == "Otro" ? "selected" : "")>Otro</option>
-                            </select>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label">Segundo Nombre</label>
+                        <input name="Persona.Nombre2" value="@Model.Persona?.Nombre2" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Primer Apellido</label>
+                        <input name="Persona.Apellido1" value="@Model.Persona?.Apellido1" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Segundo Apellido</label>
+                        <input name="Persona.Apellido2" value="@Model.Persona?.Apellido2" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input name="Persona.Telefono" value="@Model.Persona?.Telefono" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Género</label>
+                        <select name="Persona.Genero" class="form-select">
+                            <option value="">Seleccione...</option>
+                            <option value="Masculino" @(Model.Persona?.Genero == "Masculino" ? "selected" : "")>Masculino</option>
+                            <option value="Femenino" @(Model.Persona?.Genero == "Femenino" ? "selected" : "")>Femenino</option>
+                            <option value="Otro" @(Model.Persona?.Genero == "Otro" ? "selected" : "")>Otro</option>
+                        </select>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Información de Dirección -->
-            <div class="col-md-5">
-                <div class="card mb-4 shadow-sm">
-                    <div class="card-header bg-secondary text-white">
-                        <h5 class="mb-0">Dirección</h5>
+        <!-- Información de Dirección -->
+        <div class="col-md-6">
+            <div class="card shadow rounded-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Dirección</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Ciudad</label>
+                        <input name="Direccion.Ciudad" value="@Model.Direccion?.Ciudad" class="form-control" />
                     </div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label class="form-label">Ciudad</label>
-                            <input name="Direccion.Ciudad" value="@Model.Direccion?.Ciudad" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Estado</label>
-                            <input name="Direccion.Estado" value="@Model.Direccion?.Estado" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Código Postal</label>
-                            <input name="Direccion.CodigoPostal" value="@Model.Direccion?.CodigoPostal" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">País</label>
-                            <input name="Direccion.Pais" value="@Model.Direccion?.Pais" class="form-control" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tipo de Dirección</label>
-                            <select name="Direccion.TipoDireccion" class="form-control">
-                                <option value="">Seleccione...</option>
-                                <option value="Casa" @(Model.Direccion?.TipoDireccion == "Casa" ? "selected" : "")>Casa</option>
-                                <option value="Trabajo" @(Model.Direccion?.TipoDireccion == "Trabajo" ? "selected" : "")>Trabajo</option>
-                                <option value="Otro" @(Model.Direccion?.TipoDireccion == "Otro" ? "selected" : "")>Otro</option>
-                            </select>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label">Estado</label>
+                        <input name="Direccion.Estado" value="@Model.Direccion?.Estado" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Código Postal</label>
+                        <input name="Direccion.CodigoPostal" value="@Model.Direccion?.CodigoPostal" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">País</label>
+                        <input name="Direccion.Pais" value="@Model.Direccion?.Pais" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tipo de Dirección</label>
+                        <select name="Direccion.TipoDireccion" class="form-select">
+                            <option value="">Seleccione...</option>
+                            <option value="Casa" @(Model.Direccion?.TipoDireccion == "Casa" ? "selected" : "")>Casa</option>
+                            <option value="Trabajo" @(Model.Direccion?.TipoDireccion == "Trabajo" ? "selected" : "")>Trabajo</option>
+                            <option value="Otro" @(Model.Direccion?.TipoDireccion == "Otro" ? "selected" : "")>Otro</option>
+                        </select>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Botones Guardar -->
-            <div class="text-center mt-4">
-                <button type="submit" class="btn btn-success me-2">Guardar Cambios</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarCuenta">
-                    Eliminar mi cuenta
-                </button>
-            </div>
+        <!-- Botones -->
+        <div class="col-12 text-center mt-4">
+            <button type="submit" class="btn btn-success btn-lg me-2">Guardar Cambios</button>
+            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modalEliminarCuenta">
+                Eliminar mi cuenta
+            </button>
         </div>
     </form>
 
@@ -166,3 +167,5 @@
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
+</body>
+</html>

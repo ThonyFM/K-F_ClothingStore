@@ -1,20 +1,24 @@
 ﻿@model RegistroViewModel
 @{
     ViewData["Title"] = "Registro";
+    Layout = null;
 }
+
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/sytles.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 
-<div class="container mt-5">
+<body class="bg-gradient d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; padding: 30px 0;">
+<div class="container mb-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="mb-0">Registro de Usuario</h3>
+        <div class="col-lg-8">
+            <div class="card shadow-lg rounded-4">
+                <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                    <h3 class="mb-0"><i class="fa fa-user-plus"></i> Registro de Usuario</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-4">
                     @if (TempData["SuccessMessage"] != null)
                     {
                         <div class="alert alert-success">
@@ -28,121 +32,68 @@
                         </div>
                     }
 
-                    @using (Html.BeginForm("Registro", "Auth", FormMethod.Post, new { @class = "form-horizontal" }))
+                    @using (Html.BeginForm("Registro", "Auth", FormMethod.Post, new { @class = "row g-3" }))
                     {
                         @Html.AntiForgeryToken()
 
-                        <!-- Usuario -->
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Usuario.NombreUsuario, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Usuario.NombreUsuario, new { @class = "form-control", placeholder = "Introduce tu nombre de usuario", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Usuario.NombreUsuario, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Usuario.NombreUsuario, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Usuario.NombreUsuario, new { @class = "form-control", placeholder = "Nombre de usuario", required = "required" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Usuario.ContrasenaHash, new { @class = "control-label" })
-                            @Html.PasswordFor(expression: model => model.Usuario.ContrasenaHash, new { @class = "form-control", placeholder = "Introduce tu contraseña", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Usuario.ContrasenaHash, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Usuario.ContrasenaHash, new { @class = "form-label" })
+                            @Html.PasswordFor(m => m.Usuario.ContrasenaHash, new { @class = "form-control", placeholder = "Contraseña", required = "required" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Usuario.Email, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Usuario.Email, new { @class = "form-control", placeholder = "Introduce tu correo electrónico", required = "required", type = "email" })
-                            @Html.ValidationMessageFor(expression: model => model.Usuario.Email, "", new { @class = "text-danger" })
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Usuario.Email, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Usuario.Email, new { @class = "form-control", type = "email", placeholder = "Correo electrónico", required = "required" })
                         </div>
 
-                        <!-- Persona -->
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.Nombre1, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Persona.Nombre1, new { @class = "form-control", placeholder = "Introduce tu primer nombre", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.Nombre1, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.Nombre1, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Persona.Nombre1, new { @class = "form-control", placeholder = "Primer nombre", required = "required" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.Nombre2, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Persona.Nombre2, new { @class = "form-control", placeholder = "Introduce tu segundo nombre" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.Nombre2, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.Nombre2, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Persona.Nombre2, new { @class = "form-control", placeholder = "Segundo nombre" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.Apellido1, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Persona.Apellido1, new { @class = "form-control", placeholder = "Introduce tu primer apellido", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.Apellido1, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.Apellido1, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Persona.Apellido1, new { @class = "form-control", placeholder = "Primer apellido", required = "required" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.Apellido2, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Persona.Apellido2, new { @class = "form-control", placeholder = "Introduce tu segundo apellido" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.Apellido2, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.Apellido2, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Persona.Apellido2, new { @class = "form-control", placeholder = "Segundo apellido" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.DocumentoIdentidad, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Persona.DocumentoIdentidad, new { @class = "form-control", placeholder = "Introduce tu documento de identidad", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.DocumentoIdentidad, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.DocumentoIdentidad, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Persona.DocumentoIdentidad, new { @class = "form-control", placeholder = "Documento de identidad", required = "required" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.Telefono, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Persona.Telefono, new { @class = "form-control", placeholder = "Introduce tu teléfono" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.Telefono, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.Telefono, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Persona.Telefono, new { @class = "form-control", placeholder = "Teléfono" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.FechaNacimiento, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Persona.FechaNacimiento, new { @class = "form-control", type = "date" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.FechaNacimiento, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.FechaNacimiento, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Persona.FechaNacimiento, new { @class = "form-control", type = "date" })
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Persona.Genero, new { @class = "control-label" })
-                            @Html.DropDownListFor(expression: model => model.Persona.Genero,
-                            new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Masculino", Value = "Masculino" },
-                                new SelectListItem { Text = "Femenino", Value = "Femenino" },
-                                new SelectListItem { Text = "Otro", Value = "Otro" }
-                            },
-                            "Selecciona tu género",
-                            new { @class = "form-control", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Persona.Genero, "", new { @class = "text-danger" })
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Persona.Genero, new { @class = "form-label" })
+                            @Html.DropDownListFor(m => m.Persona.Genero, new SelectList(new[]{"Masculino","Femenino","Otro"}),"Selecciona", new { @class = "form-select", required = "required" })
                         </div>
 
-                        <!-- Direccion -->
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Direccion.Ciudad, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Direccion.Ciudad, new { @class = "form-control", placeholder = "Introduce tu ciudad", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Direccion.Ciudad, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Direccion.Estado, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Direccion.Estado, new { @class = "form-control", placeholder = "Introduce tu estado/provincia", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Direccion.Estado, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Direccion.CodigoPostal, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Direccion.CodigoPostal, new { @class = "form-control", placeholder = "Introduce tu código postal", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Direccion.CodigoPostal, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Direccion.Pais, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Direccion.Pais, new { @class = "form-control", placeholder = "Introduce tu país", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Direccion.Pais, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(expression: model => model.Direccion.TipoDireccion, new { @class = "control-label" })
-                            @Html.TextBoxFor(expression: model => model.Direccion.TipoDireccion, new { @class = "form-control", placeholder = "Introduce el tipo de dirección", required = "required" })
-                            @Html.ValidationMessageFor(expression: model => model.Direccion.TipoDireccion, "", new { @class = "text-danger" })
-                        </div>
-                        
-                        <!-- Botón de envío -->
-                        <div class="form-group mt-3">
-                            <button type="submit" class="btn btn-primary">Registrarse</button>
-                            <a href="@Url.Action("InicioSesion", "Auth")" class="btn btn-secondary ml-2">¿Ya tienes una
-                                cuenta? Inicia sesión</a>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Registrarse</button>
+                            <a href="@Url.Action("InicioSesion", "Auth")" class="btn btn-outline-secondary btn-lg w-100 mt-2">¿Ya tienes cuenta? Inicia sesión</a>
                         </div>
                     }
                 </div>
@@ -150,3 +101,4 @@
         </div>
     </div>
 </div>
+</body>
