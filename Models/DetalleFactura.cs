@@ -31,5 +31,8 @@
 
         [Required]
         public decimal Subtotal { get; set; }
+
+        public string? NombreProducto { get; set; }
+        public DateTime FechaFactura { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model RegistroViewModel
+﻿@model K_F_ClothingStore.Models.RegistroViewModel
+
 @{
     ViewData["Title"] = "Registro";
     Layout = null;
@@ -11,94 +12,127 @@
 </head>
 
 <body class="bg-gradient d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #667eea, #764ba2); height: 100%; padding: 30px 0;">
-<div class="container mb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-lg rounded-4">
-                <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
-                    <h3 class="mb-0"><i class="fa fa-user-plus"></i> Registro de Usuario</h3>
-                </div>
-                <div class="card-body p-4">
-                    @if (TempData["SuccessMessage"] != null)
-                    {
-                        <div class="alert alert-success">
-                            @TempData["SuccessMessage"]
-                        </div>
-                    }
-                    @if (TempData["ErrorMessage"] != null)
-                    {
-                        <div class="alert alert-danger">
-                            @TempData["ErrorMessage"]
-                        </div>
-                    }
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg rounded-4">
+                    <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                        <h3 class="mb-0"><i class="fa fa-user-plus"></i> Registro de Usuario</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        @if (TempData["SuccessMessage"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["SuccessMessage"]
+                            </div>
+                        }
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger">
+                                @TempData["ErrorMessage"]
+                            </div>
+                        }
 
-                    @using (Html.BeginForm("Registro", "Auth", FormMethod.Post, new { @class = "row g-3" }))
-                    {
-                        @Html.AntiForgeryToken()
+                        @using (Html.BeginForm("Registro", "Auth", FormMethod.Post, new { @class = "row g-3" }))
+                        {
+                            @Html.AntiForgeryToken()
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Usuario.NombreUsuario, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Usuario.NombreUsuario, new { @class = "form-control", placeholder = "Nombre de usuario", required = "required" })
-                        </div>
+                            <h4 class="text-primary">Cuenta de Usuario</h4>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Usuario.ContrasenaHash, new { @class = "form-label" })
-                            @Html.PasswordFor(m => m.Usuario.ContrasenaHash, new { @class = "form-control", placeholder = "Contraseña", required = "required" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Usuario.NombreUsuario, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Usuario.NombreUsuario, new { @class = "form-control", placeholder = "Nombre de usuario", required = "required" })
+                            </div>
 
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Usuario.Email, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Usuario.Email, new { @class = "form-control", type = "email", placeholder = "Correo electrónico", required = "required" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Usuario.ContrasenaHash, new { @class = "form-label" })
+                                @Html.PasswordFor(m => m.Usuario.ContrasenaHash, new { @class = "form-control", placeholder = "Contraseña", required = "required" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.Nombre1, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Persona.Nombre1, new { @class = "form-control", placeholder = "Primer nombre", required = "required" })
-                        </div>
+                            <div class="col-md-12">
+                                @Html.LabelFor(m => m.Usuario.Email, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Usuario.Email, new { @class = "form-control", type = "email", placeholder = "Correo electrónico", required = "required" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.Nombre2, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Persona.Nombre2, new { @class = "form-control", placeholder = "Segundo nombre" })
-                        </div>
+                            <hr />
+                            <h4 class="text-primary">Información Personal</h4>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.Apellido1, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Persona.Apellido1, new { @class = "form-control", placeholder = "Primer apellido", required = "required" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.Nombre1, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Persona.Nombre1, new { @class = "form-control", placeholder = "Primer nombre", required = "required" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.Apellido2, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Persona.Apellido2, new { @class = "form-control", placeholder = "Segundo apellido" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.Nombre2, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Persona.Nombre2, new { @class = "form-control", placeholder = "Segundo nombre" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.DocumentoIdentidad, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Persona.DocumentoIdentidad, new { @class = "form-control", placeholder = "Documento de identidad", required = "required" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.Apellido1, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Persona.Apellido1, new { @class = "form-control", placeholder = "Primer apellido", required = "required" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.Telefono, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Persona.Telefono, new { @class = "form-control", placeholder = "Teléfono" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.Apellido2, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Persona.Apellido2, new { @class = "form-control", placeholder = "Segundo apellido" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.FechaNacimiento, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Persona.FechaNacimiento, new { @class = "form-control", type = "date" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.DocumentoIdentidad, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Persona.DocumentoIdentidad, new { @class = "form-control", placeholder = "Documento de identidad", required = "required" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Persona.Genero, new { @class = "form-label" })
-                            @Html.DropDownListFor(m => m.Persona.Genero, new SelectList(new[]{"Masculino","Femenino","Otro"}),"Selecciona", new { @class = "form-select", required = "required" })
-                        </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.Telefono, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Persona.Telefono, new { @class = "form-control", placeholder = "Teléfono" })
+                            </div>
 
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-lg w-100">Registrarse</button>
-                            <a href="@Url.Action("InicioSesion", "Auth")" class="btn btn-outline-secondary btn-lg w-100 mt-2">¿Ya tienes cuenta? Inicia sesión</a>
-                        </div>
-                    }
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.FechaNacimiento, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Persona.FechaNacimiento, new { @class = "form-control", type = "date" })
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Persona.Genero, new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.Persona.Genero, new SelectList(new[]{"Masculino","Femenino","Otro"}),"Selecciona", new { @class = "form-select", required = "required" })
+                            </div>
+
+                            <hr />
+                            <h4 class="text-primary">Dirección</h4>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Direccion.Ciudad, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Direccion.Ciudad, new { @class = "form-control", placeholder = "Ciudad", required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Direccion.Estado, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Direccion.Estado, new { @class = "form-control", placeholder = "Estado", required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Direccion.CodigoPostal, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Direccion.CodigoPostal, new { @class = "form-control", placeholder = "Código Postal", required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.Direccion.Pais, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Direccion.Pais, new { @class = "form-control", placeholder = "País", required = "required" })
+                            </div>
+
+                            <div class="col-md-12">
+                                @Html.LabelFor(m => m.Direccion.TipoDireccion, new { @class = "form-label" })
+                                @Html.DropDownListFor(m => m.Direccion.TipoDireccion, new SelectList(new[]{"Residencial","Laboral","Otro"}), "Selecciona tipo de dirección", new { @class = "form-select", required = "required" })
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">Registrarse</button>
+                                <a href="@Url.Action("InicioSesion", "Auth")" class="btn btn-outline-secondary btn-lg w-100 mt-2">¿Ya tienes cuenta? Inicia sesión</a>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>

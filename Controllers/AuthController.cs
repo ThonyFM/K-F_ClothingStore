@@ -98,6 +98,7 @@
         }
         // GET: Auth/InicioSesion
         public IActionResult InicioSesion() => View();
+        
         // POST: Auth/InicioSesion
         [HttpPost]
         public IActionResult InicioSesion(string? nombreUsuario, string contrasenaHash)

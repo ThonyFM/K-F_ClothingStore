@@ -1,4 +1,5 @@
-﻿namespace K_F_ClothingStore.Models {
+﻿
+namespace K_F_ClothingStore.Models {
     using System.ComponentModel.DataAnnotations;
 
     public class Cliente {

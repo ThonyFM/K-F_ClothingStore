@@ -1044,7 +1044,6 @@
                                 {
                                     ID = reader.GetInt32(i: 0),
                                     ClienteID = reader.GetInt32(i: 1),
-                                    FechaEmision = reader.GetDateTime(i: 2),
                                     Total = reader.GetDecimal(i: 3),
                                     MetodoPago = reader.GetString(i: 4),
                                     Estado = reader.GetString(i: 5),
@@ -1105,54 +1104,6 @@
             }
 
             return factura;
-        }
-
-        public void ActualizarFactura(Factura factura)
-        {
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query =
-                        "Exec sp_UpdateFactura @ID, @ClienteID, @EmpleadoID, @Total, @MetodoPago, @Estado, @DescuentoID, @ModificadoPor";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", factura.ID);
-                        cmd.Parameters.AddWithValue("@ClienteID", factura.ClienteID);
-                        cmd.Parameters.AddWithValue("@Total", factura.Total);
-                        cmd.Parameters.AddWithValue("@MetodoPago", factura.MetodoPago);
-                        cmd.Parameters.AddWithValue("@Estado", factura.Estado);
-                        cmd.Parameters.AddWithValue("@ModificadoPor", factura.ModificadoPor);
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al actualizar la factura: " + ex.Message);
-                }
-            }
-        }
-
-        public void EliminarFactura(int id)
-        {
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query = "Exec sp_DeleteFactura @ID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", id);
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al eliminar la factura: " + ex.Message);
-                }
-            }
         }
 
         // Métodos para la tabla DetalleFactura
@@ -1307,173 +1258,6 @@
             }
         }
 
-        // Métodos para la tabla Devolucion
-        public void AgregarDevolucion(Devolucion devolucion)
-        {
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query =
-                        "Exec sp_InsertDevolucion @FacturaID, @DetalleFacturaID, @ProductoID, @Cantidad, @Motivo, @Estado, @CreadoPor, @NewID OUTPUT";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@FacturaID", devolucion.FacturaID);
-                        cmd.Parameters.AddWithValue("@DetalleFacturaID", devolucion.DetalleFacturaID);
-                        cmd.Parameters.AddWithValue("@ProductoID", devolucion.ProductoID);
-                        cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
-                        cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
-                        cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
-                        cmd.Parameters.AddWithValue("@CreadoPor", devolucion.CreadoPor);
-                        cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                        devolucion.ID = (int)cmd.Parameters["@NewID"].Value;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al agregar la devolución: " + ex.Message);
-                }
-            }
-        }
-
-        public List<Devolucion> ObtenerDevoluciones()
-        {
-            List<Devolucion> devoluciones = new List<Devolucion>();
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query = "Exec sp_GetAllDevoluciones";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        con.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                devoluciones.Add(new Devolucion
-                                {
-                                    ID = reader.GetInt32(i: 0),
-                                    FacturaID = reader.GetInt32(i: 1),
-                                    DetalleFacturaID = reader.GetInt32(i: 2),
-                                    ProductoID = reader.GetInt32(i: 3),
-                                    Cantidad = reader.GetInt32(i: 4),
-                                    Motivo = reader.GetString(i: 5),
-                                    FechaDevolucion = reader.GetDateTime(i: 6),
-                                    Estado = reader.GetString(i: 7),
-                                    CreadoPor = reader.GetString(i: 8),
-                                    FechaCreacion = reader.GetDateTime(i: 9),
-                                    FechaModificacion = reader.IsDBNull(i: 10) ? null : reader.GetDateTime(i: 10),
-                                    ModificadoPor = reader.IsDBNull(i: 11) ? null : reader.GetString(i: 11)
-                                });
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al obtener las devoluciones: " + ex.Message);
-                }
-            }
-
-            return devoluciones;
-        }
-
-        public Devolucion ObtenerDevolucionPorId(int id)
-        {
-            Devolucion devolucion = null;
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query = "Exec sp_GetDevolucionById @ID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", id);
-                        con.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                devolucion = new Devolucion
-                                {
-                                    ID = reader.GetInt32(i: 0),
-                                    FacturaID = reader.GetInt32(i: 1),
-                                    DetalleFacturaID = reader.GetInt32(i: 2),
-                                    ProductoID = reader.GetInt32(i: 3),
-                                    Cantidad = reader.GetInt32(i: 4),
-                                    Motivo = reader.GetString(i: 5),
-                                    FechaDevolucion = reader.GetDateTime(i: 6),
-                                    Estado = reader.GetString(i: 7),
-                                    CreadoPor = reader.GetString(i: 8),
-                                    FechaCreacion = reader.GetDateTime(i: 9),
-                                    FechaModificacion = reader.IsDBNull(i: 10) ? null : reader.GetDateTime(i: 10),
-                                    ModificadoPor = reader.IsDBNull(i: 11) ? null : reader.GetString(i: 11)
-                                };
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al obtener la devolución: " + ex.Message);
-                }
-            }
-
-            return devolucion;
-        }
-
-        public void ActualizarDevolucion(Devolucion devolucion)
-        {
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query =
-                        "Exec sp_UpdateDevolucion @ID, @FacturaID, @DetalleFacturaID, @ProductoID, @Cantidad, @Motivo, @Estado, @ModificadoPor";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", devolucion.ID);
-                        cmd.Parameters.AddWithValue("@FacturaID", devolucion.FacturaID);
-                        cmd.Parameters.AddWithValue("@DetalleFacturaID", devolucion.DetalleFacturaID);
-                        cmd.Parameters.AddWithValue("@ProductoID", devolucion.ProductoID);
-                        cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
-                        cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
-                        cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
-                        cmd.Parameters.AddWithValue("@ModificadoPor", devolucion.ModificadoPor);
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al actualizar la devolución: " + ex.Message);
-                }
-            }
-        }
-
-        public void EliminarDevolucion(int id)
-        {
-            using (SqlConnection con = new SqlConnection(_conexion))
-            {
-                try
-                {
-                    string query = "Exec sp_DeleteDevolucion @ID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
-                    {
-                        cmd.Parameters.AddWithValue("@ID", id);
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al eliminar la devolución: " + ex.Message);
-                }
-            }
-        }
 
         // Métodos para la tabla Proveedor
         public void AgregarProveedor(Proveedor proveedor)
@@ -2428,6 +2212,155 @@ public bool EliminarPerfilUsuario(int usuarioId)
         return (int)returnValue.Value == 1;
     }
 }
+public bool AgregarDevolucion(Devolucion devolucion)
+{
+    try
+    {
+        using (SqlConnection conn = new SqlConnection(_conexion))
+        {
+            conn.Open();
+            using (SqlCommand cmd = new SqlCommand("sp_AgregarDevolucion", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@FacturaID", devolucion.FacturaID);
+                cmd.Parameters.AddWithValue("@DetalleFacturaID", devolucion.DetalleFacturaID);
+                cmd.Parameters.AddWithValue("@ProductoID", devolucion.ProductoID);
+                cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
+                cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
+                cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
+                cmd.Parameters.AddWithValue("@CreadoPor", devolucion.CreadoPor);
+
+                int filasAfectadas = cmd.ExecuteNonQuery();
+
+                return filasAfectadas > 0;
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Error al agregar devolución: " + ex.Message);
+        return false;
+    }
+}
+
+// Obtener todas las devoluciones
+public List<Devolucion> ObtenerDevoluciones()
+{
+    List<Devolucion> lista = new List<Devolucion>();
+
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        using (SqlCommand cmd = new SqlCommand("sp_ObtenerDevoluciones", con))
+        {
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+
+            using (SqlDataReader dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    lista.Add(new Devolucion
+                    {
+                        ID = Convert.ToInt32(dr["ID"]),
+                        FacturaID = Convert.ToInt32(dr["FacturaID"]),
+                        DetalleFacturaID = Convert.ToInt32(dr["DetalleFacturaID"]),
+                        ProductoID = Convert.ToInt32(dr["ProductoID"]),
+                        Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                        Motivo = dr["Motivo"].ToString(),
+                        Estado = dr["Estado"].ToString(),
+                        FechaDevolucion = Convert.ToDateTime(dr["FechaDevolucion"]),
+                        CreadoPor = dr["CreadoPor"].ToString(),
+                        FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
+                    });
+                }
+            }
+        }
+    }
+
+    return lista;
+}
+
+// Actualizar una devolución
+public bool ActualizarDevolucion(Devolucion devolucion)
+{
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        using (SqlCommand cmd = new SqlCommand("sp_ActualizarDevolucion", con))
+        {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", devolucion.ID);
+            cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
+            cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
+            cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
+            cmd.Parameters.AddWithValue("@ModificadoPor", devolucion.ModificadoPor ?? (object)DBNull.Value);
+
+            con.Open();
+            int rows = cmd.ExecuteNonQuery();
+            return rows > 0;
+        }
+    }
+}
+
+// Eliminar una devolución
+public bool EliminarDevolucion(int id)
+{
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        using (SqlCommand cmd = new SqlCommand("sp_EliminarDevolucion", con))
+        {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", id);
+
+            con.Open();
+            int rows = cmd.ExecuteNonQuery();
+            return rows > 0;
+        }
+    }
+}
+public List<DetalleFactura> ObtenerProductosCompradosPorCliente(int clienteID)
+{
+    List<DetalleFactura> productosComprados = new List<DetalleFactura>();
+
+    using (SqlConnection con = new SqlConnection(_conexion))
+    {
+        try
+        {
+            string query = "EXEC sp_ObtenerProductosCompradosPorCliente @ClienteID";
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        productosComprados.Add(new DetalleFactura
+                        {
+                            
+                            ID = Convert.ToInt32(reader["ID"]),
+                            FacturaID = Convert.ToInt32(reader["FacturaID"]),
+                            ProductoID = Convert.ToInt32(reader["ProductoID"]),
+                            NombreProducto = reader["NombreProducto"].ToString(), // 🆕 Aquí el nombre del producto
+                            Cantidad = Convert.ToInt32(reader["Cantidad"]),
+                            PrecioUnitario = Convert.ToDecimal(reader["PrecioUnitario"]),
+                            Subtotal = Convert.ToDecimal(reader["Subtotal"]),
+                            FechaFactura = Convert.ToDateTime(reader["FechaFactura"]) // 🆕 Para validar si aplica devolución
+                        });
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al obtener los productos comprados: " + ex.Message);
+        }
+    }
+
+    return productosComprados;
+}
+
 
     }
 }
