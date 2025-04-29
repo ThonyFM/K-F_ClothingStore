@@ -7,165 +7,233 @@
 <html lang="es">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - K_F_ClothingStore</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="~/css/estilos_personalizados.css" />
+    <style>
+        .profile-card { border-radius: 15px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
+        .profile-card:hover { transform: translateY(-5px); }
+        .modal-header { border-bottom: none; }
+        .delete-modal .modal-content { border: 2px solid #dc3545; }
+    </style>
 </head>
+
 <body class="bg-light">
 <div class="container py-5">
-    <h2 class="text-center mb-5">👤 Perfil del Usuario</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h2 class="text-center mb-4">👤 Perfil del Usuario</h2>
 
-    @if (TempData["mensaje"] != null)
-    {
-        <div class="alert alert-success text-center">@TempData["mensaje"]</div>
-    }
-    @if (TempData["error"] != null)
-    {
-        <div class="alert alert-danger text-center">@TempData["error"]</div>
-    }
-
-    <form asp-controller="Cliente" asp-action="GuardarPerfil" method="post" class="row g-4">
-        @Html.AntiForgeryToken()
-
-        <input type="hidden" name="Usuario.ID" value="@Model.Usuario?.ID" />
-        <input type="hidden" name="Persona.ID" value="@Model.Persona?.ID" />
-        <input type="hidden" name="Direccion.ID" value="@Model.Direccion?.ID" />
-        <input type="hidden" name="Cliente.ID" value="@Model.Cliente?.ID" />
-        <input type="hidden" name="Usuario.Email" value="@Model.Usuario?.Email" />
-        <input type="hidden" name="Usuario.Rol" value="@Model.Usuario?.Rol" />
-
-        <!-- Información de la Cuenta -->
-        <div class="col-12">
-            <div class="card shadow rounded-4">
-                <div class="card-header bg-dark text-white">
-                    <h5 class="mb-0">Cuenta de Usuario</h5>
+            @if (TempData["mensaje"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show text-center">
+                    @TempData["mensaje"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
-                <div class="card-body">
-                    <div class="row g-3">
+            }
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show text-center">
+                    @TempData["error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            <div class="card profile-card mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="mb-0">Información Personal</h4>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">
+                            <i class="fas fa-edit me-1"></i> Editar
+                        </button>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
-                            <label class="form-label">Nombre de Usuario</label>
-                            <input type="text" class="form-control" value="@Model.Usuario?.NombreUsuario" readonly />
+                            <p><strong><i class="fas fa-user me-2"></i>Nombre:</strong> @Model.Persona?.Nombre1 @Model.Persona?.Nombre2</p>
+                            <p><strong><i class="fas fa-id-card me-2"></i>Apellidos:</strong> @Model.Persona?.Apellido1 @Model.Persona?.Apellido2</p>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Rol</label>
-                            <input type="text" class="form-control" value="@Model.Usuario?.Rol" readonly />
+                            <p><strong><i class="fas fa-phone me-2"></i>Teléfono:</strong> @Model.Persona?.Telefono</p>
+                            <p><strong><i class="fas fa-venus-mars me-2"></i>Género:</strong> @Model.Persona?.Genero</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Información Personal -->
-        <div class="col-md-6">
-            <div class="card shadow rounded-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Información Personal</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label">Primer Nombre</label>
-                        <input name="Persona.Nombre1" value="@Model.Persona?.Nombre1" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Segundo Nombre</label>
-                        <input name="Persona.Nombre2" value="@Model.Persona?.Nombre2" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Primer Apellido</label>
-                        <input name="Persona.Apellido1" value="@Model.Persona?.Apellido1" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Segundo Apellido</label>
-                        <input name="Persona.Apellido2" value="@Model.Persona?.Apellido2" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Teléfono</label>
-                        <input name="Persona.Telefono" value="@Model.Persona?.Telefono" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Género</label>
-                        <select name="Persona.Genero" class="form-select">
-                            <option value="">Seleccione...</option>
-                            <option value="Masculino" @(Model.Persona?.Genero == "Masculino" ? "selected" : "")>Masculino</option>
-                            <option value="Femenino" @(Model.Persona?.Genero == "Femenino" ? "selected" : "")>Femenino</option>
-                            <option value="Otro" @(Model.Persona?.Genero == "Otro" ? "selected" : "")>Otro</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <hr class="my-4">
 
-        <!-- Información de Dirección -->
-        <div class="col-md-6">
-            <div class="card shadow rounded-4">
-                <div class="card-header bg-secondary text-white">
-                    <h5 class="mb-0">Dirección</h5>
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label">Ciudad</label>
-                        <input name="Direccion.Ciudad" value="@Model.Direccion?.Ciudad" class="form-control" />
+                    <h5 class="mb-3"><i class="fas fa-map-marker-alt me-2"></i>Dirección</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Ciudad:</strong> @Model.Direccion?.Ciudad</p>
+                            <p><strong>Estado:</strong> @Model.Direccion?.Estado</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Código Postal:</strong> @Model.Direccion?.CodigoPostal</p>
+                            <p><strong>País:</strong> @Model.Direccion?.Pais</p>
+                            <p><strong>Tipo:</strong> @Model.Direccion?.TipoDireccion</p>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Estado</label>
-                        <input name="Direccion.Estado" value="@Model.Direccion?.Estado" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Código Postal</label>
-                        <input name="Direccion.CodigoPostal" value="@Model.Direccion?.CodigoPostal" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">País</label>
-                        <input name="Direccion.Pais" value="@Model.Direccion?.Pais" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Tipo de Dirección</label>
-                        <select name="Direccion.TipoDireccion" class="form-select">
-                            <option value="">Seleccione...</option>
-                            <option value="Casa" @(Model.Direccion?.TipoDireccion == "Casa" ? "selected" : "")>Casa</option>
-                            <option value="Trabajo" @(Model.Direccion?.TipoDireccion == "Trabajo" ? "selected" : "")>Trabajo</option>
-                            <option value="Otro" @(Model.Direccion?.TipoDireccion == "Otro" ? "selected" : "")>Otro</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Botones -->
-        <div class="col-12 text-center mt-4">
-            <button type="submit" class="btn btn-success btn-lg me-2">Guardar Cambios</button>
-            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modalEliminarCuenta">
-                Eliminar mi cuenta
-            </button>
-        </div>
-    </form>
-
-    <!-- Modal de Confirmación de Eliminación -->
-    <div class="modal fade" id="modalEliminarCuenta" tabindex="-1" aria-labelledby="modalEliminarCuentaLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title" id="modalEliminarCuentaLabel">¿Eliminar tu cuenta?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    Esta acción no se puede deshacer. ¿Confirmas eliminar tu cuenta?
-                </div>
-                <div class="modal-footer">
-                    <form asp-controller="Cliente" asp-action="EliminarCuenta" method="post">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
-                    </form>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar">
+                            <i class="fas fa-trash-alt me-1"></i> Eliminar Cuenta
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal Editar Perfil -->
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form asp-action="GuardarPerfil" asp-controller="Cliente" method="post" id="formEditar">
+                    @Html.AntiForgeryToken()
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title"><i class="fas fa-user-edit me-2"></i>Editar Perfil</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" asp-for="Usuario.ID" />
+                        <input type="hidden" asp-for="Persona.ID" />
+                        <input type="hidden" asp-for="Direccion.ID" />
+                        <input type="hidden" asp-for="Cliente.ID" />
+                        <input type="hidden" asp-for="Usuario.Email" />
+                        <input type="hidden" asp-for="Usuario.Rol" />
+
+                        <h6 class="mb-3 text-primary">Información Personal</h6>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label>Primer Nombre</label>
+                                <input asp-for="Persona.Nombre1" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Segundo Nombre</label>
+                                <input asp-for="Persona.Nombre2" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Primer Apellido</label>
+                                <input asp-for="Persona.Apellido1" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Segundo Apellido</label>
+                                <input asp-for="Persona.Apellido2" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Teléfono</label>
+                                <input asp-for="Persona.Telefono" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Género</label>
+                                <select asp-for="Persona.Genero" class="form-select" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h6 class="mb-3 text-primary">Dirección</h6>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label>Ciudad</label>
+                                <input asp-for="Direccion.Ciudad" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Estado</label>
+                                <input asp-for="Direccion.Estado" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Código Postal</label>
+                                <input asp-for="Direccion.CodigoPostal" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label>País</label>
+                                <input asp-for="Direccion.Pais" class="form-control" required />
+                            </div>
+                            <div class="col-12">
+                                <label>Tipo de Dirección</label>
+                                <select asp-for="Direccion.TipoDireccion" class="form-select" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Trabajo">Trabajo</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmar Eliminación (CORREGIDO) -->
+    <div class="modal fade delete-modal" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="EliminarCuenta" asp-controller="Cliente" method="post" id="formEliminar">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="idUsuario" value="@Model.Usuario?.ID" />
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Eliminar Cuenta</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <i class="fas fa-trash-alt fa-4x text-danger mb-3"></i>
+                        <h5>¿Estás seguro que deseas eliminar tu cuenta?</h5>
+                        <p class="text-muted">Esta acción es irreversible.</p>
+                        <input type="text" id="confirmText" class="form-control mt-3" placeholder="Escribe ELIMINAR para confirmar" required pattern="ELIMINAR" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" id="btnConfirmarEliminar" disabled>Confirmar Eliminación</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#confirmText').on('input', function() {
+            $('#btnConfirmarEliminar').prop('disabled', $(this).val().toUpperCase() !== 'ELIMINAR');
+        });
+
+        $('#formEditar').submit(function(e) {
+            let valid = true;
+            $(this).find('[required]').each(function() {
+                if (!$(this).val()) {
+                    $(this).addClass('is-invalid');
+                    valid = false;
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            });
+            if (!valid) {
+                e.preventDefault();
+                alert('Por favor complete todos los campos requeridos.');
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
+

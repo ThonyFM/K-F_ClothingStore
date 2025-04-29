@@ -10,42 +10,59 @@
     @if (TempData["Exito"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            @TempData["Exito"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <i class="fas fa-check-circle"></i> @TempData["Exito"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
     @if (TempData["Error"] != null)
     {
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            @TempData["Error"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <i class="fas fa-exclamation-circle"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
 
     <div class="grid-container">
         @foreach (var item in Model)
         {
-            <div class="card glassmorphism hover-effect card-3d">
+            <div class="card glassmorphism hover-effect card-3d mb-4">
                 <div class="card-3d-inner p-4">
                     <h5 class="card-title">@item.NombreProducto</h5>
                     <p class="card-text"><strong>Precio Unitario:</strong> ₡@item.PrecioUnitario.ToString("N2")</p>
                     <p class="card-text"><strong>Cantidad Comprada:</strong> @item.Cantidad</p>
                     <p class="card-text"><strong>Fecha de Compra:</strong> @item.FechaFactura.ToString("dd/MM/yyyy")</p>
 
-                    <form asp-action="SolicitarDevolucion" method="post" class="mt-3">
+                    <form asp-action="SolicitarDevolucion" method="post" class="mt-3 needs-validation" novalidate>
                         <input type="hidden" name="detalleFacturaID" value="@item.ID" />
 
-                        <div class="mb-2">
-                            <label class="form-label">Cantidad a devolver:</label>
-                            <input type="number" name="cantidad" min="1" max="@item.Cantidad" value="1" class="form-control" required />
+                        <div class="mb-3">
+                            <label for="cantidad-@item.ID" class="form-label">Cantidad a devolver:</label>
+                            <input type="number"
+                                   name="cantidad"
+                                   id="cantidad-@item.ID"
+                                   min="1"
+                                   max="@item.Cantidad"
+                                   value="1"
+                                   class="form-control"
+                                   required />
+                            <div class="invalid-feedback">
+                                Por favor ingrese una cantidad válida (mínimo 1).
+                            </div>
                         </div>
 
-                        <div class="mb-2">
-                            <label class="form-label">Motivo:</label>
-                            <textarea name="motivo" rows="2" class="form-control" required></textarea>
+                        <div class="mb-3">
+                            <label for="motivo-@item.ID" class="form-label">Motivo:</label>
+                            <textarea name="motivo"
+                                      id="motivo-@item.ID"
+                                      rows="2"
+                                      class="form-control"
+                                      required></textarea>
+                            <div class="invalid-feedback">
+                                Por favor indique el motivo de la devolución.
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-shine w-100 mt-3">
+                        <button type="submit" class="btn btn-primary btn-shine w-100 mt-2">
                             Solicitar Devolución
                         </button>
                     </form>
@@ -61,6 +78,20 @@
 
 @section Scripts {
     <script>
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })();
+
         document.addEventListener("DOMContentLoaded", function () {
             const successMessage = '@TempData["Exito"]';
             const errorMessage = '@TempData["Error"]';

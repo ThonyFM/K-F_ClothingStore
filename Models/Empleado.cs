@@ -3,7 +3,7 @@
 
     public class Empleado {
         public Empleado() {}
-         
+
         public Empleado(int id, int personaID, string puesto, DateTime fechaContratacion, decimal salario, string estado, string creadoPor)
         {
             ID = id;

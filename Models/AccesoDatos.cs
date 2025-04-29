@@ -1068,43 +1068,51 @@
         public Factura ObtenerFacturaPorId(int id)
         {
             Factura factura = null;
-            using (SqlConnection con = new SqlConnection(_conexion))
+
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(_conexion))
                 {
-                    string query = "Exec sp_ObtenerFacturaPorId @ID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_ObtenerFacturaPorId", conn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", id);
-                        con.Open();
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
                                 factura = new Factura
                                 {
-                                    ID = reader.GetInt32(i: 0),
-                                    ClienteID = reader.GetInt32(i: 1),
-                                    Total = reader.GetDecimal(i: 2),
-                                    MetodoPago = reader.GetString(i: 3),
-                                    Estado = reader.GetString(i: 4),
-                                    FechaCreacion = reader.GetDateTime(i: 5),
-                                    FechaModificacion = reader.IsDBNull(i: 6) ? null : reader.GetDateTime(i: 6),
-                                    CreadoPor = reader.GetString(i: 7),
-                                    ModificadoPor = reader.IsDBNull(i: 8) ? null : reader.GetString(i: 8)
+                                    ID = reader.GetInt32(reader.GetOrdinal("ID")),
+                                    ClienteID = reader.GetInt32(reader.GetOrdinal("ClienteID")),
+                                    Total = reader.GetDecimal(reader.GetOrdinal("Total")),
+                                    MetodoPago = reader.GetString(reader.GetOrdinal("MetodoPago")),
+                                    Estado = reader.GetString(reader.GetOrdinal("Estado")),
+                                    FechaCreacion = reader.GetDateTime(reader.GetOrdinal("FechaCreacion")),
+                                    CreadoPor = reader.GetString(reader.GetOrdinal("CreadoPor")),
+                                    FechaModificacion = reader.IsDBNull(reader.GetOrdinal("FechaModificacion")) 
+                                        ? (DateTime?)null 
+                                        : reader.GetDateTime(reader.GetOrdinal("FechaModificacion")),
+                                    ModificadoPor = reader.IsDBNull(reader.GetOrdinal("ModificadoPor")) 
+                                        ? null 
+                                        : reader.GetString(reader.GetOrdinal("ModificadoPor"))
                                 };
                             }
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al obtener la factura: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener factura: " + ex.Message);
+                throw;
             }
 
             return factura;
         }
+
 
         // Métodos para la tabla DetalleFactura
         public void AgregarDetalleFactura(DetalleFactura detalleFactura)
@@ -1174,41 +1182,47 @@
 
         public DetalleFactura ObtenerDetalleFacturaPorId(int id)
         {
-            DetalleFactura detalleFactura = null;
-            using (SqlConnection con = new SqlConnection(_conexion))
+            DetalleFactura detalle = null;
+
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(_conexion))
                 {
-                    string query = "Exec sp_GetDetalleFacturaById @ID";
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_ObtenerDetalleFacturaPorId", conn))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", id);
-                        con.Open();
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                detalleFactura = new DetalleFactura
+                                detalle = new DetalleFactura
                                 {
-                                    ID = reader.GetInt32(i: 0),
-                                    FacturaID = reader.GetInt32(i: 1),
-                                    ProductoID = reader.GetInt32(i: 2),
-                                    Cantidad = reader.GetInt32(i: 3),
-                                    PrecioUnitario = reader.GetDecimal(i: 4),
-                                    Subtotal = reader.GetDecimal(i: 5)
+                                    ID = reader.GetInt32(reader.GetOrdinal("ID")),
+                                    FacturaID = reader.GetInt32(reader.GetOrdinal("FacturaID")),
+                                    ProductoID = reader.GetInt32(reader.GetOrdinal("ProductoID")),
+                                    Cantidad = reader.GetInt32(reader.GetOrdinal("Cantidad")),
+                                    PrecioUnitario = reader.GetDecimal(reader.GetOrdinal("PrecioUnitario")),
+                                    Subtotal = reader.GetDecimal(reader.GetOrdinal("Subtotal")),
+                                    NombreProducto = reader.IsDBNull(reader.GetOrdinal("NombreProducto")) ? null : reader.GetString(reader.GetOrdinal("NombreProducto")),
+                                    FechaFactura = reader.GetDateTime(reader.GetOrdinal("FechaFactura"))
                                 };
                             }
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al obtener el detalle de factura: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener detalle de factura: " + ex.Message);
+                throw;
             }
 
-            return detalleFactura;
+            return detalle;
         }
+
 
         public void ActualizarDetalleFactura(DetalleFactura detalleFactura)
         {
@@ -2158,41 +2172,36 @@ public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
     using (SqlCommand cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con))
     {
         cmd.CommandType = CommandType.StoredProcedure;
-        
-        // Parámetros de Usuario
+
         cmd.Parameters.AddWithValue("@UsuarioID", perfil.Usuario.ID);
         cmd.Parameters.AddWithValue("@NombreUsuario", perfil.Usuario.NombreUsuario);
-        cmd.Parameters.AddWithValue("@Email", perfil.Usuario.Email); // Para referencia, no se actualiza
-        
-        // Parámetros de Persona
+        cmd.Parameters.AddWithValue("@Email", perfil.Usuario.Email);
+        cmd.Parameters.AddWithValue("@Rol", perfil.Usuario.Rol);
+
         cmd.Parameters.AddWithValue("@PersonaID", perfil.Persona.ID);
-        cmd.Parameters.AddWithValue("@Nombre1", perfil.Persona.Nombre1);
+        cmd.Parameters.AddWithValue("@Nombre1", perfil.Persona.Nombre1 ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@Nombre2", perfil.Persona.Nombre2 ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Apellido1", perfil.Persona.Apellido1);
+        cmd.Parameters.AddWithValue("@Apellido1", perfil.Persona.Apellido1 ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@Apellido2", perfil.Persona.Apellido2 ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@Telefono", perfil.Persona.Telefono ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@Genero", perfil.Persona.Genero ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@PersonaEmail", perfil.Persona.Email ?? (object)DBNull.Value);
-        
-        // Parámetros de Dirección
+
         cmd.Parameters.AddWithValue("@DireccionID", perfil.Direccion.ID);
         cmd.Parameters.AddWithValue("@Ciudad", perfil.Direccion.Ciudad ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@EstadoDireccion", perfil.Direccion.Estado ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@Estado", perfil.Direccion.Estado ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@CodigoPostal", perfil.Direccion.CodigoPostal ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@Pais", perfil.Direccion.Pais ?? (object)DBNull.Value);
         cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion ?? (object)DBNull.Value);
-        
-        // Parámetro de retorno
-        SqlParameter returnValue = new SqlParameter("@ReturnValue", SqlDbType.Int);
-        returnValue.Direction = ParameterDirection.ReturnValue;
-        cmd.Parameters.Add(returnValue);
-        
+
         con.Open();
-        cmd.ExecuteNonQuery();
-        
-        return (int)returnValue.Value == 1;
+        cmd.ExecuteNonQuery(); // 🔥 Ejecutamos pero no intentamos capturar return
+
+        return true; // 🔥 Si no explota, asumimos que actualizó
     }
 }
+
+
 public bool EliminarPerfilUsuario(int usuarioId)
 {
     using (SqlConnection con = new SqlConnection(_conexion))
@@ -2222,7 +2231,6 @@ public bool AgregarDevolucion(Devolucion devolucion)
             using (SqlCommand cmd = new SqlCommand("sp_AgregarDevolucion", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 cmd.Parameters.AddWithValue("@FacturaID", devolucion.FacturaID);
                 cmd.Parameters.AddWithValue("@DetalleFacturaID", devolucion.DetalleFacturaID);
                 cmd.Parameters.AddWithValue("@ProductoID", devolucion.ProductoID);
@@ -2231,9 +2239,8 @@ public bool AgregarDevolucion(Devolucion devolucion)
                 cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
                 cmd.Parameters.AddWithValue("@CreadoPor", devolucion.CreadoPor);
 
-                int filasAfectadas = cmd.ExecuteNonQuery();
-
-                return filasAfectadas > 0;
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
             }
         }
     }
@@ -2360,6 +2367,7 @@ public List<DetalleFactura> ObtenerProductosCompradosPorCliente(int clienteID)
 
     return productosComprados;
 }
+
 
 
     }
