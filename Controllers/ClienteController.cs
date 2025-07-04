@@ -1,6 +1,10 @@
 ﻿using K_F_ClothingStore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
+namespace K_F_ClothingStore.Controllers
+{
 [Route("Cliente")]
 public class ClienteController : Controller
 {
@@ -81,4 +85,37 @@ public class ClienteController : Controller
             return StatusCode(500);
         }
     }
+
+    [HttpPost("EliminarCuenta")]
+    [ValidateAntiForgeryToken]
+    public IActionResult EliminarCuenta(int idUsuario)
+    {
+        try
+        {
+            int? sesionId = HttpContext.Session.GetInt32("IdUsuario");
+            if (sesionId == null || sesionId != idUsuario)
+            {
+                _logger.LogWarning("Intento de eliminación con sesión inválida");
+                return Unauthorized();
+            }
+
+            bool eliminado = _acceso.EliminarPerfilUsuario(idUsuario);
+            if (!eliminado)
+            {
+                _logger.LogError("No se pudo eliminar el perfil en la base de datos");
+                return StatusCode(500);
+            }
+
+            HttpContext.Session.Clear();
+            _logger.LogInformation($"Cuenta eliminada para usuario {idUsuario}");
+            return RedirectToAction("Index", "Home");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al eliminar cuenta");
+            return StatusCode(500);
+        }
+    }
 }
+}
+
