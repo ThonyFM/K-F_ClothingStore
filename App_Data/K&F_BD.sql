@@ -1295,3 +1295,95 @@ FROM DetalleFactura DF
 WHERE DF.FacturaID = @FacturaID;
 END;
 
+GO
+CREATE PROCEDURE sp_ActualizarPerfilUsuario
+    @UsuarioID INT,
+    @NombreUsuario NVARCHAR(50),
+    @Email NVARCHAR(255),
+    @Rol NVARCHAR(50),
+    @PersonaID INT,
+    @Nombre1 NVARCHAR(50) = NULL,
+    @Nombre2 NVARCHAR(50) = NULL,
+    @Apellido1 NVARCHAR(50) = NULL,
+    @Apellido2 NVARCHAR(50) = NULL,
+    @Telefono NVARCHAR(15) = NULL,
+    @Genero NVARCHAR(50) = NULL,
+    @PersonaEmail NVARCHAR(255) = NULL,
+    @DireccionID INT,
+    @Ciudad NVARCHAR(50) = NULL,
+    @Estado NVARCHAR(50) = NULL,
+    @CodigoPostal NVARCHAR(20) = NULL,
+    @Pais NVARCHAR(50) = NULL,
+    @TipoDireccion NVARCHAR(20) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Usuario
+    SET NombreUsuario = @NombreUsuario,
+        Email = @Email,
+        Rol = @Rol,
+        FechaModificacion = GETDATE()
+    WHERE ID = @UsuarioID;
+
+    UPDATE Persona
+    SET Nombre1 = @Nombre1,
+        Nombre2 = @Nombre2,
+        Apellido1 = @Apellido1,
+        Apellido2 = @Apellido2,
+        Telefono = @Telefono,
+        Genero = @Genero,
+        Email = @PersonaEmail,
+        FechaModificacion = GETDATE()
+    WHERE ID = @PersonaID;
+
+    UPDATE Direccion
+    SET Ciudad = @Ciudad,
+        Estado = @Estado,
+        CodigoPostal = @CodigoPostal,
+        Pais = @Pais,
+        TipoDireccion = @TipoDireccion,
+        FechaModificacion = GETDATE()
+    WHERE ID = @DireccionID;
+END;
+
+GO
+CREATE PROCEDURE sp_EliminarPerfilUsuario
+    @UsuarioID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @PersonaID INT;
+    DECLARE @DireccionID INT;
+    DECLARE @ClienteID INT;
+
+    SELECT @PersonaID = ID, @DireccionID = DireccionID
+    FROM Persona
+    WHERE UsuarioID = @UsuarioID;
+
+    SELECT @ClienteID = ID
+    FROM Cliente
+    WHERE PersonaID = @PersonaID;
+
+    IF @ClienteID IS NOT NULL
+    BEGIN
+        EXEC sp_EliminarCarritoPorCliente @ClienteID;
+        DELETE FROM Cliente WHERE ID = @ClienteID;
+    END
+
+    IF @PersonaID IS NOT NULL
+    BEGIN
+        DELETE FROM Persona WHERE ID = @PersonaID;
+    END
+
+    IF @DireccionID IS NOT NULL
+    BEGIN
+        DELETE FROM Direccion WHERE ID = @DireccionID;
+    END
+
+    DELETE FROM Usuario WHERE ID = @UsuarioID;
+
+    RETURN 1;
+END;
+
