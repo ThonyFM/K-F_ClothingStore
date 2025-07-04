@@ -2195,9 +2195,9 @@ public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
         cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion ?? (object)DBNull.Value);
 
         con.Open();
-        cmd.ExecuteNonQuery(); // 🔥 Ejecutamos pero no intentamos capturar return
+        cmd.ExecuteNonQuery();
 
-        return true; // 🔥 Si no explota, asumimos que actualizó
+        return true;
     }
 }
 
