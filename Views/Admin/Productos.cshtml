@@ -1,0 +1,174 @@
+﻿@model List<K_F_ClothingStore.Models.Producto>
+
+@{
+    ViewData["Title"] = "Gestión de Productos";
+
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+<div class="container py-4">
+    <h2 class="text-center mb-4">Gestión de Productos</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <!-- Formulario Agregar Producto -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">Agregar Producto</div>
+        <div class="card-body">
+            <form asp-action="AgregarProducto" asp-controller="Admin" method="post">
+                @Html.AntiForgeryToken()
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre del Producto</label>
+                        <input type="text" class="form-control" name="NombreProducto" required />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Género</label>
+                        <select class="form-select" name="Genero" required>
+                            <option value="">Seleccione</option>
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                            <option>Unisex</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Segmento Edad</label>
+                        <select class="form-select" name="SegmentoEdad" required>
+                            <option value="">Seleccione</option>
+                            <option>Adulto</option>
+                            <option>Niño</option>
+                            <option>Adolescente</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Tipo Producto</label>
+                        <input type="text" class="form-control" name="TipoProducto" required />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Color</label>
+                        <input type="text" class="form-control" name="Color" required />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Talla</label>
+                        <input type="text" class="form-control" name="Talla" required />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Precio</label>
+                        <input type="number" class="form-control" name="Precio" step="0.01" min="0" required />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="UnidadesDisponibles" min="0" required />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Imagen URL</label>
+                        <input type="text" class="form-control" name="ImagenUrl" required />
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" name="Descripcion" rows="3" required></textarea>
+                    </div>
+
+                </div>
+
+                <div class="mt-3 text-end">
+                    <button type="submit" class="btn btn-success">Agregar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de Productos -->
+    <div class="card">
+        <div class="card-header bg-secondary text-white">Productos Registrados</div>
+        <div class="card-body">
+            @if (Model != null && Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Género</th>
+                            <th>Segmento</th>
+                            <th>Tipo</th>
+                            <th>Color</th>
+                            <th>Talla</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Imagen URL</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var producto in Model)
+                        {
+                            <tr>
+                                <td>@producto.ID</td>
+                                <td>@producto.NombreProducto</td>
+                                <td>@producto.Genero</td>
+                                <td>@producto.SegmentoEdad</td>
+                                <td>@producto.TipoProducto</td>
+                                <td>@producto.Color</td>
+                                <td>@producto.Talla</td>
+                                <td>@producto.Precio.ToString("C")</td>
+                                <td>@producto.UnidadesDisponibles</td>
+                                <td>@producto.ImagenUrl</td>
+                                <td>@producto.Descripcion</td>
+                                <td>
+                                    <!-- Botón Eliminar -->
+                                    <form asp-action="EliminarProducto" asp-controller="Admin" method="post" style="display:inline;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@producto.ID" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning text-center">
+                    No hay productos registrados.
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
