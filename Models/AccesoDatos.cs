@@ -1092,11 +1092,11 @@
                                     Estado = reader.GetString(reader.GetOrdinal("Estado")),
                                     FechaCreacion = reader.GetDateTime(reader.GetOrdinal("FechaCreacion")),
                                     CreadoPor = reader.GetString(reader.GetOrdinal("CreadoPor")),
-                                    FechaModificacion = reader.IsDBNull(reader.GetOrdinal("FechaModificacion")) 
-                                        ? (DateTime?)null 
+                                    FechaModificacion = reader.IsDBNull(reader.GetOrdinal("FechaModificacion"))
+                                        ? (DateTime?)null
                                         : reader.GetDateTime(reader.GetOrdinal("FechaModificacion")),
-                                    ModificadoPor = reader.IsDBNull(reader.GetOrdinal("ModificadoPor")) 
-                                        ? null 
+                                    ModificadoPor = reader.IsDBNull(reader.GetOrdinal("ModificadoPor"))
+                                        ? null
                                         : reader.GetString(reader.GetOrdinal("ModificadoPor"))
                                 };
                             }
@@ -1206,7 +1206,9 @@
                                     Cantidad = reader.GetInt32(reader.GetOrdinal("Cantidad")),
                                     PrecioUnitario = reader.GetDecimal(reader.GetOrdinal("PrecioUnitario")),
                                     Subtotal = reader.GetDecimal(reader.GetOrdinal("Subtotal")),
-                                    NombreProducto = reader.IsDBNull(reader.GetOrdinal("NombreProducto")) ? null : reader.GetString(reader.GetOrdinal("NombreProducto")),
+                                    NombreProducto = reader.IsDBNull(reader.GetOrdinal("NombreProducto"))
+                                        ? null
+                                        : reader.GetString(reader.GetOrdinal("NombreProducto")),
                                     FechaFactura = reader.GetDateTime(reader.GetOrdinal("FechaFactura"))
                                 };
                             }
@@ -1934,7 +1936,7 @@
                 }
             }
         }
-      
+
         public List<CarritoItem> ObtenerCarritoPorClienteID(int clienteID)
         {
             List<CarritoItem> carrito = new List<CarritoItem>();
@@ -1960,7 +1962,7 @@
                                     ImagenUrl = reader.IsDBNull(10) ? null : reader.GetString(10),
                                     Descripcion = reader.IsDBNull(11) ? null : reader.GetString(11),
                                     Cantidad = reader.GetInt32(12),
-                                  
+
                                 });
                             }
                         }
@@ -1974,8 +1976,8 @@
 
             return carrito;
         }
-       
-        
+
+
 
         public Cliente ObtenerClientePorPersonaID(int personaID)
         {
@@ -2017,7 +2019,7 @@
             return cliente;
         }
 
-       
+
 
         public void EliminarProductoCarrito(int clienteID, int productoID)
         {
@@ -2106,269 +2108,269 @@
         }
 
 
- public RegistroViewModel ObtenerPerfilUsuario(int usuarioId)
-{
-    RegistroViewModel perfil = new RegistroViewModel();
-
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        using (SqlCommand cmd = new SqlCommand("sp_ObtenerPerfilUsuario", con))
+        public RegistroViewModel ObtenerPerfilUsuario(int usuarioId)
         {
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+            RegistroViewModel perfil = new RegistroViewModel();
 
-            con.Open();
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            using (SqlConnection con = new SqlConnection(_conexion))
             {
-                if (reader.Read())
+                using (SqlCommand cmd = new SqlCommand("sp_ObtenerPerfilUsuario", con))
                 {
-                    perfil.Usuario = new Usuario
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+
+                    con.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        ID = Convert.ToInt32(reader["UsuarioID"]),
-                        NombreUsuario = reader["NombreUsuario"].ToString(),
-                        ContrasenaHash = reader["ContrasenaHash"].ToString(),
-                        Email = reader["UsuarioEmail"].ToString(), // ✅ Corregido
-                        Rol = reader["Rol"].ToString(),
-                        Estado = reader["Estado"].ToString()
-                    };
-
-                    perfil.Persona = new Persona
-                    {
-                        ID = Convert.ToInt32(reader["PersonaID"]),
-                        Nombre1 = reader["Nombre1"].ToString(),
-                        Nombre2 = reader["Nombre2"].ToString(),
-                        Apellido1 = reader["Apellido1"].ToString(),
-                        Apellido2 = reader["Apellido2"].ToString(),
-                        Telefono = reader["Telefono"].ToString(),
-                        Email = reader["PersonaEmail"].ToString(), // ✅ Corregido
-                        Genero = reader["Genero"].ToString(),
-                        DireccionID = Convert.ToInt32(reader["DireccionID"])
-                    };
-                    perfil.Cliente = new Cliente
-                    {
-                        ID = Convert.ToInt32(reader["ClienteID"]),
-                        PersonaID = Convert.ToInt32(reader["PersonaID"])
-                    };
-
-                    perfil.Direccion = new Direccion
-                    {
-                        ID = Convert.ToInt32(reader["DireccionID"]),
-                        Ciudad = reader["Ciudad"].ToString(),
-                        Estado = reader["EstadoDireccion"].ToString(),
-                        CodigoPostal = reader["CodigoPostal"].ToString(),
-                        Pais = reader["Pais"].ToString(),
-                        TipoDireccion = reader["TipoDireccion"].ToString()
-                    };
-                }
-            }
-        }
-    }
-
-    return perfil;
-}
-public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
-{
-    using (SqlConnection con = new SqlConnection(_conexion))
-    using (SqlCommand cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con))
-    {
-        cmd.CommandType = CommandType.StoredProcedure;
-
-        cmd.Parameters.AddWithValue("@UsuarioID", perfil.Usuario.ID);
-        cmd.Parameters.AddWithValue("@NombreUsuario", perfil.Usuario.NombreUsuario);
-        cmd.Parameters.AddWithValue("@Email", perfil.Usuario.Email);
-        cmd.Parameters.AddWithValue("@Rol", perfil.Usuario.Rol);
-
-        cmd.Parameters.AddWithValue("@PersonaID", perfil.Persona.ID);
-        cmd.Parameters.AddWithValue("@Nombre1", perfil.Persona.Nombre1 ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Nombre2", perfil.Persona.Nombre2 ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Apellido1", perfil.Persona.Apellido1 ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Apellido2", perfil.Persona.Apellido2 ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Telefono", perfil.Persona.Telefono ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Genero", perfil.Persona.Genero ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@PersonaEmail", perfil.Persona.Email ?? (object)DBNull.Value);
-
-        cmd.Parameters.AddWithValue("@DireccionID", perfil.Direccion.ID);
-        cmd.Parameters.AddWithValue("@Ciudad", perfil.Direccion.Ciudad ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Estado", perfil.Direccion.Estado ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@CodigoPostal", perfil.Direccion.CodigoPostal ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@Pais", perfil.Direccion.Pais ?? (object)DBNull.Value);
-        cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion ?? (object)DBNull.Value);
-
-        con.Open();
-        cmd.ExecuteNonQuery(); // 🔥 Ejecutamos pero no intentamos capturar return
-
-        return true; // 🔥 Si no explota, asumimos que actualizó
-    }
-}
-
-
-public bool EliminarPerfilUsuario(int usuarioId)
-{
-    using (SqlConnection con = new SqlConnection(_conexion))
-    using (SqlCommand cmd = new SqlCommand("sp_EliminarPerfilUsuario", con))
-    {
-        cmd.CommandType = CommandType.StoredProcedure;
-        cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
-        
-        // Parámetro de retorno
-        SqlParameter returnValue = new SqlParameter("@ReturnValue", SqlDbType.Int);
-        returnValue.Direction = ParameterDirection.ReturnValue;
-        cmd.Parameters.Add(returnValue);
-        
-        con.Open();
-        cmd.ExecuteNonQuery();
-        
-        return (int)returnValue.Value == 1;
-    }
-}
-public bool AgregarDevolucion(Devolucion devolucion)
-{
-    try
-    {
-        using (SqlConnection conn = new SqlConnection(_conexion))
-        {
-            conn.Open();
-            using (SqlCommand cmd = new SqlCommand("sp_AgregarDevolucion", conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@FacturaID", devolucion.FacturaID);
-                cmd.Parameters.AddWithValue("@DetalleFacturaID", devolucion.DetalleFacturaID);
-                cmd.Parameters.AddWithValue("@ProductoID", devolucion.ProductoID);
-                cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
-                cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
-                cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
-                cmd.Parameters.AddWithValue("@CreadoPor", devolucion.CreadoPor);
-
-                int filas = cmd.ExecuteNonQuery();
-                return filas > 0;
-            }
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("Error al agregar devolución: " + ex.Message);
-        return false;
-    }
-}
-
-// Obtener todas las devoluciones
-public List<Devolucion> ObtenerDevoluciones()
-{
-    List<Devolucion> lista = new List<Devolucion>();
-
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        using (SqlCommand cmd = new SqlCommand("sp_ObtenerDevoluciones", con))
-        {
-            cmd.CommandType = CommandType.StoredProcedure;
-            con.Open();
-
-            using (SqlDataReader dr = cmd.ExecuteReader())
-            {
-                while (dr.Read())
-                {
-                    lista.Add(new Devolucion
-                    {
-                        ID = Convert.ToInt32(dr["ID"]),
-                        FacturaID = Convert.ToInt32(dr["FacturaID"]),
-                        DetalleFacturaID = Convert.ToInt32(dr["DetalleFacturaID"]),
-                        ProductoID = Convert.ToInt32(dr["ProductoID"]),
-                        Cantidad = Convert.ToInt32(dr["Cantidad"]),
-                        Motivo = dr["Motivo"].ToString(),
-                        Estado = dr["Estado"].ToString(),
-                        FechaDevolucion = Convert.ToDateTime(dr["FechaDevolucion"]),
-                        CreadoPor = dr["CreadoPor"].ToString(),
-                        FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
-                    });
-                }
-            }
-        }
-    }
-
-    return lista;
-}
-
-// Actualizar una devolución
-public bool ActualizarDevolucion(Devolucion devolucion)
-{
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        using (SqlCommand cmd = new SqlCommand("sp_ActualizarDevolucion", con))
-        {
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID", devolucion.ID);
-            cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
-            cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
-            cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
-            cmd.Parameters.AddWithValue("@ModificadoPor", devolucion.ModificadoPor ?? (object)DBNull.Value);
-
-            con.Open();
-            int rows = cmd.ExecuteNonQuery();
-            return rows > 0;
-        }
-    }
-}
-
-// Eliminar una devolución
-public bool EliminarDevolucion(int id)
-{
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        using (SqlCommand cmd = new SqlCommand("sp_EliminarDevolucion", con))
-        {
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID", id);
-
-            con.Open();
-            int rows = cmd.ExecuteNonQuery();
-            return rows > 0;
-        }
-    }
-}
-public List<DetalleFactura> ObtenerProductosCompradosPorCliente(int clienteID)
-{
-    List<DetalleFactura> productosComprados = new List<DetalleFactura>();
-
-    using (SqlConnection con = new SqlConnection(_conexion))
-    {
-        try
-        {
-            string query = "EXEC sp_ObtenerProductosCompradosPorCliente @ClienteID";
-            using (SqlCommand cmd = new SqlCommand(query, con))
-            {
-                cmd.Parameters.AddWithValue("@ClienteID", clienteID);
-                con.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        productosComprados.Add(new DetalleFactura
+                        if (reader.Read())
                         {
-                            
-                            ID = Convert.ToInt32(reader["ID"]),
-                            FacturaID = Convert.ToInt32(reader["FacturaID"]),
-                            ProductoID = Convert.ToInt32(reader["ProductoID"]),
-                            NombreProducto = reader["NombreProducto"].ToString(), // 🆕 Aquí el nombre del producto
-                            Cantidad = Convert.ToInt32(reader["Cantidad"]),
-                            PrecioUnitario = Convert.ToDecimal(reader["PrecioUnitario"]),
-                            Subtotal = Convert.ToDecimal(reader["Subtotal"]),
-                            FechaFactura = Convert.ToDateTime(reader["FechaFactura"]) // 🆕 Para validar si aplica devolución
-                        });
+                            perfil.Usuario = new Usuario
+                            {
+                                ID = Convert.ToInt32(reader["UsuarioID"]),
+                                NombreUsuario = reader["NombreUsuario"].ToString(),
+                                ContrasenaHash = reader["ContrasenaHash"].ToString(),
+                                Email = reader["UsuarioEmail"].ToString(), // ✅ Corregido
+                                Rol = reader["Rol"].ToString(),
+                                Estado = reader["Estado"].ToString()
+                            };
+
+                            perfil.Persona = new Persona
+                            {
+                                ID = Convert.ToInt32(reader["PersonaID"]),
+                                Nombre1 = reader["Nombre1"].ToString(),
+                                Nombre2 = reader["Nombre2"].ToString(),
+                                Apellido1 = reader["Apellido1"].ToString(),
+                                Apellido2 = reader["Apellido2"].ToString(),
+                                Telefono = reader["Telefono"].ToString(),
+                                Email = reader["PersonaEmail"].ToString(), // ✅ Corregido
+                                Genero = reader["Genero"].ToString(),
+                                DireccionID = Convert.ToInt32(reader["DireccionID"])
+                            };
+                            perfil.Cliente = new Cliente
+                            {
+                                ID = Convert.ToInt32(reader["ClienteID"]),
+                                PersonaID = Convert.ToInt32(reader["PersonaID"])
+                            };
+
+                            perfil.Direccion = new Direccion
+                            {
+                                ID = Convert.ToInt32(reader["DireccionID"]),
+                                Ciudad = reader["Ciudad"].ToString(),
+                                Estado = reader["EstadoDireccion"].ToString(),
+                                CodigoPostal = reader["CodigoPostal"].ToString(),
+                                Pais = reader["Pais"].ToString(),
+                                TipoDireccion = reader["TipoDireccion"].ToString()
+                            };
+                        }
                     }
                 }
             }
+
+            return perfil;
         }
-        catch (Exception ex)
+
+
+        public bool EliminarPerfilUsuario(int usuarioId)
         {
-            throw new Exception("Error al obtener los productos comprados: " + ex.Message);
+            using (SqlConnection con = new SqlConnection(_conexion))
+            using (SqlCommand cmd = new SqlCommand("sp_EliminarPerfilUsuario", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UsuarioID", usuarioId);
+
+                // Parámetro de retorno
+                SqlParameter returnValue = new SqlParameter("@ReturnValue", SqlDbType.Int);
+                returnValue.Direction = ParameterDirection.ReturnValue;
+                cmd.Parameters.Add(returnValue);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+                return (int)returnValue.Value == 1;
+            }
         }
-    }
 
-    return productosComprados;
-}
+        public bool AgregarDevolucion(Devolucion devolucion)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_conexion))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_AgregarDevolucion", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@FacturaID", devolucion.FacturaID);
+                        cmd.Parameters.AddWithValue("@DetalleFacturaID", devolucion.DetalleFacturaID);
+                        cmd.Parameters.AddWithValue("@ProductoID", devolucion.ProductoID);
+                        cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
+                        cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
+                        cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
+                        cmd.Parameters.AddWithValue("@CreadoPor", devolucion.CreadoPor);
+
+                        int filas = cmd.ExecuteNonQuery();
+                        return filas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al agregar devolución: " + ex.Message);
+                return false;
+            }
+        }
+
+// Obtener todas las devoluciones
+        public List<Devolucion> ObtenerDevoluciones()
+        {
+            List<Devolucion> lista = new List<Devolucion>();
+
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ObtenerDevoluciones", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Devolucion
+                            {
+                                ID = Convert.ToInt32(dr["ID"]),
+                                FacturaID = Convert.ToInt32(dr["FacturaID"]),
+                                DetalleFacturaID = Convert.ToInt32(dr["DetalleFacturaID"]),
+                                ProductoID = Convert.ToInt32(dr["ProductoID"]),
+                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                                Motivo = dr["Motivo"].ToString(),
+                                Estado = dr["Estado"].ToString(),
+                                FechaDevolucion = Convert.ToDateTime(dr["FechaDevolucion"]),
+                                CreadoPor = dr["CreadoPor"].ToString(),
+                                FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+// Actualizar una devolución
+        public bool ActualizarDevolucion(Devolucion devolucion)
+        {
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActualizarDevolucion", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", devolucion.ID);
+                    cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
+                    cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
+                    cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
+                    cmd.Parameters.AddWithValue("@ModificadoPor", devolucion.ModificadoPor ?? (object)DBNull.Value);
+
+                    con.Open();
+                    int rows = cmd.ExecuteNonQuery();
+                    return rows > 0;
+                }
+            }
+        }
+
+// Eliminar una devolución
+        public bool EliminarDevolucion(int id)
+        {
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_EliminarDevolucion", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    con.Open();
+                    int rows = cmd.ExecuteNonQuery();
+                    return rows > 0;
+                }
+            }
+        }
+
+        public List<DetalleFactura> ObtenerProductosCompradosPorCliente(int clienteID)
+        {
+            List<DetalleFactura> productosComprados = new List<DetalleFactura>();
+
+            using (SqlConnection con = new SqlConnection(_conexion))
+            {
+                try
+                {
+                    string query = "EXEC sp_ObtenerProductosCompradosPorCliente @ClienteID";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@ClienteID", clienteID);
+                        con.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                productosComprados.Add(new DetalleFactura
+                                {
+
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    FacturaID = Convert.ToInt32(reader["FacturaID"]),
+                                    ProductoID = Convert.ToInt32(reader["ProductoID"]),
+                                    NombreProducto =
+                                        reader["NombreProducto"].ToString(), // 🆕 Aquí el nombre del producto
+                                    Cantidad = Convert.ToInt32(reader["Cantidad"]),
+                                    PrecioUnitario = Convert.ToDecimal(reader["PrecioUnitario"]),
+                                    Subtotal = Convert.ToDecimal(reader["Subtotal"]),
+                                    FechaFactura =
+                                        Convert.ToDateTime(
+                                            reader["FechaFactura"]) // 🆕 Para validar si aplica devolución
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener los productos comprados: " + ex.Message);
+                }
+            }
+
+            return productosComprados;
+        }
 
 
 
+
+        public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
+        {
+            using (SqlConnection con = new SqlConnection(_conexion))
+            using (SqlCommand cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@PersonaID", perfil.Persona.ID);
+                cmd.Parameters.AddWithValue("@Nombre1", perfil.Persona.Nombre1 ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Nombre2", perfil.Persona.Nombre2 ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Apellido1", perfil.Persona.Apellido1 ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Apellido2", perfil.Persona.Apellido2 ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Telefono", perfil.Persona.Telefono ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Genero", perfil.Persona.Genero ?? (object)DBNull.Value);
+
+                cmd.Parameters.AddWithValue("@DireccionID", perfil.Direccion.ID);
+                cmd.Parameters.AddWithValue("@Ciudad", perfil.Direccion.Ciudad ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Estado", perfil.Direccion.Estado ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@CodigoPostal", perfil.Direccion.CodigoPostal ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Pais", perfil.Direccion.Pais ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion ?? (object)DBNull.Value);
+
+                con.Open();
+                int filas = cmd.ExecuteNonQuery();
+
+                return filas > 0;
+            }
+        }
     }
 }
