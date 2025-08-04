@@ -1,10 +1,8 @@
 ﻿using K_F_ClothingStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http;
 
-namespace K_F_ClothingStore.Controllers
-{
+namespace K_F_ClothingStore.Controllers;
+
 [Route("Cliente")]
 public class ClienteController : Controller
 {
@@ -22,7 +20,7 @@ public class ClienteController : Controller
     {
         try
         {
-            int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+            var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
             if (idUsuario == null)
             {
                 _logger.LogWarning("Intento de acceso a perfil sin sesión");
@@ -62,14 +60,14 @@ public class ClienteController : Controller
                 return BadRequest(ModelState);
             }
 
-            int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+            var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
             if (idUsuario == null || model.Usuario?.ID != idUsuario)
             {
                 _logger.LogWarning("Intento de actualización con sesión inválida");
                 return Unauthorized();
             }
 
-            bool actualizado = _acceso.ActualizarPerfilUsuario(model);
+            var actualizado = _acceso.ActualizarPerfilUsuario(model);
             if (!actualizado)
             {
                 _logger.LogError("No se pudo actualizar el perfil en la base de datos");
@@ -92,14 +90,14 @@ public class ClienteController : Controller
     {
         try
         {
-            int? sesionId = HttpContext.Session.GetInt32("IdUsuario");
+            var sesionId = HttpContext.Session.GetInt32("IdUsuario");
             if (sesionId == null || sesionId != idUsuario)
             {
                 _logger.LogWarning("Intento de eliminación con sesión inválida");
                 return Unauthorized();
             }
 
-            bool eliminado = _acceso.EliminarPerfilUsuario(idUsuario);
+            var eliminado = _acceso.EliminarPerfilUsuario(idUsuario);
             if (!eliminado)
             {
                 _logger.LogError("No se pudo eliminar el perfil en la base de datos");
@@ -117,5 +115,3 @@ public class ClienteController : Controller
         }
     }
 }
-}
-

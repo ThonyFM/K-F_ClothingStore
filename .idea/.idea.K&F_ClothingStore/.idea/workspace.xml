@@ -10,40 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1fb7afb-7fb3-4df6-b333-d341ba0baf44" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AdminController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/UsuarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UsuarioController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/FacturacionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/FacturacionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K&amp;F_ClothingStore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/K&amp;F_ClothingStore.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/AccesoDatos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AccesoDatos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Admin/Productos.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Admin/Productos.cshtml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Cliente/Perfil.cshtml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Devolucion/Index.cshtml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kyF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/BlusaBlanco.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/ChaquetaNegro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/VestidoFloral.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/abrigo_beige.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/blazer_negro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/bolso_negro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/bomber_verde.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/camisaBlanca.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/camisa_blanca.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/chaleco_gris.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/faldan.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/faldapisadanegra.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/jeansaz.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/leggings_negros.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/oxford_marron.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/poloazul.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/shorts_gris.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/sudaderagris.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/thumb.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/top_negro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/vestido_noche.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/Img/zapatillanegra.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/DetalleFactura.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DetalleFactura.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Facturacion/Confirmacion.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Facturacion/Confirmacion.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Facturacion/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Facturacion/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/sytles.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/sytles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +53,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="MIXED" />
+    <option name="RESET_MODE" value="HARD" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -108,10 +87,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.K&F_ClothingStore: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.K&F_ClothingStore: https.executor": "Debug",
+    ".NET Launch Settings Profile.K&F_ClothingStore: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "c410890d",
+    "git-widget-placeholder": "6996c15d",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

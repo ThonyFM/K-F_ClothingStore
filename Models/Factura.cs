@@ -1,42 +1,29 @@
-﻿namespace K_F_ClothingStore.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace K_F_ClothingStore.Models;
+// Necesario para [NotMapped]
+
+public class Factura
 {
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema; // Necesario para [NotMapped]
+    [Key] public int ID { get; set; }
 
-    public class Factura
-    {
-        public Factura() {}
+    [Required] public int ClienteID { get; set; }
 
-        [Key]
-        public int ID { get; set; }
+    [Required] public decimal Total { get; set; }
 
-        [Required]
-        public int ClienteID { get; set; }
+    [Required] [StringLength(50)] public string MetodoPago { get; set; }
 
-        [Required]
-        public decimal Total { get; set; }
+    [Required] [StringLength(50)] public string Estado { get; set; }
 
-        [Required]
-        [StringLength(maximumLength: 50)]
-        public string MetodoPago { get; set; }
+    public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
-        [Required]
-        [StringLength(maximumLength: 50)]
-        public string Estado { get; set; }
+    public DateTime? FechaModificacion { get; set; }
 
-        public DateTime FechaCreacion { get; set; } = DateTime.Now;
+    [Required] [StringLength(50)] public string CreadoPor { get; set; }
 
-        public DateTime? FechaModificacion { get; set; }
+    [StringLength(50)] public string ModificadoPor { get; set; }
 
-        [Required]
-        [StringLength(maximumLength: 50)]
-        public string CreadoPor { get; set; }
-
-        [StringLength(maximumLength: 50)]
-        public string ModificadoPor { get; set; }
-
-        // ⚡ Este sí lo dejamos: Solo presentación
-        [NotMapped]
-        public DateTime FechaEmision => FechaCreacion;
-    }
+    // ⚡ Este sí lo dejamos: Solo presentación
+    [NotMapped] public DateTime FechaEmision => FechaCreacion;
 }

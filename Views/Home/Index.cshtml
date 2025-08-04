@@ -1,6 +1,107 @@
-﻿@section Scripts {
+﻿@model List<Producto>
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<header>
+    <link rel="stylesheet" href="~/css/sytles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</header>
+
+<div class="container py-5">
+    <h2 class="text-center mb-5">Nuestros Productos</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var producto in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow rounded-4 product-card">
+                    <div class="image-container">
+                        <img src="@Url.Content("~/Img/" + producto.ImagenUrl)"
+                             class="card-img-top product-image"
+                             alt="@producto.NombreProducto"
+                             onclick="ampliarImagen(this)"
+                             data-producto-nombre="@producto.NombreProducto">
+                        <div class="zoom-icon">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@producto.NombreProducto</h5>
+                        <p class="card-text flex-grow-1">@producto.Descripcion</p>
+                        <h6 class="text-primary mb-3">$@producto.Precio.ToString("N2")</h6>
+                        <button class="btn btn-success agregar-carrito mt-auto" data-bs-toggle="modal"
+                                data-bs-target="#agregarCarritoModal" data-producto-id="@producto.ID">
+                            <i class="fa fa-cart-plus"></i> Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Modal para agregar al carrito -->
+<div class="modal fade" id="agregarCarritoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Agregar Producto al Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregarCarrito">
+                    <input type="hidden" id="productoId" name="productoId"/>
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad:</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" value="1"
+                               required/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmarAgregar">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para imagen ampliada -->
+<div class="modal fade" id="imagenModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imagenModalLabel">Vista ampliada</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="imagenAmpliada" src="" class="img-fluid enlarged-image" alt="Imagen ampliada">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function () {
+            // Función para ampliar imágenes
+            window.ampliarImagen = function (elemento) {
+                const srcImagen = elemento.getAttribute('src');
+                const nombreProducto = elemento.getAttribute('data-producto-nombre');
+
+                document.getElementById('imagenAmpliada').setAttribute('src', srcImagen);
+                document.getElementById('imagenModalLabel').textContent = nombreProducto;
+
+                const modal = new bootstrap.Modal(document.getElementById('imagenModal'));
+                modal.show();
+            };
+
+            // Código para el carrito
             $('.agregar-carrito').on('click', function () {
                 $('#productoId').val($(this).data('producto-id'));
             });
@@ -12,7 +113,7 @@
                 $.ajax({
                     url: '@Url.Action("AgregarAlCarrito", "Carrito")',
                     type: 'POST',
-                    data: { productoId: productoId, cantidad: cantidad },
+                    data: {productoId: productoId, cantidad: cantidad},
                     success: function (response) {
                         if (response.success) {
                             Swal.fire('¡Éxito!', 'Producto agregado al carrito correctamente.', 'success');
@@ -34,61 +135,3 @@
         });
     </script>
 }
-
-@model List<K_F_ClothingStore.Models.Producto>
-
-@{
-    ViewData["Title"] = "Productos";
-}
-<header>
-    <link rel="stylesheet" href="~/css/sytles.css" />
-</header>
-
-<div class="container py-5">
-    <h2 class="text-center mb-5">Nuestros Productos</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach (var producto in Model)
-        {
-            <div class="col">
-                <div class="card h-100 shadow rounded-4">
-                    <img src="@Url.Content("~/Img/" + producto.ImagenUrl)" class="card-img-top rounded-top-4" alt="@producto.NombreProducto">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@producto.NombreProducto</h5>
-                        <p class="card-text flex-grow-1">@producto.Descripcion</p>
-                        <h6 class="text-primary mb-3">$@producto.Precio.ToString("N2")</h6>
-                        <button class="btn btn-success agregar-carrito mt-auto" data-bs-toggle="modal" data-bs-target="#agregarCarritoModal" data-producto-id="@producto.ID">
-                            <i class="fa fa-cart-plus"></i> Agregar al Carrito
-                        </button>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="agregarCarritoModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Agregar Producto al Carrito</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formAgregarCarrito">
-                    <input type="hidden" id="productoId" name="productoId" />
-                    <div class="mb-3">
-                        <label class="form-label">Cantidad:</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" value="1" required />
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btnConfirmarAgregar">Agregar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

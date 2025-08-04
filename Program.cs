@@ -1,6 +1,4 @@
 using K_F_ClothingStore.Models;
-using Microsoft.Extensions.Logging;
-using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +11,7 @@ builder.Logging.AddFile("Logs/kf-log-{Date}.txt");
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<AccesoDatos>();
 builder.Services.AddSession();
-builder.Services.AddHttpContextAccessor(); 
+builder.Services.AddHttpContextAccessor();
 
 // Configuración de autenticación con cookies
 builder.Services.AddAuthentication("Cookies")
@@ -44,21 +42,22 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseSession();  // Habilitar sesiones
+app.UseSession(); // Habilitar sesiones
 app.UseAuthentication(); // Habilitar autenticación
-app.UseAuthorization();  // Habilitar autorización
+app.UseAuthorization(); // Habilitar autorización
 
 // Definir las rutas
 app.MapControllerRoute(
-    name: "admin",
-    pattern: "Admin/{action=Productos}/{id?}",
-    defaults: new { controller = "Admin" });
+    "admin",
+    "Admin/{action=Productos}/{id?}",
+    new { controller = "Admin" });
 app.MapControllerRoute(
-    name: "cliente",
-    pattern: "Cliente/{action=Perfil}/{id?}",
-    defaults: new { controller = "Cliente" });
+    "cliente",
+    "Cliente/{action=Perfil}/{id?}",
+    new { controller = "Cliente" });
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Auth}/{action=InicioSesion}/{id?}");
+    "default",
+    "{controller=Auth}/{action=InicioSesion}/{id?}");
+
 
 app.Run();

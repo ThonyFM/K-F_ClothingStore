@@ -69,7 +69,7 @@ CREATE TABLE Producto
     Talla               NVARCHAR(20) NOT NULL,
     UnidadesDisponibles INT            NOT NULL,
     Precio              DECIMAL(10, 2) NOT NULL,
-    ImagenUrl               NVARCHAR(20),
+    ImagenUrl           NVARCHAR(20),
     Descripcion         NVARCHAR(500) NULL,
     FechaCreacion       DATETIME DEFAULT GETDATE(),
     FechaModificacion   DATETIME NULL
@@ -1176,128 +1176,120 @@ go
 create PROCEDURE sp_GetTodosLosProductos
     AS
 BEGIN
-SELECT
-    ID,
-    NombreProducto,
-    Genero,
-    SegmentoEdad,
-    TipoProducto,
-    Color,
-    Talla,
-    UnidadesDisponibles,
-    Precio,
-    Descripcion,
-    ImagenUrl,  -- 🔹 Asegúrate de incluir esta columna
-    FechaCreacion,
-    FechaModificacion
+SELECT ID,
+       NombreProducto,
+       Genero,
+       SegmentoEdad,
+       TipoProducto,
+       Color,
+       Talla,
+       UnidadesDisponibles,
+       Precio,
+       Descripcion,
+       ImagenUrl, -- 🔹 Asegúrate de incluir esta columna
+       FechaCreacion,
+       FechaModificacion
 FROM Producto;
 END;
 GO
-CREATE PROCEDURE ObtenerPersonaPorEmail
-    @Email NVARCHAR(255)
+CREATE PROCEDURE ObtenerPersonaPorEmail @Email NVARCHAR(255)
 AS
 BEGIN
-SELECT
-    ID,
-    Nombre1,
-    Nombre2,
-    Apellido1,
-    Apellido2,
-    DocumentoIdentidad,
-    Telefono,
-    Email,
-    FechaNacimiento,
-    Genero,
-    FechaRegistro,
-    FechaCreacion,
-    CreadoPor,
-    FechaModificacion,
-    ModificadoPor,
-    DireccionID
-FROM
-    Persona
-WHERE
-    Email = @Email;
+SELECT ID,
+       Nombre1,
+       Nombre2,
+       Apellido1,
+       Apellido2,
+       DocumentoIdentidad,
+       Telefono,
+       Email,
+       FechaNacimiento,
+       Genero,
+       FechaRegistro,
+       FechaCreacion,
+       CreadoPor,
+       FechaModificacion,
+       ModificadoPor,
+       DireccionID
+FROM Persona
+WHERE Email = @Email;
 END
 GO
-CREATE PROCEDURE sp_ObtenerClientePorPersonaID
-    @PersonaID INT
+CREATE PROCEDURE sp_ObtenerClientePorPersonaID @PersonaID INT
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET
+NOCOUNT ON;
 
-SELECT
-    ID,
-    PersonaID,
-    CodigoCliente,
-    Estado,
-    CreadoPor,
-    FechaCreacion,
-    FechaModificacion,
-    ModificadoPor
+SELECT ID,
+       PersonaID,
+       CodigoCliente,
+       Estado,
+       CreadoPor,
+       FechaCreacion,
+       FechaModificacion,
+       ModificadoPor
 FROM Cliente
 WHERE PersonaID = @PersonaID;
 END;
 GO
-CREATE PROCEDURE sp_ObtenerCarritoPorClienteID
-    @ClienteID INT
+CREATE PROCEDURE sp_ObtenerCarritoPorClienteID @ClienteID INT
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET
+NOCOUNT ON;
 
-SELECT
-    C.ID AS CarritoID,
-    C.ClienteID,
-    C.ProductoID,
-    P.NombreProducto,
-    P.Genero,
-    P.SegmentoEdad,
-    P.TipoProducto,
-    P.Color,
-    P.Talla,
-    P.Precio,
-    P.ImagenUrl,
-    P.Descripcion,
-    C.Cantidad,
-    C.FechaAgregado,
-    C.FechaModificacion
+SELECT C.ID AS CarritoID,
+       C.ClienteID,
+       C.ProductoID,
+       P.NombreProducto,
+       P.Genero,
+       P.SegmentoEdad,
+       P.TipoProducto,
+       P.Color,
+       P.Talla,
+       P.Precio,
+       P.ImagenUrl,
+       P.Descripcion,
+       C.Cantidad,
+       C.FechaAgregado,
+       C.FechaModificacion
 FROM CarritoCompras C
          INNER JOIN Producto P ON C.ProductoID = P.ID
 WHERE C.ClienteID = @ClienteID;
 END;
 GO
-CREATE PROCEDURE sp_EliminarCarritoPorCliente
-    @ClienteID INT
+CREATE PROCEDURE sp_EliminarCarritoPorCliente @ClienteID INT
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET
+NOCOUNT ON;
 
-DELETE FROM CarritoCompras
+DELETE
+FROM CarritoCompras
 WHERE ClienteID = @ClienteID;
 END;
 GO
-CREATE PROCEDURE ObtenerDetallesFacturaPorFacturaID
-    @FacturaID INT
+CREATE PROCEDURE ObtenerDetallesFacturaPorFacturaID @FacturaID INT
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET
+NOCOUNT ON;
 
-SELECT
-    DF.ID,
-    DF.FacturaID,
-    DF.ProductoID,
-    P.NombreProducto,
-    DF.Cantidad,
-    DF.PrecioUnitario,
-    DF.Subtotal
+SELECT DF.ID,
+       DF.FacturaID,
+       DF.ProductoID,
+       P.NombreProducto,
+       DF.Cantidad,
+       DF.PrecioUnitario,
+       DF.Subtotal
 FROM DetalleFactura DF
          INNER JOIN Producto P ON DF.ProductoID = P.ID
 WHERE DF.FacturaID = @FacturaID;
 END;
 
 GO
-CREATE PROCEDURE sp_ActualizarPerfilUsuario
-    @UsuarioID INT,
+CREATE PROCEDURE sp_ActualizarPerfilUsuario @UsuarioID INT,
     @NombreUsuario NVARCHAR(50),
     @Email NVARCHAR(255),
     @Rol NVARCHAR(50),
@@ -1317,73 +1309,88 @@ CREATE PROCEDURE sp_ActualizarPerfilUsuario
     @TipoDireccion NVARCHAR(20) = NULL
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET
+NOCOUNT ON;
 
-    UPDATE Usuario
-    SET NombreUsuario = @NombreUsuario,
-        Email = @Email,
-        Rol = @Rol,
-        FechaModificacion = GETDATE()
-    WHERE ID = @UsuarioID;
+UPDATE Usuario
+SET NombreUsuario     = @NombreUsuario,
+    Email             = @Email,
+    Rol               = @Rol,
+    FechaModificacion = GETDATE()
+WHERE ID = @UsuarioID;
 
-    UPDATE Persona
-    SET Nombre1 = @Nombre1,
-        Nombre2 = @Nombre2,
-        Apellido1 = @Apellido1,
-        Apellido2 = @Apellido2,
-        Telefono = @Telefono,
-        Genero = @Genero,
-        Email = @PersonaEmail,
-        FechaModificacion = GETDATE()
-    WHERE ID = @PersonaID;
+UPDATE Persona
+SET Nombre1           = @Nombre1,
+    Nombre2           = @Nombre2,
+    Apellido1         = @Apellido1,
+    Apellido2         = @Apellido2,
+    Telefono          = @Telefono,
+    Genero            = @Genero,
+    Email             = @PersonaEmail,
+    FechaModificacion = GETDATE()
+WHERE ID = @PersonaID;
 
-    UPDATE Direccion
-    SET Ciudad = @Ciudad,
-        Estado = @Estado,
-        CodigoPostal = @CodigoPostal,
-        Pais = @Pais,
-        TipoDireccion = @TipoDireccion,
-        FechaModificacion = GETDATE()
-    WHERE ID = @DireccionID;
+UPDATE Direccion
+SET Ciudad            = @Ciudad,
+    Estado            = @Estado,
+    CodigoPostal      = @CodigoPostal,
+    Pais              = @Pais,
+    TipoDireccion     = @TipoDireccion,
+    FechaModificacion = GETDATE()
+WHERE ID = @DireccionID;
 END;
 
 GO
-CREATE PROCEDURE sp_EliminarPerfilUsuario
-    @UsuarioID INT
+CREATE PROCEDURE sp_EliminarPerfilUsuario @UsuarioID INT
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET
+NOCOUNT ON;
 
-    DECLARE @PersonaID INT;
-    DECLARE @DireccionID INT;
-    DECLARE @ClienteID INT;
+    DECLARE
+@PersonaID INT;
+    DECLARE
+@DireccionID INT;
+    DECLARE
+@ClienteID INT;
 
-    SELECT @PersonaID = ID, @DireccionID = DireccionID
-    FROM Persona
-    WHERE UsuarioID = @UsuarioID;
+SELECT @PersonaID = ID, @DireccionID = DireccionID
+FROM Persona
+WHERE UsuarioID = @UsuarioID;
 
-    SELECT @ClienteID = ID
-    FROM Cliente
-    WHERE PersonaID = @PersonaID;
+SELECT @ClienteID = ID
+FROM Cliente
+WHERE PersonaID = @PersonaID;
 
-    IF @ClienteID IS NOT NULL
-    BEGIN
-        EXEC sp_EliminarCarritoPorCliente @ClienteID;
-        DELETE FROM Cliente WHERE ID = @ClienteID;
-    END
+IF
+@ClienteID IS NOT NULL
+BEGIN
+EXEC sp_EliminarCarritoPorCliente @ClienteID;
+DELETE
+FROM Cliente
+WHERE ID = @ClienteID;
+END
 
-    IF @PersonaID IS NOT NULL
-    BEGIN
-        DELETE FROM Persona WHERE ID = @PersonaID;
-    END
+    IF
+@PersonaID IS NOT NULL
+BEGIN
+DELETE
+FROM Persona
+WHERE ID = @PersonaID;
+END
 
-    IF @DireccionID IS NOT NULL
-    BEGIN
-        DELETE FROM Direccion WHERE ID = @DireccionID;
-    END
+    IF
+@DireccionID IS NOT NULL
+BEGIN
+DELETE
+FROM Direccion
+WHERE ID = @DireccionID;
+END
 
-    DELETE FROM Usuario WHERE ID = @UsuarioID;
+DELETE
+FROM Usuario
+WHERE ID = @UsuarioID;
 
-    RETURN 1;
+RETURN 1;
 END;
 

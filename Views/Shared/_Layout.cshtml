@@ -1,16 +1,14 @@
-﻿@using Microsoft.AspNetCore.Http
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - K_F_ClothingStore</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/estilos_personalizados.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="~/css/estilos_personalizados.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 
     <style>
         .dropdown-menu {
@@ -18,42 +16,58 @@
             transform: translateY(10px);
             transition: all 0.3s ease;
         }
+
         .dropdown-menu.show {
             opacity: 1;
             transform: translateY(0);
         }
+
         .fade-in {
             animation: fadeIn 1s ease-in-out;
         }
+
         @@keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         body {
             background: linear-gradient(to right, #e0eafc, #cfdef3);
             scroll-behavior: smooth;
         }
+
         .navbar {
             font-weight: 500;
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.8) !important;
             transition: all 0.3s ease-in-out;
         }
+
         .navbar:hover {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
         .navbar-brand {
             font-size: 1.6rem;
             font-weight: bold;
             transition: all 0.3s;
         }
+
         .navbar-brand:hover {
             transform: scale(1.05);
             color: #0d6efd !important;
         }
+
         footer {
             background-color: #f8f9fa;
         }
+
         #scrollTopButton {
             position: fixed;
             bottom: 30px;
@@ -70,6 +84,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s;
         }
+
         #scrollTopButton:hover {
             background-color: #084298;
         }
@@ -82,7 +97,8 @@
     <div class="container">
         <a class="navbar-brand text-primary" asp-controller="Home" asp-action="Index">K_F_ClothingStore</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -91,7 +107,8 @@
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Inicio</a></li>
                 @if (Context.Session.GetString("Rol") == "Admin")
                 {
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Productos", "Admin")">Administrar Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Productos", "Admin")">Administrar
+                            Productos</a></li>
                 }
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a></li>
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Devolucion")">Devoliciones</a></li>
@@ -100,16 +117,22 @@
             @if (Context.Session.GetString("Email") != null)
             {
                 <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center gap-2" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/images/user-icon.png" class="rounded-circle" width="32" height="32" alt="Usuario" />
+                    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center gap-2"
+                            type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/images/user-icon.png" class="rounded-circle" width="32" height="32" alt="Usuario"/>
                         <span>@Context.Session.GetString("Nombre")</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                         <li class="text-center fw-bold">@Context.Session.GetString("Email")</li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="@Url.Action("Perfil", "Cliente")"><i class="fas fa-user"></i> Mi Perfil</a></li>
-                        <li><a class="dropdown-item" href="@Url.Action("MiCarrito", "Carrito")"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
-                        <li><a class="dropdown-item text-danger" href="@Url.Action("CerrarSesion", "Auth")"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="@Url.Action("Perfil", "Cliente")"><i class="fas fa-user"></i>
+                                Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("MiCarrito", "Carrito")"><i
+                                    class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
+                        <li><a class="dropdown-item text-danger" href="@Url.Action("CerrarSesion", "Auth")"><i
+                                    class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
                     </ul>
                 </div>
             }
@@ -134,7 +157,8 @@
 <!-- FOOTER -->
 <footer class="text-muted py-3 mt-5" role="contentinfo">
     <div class="container text-center">
-        &copy; 2025 - K_F_ClothingStore | <a asp-controller="Home" asp-action="Privacy" class="text-decoration-none text-primary">Política de Privacidad</a>
+        &copy; 2025 - K_F_ClothingStore | <a asp-controller="Home" asp-action="Privacy"
+                                             class="text-decoration-none text-primary">Política de Privacidad</a>
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -153,9 +177,9 @@
     });
 
     scrollTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({top: 0, behavior: 'smooth'});
     });
 </script>
-@await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>

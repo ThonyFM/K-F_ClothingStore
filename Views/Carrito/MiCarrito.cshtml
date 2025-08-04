@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>@ViewData["Title"] - K_F_ClothingStore</title>
-    <link rel="stylesheet" href="~/css/estilos_personalizados.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/estilos_personalizados.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -25,7 +25,8 @@
 
             <div class="col">
                 <div class="card shadow rounded-4 h-100">
-                    <img src="@imagenRuta" class="card-img-top rounded-top-4" alt="@item.NombreProducto" style="height: 220px; object-fit: contain;">
+                    <img src="@imagenRuta" class="card-img-top rounded-top-4" alt="@item.NombreProducto"
+                         style="height: 220px; object-fit: contain;">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">@item.NombreProducto</h5>
                         <p class="card-text">@item.Descripcion</p>
@@ -33,7 +34,8 @@
 
                         <div class="mb-2">
                             <label class="form-label">Cantidad:</label>
-                            <input type="number" class="form-control cantidad-input text-center" min="1" value="@item.Cantidad" data-producto-id="@item.ProductoID" />
+                            <input type="number" class="form-control cantidad-input text-center" min="1"
+                                   value="@item.Cantidad" data-producto-id="@item.ProductoID"/>
                         </div>
 
                         <p class="mt-auto fw-bold">Total: ₡@((item.Precio * item.Cantidad).ToString("N0"))</p>
@@ -97,7 +99,7 @@
                     $.ajax({
                         url: '@Url.Action("EliminarDelCarrito", "Carrito")',
                         type: 'POST',
-                        data: { productoId: productoId },
+                        data: {productoId: productoId},
                         success: function (response) {
                             if (response.success) {
                                 location.reload();

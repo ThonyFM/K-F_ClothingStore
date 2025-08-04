@@ -1,4 +1,4 @@
-﻿@model K_F_ClothingStore.Models.RegistroViewModel
+﻿@model RegistroViewModel
 @{
     ViewData["Title"] = "Perfil de Usuario";
 }
@@ -6,17 +6,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - K_F_ClothingStore</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/estilos_personalizados.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="~/css/estilos_personalizados.css"/>
     <style>
-        .profile-card { border-radius: 15px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }
-        .profile-card:hover { transform: translateY(-5px); }
-        .modal-header { border-bottom: none; }
-        .delete-modal .modal-content { border: 2px solid #dc3545; }
+        .profile-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .delete-modal .modal-content {
+            border: 2px solid #dc3545;
+        }
     </style>
 </head>
 
@@ -45,15 +58,20 @@
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h4 class="mb-0">Información Personal</h4>
-                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#modalEditar">
                             <i class="fas fa-edit me-1"></i> Editar
                         </button>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <p><strong><i class="fas fa-user me-2"></i>Nombre:</strong> @Model.Persona?.Nombre1 @Model.Persona?.Nombre2</p>
-                            <p><strong><i class="fas fa-id-card me-2"></i>Apellidos:</strong> @Model.Persona?.Apellido1 @Model.Persona?.Apellido2</p>
+                            <p><strong><i
+                                        class="fas fa-user me-2"></i>Nombre:</strong> @Model.Persona?.Nombre1 @Model.Persona?.Nombre2
+                            </p>
+                            <p><strong><i
+                                        class="fas fa-id-card me-2"></i>Apellidos:</strong> @Model.Persona?.Apellido1 @Model.Persona?.Apellido2
+                            </p>
                         </div>
                         <div class="col-md-6">
                             <p><strong><i class="fas fa-phone me-2"></i>Teléfono:</strong> @Model.Persona?.Telefono</p>
@@ -94,37 +112,38 @@
                     @Html.AntiForgeryToken()
                     <div class="modal-header bg-primary text-white">
                         <h5 class="modal-title"><i class="fas fa-user-edit me-2"></i>Editar Perfil</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" asp-for="Usuario.ID" />
-                        <input type="hidden" asp-for="Persona.ID" />
-                        <input type="hidden" asp-for="Direccion.ID" />
-                        <input type="hidden" asp-for="Cliente.ID" />
-                        <input type="hidden" asp-for="Usuario.Email" />
-                        <input type="hidden" asp-for="Usuario.Rol" />
+                        <input type="hidden" asp-for="Usuario.ID"/>
+                        <input type="hidden" asp-for="Persona.ID"/>
+                        <input type="hidden" asp-for="Direccion.ID"/>
+                        <input type="hidden" asp-for="Cliente.ID"/>
+                        <input type="hidden" asp-for="Usuario.Email"/>
+                        <input type="hidden" asp-for="Usuario.Rol"/>
 
                         <h6 class="mb-3 text-primary">Información Personal</h6>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label>Primer Nombre</label>
-                                <input asp-for="Persona.Nombre1" class="form-control" required />
+                                <input asp-for="Persona.Nombre1" class="form-control" required/>
                             </div>
                             <div class="col-md-6">
                                 <label>Segundo Nombre</label>
-                                <input asp-for="Persona.Nombre2" class="form-control" />
+                                <input asp-for="Persona.Nombre2" class="form-control"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Primer Apellido</label>
-                                <input asp-for="Persona.Apellido1" class="form-control" required />
+                                <input asp-for="Persona.Apellido1" class="form-control" required/>
                             </div>
                             <div class="col-md-6">
                                 <label>Segundo Apellido</label>
-                                <input asp-for="Persona.Apellido2" class="form-control" />
+                                <input asp-for="Persona.Apellido2" class="form-control"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Teléfono</label>
-                                <input asp-for="Persona.Telefono" class="form-control" required />
+                                <input asp-for="Persona.Telefono" class="form-control" required/>
                             </div>
                             <div class="col-md-6">
                                 <label>Género</label>
@@ -143,19 +162,19 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label>Ciudad</label>
-                                <input asp-for="Direccion.Ciudad" class="form-control" required />
+                                <input asp-for="Direccion.Ciudad" class="form-control" required/>
                             </div>
                             <div class="col-md-6">
                                 <label>Estado</label>
-                                <input asp-for="Direccion.Estado" class="form-control" required />
+                                <input asp-for="Direccion.Estado" class="form-control" required/>
                             </div>
                             <div class="col-md-6">
                                 <label>Código Postal</label>
-                                <input asp-for="Direccion.CodigoPostal" class="form-control" required />
+                                <input asp-for="Direccion.CodigoPostal" class="form-control" required/>
                             </div>
                             <div class="col-md-6">
                                 <label>País</label>
-                                <input asp-for="Direccion.Pais" class="form-control" required />
+                                <input asp-for="Direccion.Pais" class="form-control" required/>
                             </div>
                             <div class="col-12">
                                 <label>Tipo de Dirección</label>
@@ -180,25 +199,30 @@
     </div>
 
     <!-- Modal Confirmar Eliminación (CORREGIDO) -->
-    <div class="modal fade delete-modal" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+    <div class="modal fade delete-modal" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form asp-action="EliminarCuenta" asp-controller="Cliente" method="post" id="formEliminar">
                     @Html.AntiForgeryToken()
-                    <input type="hidden" name="idUsuario" value="@Model.Usuario?.ID" />
+                    <input type="hidden" name="idUsuario" value="@Model.Usuario?.ID"/>
                     <div class="modal-header bg-danger text-white">
                         <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Eliminar Cuenta</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
                         <i class="fas fa-trash-alt fa-4x text-danger mb-3"></i>
                         <h5>¿Estás seguro que deseas eliminar tu cuenta?</h5>
                         <p class="text-muted">Esta acción es irreversible.</p>
-                        <input type="text" id="confirmText" class="form-control mt-3" placeholder="Escribe ELIMINAR para confirmar" required pattern="ELIMINAR" />
+                        <input type="text" id="confirmText" class="form-control mt-3"
+                               placeholder="Escribe ELIMINAR para confirmar" required pattern="ELIMINAR"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-danger" id="btnConfirmarEliminar" disabled>Confirmar Eliminación</button>
+                        <button type="submit" class="btn btn-danger" id="btnConfirmarEliminar" disabled>Confirmar
+                            Eliminación
+                        </button>
                     </div>
                 </form>
             </div>
@@ -211,14 +235,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#confirmText').on('input', function() {
+    $(document).ready(function () {
+        $('#confirmText').on('input', function () {
             $('#btnConfirmarEliminar').prop('disabled', $(this).val().toUpperCase() !== 'ELIMINAR');
         });
 
-        $('#formEditar').submit(function(e) {
+        $('#formEditar').submit(function (e) {
             let valid = true;
-            $(this).find('[required]').each(function() {
+            $(this).find('[required]').each(function () {
                 if (!$(this).val()) {
                     $(this).addClass('is-invalid');
                     valid = false;
