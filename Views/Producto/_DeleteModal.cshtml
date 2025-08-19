@@ -1,0 +1,37 @@
+@model K_F_ClothingStore.Models.Producto
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteModalLabel">Eliminar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="deleteForm" asp-action="Delete">
+                <input type="hidden" asp-for="ID" />
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fas fa-exclamation-triangle fa-4x text-danger mb-3"></i>
+                        <h4>¿Estás seguro de eliminar este producto?</h4>
+                        <p class="font-weight-bold">@Model.NombreProducto</p>
+                        
+                        @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                        {
+                            <img src="@Model.ImagenUrl" alt="@Model.NombreProducto" class="img-thumbnail mb-3" style="max-width: 150px;">
+                        }
+                        
+                        <p>Tipo: @Model.TipoProducto - @Model.Genero</p>
+                        <p>Precio: @Model.Precio.ToString("C")</p>
+                        <p class="text-danger">Esta acción no se puede deshacer.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

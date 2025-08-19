@@ -1,0 +1,75 @@
+@model K_F_ClothingStore.Models.Producto
+
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="detailsModalLabel">Detalles del Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                        {
+                            <img src="@Model.ImagenUrl" alt="@Model.NombreProducto" class="img-fluid rounded">
+                        }
+                        else
+                        {
+                            <div class="text-center py-4 bg-light rounded">
+                                <i class="fas fa-image fa-5x text-muted"></i>
+                                <p class="mt-2">No hay imagen disponible</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <h4>@Model.NombreProducto</h4>
+                        <hr>
+                        <dl class="row">
+                            <dt class="col-sm-4">Tipo:</dt>
+                            <dd class="col-sm-8">@Model.TipoProducto</dd>
+                            
+                            <dt class="col-sm-4">Género:</dt>
+                            <dd class="col-sm-8">@Model.Genero</dd>
+                            
+                            <dt class="col-sm-4">Segmento de Edad:</dt>
+                            <dd class="col-sm-8">@Model.SegmentoEdad</dd>
+                            
+                            <dt class="col-sm-4">Color:</dt>
+                            <dd class="col-sm-8">@Model.Color</dd>
+                            
+                            <dt class="col-sm-4">Talla:</dt>
+                            <dd class="col-sm-8">@Model.Talla</dd>
+                            
+                            <dt class="col-sm-4">Precio:</dt>
+                            <dd class="col-sm-8">@Model.Precio.ToString("C")</dd>
+                            
+                            <dt class="col-sm-4">Unidades Disponibles:</dt>
+                            <dd class="col-sm-8">@Model.UnidadesDisponibles</dd>
+                            
+                            <dt class="col-sm-4">Fecha de Creación:</dt>
+                            <dd class="col-sm-8">@Model.FechaCreacion.ToString("dd/MM/yyyy")</dd>
+                            
+                            @if (Model.FechaModificacion.HasValue)
+                            {
+                                <dt class="col-sm-4">Última Modificación:</dt>
+                                <dd class="col-sm-8">@Model.FechaModificacion.Value.ToString("dd/MM/yyyy")</dd>
+                            }
+                        </dl>
+                        
+                        @if (!string.IsNullOrEmpty(Model.Descripcion))
+                        {
+                            <h5>Descripción</h5>
+                            <p>@Model.Descripcion</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

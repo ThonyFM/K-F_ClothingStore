@@ -107,11 +107,11 @@
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Inicio</a></li>
                 @if (Context.Session.GetString("Rol") == "Admin")
                 {
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Productos", "Admin")">Administrar
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Producto")">Administrar
                             Productos</a></li>
                 }
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a></li>
-                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Devolucion")">Devoliciones</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Devolucion")">Historial de Compra</a></li>
             </ul>
 
             @if (Context.Session.GetString("Email") != null)

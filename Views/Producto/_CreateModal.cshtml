@@ -1,0 +1,115 @@
+@model K_F_ClothingStore.Models.Producto
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="createModalLabel">Agregar Nuevo Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="createForm" asp-action="Create" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="NombreProducto" class="control-label"></label>
+                                <input asp-for="NombreProducto" class="form-control" />
+                                <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="Genero" class="control-label"></label>
+                                <select asp-for="Genero" class="form-control">
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Unisex">Unisex</option>
+                                </select>
+                                <span asp-validation-for="Genero" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="SegmentoEdad" class="control-label"></label>
+                                <select asp-for="SegmentoEdad" class="form-control">
+                                    <option value="Adultos">Adultos</option>
+                                    <option value="Jóvenes">Jóvenes</option>
+                                    <option value="Niños">Niños</option>
+                                    <option value="Bebés">Bebés</option>
+                                </select>
+                                <span asp-validation-for="SegmentoEdad" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="TipoProducto" class="control-label"></label>
+                                <select asp-for="TipoProducto" class="form-control">
+                                    <option value="Camisetas">Camisetas</option>
+                                    <option value="Pantalones">Pantalones</option>
+                                    <option value="Vestidos">Vestidos</option>
+                                    <option value="Zapatos">Zapatos</option>
+                                    <option value="Accesorios">Accesorios</option>
+                                </select>
+                                <span asp-validation-for="TipoProducto" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Color" class="control-label"></label>
+                                <input asp-for="Color" class="form-control" />
+                                <span asp-validation-for="Color" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="Talla" class="control-label"></label>
+                                <select asp-for="Talla" class="form-control">
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                    <option value="Única">Única</option>
+                                </select>
+                                <span asp-validation-for="Talla" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="UnidadesDisponibles" class="control-label"></label>
+                                <input asp-for="UnidadesDisponibles" class="form-control" />
+                                <span asp-validation-for="UnidadesDisponibles" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="Precio" class="control-label"></label>
+                                <input asp-for="Precio" class="form-control" />
+                                <span asp-validation-for="Precio" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="Descripcion" class="control-label"></label>
+                        <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="ImagenArchivo" class="control-label">Imagen del Producto</label>
+                        <div class="custom-file">
+                            <input asp-for="ImagenArchivo" class="custom-file-input" id="createImage">
+                            <label class="custom-file-label" for="createImage">Seleccionar archivo...</label>
+                        </div>
+                        <span asp-validation-for="ImagenArchivo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

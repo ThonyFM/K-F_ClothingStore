@@ -10,18 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1fb7afb-7fb3-4df6-b333-d341ba0baf44" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/ProductoController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/Index.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_CreateModal.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_CreateModal.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_DeleteModal.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_DeleteModal.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_DetailsModal.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_DetailsModal.cshtml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_EditModal.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Producto/_EditModal.cshtml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/FacturacionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/FacturacionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/K&amp;F_ClothingStore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/K&amp;F_ClothingStore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ClienteController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ClienteController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/AccesoDatos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AccesoDatos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/DetalleFactura.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DetalleFactura.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Facturacion/Confirmacion.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Facturacion/Confirmacion.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Facturacion/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Facturacion/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Persona.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Persona.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Producto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Producto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Usuario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Usuario.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Cliente/Perfil.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Cliente/Perfil.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Devolucion/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Devolucion/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/sytles.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/sytles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,23 +92,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.K&F_ClothingStore: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.K&F_ClothingStore: https.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "6996c15d",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.K&amp;F_ClothingStore: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.K&amp;F_ClothingStore: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;6d92a7a2&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.K&amp;F_ClothingStore: https">
     <configuration name="K&amp;F_ClothingStore: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/K&amp;F_ClothingStore.csproj" />
@@ -198,6 +206,9 @@
       <workItem from="1751673935759" duration="1682000" />
       <workItem from="1751675636245" duration="201000" />
       <workItem from="1751675860375" duration="2558000" />
+      <workItem from="1754373034818" duration="679000" />
+      <workItem from="1755395222753" duration="9238000" />
+      <workItem from="1755569558409" duration="2826000" />
     </task>
     <task id="LOCAL-00001" summary="Arregle una parte de facturacion que no se cuando me eche la verdad, tiro la toalla decepcionando a mi profesora, no logre que el usuario pudise modificar su perfil, es imposible y perdi mucho tiempo">
       <option name="closed" value="true" />
@@ -255,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751674162379</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Limpieza del formato, ademas pequeños arreglos en facturación">
+      <option name="closed" value="true" />
+      <created>1754322218680</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1754322218680</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,25 +302,7 @@
     <MESSAGE value="intentando hacer una pagina para que el admin pueda agregar productos sin exito" />
     <MESSAGE value="casi todo listo" />
     <MESSAGE value="Arreglando el tema de las imagenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglando el tema de las imagenes" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/ClienteController.cs</url>
-          <line>55</line>
-          <properties documentPath="C:\ASP\Controllers\ClienteController.cs" containingFunctionPresentation="Method 'GuardarPerfil'">
-            <startOffsets>
-              <option value="1684" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1685" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Limpieza del formato, ademas pequeños arreglos en facturación" />
+    <option name="LAST_COMMIT_MESSAGE" value="Limpieza del formato, ademas pequeños arreglos en facturación" />
   </component>
 </project>
