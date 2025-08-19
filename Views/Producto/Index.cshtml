@@ -1,0 +1,569 @@
+@model IEnumerable<K_F_ClothingStore.Models.Producto>
+@{
+    ViewData["Title"] = "Gestión de Productos";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+
+<style>
+    /* ---------- Animaciones y estilos pro ---------- */
+    @@keyframes fadeUp { from {opacity:0; transform: translateY(8px);} to {opacity:1; transform: translateY(0);} }
+    @@keyframes pop { 0% {transform: scale(.98); opacity:.9;} 100% {transform: scale(1); opacity:1;} }
+
+    .fade-in-row { animation: fadeUp .45s ease both; }
+    .btn { transition: transform .08s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn-info, .btn-primary, .btn-danger, .btn-success { box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+
+    /* Miniaturas con hover zoom y borde suave */
+    .thumb {
+        width: 80px; height: 80px; object-fit: cover; border-radius: .5rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,.06); transition: transform .18s ease, box-shadow .18s ease;
+        background: #f8f9fa;
+    }
+    .thumb:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+    .img-fallback { background: linear-gradient(135deg,#f3f4f6,#ffffff); color:#adb5bd; display: inline-flex; align-items:center; justify-content:center; font-size:12px; }
+
+    /* Cards/Modals */
+    .modal-content { animation: pop .2s ease; border-radius: 1rem; }
+    .table thead th { position: sticky; top: 0; z-index: 1; }
+
+    /* Toast */
+    #liveToast { box-shadow: 0 10px 30px rgba(0,0,0,.15); border-radius: .75rem; }
+</style>
+
+<div class="container mt-4">
+    <div class="d-flex align-items-center justify-content-between">
+        <h2 class="mb-0">@ViewData["Title"]</h2>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
+            <i class="fas fa-plus"></i> Agregar Producto
+        </button>
+    </div>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-striped table-hover align-middle" id="productosTable">
+            <thead class="table-dark">
+            <tr>
+                <th style="width:100px">Imagen</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Género</th>
+                <th>Talla</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th style="width:160px">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var p in Model)
+            {
+                var fullImg = Url.Content("~/Img/" + (string.IsNullOrEmpty(p.ImagenUrl) ? "" : p.ImagenUrl));
+                var fallback = Url.Content("~/Img/placeholder.png"); // Asegúrate de tener este archivo en wwwroot/Img
+                <tr class="fade-in-row">
+                    <td>
+                        @if (!string.IsNullOrEmpty(p.ImagenUrl))
+                        {
+                            <img src="@fullImg"
+                                 alt="@p.NombreProducto"
+                                 class="thumb"
+                                 loading="lazy" decoding="async"
+                                 onerror="this.onerror=null; this.src='@fallback'; this.classList.add('img-fallback');" />
+                        }
+                        else
+                        {
+                            <img src="@fallback" alt="Sin imagen" class="thumb img-fallback" />
+                        }
+                    </td>
+                    <td>@p.NombreProducto</td>
+                    <td>@p.TipoProducto</td>
+                    <td>@p.Genero</td>
+                    <td>@p.Talla</td>
+                    <td>@p.Precio.ToString("C")</td>
+                    <td>@p.UnidadesDisponibles</td>
+                    <td>
+                        <!-- Botón Detalles -->
+                        <button class="btn btn-info btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#detailsModal"
+                                data-id="@p.ID"
+                                data-nombre="@p.NombreProducto"
+                                data-tipo="@p.TipoProducto"
+                                data-genero="@p.Genero"
+                                data-segmento="@p.SegmentoEdad"
+                                data-color="@p.Color"
+                                data-talla="@p.Talla"
+                                data-precio="@p.Precio"
+                                data-stock="@p.UnidadesDisponibles"
+                                data-descripcion="@p.Descripcion"
+                                data-imagen="@p.ImagenUrl"
+                                onclick="openDetails(this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+
+                        <!-- Botón Editar -->
+                        <button class="btn btn-primary btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#editModal"
+                                data-id="@p.ID"
+                                data-nombre="@p.NombreProducto"
+                                data-tipo="@p.TipoProducto"
+                                data-genero="@p.Genero"
+                                data-segmento="@p.SegmentoEdad"
+                                data-color="@p.Color"
+                                data-talla="@p.Talla"
+                                data-precio="@p.Precio"
+                                data-stock="@p.UnidadesDisponibles"
+                                data-descripcion="@p.Descripcion"
+                                data-imagen="@p.ImagenUrl"
+                                onclick="openEdit(this)">
+                            <i class="fas fa-edit"></i>
+                        </button>
+
+                        <!-- Botón Eliminar -->
+                        <button class="btn btn-danger btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                data-id="@p.ID"
+                                data-nombre="@p.NombreProducto"
+                                data-tipo="@p.TipoProducto"
+                                data-precio="@p.Precio"
+                                data-imagen="@p.ImagenUrl"
+                                onclick="openDelete(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Toast de feedback -->
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 1080">
+    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toastBody">Operación realizada correctamente.</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+        </div>
+    </div>
+</div>
+
+<!-- CREATE MODAL -->
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="createForm" action="@Url.Action("Create","Producto")" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="createLabel">Agregar Nuevo Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nombre</label>
+                            <input name="NombreProducto" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Género</label>
+                            <select name="Genero" class="form-select" required>
+                                <option value="">Selecciona...</option>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                                <option>Unisex</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Segmento de Edad</label>
+                            <select name="SegmentoEdad" class="form-select" required>
+                                <option value="">Selecciona...</option>
+                                <option>Adultos</option>
+                                <option>Jóvenes</option>
+                                <option>Niños</option>
+                                <option>Bebés</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tipo de Producto</label>
+                            <select name="TipoProducto" class="form-select" required>
+                                <option value="">Selecciona...</option>
+                                <option>Camisetas</option>
+                                <option>Pantalones</option>
+                                <option>Vestidos</option>
+                                <option>Zapatos</option>
+                                <option>Accesorios</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Color</label>
+                            <input name="Color" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Talla</label>
+                            <select name="Talla" class="form-select" required>
+                                <option value="">Selecciona...</option>
+                                <option>XS</option><option>S</option><option>M</option>
+                                <option>L</option><option>XL</option><option>XXL</option>
+                                <option>Única</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Unidades Disponibles</label>
+                            <input type="number" name="UnidadesDisponibles" class="form-control" min="0" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Precio</label>
+                            <input type="number" name="Precio" class="form-control" min="0" step="0.01" required />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Descripción</label>
+                            <textarea name="Descripcion" class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Imagen del Producto</label>
+                            <input type="file" name="ImagenArchivo" id="createImage" class="form-control" accept="image/*" />
+                            <div class="form-text">Se guardará solo el nombre del archivo en BD (carpeta <code>/Img</code>).</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="editForm" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="ID" id="edit-ID" />
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="editLabel">Editar Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nombre</label>
+                            <input name="NombreProducto" id="edit-Nombre" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Género</label>
+                            <select name="Genero" id="edit-Genero" class="form-select" required>
+                                <option>Masculino</option><option>Femenino</option><option>Unisex</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Segmento de Edad</label>
+                            <select name="SegmentoEdad" id="edit-Segmento" class="form-select" required>
+                                <option>Adultos</option><option>Jóvenes</option><option>Niños</option><option>Bebés</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tipo de Producto</label>
+                            <select name="TipoProducto" id="edit-Tipo" class="form-select" required>
+                                <option>Camisetas</option><option>Pantalones</option><option>Vestidos</option>
+                                <option>Zapatos</option><option>Accesorios</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Color</label>
+                            <input name="Color" id="edit-Color" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Talla</label>
+                            <select name="Talla" id="edit-Talla" class="form-select" required>
+                                <option>XS</option><option>S</option><option>M</option>
+                                <option>L</option><option>XL</option><option>XXL</option>
+                                <option>Única</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Unidades Disponibles</label>
+                            <input type="number" name="UnidadesDisponibles" id="edit-Stock" class="form-control" min="0" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Precio</label>
+                            <input type="number" name="Precio" id="edit-Precio" class="form-control" min="0" step="0.01" required />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Descripción</label>
+                            <textarea name="Descripcion" id="edit-Descripcion" class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Cambiar Imagen (opcional)</label>
+                            <input type="file" name="ImagenArchivo" id="edit-Imagen" class="form-control" accept="image/*" />
+                            <div class="mt-2" id="edit-PreviewWrapper" style="display:none">
+                                <small>Imagen actual:</small>
+                                <img id="edit-Preview" src="" class="img-thumbnail" style="max-width:100px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- DETAILS MODAL -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="detailsLabel">Detalles del Producto</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div id="details-HasImage" class="d-none">
+                            <img id="details-Imagen" src="" alt="Imagen" class="img-fluid rounded">
+                        </div>
+                        <div id="details-NoImage" class="text-center py-4 bg-light rounded">
+                            <i class="fas fa-image fa-4x text-muted"></i>
+                            <p class="mt-2 mb-0">No hay imagen</p>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h4 id="details-Nombre"></h4>
+                        <hr>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Tipo:</dt>        <dd class="col-sm-8" id="details-Tipo"></dd>
+                            <dt class="col-sm-4">Género:</dt>      <dd class="col-sm-8" id="details-Genero"></dd>
+                            <dt class="col-sm-4">Segmento:</dt>    <dd class="col-sm-8" id="details-Segmento"></dd>
+                            <dt class="col-sm-4">Color:</dt>       <dd class="col-sm-8" id="details-Color"></dd>
+                            <dt class="col-sm-4">Talla:</dt>       <dd class="col-sm-8" id="details-Talla"></dd>
+                            <dt class="col-sm-4">Precio:</dt>      <dd class="col-sm-8" id="details-Precio"></dd>
+                            <dt class="col-sm-4">Stock:</dt>       <dd class="col-sm-8" id="details-Stock"></dd>
+                        </dl>
+                        <div class="mt-3">
+                            <h5>Descripción</h5>
+                            <p id="details-Descripcion" class="mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div>
+        </div>
+    </div>
+</div>
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="deleteForm" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="ID" id="delete-ID" />
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="deleteLabel">Eliminar Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+                    <h5 class="mb-3">¿Seguro que deseas eliminar?</h5>
+                    <div id="delete-Card" class="mb-2">
+                        <strong id="delete-Nombre"></strong>
+                        <div class="small text-muted" id="delete-Tipo"></div>
+                        <div class="small" id="delete-Precio"></div>
+                        <img id="delete-Imagen" src="" class="img-thumbnail mt-2" style="max-width:120px; display:none;" />
+                    </div>
+                    <div class="text-danger">Esta acción no se puede deshacer.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Base de imágenes (wwwroot/Img)
+    const IMG_BASE = '@Url.Content("~/Img/")';
+    const IMG_FALLBACK = '@Url.Content("~/Img/placeholder.png")';
+
+    function fullImg(name) {
+        if (!name) return '';
+        return IMG_BASE + name;
+    }
+
+    // -------- Helpers UI --------
+    function showToast(msg, isError) {
+        const toastEl = document.getElementById('liveToast');
+        const body = document.getElementById('toastBody');
+        body.textContent = msg || 'Operación realizada correctamente.';
+        toastEl.classList.remove('text-bg-success', 'text-bg-danger');
+        toastEl.classList.add(isError ? 'text-bg-danger' : 'text-bg-success');
+        bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 2200 }).show();
+    }
+
+    function money(n) {
+        try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' }).format(n); }
+        catch(_) { return n; }
+    }
+
+    // -------- Abrir / Rellenar modales --------
+    window.openDetails = function(btn) {
+        const d = btn.dataset;
+        document.getElementById('details-Nombre').textContent = d.nombre || '';
+        document.getElementById('details-Tipo').textContent = d.tipo || '';
+        document.getElementById('details-Genero').textContent = d.genero || '';
+        document.getElementById('details-Segmento').textContent = d.segmento || '';
+        document.getElementById('details-Color').textContent = d.color || '';
+        document.getElementById('details-Talla').textContent = d.talla || '';
+        document.getElementById('details-Precio').textContent = money(d.precio);
+        document.getElementById('details-Stock').textContent = d.stock || '0';
+        document.getElementById('details-Descripcion').textContent = d.descripcion || '';
+
+        const hasImg = (d.imagen && d.imagen.length > 0);
+        document.getElementById('details-HasImage').classList.toggle('d-none', !hasImg);
+        document.getElementById('details-NoImage').classList.toggle('d-none', hasImg);
+        if (hasImg) {
+            const img = document.getElementById('details-Imagen');
+            img.src = fullImg(d.imagen);
+            img.onerror = () => { img.src = IMG_FALLBACK; };
+        }
+    }
+
+    window.openEdit = function(btn) {
+        const d = btn.dataset;
+        $('#edit-ID').val(d.id);
+        $('#edit-Nombre').val(d.nombre);
+        $('#edit-Genero').val(d.genero);
+        $('#edit-Segmento').val(d.segmento);
+        $('#edit-Tipo').val(d.tipo);
+        $('#edit-Color').val(d.color);
+        $('#edit-Talla').val(d.talla);
+        $('#edit-Stock').val(d.stock);
+        $('#edit-Precio').val(d.precio);
+        $('#edit-Descripcion').val(d.descripcion);
+
+        if (d.imagen) {
+            $('#edit-Preview').attr('src', fullImg(d.imagen)).on('error', function(){ this.src = IMG_FALLBACK; });
+            $('#edit-PreviewWrapper').show();
+        } else {
+            $('#edit-PreviewWrapper').hide();
+        }
+
+        // Set action con ID al vuelo
+        $('#editForm').attr('action', '@Url.Action("Edit","Producto")/' + d.id);
+    }
+
+    window.openDelete = function(btn) {
+        const d = btn.dataset;
+        $('#delete-ID').val(d.id);
+        $('#delete-Nombre').text(d.nombre || '');
+        $('#delete-Tipo').text(d.tipo || '');
+        $('#delete-Precio').text(money(d.precio));
+        if (d.imagen) {
+            $('#delete-Imagen').attr('src', fullImg(d.imagen)).on('error', function(){ this.src = IMG_FALLBACK; }).show();
+        } else {
+            $('#delete-Imagen').hide();
+        }
+        // Set action con ID al vuelo
+        $('#deleteForm').attr('action', '@Url.Action("Delete","Producto")/' + d.id);
+    }
+
+    // -------- Envío AJAX --------
+    $(function () {
+        // CREATE
+        $('#createForm').on('submit', function (e) {
+            e.preventDefault();
+            const fd = new FormData(this);
+            $.ajax({
+                url: this.action,
+                type: 'POST',
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (r) {
+                    if (r && r.success) {
+                        showToast('Producto creado.');
+                        const m = bootstrap.Modal.getInstance(document.getElementById('createModal'));
+                        m && m.hide();
+                        setTimeout(() => location.reload(), 900);
+                    } else {
+                        showToast(r && r.message ? r.message : 'No se pudo crear.', true);
+                    }
+                },
+                error: function () { showToast('Error al crear.', true); }
+            });
+        });
+
+        // EDIT
+        $('#editForm').on('submit', function (e) {
+            e.preventDefault();
+            const fd = new FormData(this);
+            $.ajax({
+                url: this.action, // ya seteada con /Edit/{id}
+                type: 'POST',
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (r) {
+                    if (r && r.success) {
+                        showToast('Producto actualizado.');
+                        const m = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+                        m && m.hide();
+                        setTimeout(() => location.reload(), 900);
+                    } else {
+                        showToast(r && r.message ? r.message : 'No se pudo actualizar.', true);
+                    }
+                },
+                error: function () { showToast('Error al actualizar.', true); }
+            });
+        });
+
+        // DELETE
+        $('#deleteForm').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: this.action, // ya seteada con /Delete/{id}
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (r) {
+                    if (r && r.success) {
+                        showToast('Producto eliminado.');
+                        const m = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
+                        m && m.hide();
+                        setTimeout(() => location.reload(), 900);
+                    } else {
+                        showToast(r && r.message ? r.message : 'No se pudo eliminar.', true);
+                    }
+                },
+                error: function () { showToast('Error al eliminar.', true); }
+            });
+        });
+
+        // Reset formularios al cerrar modales
+        document.querySelectorAll('.modal').forEach(function (el) {
+            el.addEventListener('hidden.bs.modal', function () {
+                const form = el.querySelector('form');
+                if (form) { form.reset(); }
+            });
+        });
+    });
+</script>

@@ -58,6 +58,6 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     "default",
     "{controller=Auth}/{action=InicioSesion}/{id?}");
-
+app.UseStaticFiles();
 
 app.Run();

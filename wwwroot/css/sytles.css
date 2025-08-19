@@ -660,3 +660,77 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
 }
+/* Estilos para la tabla */
+#productosTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#productosTable th {
+    background-color: #343a40;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+#productosTable td {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+#productosTable tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estilos para los botones de acción */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    margin: 0 2px;
+}
+
+/* Estilos para los modales */
+.modal-content {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    border-bottom: none;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.modal-footer {
+    border-top: none;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Estilos para las imágenes */
+.img-thumbnail {
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos para los formularios */
+.form-control {
+    border-radius: 0.25rem;
+}
+
+.custom-file-label::after {
+    content: "Buscar";
+}
+
+/* Iconos */
+.fas {
+    margin-right: 5px;
+}

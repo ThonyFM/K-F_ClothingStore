@@ -43,44 +43,7 @@ public class AccesoDatos
         }
     }
 
-    public List<Direccion> ObtenerDirecciones()
-    {
-        List<Direccion> direcciones = new List<Direccion>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllDirecciones";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            direcciones.Add(new Direccion
-                            {
-                                ID = reader.GetInt32(0),
-                                Ciudad = reader.GetString(1),
-                                Estado = reader.GetString(2),
-                                CodigoPostal = reader.GetString(3),
-                                Pais = reader.GetString(4),
-                                TipoDireccion = reader.IsDBNull(5) ? null : reader.GetString(5),
-                                FechaCreacion = reader.GetDateTime(6),
-                                CreadoPor = reader.GetString(7),
-                                FechaModificacion = reader.IsDBNull(8) ? null : reader.GetDateTime(8),
-                                ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener las direcciones: " + ex.Message);
-            }
-        }
 
-        return direcciones;
-    }
 
     public Direccion ObtenerDireccionPorId(int id)
     {
@@ -126,54 +89,7 @@ public class AccesoDatos
     }
 
 
-    public void ActualizarDireccion(Direccion direccion)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_UpdateDireccion @ID, @Ciudad, @Estado, @CodigoPostal, @Pais, @TipoDireccion, @ModificadoPor";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", direccion.ID);
-                    cmd.Parameters.AddWithValue("@Ciudad", direccion.Ciudad);
-                    cmd.Parameters.AddWithValue("@Estado", direccion.Estado);
-                    cmd.Parameters.AddWithValue("@CodigoPostal", direccion.CodigoPostal);
-                    cmd.Parameters.AddWithValue("@Pais", direccion.Pais);
-                    cmd.Parameters.AddWithValue("@TipoDireccion", direccion.TipoDireccion);
-                    cmd.Parameters.AddWithValue("@ModificadoPor", direccion.ModificadoPor);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar la dirección: " + ex.Message);
-            }
-        }
-    }
-
-    public void EliminarDireccion(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_DeleteDireccion @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar la dirección: " + ex.Message);
-            }
-        }
-    }
+  
 
     // Métodos para la tabla Persona
     public void AgregarPersona(Persona persona)
@@ -210,145 +126,7 @@ public class AccesoDatos
         }
     }
 
-    public List<Persona> ObtenerPersonas()
-    {
-        List<Persona> personas = new List<Persona>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllPersonas";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            personas.Add(new Persona
-                            {
-                                ID = reader.GetInt32(0),
-                                Nombre1 = reader.GetString(1),
-                                Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                Apellido1 = reader.GetString(3),
-                                Apellido2 = reader.GetString(4),
-                                DocumentoIdentidad = reader.GetString(5),
-                                Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
-                                Email = reader.IsDBNull(7) ? null : reader.GetString(7),
-                                FechaNacimiento = reader.IsDBNull(8) ? null : reader.GetDateTime(8),
-                                Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                DireccionID = reader.GetInt32(10),
-                                CreadoPor = reader.GetString(11),
-                                FechaModificacion = reader.IsDBNull(12) ? null : reader.GetDateTime(12),
-                                ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener las personas: " + ex.Message);
-            }
-        }
-
-        return personas;
-    }
-
-    public Persona ObtenerPersonaPorId(int id)
-    {
-        Persona persona = null;
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetPersonaById @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            persona = new Persona
-                            {
-                                ID = reader.GetInt32(0),
-                                Nombre1 = reader.GetString(1),
-                                Nombre2 = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                Apellido1 = reader.GetString(3),
-                                Apellido2 = reader.GetString(4),
-                                DocumentoIdentidad = reader.GetString(5),
-                                Telefono = reader.IsDBNull(6) ? null : reader.GetString(6),
-                                Email = reader.IsDBNull(7) ? null : reader.GetString(7),
-                                FechaNacimiento = reader.IsDBNull(8) ? null : reader.GetDateTime(8),
-                                Genero = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                DireccionID = reader.GetInt32(10),
-                                CreadoPor = reader.GetString(11),
-                                FechaModificacion = reader.IsDBNull(12) ? null : reader.GetDateTime(12),
-                                ModificadoPor = reader.IsDBNull(13) ? null : reader.GetString(13)
-                            };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener la persona: " + ex.Message);
-            }
-        }
-
-        return persona;
-    }
-
-    public void ActualizarPersona(Persona persona)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_UpdatePersona @ID, @Nombre1, @Nombre2, @Apellido1, @Apellido2, @Telefono, @Email, @FechaNacimiento, @Genero, @DireccionID, @ModificadoPor";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", persona.ID);
-                    cmd.Parameters.AddWithValue("@Nombre1", persona.Nombre1);
-                    cmd.Parameters.AddWithValue("@Nombre2", persona.Nombre2);
-                    cmd.Parameters.AddWithValue("@Apellido1", persona.Apellido1);
-                    cmd.Parameters.AddWithValue("@Apellido2", persona.Apellido2);
-                    cmd.Parameters.AddWithValue("@Telefono", persona.Telefono);
-                    cmd.Parameters.AddWithValue("@Email", persona.Email);
-                    cmd.Parameters.AddWithValue("@FechaNacimiento", persona.FechaNacimiento);
-                    cmd.Parameters.AddWithValue("@Genero", persona.Genero);
-                    cmd.Parameters.AddWithValue("@DireccionID", persona.DireccionID);
-                    cmd.Parameters.AddWithValue("@ModificadoPor", persona.ModificadoPor);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar la persona: " + ex.Message);
-            }
-        }
-    }
-
-    public void EliminarPersona(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_DeletePersona @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar la persona: " + ex.Message);
-            }
-        }
-    }
+ 
 
     // Métodos para la tabla Cliente
     public void AgregarCliente(Cliente cliente)
@@ -378,42 +156,6 @@ public class AccesoDatos
         }
     }
 
-    public List<Cliente> ObtenerClientes()
-    {
-        List<Cliente> clientes = new List<Cliente>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllClientes";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            clientes.Add(new Cliente
-                            {
-                                ID = reader.GetInt32(0),
-                                PersonaID = reader.GetInt32(1),
-                                CodigoCliente = reader.GetInt32(2),
-                                Estado = reader.GetString(3),
-                                CreadoPor = reader.GetString(4),
-                                FechaCreacion = reader.GetDateTime(5),
-                                FechaModificacion = reader.IsDBNull(6) ? null : reader.GetDateTime(6),
-                                ModificadoPor = reader.IsDBNull(7) ? null : reader.GetString(7)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener los clientes: " + ex.Message);
-            }
-        }
-
-        return clientes;
-    }
 
     public Cliente ObtenerClientePorId(int id)
     {
@@ -453,352 +195,8 @@ public class AccesoDatos
         return cliente;
     }
 
-    public void ActualizarCliente(Cliente cliente)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_UpdateCliente @ID, @CodigoCliente, @Estado, @ModificadoPor";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", cliente.ID);
-                    cmd.Parameters.AddWithValue("@CodigoCliente", cliente.CodigoCliente);
-                    cmd.Parameters.AddWithValue("@Estado", cliente.Estado);
-                    cmd.Parameters.AddWithValue("@ModificadoPor", cliente.ModificadoPor);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar el cliente: " + ex.Message);
-            }
-        }
-    }
-
-    public void EliminarCliente(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_DeleteCliente @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar el cliente: " + ex.Message);
-            }
-        }
-    }
-
-    // Métodos para la tabla Empleado
-    public void AgregarEmpleado(Empleado empleado)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_InsertEmpleado @PersonaID, @Puesto, @FechaContratacion, @Salario, @Estado, @CreadoPor, @NewID OUTPUT";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@PersonaID", empleado.PersonaID);
-                    cmd.Parameters.AddWithValue("@Puesto", empleado.Puesto);
-                    cmd.Parameters.AddWithValue("@FechaContratacion", empleado.FechaContratacion);
-                    cmd.Parameters.AddWithValue("@Salario", empleado.Salario);
-                    cmd.Parameters.AddWithValue("@Estado", empleado.Estado);
-                    cmd.Parameters.AddWithValue("@CreadoPor", empleado.CreadoPor);
-                    cmd.Parameters.Add("@NewID", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    empleado.ID = (int)cmd.Parameters["@NewID"].Value;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al agregar el empleado: " + ex.Message);
-            }
-        }
-    }
-
-    public List<Empleado> ObtenerEmpleados()
-    {
-        List<Empleado> empleados = new List<Empleado>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllEmpleados";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            empleados.Add(new Empleado
-                            {
-                                ID = reader.GetInt32(0),
-                                PersonaID = reader.GetInt32(1),
-                                Puesto = reader.GetString(2),
-                                FechaContratacion = reader.GetDateTime(3),
-                                Salario = reader.GetDecimal(4),
-                                Estado = reader.GetString(5),
-                                CreadoPor = reader.GetString(6),
-                                FechaCreacion = reader.GetDateTime(7),
-                                FechaModificacion = reader.IsDBNull(8) ? null : reader.GetDateTime(8),
-                                ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener los empleados: " + ex.Message);
-            }
-        }
-
-        return empleados;
-    }
-
-    public Empleado ObtenerEmpleadoPorId(int id)
-    {
-        Empleado empleado = null;
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetEmpleadoById @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            empleado = new Empleado
-                            {
-                                ID = reader.GetInt32(0),
-                                PersonaID = reader.GetInt32(1),
-                                Puesto = reader.GetString(2),
-                                FechaContratacion = reader.GetDateTime(3),
-                                Salario = reader.GetDecimal(4),
-                                Estado = reader.GetString(5),
-                                CreadoPor = reader.GetString(6),
-                                FechaCreacion = reader.GetDateTime(7),
-                                FechaModificacion = reader.IsDBNull(8) ? null : reader.GetDateTime(8),
-                                ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
-                            };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener el empleado: " + ex.Message);
-            }
-        }
-
-        return empleado;
-    }
-
-    public void ActualizarEmpleado(Empleado empleado)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_UpdateEmpleado @ID, @Puesto, @FechaContratacion, @Salario, @Estado, @ModificadoPor";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", empleado.ID);
-                    cmd.Parameters.AddWithValue("@Puesto", empleado.Puesto);
-                    cmd.Parameters.AddWithValue("@FechaContratacion", empleado.FechaContratacion);
-                    cmd.Parameters.AddWithValue("@Salario", empleado.Salario);
-                    cmd.Parameters.AddWithValue("@Estado", empleado.Estado);
-                    cmd.Parameters.AddWithValue("@ModificadoPor", empleado.ModificadoPor);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar el empleado: " + ex.Message);
-            }
-        }
-    }
-
-    public void EliminarEmpleado(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_DeleteEmpleado @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar el empleado: " + ex.Message);
-            }
-        }
-    }
-
-    // Métodos para la tabla Producto
-    public void AgregarProducto(Producto producto)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_InsertProducto @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
-                    cmd.Parameters.AddWithValue("@Genero", producto.Genero);
-                    cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
-                    cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
-                    cmd.Parameters.AddWithValue("@Color", producto.Color);
-                    cmd.Parameters.AddWithValue("@Talla", producto.Talla);
-                    cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
-                    cmd.Parameters.AddWithValue("@Precio", producto.Precio);
-                    cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al agregar el producto: " + ex.Message);
-            }
-        }
-    }
-
-    public List<Producto> ObtenerProductos()
-    {
-        List<Producto> productos = new List<Producto>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllProductos";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            productos.Add(new Producto
-                            {
-                                ID = reader.GetInt32(0),
-                                NombreProducto = reader.GetString(1),
-                                Genero = reader.GetString(2),
-                                SegmentoEdad = reader.GetString(3),
-                                TipoProducto = reader.GetString(4),
-                                Color = reader.GetString(5),
-                                Talla = reader.GetString(6),
-                                UnidadesDisponibles = reader.GetInt32(7),
-                                Precio = reader.GetDecimal(8),
-                                Descripcion = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                FechaCreacion = reader.GetDateTime(10),
-                                FechaModificacion = reader.IsDBNull(11) ? null : reader.GetDateTime(11)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener los productos: " + ex.Message);
-            }
-        }
-
-        return productos;
-    }
-
-    public Producto ObtenerProductoPorId(int id)
-    {
-        Producto producto = null;
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetProductoById @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            producto = new Producto
-                            {
-                                ID = reader.GetInt32(0),
-                                NombreProducto = reader.GetString(1),
-                                Genero = reader.GetString(2),
-                                SegmentoEdad = reader.GetString(3),
-                                TipoProducto = reader.GetString(4),
-                                Color = reader.GetString(5),
-                                Talla = reader.GetString(6),
-                                UnidadesDisponibles = reader.GetInt32(7),
-                                Precio = reader.GetDecimal(8),
-                                Descripcion = reader.IsDBNull(9) ? null : reader.GetString(9),
-                                FechaCreacion = reader.GetDateTime(10),
-                                FechaModificacion = reader.IsDBNull(11) ? null : reader.GetDateTime(11)
-                            };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener el producto: " + ex.Message);
-            }
-        }
-
-        return producto;
-    }
-
-    public void ActualizarProducto(Producto producto)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_UpdateProducto @ID, @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", producto.ID);
-                    cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
-                    cmd.Parameters.AddWithValue("@Genero", producto.Genero);
-                    cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
-                    cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
-                    cmd.Parameters.AddWithValue("@Color", producto.Color);
-                    cmd.Parameters.AddWithValue("@Talla", producto.Talla);
-                    cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
-                    cmd.Parameters.AddWithValue("@Precio", producto.Precio);
-                    cmd.Parameters.AddWithValue("@Descripcion", producto.Descripcion);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar el producto: " + ex.Message);
-            }
-        }
-    }
+  
+   
 
     public void EliminarProducto(int id)
     {
@@ -821,152 +219,6 @@ public class AccesoDatos
         }
     }
 
-    // Métodos para la tabla Venta
-    public void AgregarVenta(Venta venta)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_InsertVenta @EmpleadoID, @ClienteID, @ProductoID, @Cantidad, @Total";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@EmpleadoID", venta.EmpleadoID);
-                    cmd.Parameters.AddWithValue("@ClienteID", venta.ClienteID);
-                    cmd.Parameters.AddWithValue("@ProductoID", venta.ProductoID);
-                    cmd.Parameters.AddWithValue("@Cantidad", venta.Cantidad);
-                    cmd.Parameters.AddWithValue("@Total", venta.Total);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al agregar la venta: " + ex.Message);
-            }
-        }
-    }
-
-    public List<Venta> ObtenerVentas()
-    {
-        List<Venta> ventas = new List<Venta>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllVentas";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            ventas.Add(new Venta
-                            {
-                                VentaID = reader.GetInt32(0),
-                                EmpleadoID = reader.GetInt32(1),
-                                ClienteID = reader.GetInt32(2),
-                                ProductoID = reader.GetInt32(3),
-                                Cantidad = reader.GetInt32(4),
-                                Total = reader.GetDecimal(5),
-                                Fecha = reader.GetDateTime(6)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener las ventas: " + ex.Message);
-            }
-        }
-
-        return ventas;
-    }
-
-    public Venta ObtenerVentaPorId(int id)
-    {
-        Venta venta = null;
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetVentaById @VentaID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@VentaID", id);
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            venta = new Venta
-                            {
-                                VentaID = reader.GetInt32(0),
-                                EmpleadoID = reader.GetInt32(1),
-                                ClienteID = reader.GetInt32(2),
-                                ProductoID = reader.GetInt32(3),
-                                Cantidad = reader.GetInt32(4),
-                                Total = reader.GetDecimal(5),
-                                Fecha = reader.GetDateTime(6)
-                            };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener la venta: " + ex.Message);
-            }
-        }
-
-        return venta;
-    }
-
-    public void ActualizarVenta(Venta venta)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_UpdateVenta @VentaID, @EmpleadoID, @ClienteID, @ProductoID, @Cantidad, @Total";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@VentaID", venta.VentaID);
-                    cmd.Parameters.AddWithValue("@EmpleadoID", venta.EmpleadoID);
-                    cmd.Parameters.AddWithValue("@ClienteID", venta.ClienteID);
-                    cmd.Parameters.AddWithValue("@ProductoID", venta.ProductoID);
-                    cmd.Parameters.AddWithValue("@Cantidad", venta.Cantidad);
-                    cmd.Parameters.AddWithValue("@Total", venta.Total);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar la venta: " + ex.Message);
-            }
-        }
-    }
-
-    public void EliminarVenta(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_DeleteVenta @VentaID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@VentaID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar la venta: " + ex.Message);
-            }
-        }
-    }
 
     // Métodos para la tabla Factura
     public int AgregarFactura(Factura factura)
@@ -998,44 +250,42 @@ public class AccesoDatos
 
         return facturaID;
     }
-
-    public List<Factura> ObtenerFacturas()
+    public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
     {
-        List<Factura> facturas = new List<Factura>();
         using (var con = new SqlConnection(_conexion))
+        using (var cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con))
         {
-            try
-            {
-                var query = "Exec sp_GetAllFacturas";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            facturas.Add(new Factura
-                            {
-                                ID = reader.GetInt32(0),
-                                ClienteID = reader.GetInt32(1),
-                                Total = reader.GetDecimal(3),
-                                MetodoPago = reader.GetString(4),
-                                Estado = reader.GetString(5),
-                                CreadoPor = reader.GetString(6),
-                                FechaCreacion = reader.GetDateTime(7),
-                                FechaModificacion = reader.IsDBNull(8) ? null : reader.GetDateTime(8),
-                                ModificadoPor = reader.IsDBNull(9) ? null : reader.GetString(9)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener las facturas: " + ex.Message);
-            }
-        }
+            cmd.CommandType = CommandType.StoredProcedure;
 
-        return facturas;
+            cmd.Parameters.AddWithValue("@PersonaID",      perfil.Persona.ID);
+            cmd.Parameters.AddWithValue("@Nombre1",        (object?)perfil.Persona.Nombre1      ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Nombre2",        (object?)perfil.Persona.Nombre2      ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Apellido1",      (object?)perfil.Persona.Apellido1    ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Apellido2",      (object?)perfil.Persona.Apellido2    ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Telefono",       (object?)perfil.Persona.Telefono     ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Genero",         (object?)perfil.Persona.Genero       ?? DBNull.Value);
+
+            cmd.Parameters.AddWithValue("@DireccionID",    perfil.Direccion.ID);
+            cmd.Parameters.AddWithValue("@Ciudad",         (object?)perfil.Direccion.Ciudad      ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Estado",         (object?)perfil.Direccion.Estado      ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@CodigoPostal",   (object?)perfil.Direccion.CodigoPostal?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Pais",           (object?)perfil.Direccion.Pais        ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@TipoDireccion",  (object?)perfil.Direccion.TipoDireccion ?? DBNull.Value);
+
+            var retorno = new SqlParameter("@ReturnValue", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.ReturnValue
+            };
+            cmd.Parameters.Add(retorno);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+
+            return (int)retorno.Value == 1; // ✅ éxito/fracaso real
+        }
     }
+
+
 
     public Factura ObtenerFacturaPorId(int id)
     {
@@ -1113,41 +363,7 @@ public class AccesoDatos
         }
     }
 
-    public List<DetalleFactura> ObtenerDetallesFactura()
-    {
-        List<DetalleFactura> detallesFactura = new List<DetalleFactura>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllDetallesFactura";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            detallesFactura.Add(new DetalleFactura
-                            {
-                                ID = reader.GetInt32(0),
-                                FacturaID = reader.GetInt32(1),
-                                ProductoID = reader.GetInt32(2),
-                                Cantidad = reader.GetInt32(3),
-                                PrecioUnitario = reader.GetDecimal(4),
-                                Subtotal = reader.GetDecimal(5)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener los detalles de factura: " + ex.Message);
-            }
-        }
-
-        return detallesFactura;
-    }
-
+  
     public DetalleFactura ObtenerDetalleFacturaPorId(int id)
     {
         DetalleFactura detalle = null;
@@ -1192,214 +408,7 @@ public class AccesoDatos
     }
 
 
-    public void ActualizarDetalleFactura(DetalleFactura detalleFactura)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_UpdateDetalleFactura @ID, @FacturaID, @ProductoID, @Cantidad, @PrecioUnitario, @Subtotal";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", detalleFactura.ID);
-                    cmd.Parameters.AddWithValue("@FacturaID", detalleFactura.FacturaID);
-                    cmd.Parameters.AddWithValue("@ProductoID", detalleFactura.ProductoID);
-                    cmd.Parameters.AddWithValue("@Cantidad", detalleFactura.Cantidad);
-                    cmd.Parameters.AddWithValue("@PrecioUnitario", detalleFactura.PrecioUnitario);
-                    cmd.Parameters.AddWithValue("@Subtotal", detalleFactura.Subtotal);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar el detalle de factura: " + ex.Message);
-            }
-        }
-    }
-
-    public void EliminarDetalleFactura(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_DeleteDetalleFactura @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar el detalle de factura: " + ex.Message);
-            }
-        }
-    }
-
-
-    // Métodos para la tabla Proveedor
-    public void AgregarProveedor(Proveedor proveedor)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_InsertProveedor @NombreEmpresa, @NombreContacto, @Telefono, @Email, @DireccionID, @Estado, @CreadoPor";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@NombreEmpresa", proveedor.NombreEmpresa);
-                    cmd.Parameters.AddWithValue("@NombreContacto", proveedor.NombreContacto);
-                    cmd.Parameters.AddWithValue("@Telefono", proveedor.Telefono);
-                    cmd.Parameters.AddWithValue("@Email", proveedor.Email);
-                    cmd.Parameters.AddWithValue("@DireccionID", proveedor.DireccionID);
-                    cmd.Parameters.AddWithValue("@Estado", proveedor.Estado);
-                    cmd.Parameters.AddWithValue("@CreadoPor", proveedor.CreadoPor);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al agregar el proveedor: " + ex.Message);
-            }
-        }
-    }
-
-    public List<Proveedor> ObtenerProveedores()
-    {
-        List<Proveedor> proveedores = new List<Proveedor>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllProveedores";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            proveedores.Add(new Proveedor
-                            {
-                                ID = reader.GetInt32(0),
-                                NombreEmpresa = reader.GetString(1),
-                                NombreContacto = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                Email = reader.IsDBNull(4) ? null : reader.GetString(4),
-                                DireccionID = reader.GetInt32(5),
-                                Estado = reader.GetString(6),
-                                CreadoPor = reader.GetString(7),
-                                FechaCreacion = reader.GetDateTime(8),
-                                FechaModificacion = reader.IsDBNull(9) ? null : reader.GetDateTime(9),
-                                ModificadoPor = reader.IsDBNull(10) ? null : reader.GetString(10)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener los proveedores: " + ex.Message);
-            }
-        }
-
-        return proveedores;
-    }
-
-    public Proveedor ObtenerProveedorPorId(int id)
-    {
-        Proveedor proveedor = null;
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetProveedorById @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            proveedor = new Proveedor
-                            {
-                                ID = reader.GetInt32(0),
-                                NombreEmpresa = reader.GetString(1),
-                                NombreContacto = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                Telefono = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                Email = reader.IsDBNull(4) ? null : reader.GetString(4),
-                                DireccionID = reader.GetInt32(5),
-                                Estado = reader.GetString(6),
-                                CreadoPor = reader.GetString(7),
-                                FechaCreacion = reader.GetDateTime(8),
-                                FechaModificacion = reader.IsDBNull(9) ? null : reader.GetDateTime(9),
-                                ModificadoPor = reader.IsDBNull(10) ? null : reader.GetString(10)
-                            };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener el proveedor: " + ex.Message);
-            }
-        }
-
-        return proveedor;
-    }
-
-    public void ActualizarProveedor(Proveedor proveedor)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query =
-                    "Exec sp_UpdateProveedor @ID, @NombreEmpresa, @NombreContacto, @Telefono, @Email, @DireccionID, @Estado, @ModificadoPor";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", proveedor.ID);
-                    cmd.Parameters.AddWithValue("@NombreEmpresa", proveedor.NombreEmpresa);
-                    cmd.Parameters.AddWithValue("@NombreContacto", proveedor.NombreContacto);
-                    cmd.Parameters.AddWithValue("@Telefono", proveedor.Telefono);
-                    cmd.Parameters.AddWithValue("@Email", proveedor.Email);
-                    cmd.Parameters.AddWithValue("@DireccionID", proveedor.DireccionID);
-                    cmd.Parameters.AddWithValue("@Estado", proveedor.Estado);
-                    cmd.Parameters.AddWithValue("@ModificadoPor", proveedor.ModificadoPor);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar el proveedor: " + ex.Message);
-            }
-        }
-    }
-
-    public void EliminarProveedor(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_DeleteProveedor @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al eliminar el proveedor: " + ex.Message);
-            }
-        }
-    }
+  
 
     public Usuario ObtenerUsuarioPorNombreUsuario(string? nombreUsuario)
     {
@@ -1468,106 +477,7 @@ public class AccesoDatos
         }
     }
 
-    public List<Usuario> ObtenerUsuarios()
-    {
-        List<Usuario> usuarios = new List<Usuario>();
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetAllUsuarios";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            usuarios.Add(new Usuario
-                            {
-                                ID = reader.GetInt32(0),
-                                NombreUsuario = reader.GetString(1),
-                                ContrasenaHash = reader.GetString(2),
-                                Email = reader.GetString(3),
-                                Rol = reader.GetString(4),
-                                Estado = reader.GetString(5),
-                                FechaCreacion = reader.GetDateTime(6),
-                                FechaModificacion = reader.IsDBNull(7) ? null : reader.GetDateTime(7)
-                            });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener los usuarios: " + ex.Message);
-            }
-        }
 
-        return usuarios;
-    }
-
-    public Usuario ObtenerUsuarioPorId(int id)
-    {
-        Usuario usuario = null;
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_GetUsuarioById @ID";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            usuario = new Usuario
-                            {
-                                ID = reader.GetInt32(0),
-                                NombreUsuario = reader.GetString(1),
-                                ContrasenaHash = reader.GetString(2),
-                                Email = reader.GetString(3),
-                                Rol = reader.GetString(4),
-                                Estado = reader.GetString(5),
-                                FechaCreacion = reader.GetDateTime(6),
-                                FechaModificacion = reader.IsDBNull(7) ? null : reader.GetDateTime(7)
-                            };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener el usuario: " + ex.Message);
-            }
-        }
-
-        return usuario;
-    }
-
-    public void ActualizarUsuario(Usuario usuario)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "Exec sp_UpdateUsuario @ID, @NombreUsuario, @ContrasenaHash, @Email, @Rol, @Estado";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@ID", usuario.ID);
-                    cmd.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
-                    cmd.Parameters.AddWithValue("@ContrasenaHash", usuario.ContrasenaHash);
-                    cmd.Parameters.AddWithValue("@Email", usuario.Email);
-                    cmd.Parameters.AddWithValue("@Rol", usuario.Rol);
-                    cmd.Parameters.AddWithValue("@Estado", usuario.Estado);
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al actualizar el usuario: " + ex.Message);
-            }
-        }
-    }
 
     public Persona ObtenerPersonaPorCedula(string documentoIdentidad)
     {
@@ -1651,43 +561,7 @@ public class AccesoDatos
         return usuario;
     }
 
-    public Usuario ObtenerUsuarioPorNombre(string nombreUsuario)
-    {
-        Usuario usuario = null;
-        using (var con = new SqlConnection(_conexion))
-        {
-            try
-            {
-                var query = "EXEC sp_ObtenerUsuarioPorNombreUsuario @NombreUsuario";
-                using (var cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
-                    con.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                            usuario = new Usuario
-                            {
-                                ID = reader.GetInt32(0),
-                                NombreUsuario = reader.GetString(1),
-                                ContrasenaHash = reader.GetString(2),
-                                Email = reader.GetString(3),
-                                Rol = reader.GetString(4),
-                                Estado = reader.GetString(5),
-                                FechaCreacion = reader.GetDateTime(6),
-                                FechaModificacion = reader.IsDBNull(7) ? null : reader.GetDateTime(7)
-                            };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener el usuario por nombre de usuario: " + ex.Message);
-            }
-        }
 
-        return usuario;
-    }
 
     public Persona ObtenerPersonaPorTelefono(string telefono)
     {
@@ -2178,78 +1052,7 @@ public class AccesoDatos
         }
     }
 
-// Obtener todas las devoluciones
-    public List<Devolucion> ObtenerDevoluciones()
-    {
-        List<Devolucion> lista = new List<Devolucion>();
 
-        using (var con = new SqlConnection(_conexion))
-        {
-            using (var cmd = new SqlCommand("sp_ObtenerDevoluciones", con))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-
-                using (var dr = cmd.ExecuteReader())
-                {
-                    while (dr.Read())
-                        lista.Add(new Devolucion
-                        {
-                            ID = Convert.ToInt32(dr["ID"]),
-                            FacturaID = Convert.ToInt32(dr["FacturaID"]),
-                            DetalleFacturaID = Convert.ToInt32(dr["DetalleFacturaID"]),
-                            ProductoID = Convert.ToInt32(dr["ProductoID"]),
-                            Cantidad = Convert.ToInt32(dr["Cantidad"]),
-                            Motivo = dr["Motivo"].ToString(),
-                            Estado = dr["Estado"].ToString(),
-                            FechaDevolucion = Convert.ToDateTime(dr["FechaDevolucion"]),
-                            CreadoPor = dr["CreadoPor"].ToString(),
-                            FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"])
-                        });
-                }
-            }
-        }
-
-        return lista;
-    }
-
-// Actualizar una devolución
-    public bool ActualizarDevolucion(Devolucion devolucion)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            using (var cmd = new SqlCommand("sp_ActualizarDevolucion", con))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", devolucion.ID);
-                cmd.Parameters.AddWithValue("@Cantidad", devolucion.Cantidad);
-                cmd.Parameters.AddWithValue("@Motivo", devolucion.Motivo);
-                cmd.Parameters.AddWithValue("@Estado", devolucion.Estado);
-                cmd.Parameters.AddWithValue("@ModificadoPor", devolucion.ModificadoPor ?? (object)DBNull.Value);
-
-                con.Open();
-                var rows = cmd.ExecuteNonQuery();
-                return rows > 0;
-            }
-        }
-    }
-
-// Eliminar una devolución
-    public bool EliminarDevolucion(int id)
-    {
-        using (var con = new SqlConnection(_conexion))
-        {
-            using (var cmd = new SqlCommand("sp_EliminarDevolucion", con))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", id);
-
-                con.Open();
-                var rows = cmd.ExecuteNonQuery();
-                return rows > 0;
-            }
-        }
-    }
 
     public List<DetalleFactura> ObtenerProductosCompradosPorCliente(int clienteID)
     {
@@ -2293,34 +1096,116 @@ public class AccesoDatos
 
         return productosComprados;
     }
+ 
 
-
-    public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
+// using System.Data;
+// using System.Data.SqlClient;
+public void AgregarProducto(Producto producto)
+{
+    using (var con = new SqlConnection(_conexion))
     {
-        using (var con = new SqlConnection(_conexion))
-        using (var cmd = new SqlCommand("sp_ActualizarPerfilUsuario", con))
+        try
         {
-            cmd.CommandType = CommandType.StoredProcedure;
+            var query = "Exec sp_InsertProducto @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion, @ImagenUrl";
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
+                cmd.Parameters.AddWithValue("@Genero", producto.Genero);
+                cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
+                cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
+                cmd.Parameters.AddWithValue("@Color", producto.Color);
+                cmd.Parameters.AddWithValue("@Talla", producto.Talla);
+                cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
+                cmd.Parameters.AddWithValue("@Precio", producto.Precio);
+                cmd.Parameters.AddWithValue("@Descripcion", (object?)producto.Descripcion ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@ImagenUrl", (object?)producto.ImagenUrl ?? DBNull.Value);
 
-            cmd.Parameters.AddWithValue("@PersonaID", perfil.Persona.ID);
-            cmd.Parameters.AddWithValue("@Nombre1", perfil.Persona.Nombre1 ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@Nombre2", perfil.Persona.Nombre2 ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@Apellido1", perfil.Persona.Apellido1 ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@Apellido2", perfil.Persona.Apellido2 ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@Telefono", perfil.Persona.Telefono ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@Genero", perfil.Persona.Genero ?? (object)DBNull.Value);
-
-            cmd.Parameters.AddWithValue("@DireccionID", perfil.Direccion.ID);
-            cmd.Parameters.AddWithValue("@Ciudad", perfil.Direccion.Ciudad ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@Estado", perfil.Direccion.Estado ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@CodigoPostal", perfil.Direccion.CodigoPostal ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@Pais", perfil.Direccion.Pais ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("@TipoDireccion", perfil.Direccion.TipoDireccion ?? (object)DBNull.Value);
-
-            con.Open();
-            var filas = cmd.ExecuteNonQuery();
-
-            return filas > 0;
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al agregar el producto: " + ex.Message);
         }
     }
+}
+
+public void ActualizarProducto(Producto producto)
+{
+    using (var con = new SqlConnection(_conexion))
+    {
+        try
+        {
+            var query = "Exec sp_UpdateProducto @ID, @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion, @ImagenUrl";
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@ID", producto.ID);
+                cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
+                cmd.Parameters.AddWithValue("@Genero", producto.Genero);
+                cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
+                cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
+                cmd.Parameters.AddWithValue("@Color", producto.Color);
+                cmd.Parameters.AddWithValue("@Talla", producto.Talla);
+                cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
+                cmd.Parameters.AddWithValue("@Precio", producto.Precio);
+                cmd.Parameters.AddWithValue("@Descripcion", (object?)producto.Descripcion ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@ImagenUrl", (object?)producto.ImagenUrl ?? DBNull.Value);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al actualizar el producto: " + ex.Message);
+        }
+    }
+}
+
+public Producto ObtenerProductoPorId(int id)
+{
+    Producto producto = null;
+    using (var con = new SqlConnection(_conexion))
+    {
+        try
+        {
+            var query = "Exec sp_GetProductoById @ID";
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@ID", id);
+                con.Open();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                    {
+                        producto = new Producto
+                        {
+                            ID = rd.GetInt32(rd.GetOrdinal("ID")),
+                            NombreProducto = rd.GetString(rd.GetOrdinal("NombreProducto")),
+                            Genero = rd.GetString(rd.GetOrdinal("Genero")),
+                            SegmentoEdad = rd.GetString(rd.GetOrdinal("SegmentoEdad")),
+                            TipoProducto = rd.GetString(rd.GetOrdinal("TipoProducto")),
+                            Color = rd.GetString(rd.GetOrdinal("Color")),
+                            Talla = rd.GetString(rd.GetOrdinal("Talla")),
+                            UnidadesDisponibles = rd.GetInt32(rd.GetOrdinal("UnidadesDisponibles")),
+                            Precio = rd.GetDecimal(rd.GetOrdinal("Precio")),
+                            ImagenUrl = rd.IsDBNull(rd.GetOrdinal("ImagenUrl")) ? null : rd.GetString(rd.GetOrdinal("ImagenUrl")),
+                            Descripcion = rd.IsDBNull(rd.GetOrdinal("Descripcion")) ? null : rd.GetString(rd.GetOrdinal("Descripcion")),
+                            FechaCreacion = rd.GetDateTime(rd.GetOrdinal("FechaCreacion")),
+                            FechaModificacion = rd.IsDBNull(rd.GetOrdinal("FechaModificacion")) ? null : rd.GetDateTime(rd.GetOrdinal("FechaModificacion"))
+                        };
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al obtener el producto por ID: " + ex.Message);
+        }
+    }
+    return producto;
+}
+
+   
 }

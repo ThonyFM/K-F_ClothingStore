@@ -9,20 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1fb7afb-7fb3-4df6-b333-d341ba0baf44" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" afterDir="false" />
+    <list default="true" id="e1fb7afb-7fb3-4df6-b333-d341ba0baf44" name="Changes" comment="Perfil de ususario funcional y parte del mudulo de productos">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/FacturacionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/FacturacionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/K&amp;F_ClothingStore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/K&amp;F_ClothingStore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ProductoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ProductoController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/AccesoDatos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AccesoDatos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/DetalleFactura.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DetalleFactura.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Facturacion/Confirmacion.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Facturacion/Confirmacion.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Facturacion/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Facturacion/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/sytles.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/sytles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Producto/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_CreateModal.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_CreateModal.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_DeleteModal.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_DeleteModal.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_DetailsModal.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_DetailsModal.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_EditModal.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/_EditModal.cshtml.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +90,7 @@
     ".NET Launch Settings Profile.K&F_ClothingStore: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "6996c15d",
+    "git-widget-placeholder": "c29bcc06",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -198,6 +198,9 @@
       <workItem from="1751673935759" duration="1682000" />
       <workItem from="1751675636245" duration="201000" />
       <workItem from="1751675860375" duration="2558000" />
+      <workItem from="1754373034818" duration="679000" />
+      <workItem from="1755395222753" duration="9238000" />
+      <workItem from="1755569558409" duration="8152000" />
     </task>
     <task id="LOCAL-00001" summary="Arregle una parte de facturacion que no se cuando me eche la verdad, tiro la toalla decepcionando a mi profesora, no logre que el usuario pudise modificar su perfil, es imposible y perdi mucho tiempo">
       <option name="closed" value="true" />
@@ -255,7 +258,23 @@
       <option name="project" value="LOCAL" />
       <updated>1751674162379</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Limpieza del formato, ademas pequeños arreglos en facturación">
+      <option name="closed" value="true" />
+      <created>1754322218680</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1754322218680</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Perfil de ususario funcional y parte del mudulo de productos">
+      <option name="closed" value="true" />
+      <created>1755573054146</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1755573054146</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,25 +302,8 @@
     <MESSAGE value="intentando hacer una pagina para que el admin pueda agregar productos sin exito" />
     <MESSAGE value="casi todo listo" />
     <MESSAGE value="Arreglando el tema de las imagenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglando el tema de las imagenes" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/ClienteController.cs</url>
-          <line>55</line>
-          <properties documentPath="C:\ASP\Controllers\ClienteController.cs" containingFunctionPresentation="Method 'GuardarPerfil'">
-            <startOffsets>
-              <option value="1684" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1685" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Limpieza del formato, ademas pequeños arreglos en facturación" />
+    <MESSAGE value="Perfil de ususario funcional y parte del mudulo de productos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Perfil de ususario funcional y parte del mudulo de productos" />
   </component>
 </project>
