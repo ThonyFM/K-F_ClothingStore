@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using K_F_ClothingStore.Models;
+﻿using K_F_ClothingStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace K_F_ClothingStore.Controllers;
 
@@ -37,10 +35,10 @@ public class ClienteController : Controller
                 return RedirectToAction("InicioSesion", "Auth");
             }
 
-            modelo.Usuario   ??= new Usuario();
-            modelo.Persona   ??= new Persona();
+            modelo.Usuario ??= new Usuario();
+            modelo.Persona ??= new Persona();
             modelo.Direccion ??= new Direccion();
-            modelo.Cliente   ??= new Cliente();
+            modelo.Cliente ??= new Cliente();
 
             return View(modelo);
         }
@@ -97,13 +95,14 @@ public class ClienteController : Controller
                 "Cliente.ModificadoPor"
             };
             foreach (var k in keysAEliminar)
-                if (ModelState.ContainsKey(k)) ModelState.Remove(k);
+                if (ModelState.ContainsKey(k))
+                    ModelState.Remove(k);
 
             if (!ModelState.IsValid)
             {
                 var errores = string.Join(" | ",
                     ModelState.Where(kv => kv.Value.Errors.Count > 0)
-                              .Select(kv => $"{kv.Key}: {string.Join(",", kv.Value.Errors.Select(e => e.ErrorMessage))}"));
+                        .Select(kv => $"{kv.Key}: {string.Join(",", kv.Value.Errors.Select(e => e.ErrorMessage))}"));
 
                 _logger.LogWarning("Modelo inválido en GuardarPerfil => {Errores}", errores);
                 TempData["error"] = "Por favor, revisa los campos requeridos.";

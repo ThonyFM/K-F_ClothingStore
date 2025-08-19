@@ -1,37 +1,97 @@
-@model IEnumerable<K_F_ClothingStore.Models.Producto>
+@model IEnumerable<Producto>
 @{
     ViewData["Title"] = "Gestión de Productos";
 }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
 
 <style>
     /* ---------- Animaciones y estilos pro ---------- */
-    @@keyframes fadeUp { from {opacity:0; transform: translateY(8px);} to {opacity:1; transform: translateY(0);} }
-    @@keyframes pop { 0% {transform: scale(.98); opacity:.9;} 100% {transform: scale(1); opacity:1;} }
+    @@keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-    .fade-in-row { animation: fadeUp .45s ease both; }
-    .btn { transition: transform .08s ease, box-shadow .2s ease; }
-    .btn:hover { transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
-    .btn-info, .btn-primary, .btn-danger, .btn-success { box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+    @@keyframes pop {
+        0% {
+            transform: scale(.98);
+            opacity: .9;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .fade-in-row {
+        animation: fadeUp .45s ease both;
+    }
+
+    .btn {
+        transition: transform .08s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .btn-info, .btn-primary, .btn-danger, .btn-success {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    }
 
     /* Miniaturas con hover zoom y borde suave */
     .thumb {
-        width: 80px; height: 80px; object-fit: cover; border-radius: .5rem;
-        box-shadow: 0 2px 10px rgba(0,0,0,.06); transition: transform .18s ease, box-shadow .18s ease;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: .5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+        transition: transform .18s ease, box-shadow .18s ease;
         background: #f8f9fa;
     }
-    .thumb:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,.12); }
-    .img-fallback { background: linear-gradient(135deg,#f3f4f6,#ffffff); color:#adb5bd; display: inline-flex; align-items:center; justify-content:center; font-size:12px; }
+
+    .thumb:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, .12);
+    }
+
+    .img-fallback {
+        background: linear-gradient(135deg, #f3f4f6, #ffffff);
+        color: #adb5bd;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
 
     /* Cards/Modals */
-    .modal-content { animation: pop .2s ease; border-radius: 1rem; }
-    .table thead th { position: sticky; top: 0; z-index: 1; }
+    .modal-content {
+        animation: pop .2s ease;
+        border-radius: 1rem;
+    }
+
+    .table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
 
     /* Toast */
-    #liveToast { box-shadow: 0 10px 30px rgba(0,0,0,.15); border-radius: .75rem; }
+    #liveToast {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+        border-radius: .75rem;
+    }
 </style>
 
 <div class="container mt-4">
@@ -69,11 +129,11 @@
                                  alt="@p.NombreProducto"
                                  class="thumb"
                                  loading="lazy" decoding="async"
-                                 onerror="this.onerror=null; this.src='@fallback'; this.classList.add('img-fallback');" />
+                                 onerror="this.onerror=null; this.src='@fallback'; this.classList.add('img-fallback');"/>
                         }
                         else
                         {
-                            <img src="@fallback" alt="Sin imagen" class="thumb img-fallback" />
+                            <img src="@fallback" alt="Sin imagen" class="thumb img-fallback"/>
                         }
                     </td>
                     <td>@p.NombreProducto</td>
@@ -140,10 +200,12 @@
 
 <!-- Toast de feedback -->
 <div class="position-fixed top-0 end-0 p-3" style="z-index: 1080">
-    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
+         aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body" id="toastBody">Operación realizada correctamente.</div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Cerrar"></button>
         </div>
     </div>
 </div>
@@ -152,17 +214,19 @@
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="createForm" action="@Url.Action("Create","Producto")" method="post" enctype="multipart/form-data">
+            <form id="createForm" action="@Url.Action("Create", "Producto")" method="post"
+                  enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title" id="createLabel">Agregar Nuevo Producto</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Nombre</label>
-                            <input name="NombreProducto" class="form-control" required />
+                            <input name="NombreProducto" class="form-control" required/>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Género</label>
@@ -198,25 +262,29 @@
 
                         <div class="col-md-6">
                             <label class="form-label">Color</label>
-                            <input name="Color" class="form-control" required />
+                            <input name="Color" class="form-control" required/>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Talla</label>
                             <select name="Talla" class="form-select" required>
                                 <option value="">Selecciona...</option>
-                                <option>XS</option><option>S</option><option>M</option>
-                                <option>L</option><option>XL</option><option>XXL</option>
+                                <option>XS</option>
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                                <option>XL</option>
+                                <option>XXL</option>
                                 <option>Única</option>
                             </select>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Unidades Disponibles</label>
-                            <input type="number" name="UnidadesDisponibles" class="form-control" min="0" required />
+                            <input type="number" name="UnidadesDisponibles" class="form-control" min="0" required/>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Precio</label>
-                            <input type="number" name="Precio" class="form-control" min="0" step="0.01" required />
+                            <input type="number" name="Precio" class="form-control" min="0" step="0.01" required/>
                         </div>
 
                         <div class="col-12">
@@ -226,8 +294,11 @@
 
                         <div class="col-12">
                             <label class="form-label">Imagen del Producto</label>
-                            <input type="file" name="ImagenArchivo" id="createImage" class="form-control" accept="image/*" />
-                            <div class="form-text">Se guardará solo el nombre del archivo en BD (carpeta <code>/Img</code>).</div>
+                            <input type="file" name="ImagenArchivo" id="createImage" class="form-control"
+                                   accept="image/*"/>
+                            <div class="form-text">Se guardará solo el nombre del archivo en BD (carpeta
+                                <code>/Img</code>).
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,58 +317,73 @@
         <div class="modal-content">
             <form id="editForm" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
-                <input type="hidden" name="ID" id="edit-ID" />
+                <input type="hidden" name="ID" id="edit-ID"/>
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="editLabel">Editar Producto</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Nombre</label>
-                            <input name="NombreProducto" id="edit-Nombre" class="form-control" required />
+                            <input name="NombreProducto" id="edit-Nombre" class="form-control" required/>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Género</label>
                             <select name="Genero" id="edit-Genero" class="form-select" required>
-                                <option>Masculino</option><option>Femenino</option><option>Unisex</option>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                                <option>Unisex</option>
                             </select>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Segmento de Edad</label>
                             <select name="SegmentoEdad" id="edit-Segmento" class="form-select" required>
-                                <option>Adultos</option><option>Jóvenes</option><option>Niños</option><option>Bebés</option>
+                                <option>Adultos</option>
+                                <option>Jóvenes</option>
+                                <option>Niños</option>
+                                <option>Bebés</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Tipo de Producto</label>
                             <select name="TipoProducto" id="edit-Tipo" class="form-select" required>
-                                <option>Camisetas</option><option>Pantalones</option><option>Vestidos</option>
-                                <option>Zapatos</option><option>Accesorios</option>
+                                <option>Camisetas</option>
+                                <option>Pantalones</option>
+                                <option>Vestidos</option>
+                                <option>Zapatos</option>
+                                <option>Accesorios</option>
                             </select>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Color</label>
-                            <input name="Color" id="edit-Color" class="form-control" required />
+                            <input name="Color" id="edit-Color" class="form-control" required/>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Talla</label>
                             <select name="Talla" id="edit-Talla" class="form-select" required>
-                                <option>XS</option><option>S</option><option>M</option>
-                                <option>L</option><option>XL</option><option>XXL</option>
+                                <option>XS</option>
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                                <option>XL</option>
+                                <option>XXL</option>
                                 <option>Única</option>
                             </select>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Unidades Disponibles</label>
-                            <input type="number" name="UnidadesDisponibles" id="edit-Stock" class="form-control" min="0" required />
+                            <input type="number" name="UnidadesDisponibles" id="edit-Stock" class="form-control" min="0"
+                                   required/>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Precio</label>
-                            <input type="number" name="Precio" id="edit-Precio" class="form-control" min="0" step="0.01" required />
+                            <input type="number" name="Precio" id="edit-Precio" class="form-control" min="0" step="0.01"
+                                   required/>
                         </div>
 
                         <div class="col-12">
@@ -307,10 +393,11 @@
 
                         <div class="col-12">
                             <label class="form-label">Cambiar Imagen (opcional)</label>
-                            <input type="file" name="ImagenArchivo" id="edit-Imagen" class="form-control" accept="image/*" />
+                            <input type="file" name="ImagenArchivo" id="edit-Imagen" class="form-control"
+                                   accept="image/*"/>
                             <div class="mt-2" id="edit-PreviewWrapper" style="display:none">
                                 <small>Imagen actual:</small>
-                                <img id="edit-Preview" src="" class="img-thumbnail" style="max-width:100px;" />
+                                <img id="edit-Preview" src="" class="img-thumbnail" style="max-width:100px;"/>
                             </div>
                         </div>
                     </div>
@@ -330,7 +417,8 @@
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
                 <h5 class="modal-title" id="detailsLabel">Detalles del Producto</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <div class="row g-4">
@@ -347,13 +435,20 @@
                         <h4 id="details-Nombre"></h4>
                         <hr>
                         <dl class="row mb-0">
-                            <dt class="col-sm-4">Tipo:</dt>        <dd class="col-sm-8" id="details-Tipo"></dd>
-                            <dt class="col-sm-4">Género:</dt>      <dd class="col-sm-8" id="details-Genero"></dd>
-                            <dt class="col-sm-4">Segmento:</dt>    <dd class="col-sm-8" id="details-Segmento"></dd>
-                            <dt class="col-sm-4">Color:</dt>       <dd class="col-sm-8" id="details-Color"></dd>
-                            <dt class="col-sm-4">Talla:</dt>       <dd class="col-sm-8" id="details-Talla"></dd>
-                            <dt class="col-sm-4">Precio:</dt>      <dd class="col-sm-8" id="details-Precio"></dd>
-                            <dt class="col-sm-4">Stock:</dt>       <dd class="col-sm-8" id="details-Stock"></dd>
+                            <dt class="col-sm-4">Tipo:</dt>
+                            <dd class="col-sm-8" id="details-Tipo"></dd>
+                            <dt class="col-sm-4">Género:</dt>
+                            <dd class="col-sm-8" id="details-Genero"></dd>
+                            <dt class="col-sm-4">Segmento:</dt>
+                            <dd class="col-sm-8" id="details-Segmento"></dd>
+                            <dt class="col-sm-4">Color:</dt>
+                            <dd class="col-sm-8" id="details-Color"></dd>
+                            <dt class="col-sm-4">Talla:</dt>
+                            <dd class="col-sm-8" id="details-Talla"></dd>
+                            <dt class="col-sm-4">Precio:</dt>
+                            <dd class="col-sm-8" id="details-Precio"></dd>
+                            <dt class="col-sm-4">Stock:</dt>
+                            <dd class="col-sm-8" id="details-Stock"></dd>
                         </dl>
                         <div class="mt-3">
                             <h5>Descripción</h5>
@@ -362,7 +457,9 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>
@@ -373,10 +470,11 @@
         <div class="modal-content">
             <form id="deleteForm" method="post">
                 @Html.AntiForgeryToken()
-                <input type="hidden" name="ID" id="delete-ID" />
+                <input type="hidden" name="ID" id="delete-ID"/>
                 <div class="modal-header bg-danger text-white">
                     <h5 class="modal-title" id="deleteLabel">Eliminar Producto</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body text-center">
                     <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
@@ -385,7 +483,8 @@
                         <strong id="delete-Nombre"></strong>
                         <div class="small text-muted" id="delete-Tipo"></div>
                         <div class="small" id="delete-Precio"></div>
-                        <img id="delete-Imagen" src="" class="img-thumbnail mt-2" style="max-width:120px; display:none;" />
+                        <img id="delete-Imagen" src="" class="img-thumbnail mt-2"
+                             style="max-width:120px; display:none;"/>
                     </div>
                     <div class="text-danger">Esta acción no se puede deshacer.</div>
                 </div>
@@ -417,16 +516,19 @@
         body.textContent = msg || 'Operación realizada correctamente.';
         toastEl.classList.remove('text-bg-success', 'text-bg-danger');
         toastEl.classList.add(isError ? 'text-bg-danger' : 'text-bg-success');
-        bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 2200 }).show();
+        bootstrap.Toast.getOrCreateInstance(toastEl, {delay: 2200}).show();
     }
 
     function money(n) {
-        try { return new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' }).format(n); }
-        catch(_) { return n; }
+        try {
+            return new Intl.NumberFormat(undefined, {style: 'currency', currency: 'USD'}).format(n);
+        } catch (_) {
+            return n;
+        }
     }
 
     // -------- Abrir / Rellenar modales --------
-    window.openDetails = function(btn) {
+    window.openDetails = function (btn) {
         const d = btn.dataset;
         document.getElementById('details-Nombre').textContent = d.nombre || '';
         document.getElementById('details-Tipo').textContent = d.tipo || '';
@@ -444,11 +546,13 @@
         if (hasImg) {
             const img = document.getElementById('details-Imagen');
             img.src = fullImg(d.imagen);
-            img.onerror = () => { img.src = IMG_FALLBACK; };
+            img.onerror = () => {
+                img.src = IMG_FALLBACK;
+            };
         }
     }
 
-    window.openEdit = function(btn) {
+    window.openEdit = function (btn) {
         const d = btn.dataset;
         $('#edit-ID').val(d.id);
         $('#edit-Nombre').val(d.nombre);
@@ -462,29 +566,33 @@
         $('#edit-Descripcion').val(d.descripcion);
 
         if (d.imagen) {
-            $('#edit-Preview').attr('src', fullImg(d.imagen)).on('error', function(){ this.src = IMG_FALLBACK; });
+            $('#edit-Preview').attr('src', fullImg(d.imagen)).on('error', function () {
+                this.src = IMG_FALLBACK;
+            });
             $('#edit-PreviewWrapper').show();
         } else {
             $('#edit-PreviewWrapper').hide();
         }
 
         // Set action con ID al vuelo
-        $('#editForm').attr('action', '@Url.Action("Edit","Producto")/' + d.id);
+        $('#editForm').attr('action', '@Url.Action("Edit", "Producto")/' + d.id);
     }
 
-    window.openDelete = function(btn) {
+    window.openDelete = function (btn) {
         const d = btn.dataset;
         $('#delete-ID').val(d.id);
         $('#delete-Nombre').text(d.nombre || '');
         $('#delete-Tipo').text(d.tipo || '');
         $('#delete-Precio').text(money(d.precio));
         if (d.imagen) {
-            $('#delete-Imagen').attr('src', fullImg(d.imagen)).on('error', function(){ this.src = IMG_FALLBACK; }).show();
+            $('#delete-Imagen').attr('src', fullImg(d.imagen)).on('error', function () {
+                this.src = IMG_FALLBACK;
+            }).show();
         } else {
             $('#delete-Imagen').hide();
         }
         // Set action con ID al vuelo
-        $('#deleteForm').attr('action', '@Url.Action("Delete","Producto")/' + d.id);
+        $('#deleteForm').attr('action', '@Url.Action("Delete", "Producto")/' + d.id);
     }
 
     // -------- Envío AJAX --------
@@ -509,7 +617,9 @@
                         showToast(r && r.message ? r.message : 'No se pudo crear.', true);
                     }
                 },
-                error: function () { showToast('Error al crear.', true); }
+                error: function () {
+                    showToast('Error al crear.', true);
+                }
             });
         });
 
@@ -533,7 +643,9 @@
                         showToast(r && r.message ? r.message : 'No se pudo actualizar.', true);
                     }
                 },
-                error: function () { showToast('Error al actualizar.', true); }
+                error: function () {
+                    showToast('Error al actualizar.', true);
+                }
             });
         });
 
@@ -554,7 +666,9 @@
                         showToast(r && r.message ? r.message : 'No se pudo eliminar.', true);
                     }
                 },
-                error: function () { showToast('Error al eliminar.', true); }
+                error: function () {
+                    showToast('Error al eliminar.', true);
+                }
             });
         });
 
@@ -562,7 +676,9 @@
         document.querySelectorAll('.modal').forEach(function (el) {
             el.addEventListener('hidden.bs.modal', function () {
                 const form = el.querySelector('form');
-                if (form) { form.reset(); }
+                if (form) {
+                    form.reset();
+                }
             });
         });
     });

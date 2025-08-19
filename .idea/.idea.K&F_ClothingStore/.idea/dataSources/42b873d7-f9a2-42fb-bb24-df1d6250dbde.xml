@@ -35,7 +35,7 @@
 0|root||264|view server state|G
 0|root||265|view server state|G</Grants>
       <PermissionsCheckSum>43840689887</PermissionsCheckSum>
-      <ServerVersion>16.0.1140</ServerVersion>
+      <ServerVersion>16.0.1145</ServerVersion>
     </root>
     <collation id="2" parent="1" name="Albanian_BIN">
       <Description>Albanian, binary sort</Description>
@@ -17398,490 +17398,469 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>436</SourceTextLength>
     </routine>
-    <routine id="5648" parent="5578" name="sp_DeleteProducto">
-      <CreatedTimestamp>2025-02-08.07:23:09.703</CreatedTimestamp>
-      <ModifiedTimestamp>2025-02-08.07:23:09.703</ModifiedTimestamp>
-      <ObjectId>2099048</ObjectId>
-      <RoutineType>proc</RoutineType>
-      <SourceTextLength>103</SourceTextLength>
-    </routine>
-    <routine id="5649" parent="5578" name="sp_DeleteProveedor">
+    <routine id="5648" parent="5578" name="sp_DeleteProveedor">
       <CreatedTimestamp>2025-02-08.07:23:09.717</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.717</ModifiedTimestamp>
       <ObjectId>194099732</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>105</SourceTextLength>
     </routine>
-    <routine id="5650" parent="5578" name="sp_DeleteUsuario">
+    <routine id="5649" parent="5578" name="sp_DeleteUsuario">
       <CreatedTimestamp>2025-02-08.07:23:09.733</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.733</ModifiedTimestamp>
       <ObjectId>498100815</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>120</SourceTextLength>
     </routine>
-    <routine id="5651" parent="5578" name="sp_DeleteVenta">
+    <routine id="5650" parent="5578" name="sp_DeleteVenta">
       <CreatedTimestamp>2025-02-08.07:23:09.710</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.710</ModifiedTimestamp>
       <ObjectId>66099276</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>112</SourceTextLength>
     </routine>
-    <routine id="5652" parent="5578" name="sp_EliminarCarritoPorCliente">
+    <routine id="5651" parent="5578" name="sp_EliminarCarritoPorCliente">
       <CreatedTimestamp>2025-03-21.22:23:32.380</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.22:23:32.380</ModifiedTimestamp>
       <ObjectId>1618104805</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>160</SourceTextLength>
     </routine>
-    <routine id="5653" parent="5578" name="sp_EliminarDevolucion">
+    <routine id="5652" parent="5578" name="sp_EliminarDevolucion">
       <CreatedTimestamp>2025-04-26.13:20:51.410</CreatedTimestamp>
       <ModifiedTimestamp>2025-04-26.13:20:51.410</ModifiedTimestamp>
       <ObjectId>62623266</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>106</SourceTextLength>
     </routine>
-    <routine id="5654" parent="5578" name="sp_EliminarPerfilUsuario">
+    <routine id="5653" parent="5578" name="sp_EliminarPerfilUsuario">
       <CreatedTimestamp>2025-04-23.23:00:55.160</CreatedTimestamp>
       <ModifiedTimestamp>2025-07-04.13:01:52.037</ModifiedTimestamp>
       <ObjectId>2130106629</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>278</SourceTextLength>
     </routine>
-    <routine id="5655" parent="5578" name="sp_EliminarProductoCarrito">
+    <routine id="5654" parent="5578" name="sp_EliminarProductoCarrito">
       <CreatedTimestamp>2025-03-21.19:39:29.023</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.19:39:29.023</ModifiedTimestamp>
       <ObjectId>1602104748</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>241</SourceTextLength>
     </routine>
-    <routine id="5656" parent="5578" name="sp_EliminarUsuario">
+    <routine id="5655" parent="5578" name="sp_EliminarUsuario">
       <CreatedTimestamp>2025-04-23.22:57:44.903</CreatedTimestamp>
       <ModifiedTimestamp>2025-04-23.22:57:46.890</ModifiedTimestamp>
       <ObjectId>2114106572</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>516</SourceTextLength>
     </routine>
-    <routine id="5657" parent="5578" name="sp_EliminarUsuarioCompleto">
+    <routine id="5656" parent="5578" name="sp_EliminarUsuarioCompleto">
       <CreatedTimestamp>2025-04-23.20:54:46.417</CreatedTimestamp>
       <ModifiedTimestamp>2025-04-23.20:54:46.417</ModifiedTimestamp>
       <ObjectId>2034106287</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>425</SourceTextLength>
     </routine>
-    <routine id="5658" parent="5578" name="sp_GetAllClientes">
+    <routine id="5657" parent="5578" name="sp_GetAllClientes">
       <CreatedTimestamp>2025-02-08.07:23:09.693</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.693</ModifiedTimestamp>
       <ObjectId>2021582240</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>95</SourceTextLength>
     </routine>
-    <routine id="5659" parent="5578" name="sp_GetAllDescuentos">
+    <routine id="5658" parent="5578" name="sp_GetAllDescuentos">
       <CreatedTimestamp>2025-02-08.07:23:09.720</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.720</ModifiedTimestamp>
       <ObjectId>290100074</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>100</SourceTextLength>
     </routine>
-    <routine id="5660" parent="5578" name="sp_GetAllDetallesFactura">
+    <routine id="5659" parent="5578" name="sp_GetAllDetallesFactura">
       <CreatedTimestamp>2025-02-08.07:23:09.727</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.727</ModifiedTimestamp>
       <ObjectId>370100359</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>110</SourceTextLength>
     </routine>
-    <routine id="5661" parent="5578" name="sp_GetAllDevoluciones">
+    <routine id="5660" parent="5578" name="sp_GetAllDevoluciones">
       <CreatedTimestamp>2025-02-08.07:23:09.730</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.730</ModifiedTimestamp>
       <ObjectId>450100644</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>103</SourceTextLength>
     </routine>
-    <routine id="5662" parent="5578" name="sp_GetAllDirecciones">
+    <routine id="5661" parent="5578" name="sp_GetAllDirecciones">
       <CreatedTimestamp>2025-02-08.07:23:09.683</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.683</ModifiedTimestamp>
       <ObjectId>1861581670</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>101</SourceTextLength>
     </routine>
-    <routine id="5663" parent="5578" name="sp_GetAllEmpleados">
+    <routine id="5662" parent="5578" name="sp_GetAllEmpleados">
       <CreatedTimestamp>2025-02-08.07:23:09.700</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.700</ModifiedTimestamp>
       <ObjectId>2101582525</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>97</SourceTextLength>
     </routine>
-    <routine id="5664" parent="5578" name="sp_GetAllFacturas">
+    <routine id="5663" parent="5578" name="sp_GetAllFacturas">
       <CreatedTimestamp>2025-02-08.07:23:09.737</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.737</ModifiedTimestamp>
       <ObjectId>594101157</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>96</SourceTextLength>
     </routine>
-    <routine id="5665" parent="5578" name="sp_GetAllPersonas">
+    <routine id="5664" parent="5578" name="sp_GetAllPersonas">
       <CreatedTimestamp>2025-02-08.07:23:09.690</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.690</ModifiedTimestamp>
       <ObjectId>1941581955</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>96</SourceTextLength>
     </routine>
-    <routine id="5666" parent="5578" name="sp_GetAllProveedores">
+    <routine id="5665" parent="5578" name="sp_GetAllProveedores">
       <CreatedTimestamp>2025-02-08.07:23:09.740</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.740</ModifiedTimestamp>
       <ObjectId>626101271</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>101</SourceTextLength>
     </routine>
-    <routine id="5667" parent="5578" name="sp_GetAllUsuarios">
+    <routine id="5666" parent="5578" name="sp_GetAllUsuarios">
       <CreatedTimestamp>2025-02-08.07:23:09.733</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.733</ModifiedTimestamp>
       <ObjectId>530100929</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>96</SourceTextLength>
     </routine>
-    <routine id="5668" parent="5578" name="sp_GetAllVentas">
+    <routine id="5667" parent="5578" name="sp_GetAllVentas">
       <CreatedTimestamp>2025-02-08.07:23:09.737</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.737</ModifiedTimestamp>
       <ObjectId>562101043</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>92</SourceTextLength>
     </routine>
-    <routine id="5669" parent="5578" name="sp_GetCarritoPorClienteYProducto">
+    <routine id="5668" parent="5578" name="sp_GetCarritoPorClienteYProducto">
       <CreatedTimestamp>2025-03-21.16:06:06.303</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.16:06:06.303</ModifiedTimestamp>
       <ObjectId>1506104406</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>340</SourceTextLength>
     </routine>
-    <routine id="5670" parent="5578" name="sp_GetClienteById">
+    <routine id="5669" parent="5578" name="sp_GetClienteById">
       <CreatedTimestamp>2025-02-08.07:23:09.693</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.693</ModifiedTimestamp>
       <ObjectId>2005582183</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>122</SourceTextLength>
     </routine>
-    <routine id="5671" parent="5578" name="sp_GetDescuentoById">
+    <routine id="5670" parent="5578" name="sp_GetDescuentoById">
       <CreatedTimestamp>2025-02-08.07:23:09.720</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.720</ModifiedTimestamp>
       <ObjectId>274100017</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>127</SourceTextLength>
     </routine>
-    <routine id="5672" parent="5578" name="sp_GetDetalleFacturaById">
+    <routine id="5671" parent="5578" name="sp_GetDetalleFacturaById">
       <CreatedTimestamp>2025-02-08.07:23:09.727</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.727</ModifiedTimestamp>
       <ObjectId>354100302</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>137</SourceTextLength>
     </routine>
-    <routine id="5673" parent="5578" name="sp_GetDevolucionById">
+    <routine id="5672" parent="5578" name="sp_GetDevolucionById">
       <CreatedTimestamp>2025-02-08.07:23:09.730</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.730</ModifiedTimestamp>
       <ObjectId>434100587</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>129</SourceTextLength>
     </routine>
-    <routine id="5674" parent="5578" name="sp_GetDireccionById">
+    <routine id="5673" parent="5578" name="sp_GetDireccionById">
       <CreatedTimestamp>2025-02-08.07:23:09.683</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.00:41:35.563</ModifiedTimestamp>
       <ObjectId>1845581613</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>301</SourceTextLength>
     </routine>
-    <routine id="5675" parent="5578" name="sp_GetEmpleadoById">
+    <routine id="5674" parent="5578" name="sp_GetEmpleadoById">
       <CreatedTimestamp>2025-02-08.07:23:09.700</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.700</ModifiedTimestamp>
       <ObjectId>2085582468</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>124</SourceTextLength>
     </routine>
-    <routine id="5676" parent="5578" name="sp_GetPersonaById">
+    <routine id="5675" parent="5578" name="sp_GetPersonaById">
       <CreatedTimestamp>2025-02-08.07:23:09.690</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.690</ModifiedTimestamp>
       <ObjectId>1925581898</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>123</SourceTextLength>
     </routine>
-    <routine id="5677" parent="5578" name="sp_GetProducto">
+    <routine id="5676" parent="5578" name="sp_GetProducto">
       <CreatedTimestamp>2025-02-08.07:23:09.707</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.707</ModifiedTimestamp>
       <ObjectId>18099105</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>102</SourceTextLength>
     </routine>
-    <routine id="5678" parent="5578" name="sp_GetProveedor">
+    <routine id="5677" parent="5578" name="sp_GetProveedor">
       <CreatedTimestamp>2025-02-08.07:23:09.717</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.717</ModifiedTimestamp>
       <ObjectId>210099789</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>104</SourceTextLength>
     </routine>
-    <routine id="5679" parent="5578" name="sp_GetProveedorById">
+    <routine id="5678" parent="5578" name="sp_GetProveedorById">
       <CreatedTimestamp>2025-02-08.07:23:09.740</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.740</ModifiedTimestamp>
       <ObjectId>610101214</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>131</SourceTextLength>
     </routine>
-    <routine id="5680" parent="5578" name="sp_GetTodosLosProductos">
+    <routine id="5679" parent="5578" name="sp_GetTodosLosProductos">
       <CreatedTimestamp>2025-03-20.20:53:53.683</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-20.20:53:53.683</ModifiedTimestamp>
       <ObjectId>1394104007</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>385</SourceTextLength>
     </routine>
-    <routine id="5681" parent="5578" name="sp_GetUsuarioById">
+    <routine id="5680" parent="5578" name="sp_GetUsuarioById">
       <CreatedTimestamp>2025-02-08.07:23:09.733</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.733</ModifiedTimestamp>
       <ObjectId>514100872</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>123</SourceTextLength>
     </routine>
-    <routine id="5682" parent="5578" name="sp_GetUsuarioByNombreUsuario">
+    <routine id="5681" parent="5578" name="sp_GetUsuarioByNombreUsuario">
       <CreatedTimestamp>2025-03-01.07:45:56.197</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-01.07:45:56.197</ModifiedTimestamp>
       <ObjectId>978102525</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>154</SourceTextLength>
     </routine>
-    <routine id="5683" parent="5578" name="sp_GetVenta">
+    <routine id="5682" parent="5578" name="sp_GetVenta">
       <CreatedTimestamp>2025-02-08.07:23:09.710</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.710</ModifiedTimestamp>
       <ObjectId>82099333</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>111</SourceTextLength>
     </routine>
-    <routine id="5684" parent="5578" name="sp_GetVentaById">
+    <routine id="5683" parent="5578" name="sp_GetVentaById">
       <CreatedTimestamp>2025-02-08.07:23:09.737</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.737</ModifiedTimestamp>
       <ObjectId>546100986</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>137</SourceTextLength>
     </routine>
-    <routine id="5685" parent="5578" name="sp_InsertCliente">
+    <routine id="5684" parent="5578" name="sp_InsertCliente">
       <CreatedTimestamp>2025-02-08.07:23:09.690</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.690</ModifiedTimestamp>
       <ObjectId>1957582012</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>361</SourceTextLength>
     </routine>
-    <routine id="5686" parent="5578" name="sp_InsertDescuento">
+    <routine id="5685" parent="5578" name="sp_InsertDescuento">
       <CreatedTimestamp>2025-02-08.07:23:09.717</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.717</ModifiedTimestamp>
       <ObjectId>226099846</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>465</SourceTextLength>
     </routine>
-    <routine id="5687" parent="5578" name="sp_InsertDetalleFactura">
+    <routine id="5686" parent="5578" name="sp_InsertDetalleFactura">
       <CreatedTimestamp>2025-02-08.07:23:09.723</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.723</ModifiedTimestamp>
       <ObjectId>306100131</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>429</SourceTextLength>
     </routine>
-    <routine id="5688" parent="5578" name="sp_InsertDevolucion">
+    <routine id="5687" parent="5578" name="sp_InsertDevolucion">
       <CreatedTimestamp>2025-02-08.07:23:09.727</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.727</ModifiedTimestamp>
       <ObjectId>386100416</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>506</SourceTextLength>
     </routine>
-    <routine id="5689" parent="5578" name="sp_InsertDireccion">
+    <routine id="5688" parent="5578" name="sp_InsertDireccion">
       <CreatedTimestamp>2025-02-08.07:23:09.670</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-02.09:49:41.063</ModifiedTimestamp>
       <ObjectId>1797581442</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>556</SourceTextLength>
     </routine>
-    <routine id="5690" parent="5578" name="sp_InsertEmpleado">
+    <routine id="5689" parent="5578" name="sp_InsertEmpleado">
       <CreatedTimestamp>2025-02-08.07:23:09.697</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.697</ModifiedTimestamp>
       <ObjectId>2037582297</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>467</SourceTextLength>
     </routine>
-    <routine id="5691" parent="5578" name="sp_InsertFactura">
+    <routine id="5690" parent="5578" name="sp_InsertFactura">
       <CreatedTimestamp>2025-02-08.07:23:09.710</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-22.14:10:23.447</ModifiedTimestamp>
       <ObjectId>98099390</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>387</SourceTextLength>
     </routine>
-    <routine id="5692" parent="5578" name="sp_InsertPersona">
+    <routine id="5691" parent="5578" name="sp_InsertPersona">
       <CreatedTimestamp>2025-02-08.07:23:09.687</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.687</ModifiedTimestamp>
       <ObjectId>1877581727</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>774</SourceTextLength>
     </routine>
-    <routine id="5693" parent="5578" name="sp_InsertProducto">
-      <CreatedTimestamp>2025-02-08.07:23:09.700</CreatedTimestamp>
-      <ModifiedTimestamp>2025-02-08.07:23:09.700</ModifiedTimestamp>
-      <ObjectId>2117582582</ObjectId>
-      <RoutineType>proc</RoutineType>
-      <SourceTextLength>576</SourceTextLength>
-    </routine>
-    <routine id="5694" parent="5578" name="sp_InsertProveedor">
+    <routine id="5692" parent="5578" name="sp_InsertProveedor">
       <CreatedTimestamp>2025-02-08.07:23:09.713</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.713</ModifiedTimestamp>
       <ObjectId>162099618</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>457</SourceTextLength>
     </routine>
-    <routine id="5695" parent="5578" name="sp_InsertUsuario">
+    <routine id="5693" parent="5578" name="sp_InsertUsuario">
       <CreatedTimestamp>2025-02-08.07:23:09.730</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.730</ModifiedTimestamp>
       <ObjectId>466100701</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>418</SourceTextLength>
     </routine>
-    <routine id="5696" parent="5578" name="sp_InsertVenta">
+    <routine id="5694" parent="5578" name="sp_InsertVenta">
       <CreatedTimestamp>2025-02-08.07:23:09.707</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.707</ModifiedTimestamp>
       <ObjectId>34099162</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>298</SourceTextLength>
     </routine>
-    <routine id="5697" parent="5578" name="sp_ObtenerCarritoPorClienteID">
+    <routine id="5695" parent="5578" name="sp_ObtenerCarritoPorClienteID">
       <CreatedTimestamp>2025-03-21.19:24:26.947</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.19:24:26.947</ModifiedTimestamp>
       <ObjectId>1570104634</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>558</SourceTextLength>
     </routine>
-    <routine id="5698" parent="5578" name="sp_ObtenerClientePorPersonaID">
+    <routine id="5696" parent="5578" name="sp_ObtenerClientePorPersonaID">
       <CreatedTimestamp>2025-03-21.16:35:50.833</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.16:35:50.833</ModifiedTimestamp>
       <ObjectId>1554104577</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>319</SourceTextLength>
     </routine>
-    <routine id="5699" parent="5578" name="sp_ObtenerDevoluciones">
+    <routine id="5697" parent="5578" name="sp_ObtenerDevoluciones">
       <CreatedTimestamp>2025-04-26.13:21:05.020</CreatedTimestamp>
       <ModifiedTimestamp>2025-04-26.13:21:05.020</ModifiedTimestamp>
       <ObjectId>78623323</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>419</SourceTextLength>
     </routine>
-    <routine id="5700" parent="5578" name="sp_ObtenerFacturaPorId">
+    <routine id="5698" parent="5578" name="sp_ObtenerFacturaPorId">
       <CreatedTimestamp>2025-03-22.17:58:23.427</CreatedTimestamp>
       <ModifiedTimestamp>2025-04-27.16:19:05.687</ModifiedTimestamp>
       <ObjectId>1650104919</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>305</SourceTextLength>
     </routine>
-    <routine id="5701" parent="5578" name="sp_ObtenerPerfilUsuario">
+    <routine id="5699" parent="5578" name="sp_ObtenerPerfilUsuario">
       <CreatedTimestamp>2025-04-23.21:32:09.667</CreatedTimestamp>
       <ModifiedTimestamp>2025-04-25.14:28:38.040</ModifiedTimestamp>
       <ObjectId>2066106401</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>884</SourceTextLength>
     </routine>
-    <routine id="5702" parent="5578" name="sp_ObtenerProductosCompradosPorCliente">
+    <routine id="5700" parent="5578" name="sp_ObtenerProductosCompradosPorCliente">
       <CreatedTimestamp>2025-04-26.15:03:43.457</CreatedTimestamp>
-      <ModifiedTimestamp>2025-04-26.15:25:47.890</ModifiedTimestamp>
+      <ModifiedTimestamp>2025-08-19.00:52:34.540</ModifiedTimestamp>
       <ObjectId>94623380</ObjectId>
       <RoutineType>proc</RoutineType>
-      <SourceTextLength>625</SourceTextLength>
+      <SourceTextLength>509</SourceTextLength>
     </routine>
-    <routine id="5703" parent="5578" name="sp_ObtenerUsuarioPorEmail">
+    <routine id="5701" parent="5578" name="sp_ObtenerUsuarioPorEmail">
       <CreatedTimestamp>2025-03-19.22:29:30.510</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-19.22:29:30.510</ModifiedTimestamp>
       <ObjectId>1314103722</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>304</SourceTextLength>
     </routine>
-    <routine id="5704" parent="5578" name="sp_ObtenerUsuarioPorNombreUsuario">
+    <routine id="5702" parent="5578" name="sp_ObtenerUsuarioPorNombreUsuario">
       <CreatedTimestamp>2025-03-19.22:39:42.657</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-19.22:39:42.657</ModifiedTimestamp>
       <ObjectId>1330103779</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>271</SourceTextLength>
     </routine>
-    <routine id="5705" parent="5578" name="sp_UpdateCliente">
+    <routine id="5703" parent="5578" name="sp_UpdateCliente">
       <CreatedTimestamp>2025-02-08.07:23:09.693</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.693</ModifiedTimestamp>
       <ObjectId>1973582069</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>322</SourceTextLength>
     </routine>
-    <routine id="5706" parent="5578" name="sp_UpdateDescuento">
+    <routine id="5704" parent="5578" name="sp_UpdateDescuento">
       <CreatedTimestamp>2025-02-08.07:23:09.720</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.720</ModifiedTimestamp>
       <ObjectId>242099903</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>437</SourceTextLength>
     </routine>
-    <routine id="5707" parent="5578" name="sp_UpdateDetalleFactura">
+    <routine id="5705" parent="5578" name="sp_UpdateDetalleFactura">
       <CreatedTimestamp>2025-02-08.07:23:09.723</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.723</ModifiedTimestamp>
       <ObjectId>322100188</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>400</SourceTextLength>
     </routine>
-    <routine id="5708" parent="5578" name="sp_UpdateDevolucion">
+    <routine id="5706" parent="5578" name="sp_UpdateDevolucion">
       <CreatedTimestamp>2025-02-08.07:23:09.730</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.730</ModifiedTimestamp>
       <ObjectId>402100473</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>522</SourceTextLength>
     </routine>
-    <routine id="5709" parent="5578" name="sp_UpdateDireccion">
+    <routine id="5707" parent="5578" name="sp_UpdateDireccion">
       <CreatedTimestamp>2025-02-08.07:23:09.677</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.677</ModifiedTimestamp>
       <ObjectId>1813581499</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>494</SourceTextLength>
     </routine>
-    <routine id="5710" parent="5578" name="sp_UpdateEmpleado">
+    <routine id="5708" parent="5578" name="sp_UpdateEmpleado">
       <CreatedTimestamp>2025-02-08.07:23:09.697</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.697</ModifiedTimestamp>
       <ObjectId>2053582354</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>438</SourceTextLength>
     </routine>
-    <routine id="5711" parent="5578" name="sp_UpdateFactura">
+    <routine id="5709" parent="5578" name="sp_UpdateFactura">
       <CreatedTimestamp>2025-02-08.07:23:09.710</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.710</ModifiedTimestamp>
       <ObjectId>114099447</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>495</SourceTextLength>
     </routine>
-    <routine id="5712" parent="5578" name="sp_UpdatePersona">
+    <routine id="5710" parent="5578" name="sp_UpdatePersona">
       <CreatedTimestamp>2025-02-08.07:23:09.687</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.687</ModifiedTimestamp>
       <ObjectId>1893581784</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>722</SourceTextLength>
     </routine>
-    <routine id="5713" parent="5578" name="sp_UpdateProducto">
-      <CreatedTimestamp>2025-02-08.07:23:09.703</CreatedTimestamp>
-      <ModifiedTimestamp>2025-02-08.07:23:09.703</ModifiedTimestamp>
-      <ObjectId>2133582639</ObjectId>
-      <RoutineType>proc</RoutineType>
-      <SourceTextLength>616</SourceTextLength>
-    </routine>
-    <routine id="5714" parent="5578" name="sp_UpdateProveedor">
+    <routine id="5711" parent="5578" name="sp_UpdateProveedor">
       <CreatedTimestamp>2025-02-08.07:23:09.713</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.713</ModifiedTimestamp>
       <ObjectId>178099675</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>537</SourceTextLength>
     </routine>
-    <routine id="5715" parent="5578" name="sp_UpdateUsuario">
+    <routine id="5712" parent="5578" name="sp_UpdateUsuario">
       <CreatedTimestamp>2025-02-08.07:23:09.733</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.733</ModifiedTimestamp>
       <ObjectId>482100758</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>420</SourceTextLength>
     </routine>
-    <routine id="5716" parent="5578" name="sp_UpdateVenta">
+    <routine id="5713" parent="5578" name="sp_UpdateVenta">
       <CreatedTimestamp>2025-02-08.07:23:09.707</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.707</ModifiedTimestamp>
       <ObjectId>50099219</ObjectId>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>339</SourceTextLength>
     </routine>
-    <routine id="5717" parent="5578" name="sp_alterdiagram">
+    <routine id="5714" parent="5578" name="sp_alterdiagram">
       <CreatedTimestamp>2025-02-17.15:46:23.223</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -17891,7 +17870,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1501</SourceTextLength>
     </routine>
-    <routine id="5718" parent="5578" name="sp_creatediagram">
+    <routine id="5715" parent="5578" name="sp_creatediagram">
       <CreatedTimestamp>2025-02-17.15:46:23.217</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -17901,7 +17880,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1223</SourceTextLength>
     </routine>
-    <routine id="5719" parent="5578" name="sp_dropdiagram">
+    <routine id="5716" parent="5578" name="sp_dropdiagram">
       <CreatedTimestamp>2025-02-17.15:46:23.230</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -17911,7 +17890,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>896</SourceTextLength>
     </routine>
-    <routine id="5720" parent="5578" name="sp_helpdiagramdefinition">
+    <routine id="5717" parent="5578" name="sp_helpdiagramdefinition">
       <CreatedTimestamp>2025-02-17.15:46:23.213</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -17921,7 +17900,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>921</SourceTextLength>
     </routine>
-    <routine id="5721" parent="5578" name="sp_helpdiagrams">
+    <routine id="5718" parent="5578" name="sp_helpdiagrams">
       <CreatedTimestamp>2025-02-17.15:46:23.210</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -17931,7 +17910,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>658</SourceTextLength>
     </routine>
-    <routine id="5722" parent="5578" name="sp_renamediagram">
+    <routine id="5719" parent="5578" name="sp_renamediagram">
       <CreatedTimestamp>2025-02-17.15:46:23.220</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -17941,7 +17920,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1721</SourceTextLength>
     </routine>
-    <routine id="5723" parent="5578" name="sp_upgraddiagrams">
+    <routine id="5720" parent="5578" name="sp_upgraddiagrams">
       <CreatedTimestamp>2025-02-17.15:46:23.197</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -17951,98 +17930,98 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1463</SourceTextLength>
     </routine>
-    <table id="5724" parent="5578" name="CarritoCompras">
+    <table id="5721" parent="5578" name="CarritoCompras">
       <CreatedTimestamp>2025-03-21.15:28:46.107</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-03-21.15:28:46.107</ModifiedTimestamp>
       <ObjectId>1426104121</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5725" parent="5578" name="Cliente">
+    <table id="5722" parent="5578" name="Cliente">
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-03-21.15:28:46.147</ModifiedTimestamp>
       <ObjectId>1061578820</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5726" parent="5578" name="Descuento">
+    <table id="5723" parent="5578" name="Descuento">
       <CreatedTimestamp>2025-02-08.07:23:09.657</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-03-21.21:37:41.690</ModifiedTimestamp>
       <ObjectId>1333579789</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5727" parent="5578" name="DetalleFactura">
+    <table id="5724" parent="5578" name="DetalleFactura">
       <CreatedTimestamp>2025-02-08.07:23:09.657</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <ObjectId>1477580302</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5728" parent="5578" name="Devolucion">
+    <table id="5725" parent="5578" name="Devolucion">
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <ObjectId>1541580530</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5729" parent="5578" name="Direccion">
+    <table id="5726" parent="5578" name="Direccion">
       <CreatedTimestamp>2025-02-08.07:23:09.630</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-02-08.07:23:09.663</ModifiedTimestamp>
       <ObjectId>901578250</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5730" parent="5578" name="Empleado">
+    <table id="5727" parent="5578" name="Empleado">
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-03-21.21:01:46.310</ModifiedTimestamp>
       <ObjectId>1125579048</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5731" parent="5578" name="Factura">
+    <table id="5728" parent="5578" name="Factura">
       <CreatedTimestamp>2025-02-08.07:23:09.657</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-03-22.13:01:27.533</ModifiedTimestamp>
       <ObjectId>1365579903</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5732" parent="5578" name="Persona">
+    <table id="5729" parent="5578" name="Persona">
       <CreatedTimestamp>2025-02-08.07:23:09.643</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-03-29.10:16:28.793</ModifiedTimestamp>
       <ObjectId>949578421</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5733" parent="5578" name="Producto">
+    <table id="5730" parent="5578" name="Producto">
       <CreatedTimestamp>2025-02-08.07:23:09.653</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-03-21.15:28:46.150</ModifiedTimestamp>
       <ObjectId>1189579276</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5734" parent="5578" name="Proveedor">
+    <table id="5731" parent="5578" name="Proveedor">
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <ObjectId>1653580929</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5735" parent="5578" name="Usuario">
+    <table id="5732" parent="5578" name="Usuario">
       <CreatedTimestamp>2025-02-08.07:23:09.663</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-02-17.15:54:56.677</ModifiedTimestamp>
       <ObjectId>1717581157</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5736" parent="5578" name="Venta">
+    <table id="5733" parent="5578" name="Venta">
       <CreatedTimestamp>2025-02-08.07:23:09.653</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
       <ObjectId>1237579447</ObjectId>
       <LobDataSpaceId>0</LobDataSpaceId>
     </table>
-    <table id="5737" parent="5578" name="sysdiagrams">
+    <table id="5734" parent="5578" name="sysdiagrams">
       <CreatedTimestamp>2025-02-17.15:46:23.200</CreatedTimestamp>
       <DataRetentionPeriod>-1</DataRetentionPeriod>
       <ExtendedProperties>microsoft_database_tools_support
@@ -18052,1941 +18031,1861 @@ int</ExtendedProperties>
       <ObjectId>674101442</ObjectId>
       <LobDataSpaceId>1</LobDataSpaceId>
     </table>
-    <argument id="5738" parent="5581" name="@ID">
+    <argument id="5735" parent="5581" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5739" parent="5581" name="@PersonaID">
+    <argument id="5736" parent="5581" name="@PersonaID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5740" parent="5581" name="@CodigoCliente">
+    <argument id="5737" parent="5581" name="@CodigoCliente">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5741" parent="5581" name="@Estado">
+    <argument id="5738" parent="5581" name="@Estado">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5742" parent="5581" name="@ModificadoPor">
+    <argument id="5739" parent="5581" name="@ModificadoPor">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5743" parent="5582" name="@ID">
+    <argument id="5740" parent="5582" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5744" parent="5582" name="@Tipo">
+    <argument id="5741" parent="5582" name="@Tipo">
       <Position>2</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5745" parent="5582" name="@Valor">
+    <argument id="5742" parent="5582" name="@Valor">
       <Position>3</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5746" parent="5582" name="@Descripcion">
+    <argument id="5743" parent="5582" name="@Descripcion">
       <Position>4</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5747" parent="5582" name="@FechaInicio">
+    <argument id="5744" parent="5582" name="@FechaInicio">
       <Position>5</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5748" parent="5582" name="@FechaFin">
+    <argument id="5745" parent="5582" name="@FechaFin">
       <Position>6</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5749" parent="5582" name="@Estado">
+    <argument id="5746" parent="5582" name="@Estado">
       <Position>7</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5750" parent="5583" name="@ID">
+    <argument id="5747" parent="5583" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5751" parent="5583" name="@FacturaID">
+    <argument id="5748" parent="5583" name="@FacturaID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5752" parent="5583" name="@DetalleFacturaID">
+    <argument id="5749" parent="5583" name="@DetalleFacturaID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5753" parent="5583" name="@ProductoID">
+    <argument id="5750" parent="5583" name="@ProductoID">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5754" parent="5583" name="@Cantidad">
+    <argument id="5751" parent="5583" name="@Cantidad">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5755" parent="5583" name="@Motivo">
+    <argument id="5752" parent="5583" name="@Motivo">
       <Position>6</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5756" parent="5583" name="@Estado">
+    <argument id="5753" parent="5583" name="@Estado">
       <Position>7</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5757" parent="5583" name="@ModificadoPor">
+    <argument id="5754" parent="5583" name="@ModificadoPor">
       <Position>8</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5758" parent="5584" name="@ID">
+    <argument id="5755" parent="5584" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5759" parent="5584" name="@Ciudad">
+    <argument id="5756" parent="5584" name="@Ciudad">
       <Position>2</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5760" parent="5584" name="@Estado">
+    <argument id="5757" parent="5584" name="@Estado">
       <Position>3</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5761" parent="5584" name="@CodigoPostal">
+    <argument id="5758" parent="5584" name="@CodigoPostal">
       <Position>4</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5762" parent="5584" name="@Pais">
+    <argument id="5759" parent="5584" name="@Pais">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5763" parent="5584" name="@TipoDireccion">
+    <argument id="5760" parent="5584" name="@TipoDireccion">
       <Position>6</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5764" parent="5584" name="@ModificadoPor">
+    <argument id="5761" parent="5584" name="@ModificadoPor">
       <Position>7</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5765" parent="5585" name="@ClienteID">
+    <argument id="5762" parent="5585" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5766" parent="5585" name="@NuevoEmail">
+    <argument id="5763" parent="5585" name="@NuevoEmail">
       <Position>2</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5767" parent="5586" name="@ID">
+    <argument id="5764" parent="5586" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5768" parent="5586" name="@PersonaID">
+    <argument id="5765" parent="5586" name="@PersonaID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5769" parent="5586" name="@Puesto">
+    <argument id="5766" parent="5586" name="@Puesto">
       <Position>3</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5770" parent="5586" name="@FechaContratacion">
+    <argument id="5767" parent="5586" name="@FechaContratacion">
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5771" parent="5586" name="@Salario">
+    <argument id="5768" parent="5586" name="@Salario">
       <Position>5</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5772" parent="5586" name="@Estado">
+    <argument id="5769" parent="5586" name="@Estado">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5773" parent="5586" name="@ModificadoPor">
+    <argument id="5770" parent="5586" name="@ModificadoPor">
       <Position>7</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5774" parent="5587" name="@ID">
+    <argument id="5771" parent="5587" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5775" parent="5587" name="@ClienteID">
+    <argument id="5772" parent="5587" name="@ClienteID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5776" parent="5587" name="@Total">
+    <argument id="5773" parent="5587" name="@Total">
       <Position>3</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5777" parent="5587" name="@MetodoPago">
+    <argument id="5774" parent="5587" name="@MetodoPago">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5778" parent="5587" name="@Estado">
+    <argument id="5775" parent="5587" name="@Estado">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5779" parent="5587" name="@ModificadoPor">
+    <argument id="5776" parent="5587" name="@ModificadoPor">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5780" parent="5588" name="@ClienteID">
+    <argument id="5777" parent="5588" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5781" parent="5588" name="@Nombre1">
+    <argument id="5778" parent="5588" name="@Nombre1">
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5782" parent="5588" name="@Nombre2">
+    <argument id="5779" parent="5588" name="@Nombre2">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5783" parent="5588" name="@Apellido1">
+    <argument id="5780" parent="5588" name="@Apellido1">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5784" parent="5588" name="@Apellido2">
+    <argument id="5781" parent="5588" name="@Apellido2">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5785" parent="5588" name="@Telefono">
+    <argument id="5782" parent="5588" name="@Telefono">
       <Position>6</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5786" parent="5588" name="@FechaNacimiento">
+    <argument id="5783" parent="5588" name="@FechaNacimiento">
       <Position>7</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5787" parent="5588" name="@Genero">
+    <argument id="5784" parent="5588" name="@Genero">
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5788" parent="5588" name="@DireccionID">
+    <argument id="5785" parent="5588" name="@DireccionID">
       <Position>9</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5789" parent="5588" name="@Ciudad">
+    <argument id="5786" parent="5588" name="@Ciudad">
       <Position>10</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5790" parent="5588" name="@Estado">
+    <argument id="5787" parent="5588" name="@Estado">
       <Position>11</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5791" parent="5588" name="@CodigoPostal">
+    <argument id="5788" parent="5588" name="@CodigoPostal">
       <Position>12</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5792" parent="5588" name="@Pais">
+    <argument id="5789" parent="5588" name="@Pais">
       <Position>13</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5793" parent="5588" name="@TipoDireccion">
+    <argument id="5790" parent="5588" name="@TipoDireccion">
       <Position>14</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5794" parent="5589" name="@ID">
+    <argument id="5791" parent="5589" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5795" parent="5589" name="@Nombre1">
+    <argument id="5792" parent="5589" name="@Nombre1">
       <Position>2</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5796" parent="5589" name="@Nombre2">
+    <argument id="5793" parent="5589" name="@Nombre2">
       <Position>3</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5797" parent="5589" name="@Apellido1">
+    <argument id="5794" parent="5589" name="@Apellido1">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5798" parent="5589" name="@Apellido2">
+    <argument id="5795" parent="5589" name="@Apellido2">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5799" parent="5589" name="@DocumentoIdentidad">
+    <argument id="5796" parent="5589" name="@DocumentoIdentidad">
       <Position>6</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5800" parent="5589" name="@Telefono">
+    <argument id="5797" parent="5589" name="@Telefono">
       <Position>7</Position>
       <StoredType>varchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5801" parent="5589" name="@Email">
+    <argument id="5798" parent="5589" name="@Email">
       <Position>8</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5802" parent="5589" name="@FechaNacimiento">
+    <argument id="5799" parent="5589" name="@FechaNacimiento">
       <Position>9</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5803" parent="5589" name="@Genero">
+    <argument id="5800" parent="5589" name="@Genero">
       <Position>10</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5804" parent="5589" name="@DireccionID">
+    <argument id="5801" parent="5589" name="@DireccionID">
       <Position>11</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5805" parent="5589" name="@ModificadoPor">
+    <argument id="5802" parent="5589" name="@ModificadoPor">
       <Position>12</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5806" parent="5590" name="@ID">
+    <argument id="5803" parent="5590" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5807" parent="5590" name="@NombreProducto">
+    <argument id="5804" parent="5590" name="@NombreProducto">
       <Position>2</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5808" parent="5590" name="@Genero">
+    <argument id="5805" parent="5590" name="@Genero">
       <Position>3</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5809" parent="5590" name="@SegmentoEdad">
+    <argument id="5806" parent="5590" name="@SegmentoEdad">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5810" parent="5590" name="@TipoProducto">
+    <argument id="5807" parent="5590" name="@TipoProducto">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5811" parent="5590" name="@Color">
+    <argument id="5808" parent="5590" name="@Color">
       <Position>6</Position>
       <StoredType>varchar(30 char)|0s</StoredType>
     </argument>
-    <argument id="5812" parent="5590" name="@Talla">
+    <argument id="5809" parent="5590" name="@Talla">
       <Position>7</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5813" parent="5590" name="@UnidadesDisponibles">
+    <argument id="5810" parent="5590" name="@UnidadesDisponibles">
       <Position>8</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5814" parent="5590" name="@Precio">
+    <argument id="5811" parent="5590" name="@Precio">
       <Position>9</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5815" parent="5590" name="@ImagenUrl">
+    <argument id="5812" parent="5590" name="@ImagenUrl">
       <Position>10</Position>
       <StoredType>nvarchar(max)|0s</StoredType>
     </argument>
-    <argument id="5816" parent="5590" name="@Descripcion">
+    <argument id="5813" parent="5590" name="@Descripcion">
       <Position>11</Position>
       <StoredType>varchar(500 char)|0s</StoredType>
     </argument>
-    <argument id="5817" parent="5591" name="@ID">
+    <argument id="5814" parent="5591" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5818" parent="5591" name="@NombreEmpresa">
+    <argument id="5815" parent="5591" name="@NombreEmpresa">
       <Position>2</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5819" parent="5591" name="@NombreContacto">
+    <argument id="5816" parent="5591" name="@NombreContacto">
       <Position>3</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5820" parent="5591" name="@Telefono">
+    <argument id="5817" parent="5591" name="@Telefono">
       <Position>4</Position>
       <StoredType>varchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5821" parent="5591" name="@Email">
+    <argument id="5818" parent="5591" name="@Email">
       <Position>5</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5822" parent="5591" name="@DireccionID">
+    <argument id="5819" parent="5591" name="@DireccionID">
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5823" parent="5591" name="@Estado">
+    <argument id="5820" parent="5591" name="@Estado">
       <Position>7</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5824" parent="5591" name="@ModificadoPor">
+    <argument id="5821" parent="5591" name="@ModificadoPor">
       <Position>8</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5825" parent="5592" name="@ID">
+    <argument id="5822" parent="5592" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5826" parent="5592" name="@NombreUsuario">
+    <argument id="5823" parent="5592" name="@NombreUsuario">
       <Position>2</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5827" parent="5592" name="@ContrasenaHash">
+    <argument id="5824" parent="5592" name="@ContrasenaHash">
       <Position>3</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5828" parent="5592" name="@Email">
+    <argument id="5825" parent="5592" name="@Email">
       <Position>4</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5829" parent="5592" name="@Rol">
+    <argument id="5826" parent="5592" name="@Rol">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5830" parent="5592" name="@Estado">
+    <argument id="5827" parent="5592" name="@Estado">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5831" parent="5593" name="@VentaID">
+    <argument id="5828" parent="5593" name="@VentaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5832" parent="5593" name="@EmpleadoID">
+    <argument id="5829" parent="5593" name="@EmpleadoID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5833" parent="5593" name="@ClienteID">
+    <argument id="5830" parent="5593" name="@ClienteID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5834" parent="5593" name="@ProductoID">
+    <argument id="5831" parent="5593" name="@ProductoID">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5835" parent="5593" name="@Cantidad">
+    <argument id="5832" parent="5593" name="@Cantidad">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5836" parent="5593" name="@Total">
+    <argument id="5833" parent="5593" name="@Total">
       <Position>6</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5837" parent="5594" name="@DocumentoIdentidad">
+    <argument id="5834" parent="5594" name="@DocumentoIdentidad">
       <Position>1</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5838" parent="5595" name="@ID">
+    <argument id="5835" parent="5595" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5839" parent="5596" name="@ID">
+    <argument id="5836" parent="5596" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5840" parent="5597" name="@ID">
+    <argument id="5837" parent="5597" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5841" parent="5598" name="@ID">
+    <argument id="5838" parent="5598" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5842" parent="5599" name="@ID">
+    <argument id="5839" parent="5599" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5843" parent="5600" name="@ID">
+    <argument id="5840" parent="5600" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5844" parent="5601" name="@ID">
+    <argument id="5841" parent="5601" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5845" parent="5602" name="@ID">
+    <argument id="5842" parent="5602" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5846" parent="5603" name="@ID">
+    <argument id="5843" parent="5603" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5847" parent="5604" name="@ID">
+    <argument id="5844" parent="5604" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5848" parent="5605" name="@VentaID">
+    <argument id="5845" parent="5605" name="@VentaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5849" parent="5606" name="@PersonaID">
+    <argument id="5846" parent="5606" name="@PersonaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5850" parent="5606" name="@CodigoCliente">
+    <argument id="5847" parent="5606" name="@CodigoCliente">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5851" parent="5606" name="@Estado">
+    <argument id="5848" parent="5606" name="@Estado">
       <Position>3</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5852" parent="5606" name="@CreadoPor">
+    <argument id="5849" parent="5606" name="@CreadoPor">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5853" parent="5607" name="@Tipo">
+    <argument id="5850" parent="5607" name="@Tipo">
       <Position>1</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5854" parent="5607" name="@Valor">
+    <argument id="5851" parent="5607" name="@Valor">
       <Position>2</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5855" parent="5607" name="@Descripcion">
+    <argument id="5852" parent="5607" name="@Descripcion">
       <Position>3</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5856" parent="5607" name="@FechaInicio">
+    <argument id="5853" parent="5607" name="@FechaInicio">
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5857" parent="5607" name="@FechaFin">
+    <argument id="5854" parent="5607" name="@FechaFin">
       <Position>5</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5858" parent="5607" name="@Estado">
+    <argument id="5855" parent="5607" name="@Estado">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5859" parent="5608" name="@FacturaID">
+    <argument id="5856" parent="5608" name="@FacturaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5860" parent="5608" name="@DetalleFacturaID">
+    <argument id="5857" parent="5608" name="@DetalleFacturaID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5861" parent="5608" name="@ProductoID">
+    <argument id="5858" parent="5608" name="@ProductoID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5862" parent="5608" name="@Cantidad">
+    <argument id="5859" parent="5608" name="@Cantidad">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5863" parent="5608" name="@Motivo">
+    <argument id="5860" parent="5608" name="@Motivo">
       <Position>5</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5864" parent="5608" name="@Estado">
+    <argument id="5861" parent="5608" name="@Estado">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5865" parent="5608" name="@CreadoPor">
+    <argument id="5862" parent="5608" name="@CreadoPor">
       <Position>7</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5866" parent="5609" name="@Ciudad">
+    <argument id="5863" parent="5609" name="@Ciudad">
       <Position>1</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5867" parent="5609" name="@Estado">
+    <argument id="5864" parent="5609" name="@Estado">
       <Position>2</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5868" parent="5609" name="@CodigoPostal">
+    <argument id="5865" parent="5609" name="@CodigoPostal">
       <Position>3</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5869" parent="5609" name="@Pais">
+    <argument id="5866" parent="5609" name="@Pais">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5870" parent="5609" name="@TipoDireccion">
+    <argument id="5867" parent="5609" name="@TipoDireccion">
       <Position>5</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5871" parent="5609" name="@CreadoPor">
+    <argument id="5868" parent="5609" name="@CreadoPor">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5872" parent="5610" name="@PersonaID">
+    <argument id="5869" parent="5610" name="@PersonaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5873" parent="5610" name="@Puesto">
+    <argument id="5870" parent="5610" name="@Puesto">
       <Position>2</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5874" parent="5610" name="@FechaContratacion">
+    <argument id="5871" parent="5610" name="@FechaContratacion">
       <Position>3</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5875" parent="5610" name="@Salario">
+    <argument id="5872" parent="5610" name="@Salario">
       <Position>4</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5876" parent="5610" name="@Estado">
+    <argument id="5873" parent="5610" name="@Estado">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5877" parent="5610" name="@CreadoPor">
+    <argument id="5874" parent="5610" name="@CreadoPor">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5878" parent="5611" name="@Nombre1">
+    <argument id="5875" parent="5611" name="@Nombre1">
       <Position>1</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5879" parent="5611" name="@Nombre2">
+    <argument id="5876" parent="5611" name="@Nombre2">
       <Position>2</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5880" parent="5611" name="@Apellido1">
+    <argument id="5877" parent="5611" name="@Apellido1">
       <Position>3</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5881" parent="5611" name="@Apellido2">
+    <argument id="5878" parent="5611" name="@Apellido2">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5882" parent="5611" name="@DocumentoIdentidad">
+    <argument id="5879" parent="5611" name="@DocumentoIdentidad">
       <Position>5</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5883" parent="5611" name="@Telefono">
+    <argument id="5880" parent="5611" name="@Telefono">
       <Position>6</Position>
       <StoredType>varchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5884" parent="5611" name="@Email">
+    <argument id="5881" parent="5611" name="@Email">
       <Position>7</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5885" parent="5611" name="@FechaNacimiento">
+    <argument id="5882" parent="5611" name="@FechaNacimiento">
       <Position>8</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="5886" parent="5611" name="@Genero">
+    <argument id="5883" parent="5611" name="@Genero">
       <Position>9</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5887" parent="5611" name="@DireccionID">
+    <argument id="5884" parent="5611" name="@DireccionID">
       <Position>10</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5888" parent="5611" name="@CreadoPor">
+    <argument id="5885" parent="5611" name="@CreadoPor">
       <Position>11</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5889" parent="5612" name="@NombreProducto">
+    <argument id="5886" parent="5612" name="@NombreProducto">
       <Position>1</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5890" parent="5612" name="@Genero">
+    <argument id="5887" parent="5612" name="@Genero">
       <Position>2</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5891" parent="5612" name="@SegmentoEdad">
+    <argument id="5888" parent="5612" name="@SegmentoEdad">
       <Position>3</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5892" parent="5612" name="@TipoProducto">
+    <argument id="5889" parent="5612" name="@TipoProducto">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5893" parent="5612" name="@Color">
+    <argument id="5890" parent="5612" name="@Color">
       <Position>5</Position>
       <StoredType>varchar(30 char)|0s</StoredType>
     </argument>
-    <argument id="5894" parent="5612" name="@Talla">
+    <argument id="5891" parent="5612" name="@Talla">
       <Position>6</Position>
       <StoredType>varchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5895" parent="5612" name="@UnidadesDisponibles">
+    <argument id="5892" parent="5612" name="@UnidadesDisponibles">
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5896" parent="5612" name="@Precio">
+    <argument id="5893" parent="5612" name="@Precio">
       <Position>8</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5897" parent="5612" name="@ImagenUrl">
+    <argument id="5894" parent="5612" name="@ImagenUrl">
       <Position>9</Position>
       <StoredType>nvarchar(max)|0s</StoredType>
     </argument>
-    <argument id="5898" parent="5612" name="@Descripcion">
+    <argument id="5895" parent="5612" name="@Descripcion">
       <Position>10</Position>
       <StoredType>varchar(500 char)|0s</StoredType>
     </argument>
-    <argument id="5899" parent="5613" name="@NombreEmpresa">
+    <argument id="5896" parent="5613" name="@NombreEmpresa">
       <Position>1</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5900" parent="5613" name="@NombreContacto">
+    <argument id="5897" parent="5613" name="@NombreContacto">
       <Position>2</Position>
       <StoredType>varchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5901" parent="5613" name="@Telefono">
+    <argument id="5898" parent="5613" name="@Telefono">
       <Position>3</Position>
       <StoredType>varchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5902" parent="5613" name="@Email">
+    <argument id="5899" parent="5613" name="@Email">
       <Position>4</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5903" parent="5613" name="@DireccionID">
+    <argument id="5900" parent="5613" name="@DireccionID">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5904" parent="5613" name="@Estado">
+    <argument id="5901" parent="5613" name="@Estado">
       <Position>6</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5905" parent="5613" name="@CreadoPor">
+    <argument id="5902" parent="5613" name="@CreadoPor">
       <Position>7</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5906" parent="5614" name="@NombreUsuario">
+    <argument id="5903" parent="5614" name="@NombreUsuario">
       <Position>1</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5907" parent="5614" name="@ContrasenaHash">
+    <argument id="5904" parent="5614" name="@ContrasenaHash">
       <Position>2</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5908" parent="5614" name="@Email">
+    <argument id="5905" parent="5614" name="@Email">
       <Position>3</Position>
       <StoredType>varchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5909" parent="5614" name="@Rol">
+    <argument id="5906" parent="5614" name="@Rol">
       <Position>4</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5910" parent="5614" name="@Estado">
+    <argument id="5907" parent="5614" name="@Estado">
       <Position>5</Position>
       <StoredType>varchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5911" parent="5615" name="@EmpleadoID">
+    <argument id="5908" parent="5615" name="@EmpleadoID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5912" parent="5615" name="@ClienteID">
+    <argument id="5909" parent="5615" name="@ClienteID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5913" parent="5615" name="@ProductoID">
+    <argument id="5910" parent="5615" name="@ProductoID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5914" parent="5615" name="@Cantidad">
+    <argument id="5911" parent="5615" name="@Cantidad">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5915" parent="5615" name="@Total">
+    <argument id="5912" parent="5615" name="@Total">
       <Position>5</Position>
       <StoredType>decimal(18,2)|0s</StoredType>
     </argument>
-    <argument id="5916" parent="5618" name="@FacturaID">
+    <argument id="5913" parent="5618" name="@FacturaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5917" parent="5623" name="@ClienteID">
+    <argument id="5914" parent="5623" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5918" parent="5624" name="@Email">
+    <argument id="5915" parent="5624" name="@Email">
       <Position>1</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5919" parent="5630">
+    <argument id="5916" parent="5630">
       <ArgumentDirection>R</ArgumentDirection>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5920" parent="5631" name="@ClienteID">
+    <argument id="5917" parent="5631" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5921" parent="5631" name="@ProductoID">
+    <argument id="5918" parent="5631" name="@ProductoID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5922" parent="5631" name="@NuevaCantidad">
+    <argument id="5919" parent="5631" name="@NuevaCantidad">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5923" parent="5632" name="@ID">
+    <argument id="5920" parent="5632" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5924" parent="5632" name="@Cantidad">
+    <argument id="5921" parent="5632" name="@Cantidad">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5925" parent="5632" name="@Motivo">
+    <argument id="5922" parent="5632" name="@Motivo">
       <Position>3</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5926" parent="5632" name="@Estado">
+    <argument id="5923" parent="5632" name="@Estado">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5927" parent="5632" name="@ModificadoPor">
+    <argument id="5924" parent="5632" name="@ModificadoPor">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5928" parent="5633" name="@DireccionID">
+    <argument id="5925" parent="5633" name="@DireccionID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5929" parent="5633" name="@Ciudad">
+    <argument id="5926" parent="5633" name="@Ciudad">
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5930" parent="5633" name="@Estado">
+    <argument id="5927" parent="5633" name="@Estado">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5931" parent="5633" name="@CodigoPostal">
+    <argument id="5928" parent="5633" name="@CodigoPostal">
       <Position>4</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5932" parent="5633" name="@Pais">
+    <argument id="5929" parent="5633" name="@Pais">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5933" parent="5633" name="@TipoDireccion">
+    <argument id="5930" parent="5633" name="@TipoDireccion">
       <Position>6</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5934" parent="5634" name="@UsuarioID">
+    <argument id="5931" parent="5634" name="@UsuarioID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5935" parent="5634" name="@NombreUsuario">
+    <argument id="5932" parent="5634" name="@NombreUsuario">
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5936" parent="5634" name="@Rol">
+    <argument id="5933" parent="5634" name="@Rol">
       <Position>3</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5937" parent="5634" name="@PersonaID">
+    <argument id="5934" parent="5634" name="@PersonaID">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5938" parent="5634" name="@Nombre1">
+    <argument id="5935" parent="5634" name="@Nombre1">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5939" parent="5634" name="@Nombre2">
+    <argument id="5936" parent="5634" name="@Nombre2">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5940" parent="5634" name="@Apellido1">
+    <argument id="5937" parent="5634" name="@Apellido1">
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5941" parent="5634" name="@Apellido2">
+    <argument id="5938" parent="5634" name="@Apellido2">
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5942" parent="5634" name="@Telefono">
+    <argument id="5939" parent="5634" name="@Telefono">
       <Position>9</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5943" parent="5634" name="@Genero">
+    <argument id="5940" parent="5634" name="@Genero">
       <Position>10</Position>
       <StoredType>nvarchar(10 char)|0s</StoredType>
     </argument>
-    <argument id="5944" parent="5634" name="@PersonaEmail">
+    <argument id="5941" parent="5634" name="@PersonaEmail">
       <Position>11</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5945" parent="5634" name="@DireccionID">
+    <argument id="5942" parent="5634" name="@DireccionID">
       <Position>12</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5946" parent="5634" name="@Ciudad">
+    <argument id="5943" parent="5634" name="@Ciudad">
       <Position>13</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5947" parent="5634" name="@Estado">
+    <argument id="5944" parent="5634" name="@Estado">
       <Position>14</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5948" parent="5634" name="@CodigoPostal">
+    <argument id="5945" parent="5634" name="@CodigoPostal">
       <Position>15</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5949" parent="5634" name="@Pais">
+    <argument id="5946" parent="5634" name="@Pais">
       <Position>16</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5950" parent="5634" name="@TipoDireccion">
+    <argument id="5947" parent="5634" name="@TipoDireccion">
       <Position>17</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="5951" parent="5635" name="@PersonaID">
+    <argument id="5948" parent="5635" name="@PersonaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5952" parent="5635" name="@Nombre1">
+    <argument id="5949" parent="5635" name="@Nombre1">
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5953" parent="5635" name="@Nombre2">
+    <argument id="5950" parent="5635" name="@Nombre2">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5954" parent="5635" name="@Apellido1">
+    <argument id="5951" parent="5635" name="@Apellido1">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5955" parent="5635" name="@Apellido2">
+    <argument id="5952" parent="5635" name="@Apellido2">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5956" parent="5635" name="@Telefono">
+    <argument id="5953" parent="5635" name="@Telefono">
       <Position>6</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5957" parent="5635" name="@Email">
+    <argument id="5954" parent="5635" name="@Email">
       <Position>7</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5958" parent="5635" name="@Genero">
+    <argument id="5955" parent="5635" name="@Genero">
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5959" parent="5636" name="@ID">
+    <argument id="5956" parent="5636" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5960" parent="5636" name="@Correo">
+    <argument id="5957" parent="5636" name="@Correo">
       <Position>2</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5961" parent="5636" name="@Clave">
+    <argument id="5958" parent="5636" name="@Clave">
       <Position>3</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="5962" parent="5637" name="@ClienteID">
+    <argument id="5959" parent="5637" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5963" parent="5637" name="@ProductoID">
+    <argument id="5960" parent="5637" name="@ProductoID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5964" parent="5637" name="@Cantidad">
+    <argument id="5961" parent="5637" name="@Cantidad">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5965" parent="5638" name="@FacturaID">
+    <argument id="5962" parent="5638" name="@FacturaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5966" parent="5638" name="@DetalleFacturaID">
+    <argument id="5963" parent="5638" name="@DetalleFacturaID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5967" parent="5638" name="@ProductoID">
+    <argument id="5964" parent="5638" name="@ProductoID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5968" parent="5638" name="@Cantidad">
+    <argument id="5965" parent="5638" name="@Cantidad">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5969" parent="5638" name="@Motivo">
+    <argument id="5966" parent="5638" name="@Motivo">
       <Position>5</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="5970" parent="5638" name="@Estado">
+    <argument id="5967" parent="5638" name="@Estado">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5971" parent="5638" name="@CreadoPor">
+    <argument id="5968" parent="5638" name="@CreadoPor">
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="5972" parent="5639" name="@Telefono">
+    <argument id="5969" parent="5639" name="@Telefono">
       <Position>1</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="5973" parent="5640" name="@ID">
+    <argument id="5970" parent="5640" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5974" parent="5641" name="@ID">
+    <argument id="5971" parent="5641" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5975" parent="5642" name="@ID">
+    <argument id="5972" parent="5642" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5976" parent="5643" name="@ID">
+    <argument id="5973" parent="5643" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5977" parent="5644" name="@ID">
+    <argument id="5974" parent="5644" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5978" parent="5645" name="@ID">
+    <argument id="5975" parent="5645" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5979" parent="5646" name="@ID">
+    <argument id="5976" parent="5646" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5980" parent="5647" name="@ID">
+    <argument id="5977" parent="5647" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5981" parent="5648" name="@ID">
+    <argument id="5978" parent="5648" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5982" parent="5649" name="@ID">
+    <argument id="5979" parent="5649" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5983" parent="5650" name="@ID">
+    <argument id="5980" parent="5650" name="@VentaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5984" parent="5651" name="@VentaID">
+    <argument id="5981" parent="5651" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5985" parent="5652" name="@ClienteID">
+    <argument id="5982" parent="5652" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5986" parent="5653" name="@ID">
+    <argument id="5983" parent="5653" name="@UsuarioID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5987" parent="5654" name="@UsuarioID">
+    <argument id="5984" parent="5654" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5988" parent="5655" name="@ClienteID">
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="5989" parent="5655" name="@ProductoID">
+    <argument id="5985" parent="5654" name="@ProductoID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5990" parent="5656" name="@IdUsuario">
+    <argument id="5986" parent="5655" name="@IdUsuario">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5991" parent="5657" name="@IdUsuario">
+    <argument id="5987" parent="5656" name="@IdUsuario">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5992" parent="5669" name="@ClienteID">
+    <argument id="5988" parent="5668" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5993" parent="5669" name="@ProductoID">
+    <argument id="5989" parent="5668" name="@ProductoID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5994" parent="5670" name="@ID">
+    <argument id="5990" parent="5669" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5995" parent="5671" name="@ID">
+    <argument id="5991" parent="5670" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5996" parent="5672" name="@ID">
+    <argument id="5992" parent="5671" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5997" parent="5673" name="@ID">
+    <argument id="5993" parent="5672" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5998" parent="5674" name="@ID">
+    <argument id="5994" parent="5673" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="5999" parent="5675" name="@ID">
+    <argument id="5995" parent="5674" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6000" parent="5676" name="@ID">
+    <argument id="5996" parent="5675" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6001" parent="5677" name="@ID">
+    <argument id="5997" parent="5676" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6002" parent="5678" name="@ID">
+    <argument id="5998" parent="5677" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6003" parent="5679" name="@ID">
+    <argument id="5999" parent="5678" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6004" parent="5681" name="@ID">
+    <argument id="6000" parent="5680" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6005" parent="5682" name="@NombreUsuario">
+    <argument id="6001" parent="5681" name="@NombreUsuario">
       <Position>1</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6006" parent="5683" name="@VentaID">
+    <argument id="6002" parent="5682" name="@VentaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6007" parent="5684" name="@VentaID">
+    <argument id="6003" parent="5683" name="@VentaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6008" parent="5685" name="@PersonaID">
+    <argument id="6004" parent="5684" name="@PersonaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6009" parent="5685" name="@CodigoCliente">
+    <argument id="6005" parent="5684" name="@CodigoCliente">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6010" parent="5685" name="@Estado">
+    <argument id="6006" parent="5684" name="@Estado">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6011" parent="5685" name="@CreadoPor">
+    <argument id="6007" parent="5684" name="@CreadoPor">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6012" parent="5685" name="@NewID">
+    <argument id="6008" parent="5684" name="@NewID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6013" parent="5686" name="@Tipo">
+    <argument id="6009" parent="5685" name="@Tipo">
       <Position>1</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6014" parent="5686" name="@Valor">
+    <argument id="6010" parent="5685" name="@Valor">
       <Position>2</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6015" parent="5686" name="@Descripcion">
+    <argument id="6011" parent="5685" name="@Descripcion">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>3</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6016" parent="5686" name="@FechaInicio">
+    <argument id="6012" parent="5685" name="@FechaInicio">
       <Position>4</Position>
       <StoredType>datetime|0s</StoredType>
     </argument>
-    <argument id="6017" parent="5686" name="@FechaFin">
+    <argument id="6013" parent="5685" name="@FechaFin">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>5</Position>
       <StoredType>datetime|0s</StoredType>
     </argument>
-    <argument id="6018" parent="5686" name="@Estado">
+    <argument id="6014" parent="5685" name="@Estado">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6019" parent="5686" name="@NewID">
+    <argument id="6015" parent="5685" name="@NewID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6020" parent="5687" name="@FacturaID">
+    <argument id="6016" parent="5686" name="@FacturaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6021" parent="5687" name="@ProductoID">
+    <argument id="6017" parent="5686" name="@ProductoID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6022" parent="5687" name="@Cantidad">
+    <argument id="6018" parent="5686" name="@Cantidad">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6023" parent="5687" name="@PrecioUnitario">
+    <argument id="6019" parent="5686" name="@PrecioUnitario">
       <Position>4</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6024" parent="5687" name="@Subtotal">
+    <argument id="6020" parent="5686" name="@Subtotal">
       <Position>5</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6025" parent="5687" name="@NewID">
+    <argument id="6021" parent="5686" name="@NewID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6026" parent="5688" name="@FacturaID">
+    <argument id="6022" parent="5687" name="@FacturaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6027" parent="5688" name="@DetalleFacturaID">
+    <argument id="6023" parent="5687" name="@DetalleFacturaID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6028" parent="5688" name="@ProductoID">
+    <argument id="6024" parent="5687" name="@ProductoID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6029" parent="5688" name="@Cantidad">
+    <argument id="6025" parent="5687" name="@Cantidad">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6030" parent="5688" name="@Motivo">
+    <argument id="6026" parent="5687" name="@Motivo">
       <Position>5</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
+    </argument>
+    <argument id="6027" parent="5687" name="@Estado">
+      <Position>6</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
+    </argument>
+    <argument id="6028" parent="5687" name="@CreadoPor">
+      <Position>7</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
+    </argument>
+    <argument id="6029" parent="5687" name="@NewID">
+      <ArgumentDirection>O</ArgumentDirection>
+      <Position>8</Position>
+      <StoredType>int|0s</StoredType>
+    </argument>
+    <argument id="6030" parent="5688" name="@Ciudad">
+      <Position>1</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
     <argument id="6031" parent="5688" name="@Estado">
-      <Position>6</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6032" parent="5688" name="@CreadoPor">
-      <Position>7</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6033" parent="5688" name="@NewID">
-      <ArgumentDirection>O</ArgumentDirection>
-      <Position>8</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6034" parent="5689" name="@Ciudad">
-      <Position>1</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6035" parent="5689" name="@Estado">
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6036" parent="5689" name="@CodigoPostal">
+    <argument id="6032" parent="5688" name="@CodigoPostal">
       <Position>3</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="6037" parent="5689" name="@Pais">
+    <argument id="6033" parent="5688" name="@Pais">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6038" parent="5689" name="@TipoDireccion">
+    <argument id="6034" parent="5688" name="@TipoDireccion">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>5</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="6039" parent="5689" name="@CreadoPor">
+    <argument id="6035" parent="5688" name="@CreadoPor">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6040" parent="5689" name="@NewID">
+    <argument id="6036" parent="5688" name="@NewID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6041" parent="5690" name="@PersonaID">
+    <argument id="6037" parent="5689" name="@PersonaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6042" parent="5690" name="@Puesto">
+    <argument id="6038" parent="5689" name="@Puesto">
       <Position>2</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="6043" parent="5690" name="@FechaContratacion">
+    <argument id="6039" parent="5689" name="@FechaContratacion">
       <Position>3</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="6044" parent="5690" name="@Salario">
+    <argument id="6040" parent="5689" name="@Salario">
       <Position>4</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6045" parent="5690" name="@Estado">
+    <argument id="6041" parent="5689" name="@Estado">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6046" parent="5690" name="@CreadoPor">
+    <argument id="6042" parent="5689" name="@CreadoPor">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6047" parent="5690" name="@NewID">
+    <argument id="6043" parent="5689" name="@NewID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6048" parent="5691" name="@ClienteID">
+    <argument id="6044" parent="5690" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6049" parent="5691" name="@Total">
+    <argument id="6045" parent="5690" name="@Total">
       <Position>2</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6050" parent="5691" name="@MetodoPago">
+    <argument id="6046" parent="5690" name="@MetodoPago">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6051" parent="5691" name="@Estado">
+    <argument id="6047" parent="5690" name="@Estado">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6052" parent="5691" name="@CreadoPor">
+    <argument id="6048" parent="5690" name="@CreadoPor">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6053" parent="5691" name="@FacturaID">
+    <argument id="6049" parent="5690" name="@FacturaID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6054" parent="5692" name="@Nombre1">
+    <argument id="6050" parent="5691" name="@Nombre1">
       <Position>1</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6055" parent="5692" name="@Nombre2">
+    <argument id="6051" parent="5691" name="@Nombre2">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6056" parent="5692" name="@Apellido1">
+    <argument id="6052" parent="5691" name="@Apellido1">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6057" parent="5692" name="@Apellido2">
+    <argument id="6053" parent="5691" name="@Apellido2">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6058" parent="5692" name="@DocumentoIdentidad">
+    <argument id="6054" parent="5691" name="@DocumentoIdentidad">
       <Position>5</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="6059" parent="5692" name="@Telefono">
+    <argument id="6055" parent="5691" name="@Telefono">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>6</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="6060" parent="5692" name="@Email">
+    <argument id="6056" parent="5691" name="@Email">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>7</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6061" parent="5692" name="@FechaNacimiento">
+    <argument id="6057" parent="5691" name="@FechaNacimiento">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>8</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="6062" parent="5692" name="@Genero">
+    <argument id="6058" parent="5691" name="@Genero">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>9</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6063" parent="5692" name="@DireccionID">
+    <argument id="6059" parent="5691" name="@DireccionID">
       <Position>10</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6064" parent="5692" name="@CreadoPor">
+    <argument id="6060" parent="5691" name="@CreadoPor">
       <Position>11</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6065" parent="5692" name="@NewID">
+    <argument id="6061" parent="5691" name="@NewID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>12</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6066" parent="5693" name="@NombreProducto">
+    <argument id="6062" parent="5692" name="@NombreEmpresa">
       <Position>1</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="6067" parent="5693" name="@Genero">
-      <Position>2</Position>
-      <StoredType>nvarchar(20 char)|0s</StoredType>
-    </argument>
-    <argument id="6068" parent="5693" name="@SegmentoEdad">
-      <Position>3</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6069" parent="5693" name="@TipoProducto">
-      <Position>4</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6070" parent="5693" name="@Color">
-      <Position>5</Position>
-      <StoredType>nvarchar(30 char)|0s</StoredType>
-    </argument>
-    <argument id="6071" parent="5693" name="@Talla">
-      <Position>6</Position>
-      <StoredType>nvarchar(20 char)|0s</StoredType>
-    </argument>
-    <argument id="6072" parent="5693" name="@UnidadesDisponibles">
-      <Position>7</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6073" parent="5693" name="@Precio">
-      <Position>8</Position>
-      <StoredType>decimal(10,2)|0s</StoredType>
-    </argument>
-    <argument id="6074" parent="5693" name="@Descripcion">
-      <Position>9</Position>
-      <StoredType>nvarchar(500 char)|0s</StoredType>
-    </argument>
-    <argument id="6075" parent="5694" name="@NombreEmpresa">
-      <Position>1</Position>
-      <StoredType>nvarchar(100 char)|0s</StoredType>
-    </argument>
-    <argument id="6076" parent="5694" name="@NombreContacto">
+    <argument id="6063" parent="5692" name="@NombreContacto">
       <Position>2</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="6077" parent="5694" name="@Telefono">
+    <argument id="6064" parent="5692" name="@Telefono">
       <Position>3</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="6078" parent="5694" name="@Email">
+    <argument id="6065" parent="5692" name="@Email">
       <Position>4</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6079" parent="5694" name="@DireccionID">
+    <argument id="6066" parent="5692" name="@DireccionID">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6080" parent="5694" name="@Estado">
+    <argument id="6067" parent="5692" name="@Estado">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6081" parent="5694" name="@CreadoPor">
+    <argument id="6068" parent="5692" name="@CreadoPor">
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6082" parent="5695" name="@NombreUsuario">
+    <argument id="6069" parent="5693" name="@NombreUsuario">
       <Position>1</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6083" parent="5695" name="@ContrasenaHash">
+    <argument id="6070" parent="5693" name="@ContrasenaHash">
       <Position>2</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6084" parent="5695" name="@Email">
+    <argument id="6071" parent="5693" name="@Email">
       <Position>3</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6085" parent="5695" name="@Rol">
+    <argument id="6072" parent="5693" name="@Rol">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6086" parent="5695" name="@Estado">
+    <argument id="6073" parent="5693" name="@Estado">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6087" parent="5695" name="@NewID">
+    <argument id="6074" parent="5693" name="@NewID">
       <ArgumentDirection>O</ArgumentDirection>
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6088" parent="5696" name="@EmpleadoID">
+    <argument id="6075" parent="5694" name="@EmpleadoID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6089" parent="5696" name="@ClienteID">
+    <argument id="6076" parent="5694" name="@ClienteID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6090" parent="5696" name="@ProductoID">
+    <argument id="6077" parent="5694" name="@ProductoID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6091" parent="5696" name="@Cantidad">
+    <argument id="6078" parent="5694" name="@Cantidad">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6092" parent="5696" name="@Total">
+    <argument id="6079" parent="5694" name="@Total">
       <Position>5</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6093" parent="5697" name="@ClienteID">
+    <argument id="6080" parent="5695" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6094" parent="5698" name="@PersonaID">
+    <argument id="6081" parent="5696" name="@PersonaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6095" parent="5700" name="@ID">
+    <argument id="6082" parent="5698" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6096" parent="5701" name="@UsuarioID">
+    <argument id="6083" parent="5699" name="@UsuarioID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6097" parent="5702" name="@ClienteID">
+    <argument id="6084" parent="5700" name="@ClienteID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6098" parent="5703" name="@Email">
+    <argument id="6085" parent="5701" name="@Email">
       <Position>1</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6099" parent="5704" name="@NombreUsuario">
+    <argument id="6086" parent="5702" name="@NombreUsuario">
       <Position>1</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6100" parent="5705" name="@ID">
+    <argument id="6087" parent="5703" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6101" parent="5705" name="@CodigoCliente">
+    <argument id="6088" parent="5703" name="@CodigoCliente">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6102" parent="5705" name="@Estado">
+    <argument id="6089" parent="5703" name="@Estado">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6103" parent="5705" name="@ModificadoPor">
+    <argument id="6090" parent="5703" name="@ModificadoPor">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
+    </argument>
+    <argument id="6091" parent="5704" name="@ID">
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </argument>
+    <argument id="6092" parent="5704" name="@Tipo">
+      <Position>2</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
+    </argument>
+    <argument id="6093" parent="5704" name="@Valor">
+      <Position>3</Position>
+      <StoredType>decimal(10,2)|0s</StoredType>
+    </argument>
+    <argument id="6094" parent="5704" name="@Descripcion">
+      <DefaultExpression>NULL</DefaultExpression>
+      <Position>4</Position>
+      <StoredType>nvarchar(255 char)|0s</StoredType>
+    </argument>
+    <argument id="6095" parent="5704" name="@FechaInicio">
+      <Position>5</Position>
+      <StoredType>datetime|0s</StoredType>
+    </argument>
+    <argument id="6096" parent="5704" name="@FechaFin">
+      <DefaultExpression>NULL</DefaultExpression>
+      <Position>6</Position>
+      <StoredType>datetime|0s</StoredType>
+    </argument>
+    <argument id="6097" parent="5704" name="@Estado">
+      <Position>7</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
+    </argument>
+    <argument id="6098" parent="5705" name="@ID">
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </argument>
+    <argument id="6099" parent="5705" name="@FacturaID">
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </argument>
+    <argument id="6100" parent="5705" name="@ProductoID">
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </argument>
+    <argument id="6101" parent="5705" name="@Cantidad">
+      <Position>4</Position>
+      <StoredType>int|0s</StoredType>
+    </argument>
+    <argument id="6102" parent="5705" name="@PrecioUnitario">
+      <Position>5</Position>
+      <StoredType>decimal(10,2)|0s</StoredType>
+    </argument>
+    <argument id="6103" parent="5705" name="@Subtotal">
+      <Position>6</Position>
+      <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
     <argument id="6104" parent="5706" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6105" parent="5706" name="@Tipo">
+    <argument id="6105" parent="5706" name="@FacturaID">
       <Position>2</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
+      <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6106" parent="5706" name="@Valor">
+    <argument id="6106" parent="5706" name="@DetalleFacturaID">
       <Position>3</Position>
-      <StoredType>decimal(10,2)|0s</StoredType>
+      <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6107" parent="5706" name="@Descripcion">
-      <DefaultExpression>NULL</DefaultExpression>
+    <argument id="6107" parent="5706" name="@ProductoID">
       <Position>4</Position>
-      <StoredType>nvarchar(255 char)|0s</StoredType>
+      <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6108" parent="5706" name="@FechaInicio">
+    <argument id="6108" parent="5706" name="@Cantidad">
       <Position>5</Position>
-      <StoredType>datetime|0s</StoredType>
+      <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6109" parent="5706" name="@FechaFin">
-      <DefaultExpression>NULL</DefaultExpression>
+    <argument id="6109" parent="5706" name="@Motivo">
       <Position>6</Position>
-      <StoredType>datetime|0s</StoredType>
+      <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
     <argument id="6110" parent="5706" name="@Estado">
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6111" parent="5707" name="@ID">
+    <argument id="6111" parent="5706" name="@ModificadoPor">
+      <Position>8</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
+    </argument>
+    <argument id="6112" parent="5707" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6112" parent="5707" name="@FacturaID">
+    <argument id="6113" parent="5707" name="@Ciudad">
       <Position>2</Position>
-      <StoredType>int|0s</StoredType>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6113" parent="5707" name="@ProductoID">
+    <argument id="6114" parent="5707" name="@Estado">
       <Position>3</Position>
-      <StoredType>int|0s</StoredType>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6114" parent="5707" name="@Cantidad">
+    <argument id="6115" parent="5707" name="@CodigoPostal">
       <Position>4</Position>
-      <StoredType>int|0s</StoredType>
+      <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="6115" parent="5707" name="@PrecioUnitario">
+    <argument id="6116" parent="5707" name="@Pais">
       <Position>5</Position>
-      <StoredType>decimal(10,2)|0s</StoredType>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6116" parent="5707" name="@Subtotal">
+    <argument id="6117" parent="5707" name="@TipoDireccion">
+      <DefaultExpression>NULL</DefaultExpression>
       <Position>6</Position>
-      <StoredType>decimal(10,2)|0s</StoredType>
+      <StoredType>nvarchar(20 char)|0s</StoredType>
     </argument>
-    <argument id="6117" parent="5708" name="@ID">
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6118" parent="5708" name="@FacturaID">
-      <Position>2</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6119" parent="5708" name="@DetalleFacturaID">
-      <Position>3</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6120" parent="5708" name="@ProductoID">
-      <Position>4</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6121" parent="5708" name="@Cantidad">
-      <Position>5</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6122" parent="5708" name="@Motivo">
-      <Position>6</Position>
-      <StoredType>nvarchar(255 char)|0s</StoredType>
-    </argument>
-    <argument id="6123" parent="5708" name="@Estado">
+    <argument id="6118" parent="5707" name="@ModificadoPor">
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
+    <argument id="6119" parent="5708" name="@ID">
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </argument>
+    <argument id="6120" parent="5708" name="@Puesto">
+      <Position>2</Position>
+      <StoredType>nvarchar(100 char)|0s</StoredType>
+    </argument>
+    <argument id="6121" parent="5708" name="@FechaContratacion">
+      <Position>3</Position>
+      <StoredType>date|0s</StoredType>
+    </argument>
+    <argument id="6122" parent="5708" name="@Salario">
+      <Position>4</Position>
+      <StoredType>decimal(10,2)|0s</StoredType>
+    </argument>
+    <argument id="6123" parent="5708" name="@Estado">
+      <Position>5</Position>
+      <StoredType>nvarchar(50 char)|0s</StoredType>
+    </argument>
     <argument id="6124" parent="5708" name="@ModificadoPor">
-      <Position>8</Position>
+      <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
     <argument id="6125" parent="5709" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6126" parent="5709" name="@Ciudad">
+    <argument id="6126" parent="5709" name="@ClienteID">
       <Position>2</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6127" parent="5709" name="@Estado">
-      <Position>3</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6128" parent="5709" name="@CodigoPostal">
-      <Position>4</Position>
-      <StoredType>nvarchar(20 char)|0s</StoredType>
-    </argument>
-    <argument id="6129" parent="5709" name="@Pais">
-      <Position>5</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6130" parent="5709" name="@TipoDireccion">
-      <DefaultExpression>NULL</DefaultExpression>
-      <Position>6</Position>
-      <StoredType>nvarchar(20 char)|0s</StoredType>
-    </argument>
-    <argument id="6131" parent="5709" name="@ModificadoPor">
-      <Position>7</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6132" parent="5710" name="@ID">
-      <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6133" parent="5710" name="@Puesto">
-      <Position>2</Position>
-      <StoredType>nvarchar(100 char)|0s</StoredType>
-    </argument>
-    <argument id="6134" parent="5710" name="@FechaContratacion">
+    <argument id="6127" parent="5709" name="@EmpleadoID">
       <Position>3</Position>
-      <StoredType>date|0s</StoredType>
+      <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6135" parent="5710" name="@Salario">
+    <argument id="6128" parent="5709" name="@Total">
       <Position>4</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6136" parent="5710" name="@Estado">
+    <argument id="6129" parent="5709" name="@MetodoPago">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6137" parent="5710" name="@ModificadoPor">
+    <argument id="6130" parent="5709" name="@Estado">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6138" parent="5711" name="@ID">
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6139" parent="5711" name="@ClienteID">
-      <Position>2</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6140" parent="5711" name="@EmpleadoID">
-      <Position>3</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6141" parent="5711" name="@Total">
-      <Position>4</Position>
-      <StoredType>decimal(10,2)|0s</StoredType>
-    </argument>
-    <argument id="6142" parent="5711" name="@MetodoPago">
-      <Position>5</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6143" parent="5711" name="@Estado">
-      <Position>6</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6144" parent="5711" name="@DescuentoID">
+    <argument id="6131" parent="5709" name="@DescuentoID">
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6145" parent="5711" name="@ModificadoPor">
+    <argument id="6132" parent="5709" name="@ModificadoPor">
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6146" parent="5712" name="@ID">
+    <argument id="6133" parent="5710" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6147" parent="5712" name="@Nombre1">
+    <argument id="6134" parent="5710" name="@Nombre1">
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6148" parent="5712" name="@Nombre2">
+    <argument id="6135" parent="5710" name="@Nombre2">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6149" parent="5712" name="@Apellido1">
+    <argument id="6136" parent="5710" name="@Apellido1">
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6150" parent="5712" name="@Apellido2">
+    <argument id="6137" parent="5710" name="@Apellido2">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6151" parent="5712" name="@Telefono">
+    <argument id="6138" parent="5710" name="@Telefono">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>6</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="6152" parent="5712" name="@Email">
+    <argument id="6139" parent="5710" name="@Email">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>7</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6153" parent="5712" name="@FechaNacimiento">
+    <argument id="6140" parent="5710" name="@FechaNacimiento">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>8</Position>
       <StoredType>date|0s</StoredType>
     </argument>
-    <argument id="6154" parent="5712" name="@Genero">
+    <argument id="6141" parent="5710" name="@Genero">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>9</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6155" parent="5712" name="@DireccionID">
+    <argument id="6142" parent="5710" name="@DireccionID">
       <Position>10</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6156" parent="5712" name="@ModificadoPor">
+    <argument id="6143" parent="5710" name="@ModificadoPor">
       <Position>11</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6157" parent="5713" name="@ID">
+    <argument id="6144" parent="5711" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6158" parent="5713" name="@NombreProducto">
+    <argument id="6145" parent="5711" name="@NombreEmpresa">
       <Position>2</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="6159" parent="5713" name="@Genero">
-      <Position>3</Position>
-      <StoredType>nvarchar(20 char)|0s</StoredType>
-    </argument>
-    <argument id="6160" parent="5713" name="@SegmentoEdad">
-      <Position>4</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6161" parent="5713" name="@TipoProducto">
-      <Position>5</Position>
-      <StoredType>nvarchar(50 char)|0s</StoredType>
-    </argument>
-    <argument id="6162" parent="5713" name="@Color">
-      <Position>6</Position>
-      <StoredType>nvarchar(30 char)|0s</StoredType>
-    </argument>
-    <argument id="6163" parent="5713" name="@Talla">
-      <Position>7</Position>
-      <StoredType>nvarchar(20 char)|0s</StoredType>
-    </argument>
-    <argument id="6164" parent="5713" name="@UnidadesDisponibles">
-      <Position>8</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6165" parent="5713" name="@Precio">
-      <Position>9</Position>
-      <StoredType>decimal(10,2)|0s</StoredType>
-    </argument>
-    <argument id="6166" parent="5713" name="@Descripcion">
-      <Position>10</Position>
-      <StoredType>nvarchar(500 char)|0s</StoredType>
-    </argument>
-    <argument id="6167" parent="5714" name="@ID">
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </argument>
-    <argument id="6168" parent="5714" name="@NombreEmpresa">
-      <Position>2</Position>
-      <StoredType>nvarchar(100 char)|0s</StoredType>
-    </argument>
-    <argument id="6169" parent="5714" name="@NombreContacto">
+    <argument id="6146" parent="5711" name="@NombreContacto">
       <Position>3</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </argument>
-    <argument id="6170" parent="5714" name="@Telefono">
+    <argument id="6147" parent="5711" name="@Telefono">
       <Position>4</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </argument>
-    <argument id="6171" parent="5714" name="@Email">
+    <argument id="6148" parent="5711" name="@Email">
       <Position>5</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6172" parent="5714" name="@DireccionID">
+    <argument id="6149" parent="5711" name="@DireccionID">
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6173" parent="5714" name="@Estado">
+    <argument id="6150" parent="5711" name="@Estado">
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6174" parent="5714" name="@ModificadoPor">
+    <argument id="6151" parent="5711" name="@ModificadoPor">
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6175" parent="5715" name="@ID">
+    <argument id="6152" parent="5712" name="@ID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6176" parent="5715" name="@NombreUsuario">
+    <argument id="6153" parent="5712" name="@NombreUsuario">
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6177" parent="5715" name="@ContrasenaHash">
+    <argument id="6154" parent="5712" name="@ContrasenaHash">
       <Position>3</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6178" parent="5715" name="@Email">
+    <argument id="6155" parent="5712" name="@Email">
       <Position>4</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </argument>
-    <argument id="6179" parent="5715" name="@Rol">
+    <argument id="6156" parent="5712" name="@Rol">
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6180" parent="5715" name="@Estado">
+    <argument id="6157" parent="5712" name="@Estado">
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </argument>
-    <argument id="6181" parent="5716" name="@VentaID">
+    <argument id="6158" parent="5713" name="@VentaID">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6182" parent="5716" name="@EmpleadoID">
+    <argument id="6159" parent="5713" name="@EmpleadoID">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6183" parent="5716" name="@ClienteID">
+    <argument id="6160" parent="5713" name="@ClienteID">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6184" parent="5716" name="@ProductoID">
+    <argument id="6161" parent="5713" name="@ProductoID">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6185" parent="5716" name="@Cantidad">
+    <argument id="6162" parent="5713" name="@Cantidad">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6186" parent="5716" name="@Total">
+    <argument id="6163" parent="5713" name="@Total">
       <Position>6</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </argument>
-    <argument id="6187" parent="5717" name="@diagramname">
+    <argument id="6164" parent="5714" name="@diagramname">
       <Position>1</Position>
       <StoredType>sysname|0s</StoredType>
     </argument>
-    <argument id="6188" parent="5717" name="@owner_id">
+    <argument id="6165" parent="5714" name="@owner_id">
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6189" parent="5717" name="@version">
+    <argument id="6166" parent="5714" name="@version">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6190" parent="5717" name="@definition">
+    <argument id="6167" parent="5714" name="@definition">
       <Position>4</Position>
       <StoredType>varbinary(max)|0s</StoredType>
     </argument>
-    <argument id="6191" parent="5718" name="@diagramname">
+    <argument id="6168" parent="5715" name="@diagramname">
       <Position>1</Position>
       <StoredType>sysname|0s</StoredType>
     </argument>
-    <argument id="6192" parent="5718" name="@owner_id">
+    <argument id="6169" parent="5715" name="@owner_id">
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6193" parent="5718" name="@version">
+    <argument id="6170" parent="5715" name="@version">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6194" parent="5718" name="@definition">
+    <argument id="6171" parent="5715" name="@definition">
       <Position>4</Position>
       <StoredType>varbinary(max)|0s</StoredType>
     </argument>
-    <argument id="6195" parent="5719" name="@diagramname">
+    <argument id="6172" parent="5716" name="@diagramname">
       <Position>1</Position>
       <StoredType>sysname|0s</StoredType>
     </argument>
-    <argument id="6196" parent="5719" name="@owner_id">
+    <argument id="6173" parent="5716" name="@owner_id">
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6197" parent="5720" name="@diagramname">
+    <argument id="6174" parent="5717" name="@diagramname">
       <Position>1</Position>
       <StoredType>sysname|0s</StoredType>
     </argument>
-    <argument id="6198" parent="5720" name="@owner_id">
+    <argument id="6175" parent="5717" name="@owner_id">
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6199" parent="5721" name="@diagramname">
+    <argument id="6176" parent="5718" name="@diagramname">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>1</Position>
       <StoredType>sysname|0s</StoredType>
     </argument>
-    <argument id="6200" parent="5721" name="@owner_id">
+    <argument id="6177" parent="5718" name="@owner_id">
       <DefaultExpression>NULL</DefaultExpression>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6201" parent="5722" name="@diagramname">
+    <argument id="6178" parent="5719" name="@diagramname">
       <Position>1</Position>
       <StoredType>sysname|0s</StoredType>
     </argument>
-    <argument id="6202" parent="5722" name="@owner_id">
+    <argument id="6179" parent="5719" name="@owner_id">
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </argument>
-    <argument id="6203" parent="5722" name="@new_diagramname">
+    <argument id="6180" parent="5719" name="@new_diagramname">
       <Position>3</Position>
       <StoredType>sysname|0s</StoredType>
     </argument>
-    <column id="6204" parent="5724" name="ID">
+    <column id="6181" parent="5721" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(2171)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6205" parent="5724" name="ClienteID">
+    <column id="6182" parent="5721" name="ClienteID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6206" parent="5724" name="ProductoID">
+    <column id="6183" parent="5721" name="ProductoID">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6207" parent="5724" name="Cantidad">
+    <column id="6184" parent="5721" name="Cantidad">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6208" parent="5724" name="FechaAgregado">
+    <column id="6185" parent="5721" name="FechaAgregado">
       <Position>5</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1458104235</DefaultConstraintId>
       <DefaultConstraintName>DF__CarritoCo__Fecha__56E8E7AB</DefaultConstraintName>
     </column>
-    <column id="6209" parent="5724" name="FechaModificacion">
+    <column id="6186" parent="5721" name="FechaModificacion">
       <Position>6</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <default id="6210" parent="5724" name="DF__CarritoCo__Fecha__56E8E7AB">
+    <default id="6187" parent="5721" name="DF__CarritoCo__Fecha__56E8E7AB">
       <ColNames>FechaAgregado</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-03-21.15:28:46.143</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1458104235</ObjectId>
     </default>
-    <foreign-key id="6211" parent="5724" name="FK_CarritoCompras_Cliente">
+    <foreign-key id="6188" parent="5721" name="FK_CarritoCompras_Cliente">
       <ColNames>ClienteID</ColNames>
       <CreatedTimestamp>2025-03-21.15:28:46.147</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.15:28:46.147</ModifiedTimestamp>
@@ -19995,7 +19894,7 @@ int</ExtendedProperties>
       <RefTableId>1061578820</RefTableId>
       <RefTableName>Cliente</RefTableName>
     </foreign-key>
-    <foreign-key id="6212" parent="5724" name="FK_CarritoCompras_Producto">
+    <foreign-key id="6189" parent="5721" name="FK_CarritoCompras_Producto">
       <ColNames>ProductoID</ColNames>
       <CreatedTimestamp>2025-03-21.15:28:46.150</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.15:28:46.150</ModifiedTimestamp>
@@ -20004,7 +19903,7 @@ int</ExtendedProperties>
       <RefTableId>1189579276</RefTableId>
       <RefTableName>Producto</RefTableName>
     </foreign-key>
-    <index id="6213" parent="5724" name="PK__CarritoC__3214EC27DB4A6F0E">
+    <index id="6190" parent="5721" name="PK__CarritoC__3214EC27DB4A6F0E">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20012,7 +19911,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6214" parent="5724" name="PK__CarritoC__3214EC27DB4A6F0E">
+    <key id="6191" parent="5721" name="PK__CarritoC__3214EC27DB4A6F0E">
       <CreatedTimestamp>2025-03-21.15:28:46.117</CreatedTimestamp>
       <ModifiedTimestamp>2025-03-21.15:28:46.117</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20020,54 +19919,54 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__CarritoC__3214EC27DB4A6F0E</UnderlyingIndexName>
     </key>
-    <column id="6215" parent="5725" name="ID">
+    <column id="6192" parent="5722" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(1014)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6216" parent="5725" name="PersonaID">
+    <column id="6193" parent="5722" name="PersonaID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6217" parent="5725" name="CodigoCliente">
+    <column id="6194" parent="5722" name="CodigoCliente">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6218" parent="5725" name="Estado">
+    <column id="6195" parent="5722" name="Estado">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6219" parent="5725" name="CreadoPor">
+    <column id="6196" parent="5722" name="CreadoPor">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6220" parent="5725" name="FechaCreacion">
+    <column id="6197" parent="5722" name="FechaCreacion">
       <Position>6</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1093578934</DefaultConstraintId>
       <DefaultConstraintName>DF__Cliente__FechaCr__412EB0B6</DefaultConstraintName>
     </column>
-    <column id="6221" parent="5725" name="FechaModificacion">
+    <column id="6198" parent="5722" name="FechaModificacion">
       <Position>7</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6222" parent="5725" name="ModificadoPor">
+    <column id="6199" parent="5722" name="ModificadoPor">
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <default id="6223" parent="5725" name="DF__Cliente__FechaCr__412EB0B6">
+    <default id="6200" parent="5722" name="DF__Cliente__FechaCr__412EB0B6">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1093578934</ObjectId>
     </default>
-    <foreign-key id="6224" parent="5725" name="FK_Cliente_Persona">
+    <foreign-key id="6201" parent="5722" name="FK_Cliente_Persona">
       <ColNames>PersonaID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
@@ -20076,7 +19975,7 @@ int</ExtendedProperties>
       <RefTableId>949578421</RefTableId>
       <RefTableName>Persona</RefTableName>
     </foreign-key>
-    <index id="6225" parent="5725" name="PK__Cliente__3214EC272395442D">
+    <index id="6202" parent="5722" name="PK__Cliente__3214EC272395442D">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20084,7 +19983,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6226" parent="5725" name="PK__Cliente__3214EC272395442D">
+    <key id="6203" parent="5722" name="PK__Cliente__3214EC272395442D">
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20092,41 +19991,41 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Cliente__3214EC272395442D</UnderlyingIndexName>
     </key>
-    <column id="6227" parent="5726" name="ID">
+    <column id="6204" parent="5723" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6228" parent="5726" name="Tipo">
+    <column id="6205" parent="5723" name="Tipo">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6229" parent="5726" name="Valor">
+    <column id="6206" parent="5723" name="Valor">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </column>
-    <column id="6230" parent="5726" name="Descripcion">
+    <column id="6207" parent="5723" name="Descripcion">
       <Position>4</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </column>
-    <column id="6231" parent="5726" name="FechaInicio">
+    <column id="6208" parent="5723" name="FechaInicio">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6232" parent="5726" name="FechaFin">
+    <column id="6209" parent="5723" name="FechaFin">
       <Position>6</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6233" parent="5726" name="Estado">
+    <column id="6210" parent="5723" name="Estado">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <index id="6234" parent="5726" name="PK__Descuent__3214EC27F1D02AD4">
+    <index id="6211" parent="5723" name="PK__Descuent__3214EC27F1D02AD4">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20134,7 +20033,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6235" parent="5726" name="PK__Descuent__3214EC27F1D02AD4">
+    <key id="6212" parent="5723" name="PK__Descuent__3214EC27F1D02AD4">
       <CreatedTimestamp>2025-02-08.07:23:09.657</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.657</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20142,38 +20041,38 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Descuent__3214EC27F1D02AD4</UnderlyingIndexName>
     </key>
-    <column id="6236" parent="5727" name="ID">
+    <column id="6213" parent="5724" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(2160)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6237" parent="5727" name="FacturaID">
+    <column id="6214" parent="5724" name="FacturaID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6238" parent="5727" name="ProductoID">
+    <column id="6215" parent="5724" name="ProductoID">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6239" parent="5727" name="Cantidad">
+    <column id="6216" parent="5724" name="Cantidad">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6240" parent="5727" name="PrecioUnitario">
+    <column id="6217" parent="5724" name="PrecioUnitario">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </column>
-    <column id="6241" parent="5727" name="Subtotal">
+    <column id="6218" parent="5724" name="Subtotal">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </column>
-    <foreign-key id="6242" parent="5727" name="FK_DetalleFactura_Factura">
+    <foreign-key id="6219" parent="5724" name="FK_DetalleFactura_Factura">
       <ColNames>FacturaID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
@@ -20182,7 +20081,7 @@ int</ExtendedProperties>
       <RefTableId>1365579903</RefTableId>
       <RefTableName>Factura</RefTableName>
     </foreign-key>
-    <foreign-key id="6243" parent="5727" name="FK_DetalleFactura_Producto">
+    <foreign-key id="6220" parent="5724" name="FK_DetalleFactura_Producto">
       <ColNames>ProductoID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
@@ -20191,7 +20090,7 @@ int</ExtendedProperties>
       <RefTableId>1189579276</RefTableId>
       <RefTableName>Producto</RefTableName>
     </foreign-key>
-    <index id="6244" parent="5727" name="PK__DetalleF__3214EC276166D8B4">
+    <index id="6221" parent="5724" name="PK__DetalleF__3214EC276166D8B4">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20199,7 +20098,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6245" parent="5727" name="PK__DetalleF__3214EC276166D8B4">
+    <key id="6222" parent="5724" name="PK__DetalleF__3214EC276166D8B4">
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20207,82 +20106,82 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__DetalleF__3214EC276166D8B4</UnderlyingIndexName>
     </key>
-    <column id="6246" parent="5728" name="ID">
+    <column id="6223" parent="5725" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(3)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6247" parent="5728" name="FacturaID">
+    <column id="6224" parent="5725" name="FacturaID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6248" parent="5728" name="DetalleFacturaID">
+    <column id="6225" parent="5725" name="DetalleFacturaID">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6249" parent="5728" name="ProductoID">
+    <column id="6226" parent="5725" name="ProductoID">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6250" parent="5728" name="Cantidad">
+    <column id="6227" parent="5725" name="Cantidad">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6251" parent="5728" name="Motivo">
+    <column id="6228" parent="5725" name="Motivo">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </column>
-    <column id="6252" parent="5728" name="FechaDevolucion">
+    <column id="6229" parent="5725" name="FechaDevolucion">
       <Position>7</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1573580644</DefaultConstraintId>
       <DefaultConstraintName>DF__Devolucio__Fecha__5DCAEF64</DefaultConstraintName>
     </column>
-    <column id="6253" parent="5728" name="Estado">
+    <column id="6230" parent="5725" name="Estado">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6254" parent="5728" name="CreadoPor">
+    <column id="6231" parent="5725" name="CreadoPor">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6255" parent="5728" name="FechaCreacion">
+    <column id="6232" parent="5725" name="FechaCreacion">
       <Position>10</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1589580701</DefaultConstraintId>
       <DefaultConstraintName>DF__Devolucio__Fecha__5EBF139D</DefaultConstraintName>
     </column>
-    <column id="6256" parent="5728" name="FechaModificacion">
+    <column id="6233" parent="5725" name="FechaModificacion">
       <Position>11</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6257" parent="5728" name="ModificadoPor">
+    <column id="6234" parent="5725" name="ModificadoPor">
       <Position>12</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <default id="6258" parent="5728" name="DF__Devolucio__Fecha__5DCAEF64">
+    <default id="6235" parent="5725" name="DF__Devolucio__Fecha__5DCAEF64">
       <ColNames>FechaDevolucion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1573580644</ObjectId>
     </default>
-    <default id="6259" parent="5728" name="DF__Devolucio__Fecha__5EBF139D">
+    <default id="6236" parent="5725" name="DF__Devolucio__Fecha__5EBF139D">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1589580701</ObjectId>
     </default>
-    <foreign-key id="6260" parent="5728" name="FK_Devolucion_Factura">
+    <foreign-key id="6237" parent="5725" name="FK_Devolucion_Factura">
       <ColNames>FacturaID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
@@ -20291,7 +20190,7 @@ int</ExtendedProperties>
       <RefTableId>1365579903</RefTableId>
       <RefTableName>Factura</RefTableName>
     </foreign-key>
-    <foreign-key id="6261" parent="5728" name="FK_Devolucion_DetalleFactura">
+    <foreign-key id="6238" parent="5725" name="FK_Devolucion_DetalleFactura">
       <ColNames>DetalleFacturaID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
@@ -20300,7 +20199,7 @@ int</ExtendedProperties>
       <RefTableId>1477580302</RefTableId>
       <RefTableName>DetalleFactura</RefTableName>
     </foreign-key>
-    <foreign-key id="6262" parent="5728" name="FK_Devolucion_Producto">
+    <foreign-key id="6239" parent="5725" name="FK_Devolucion_Producto">
       <ColNames>ProductoID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
@@ -20309,7 +20208,7 @@ int</ExtendedProperties>
       <RefTableId>1189579276</RefTableId>
       <RefTableName>Producto</RefTableName>
     </foreign-key>
-    <index id="6263" parent="5728" name="PK__Devoluci__3214EC27F3CAA658">
+    <index id="6240" parent="5725" name="PK__Devoluci__3214EC27F3CAA658">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20317,7 +20216,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6264" parent="5728" name="PK__Devoluci__3214EC27F3CAA658">
+    <key id="6241" parent="5725" name="PK__Devoluci__3214EC27F3CAA658">
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20325,63 +20224,63 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Devoluci__3214EC27F3CAA658</UnderlyingIndexName>
     </key>
-    <column id="6265" parent="5729" name="ID">
+    <column id="6242" parent="5726" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(1019)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6266" parent="5729" name="Ciudad">
+    <column id="6243" parent="5726" name="Ciudad">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6267" parent="5729" name="Estado">
+    <column id="6244" parent="5726" name="Estado">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6268" parent="5729" name="CodigoPostal">
+    <column id="6245" parent="5726" name="CodigoPostal">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </column>
-    <column id="6269" parent="5729" name="Pais">
+    <column id="6246" parent="5726" name="Pais">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6270" parent="5729" name="TipoDireccion">
+    <column id="6247" parent="5726" name="TipoDireccion">
       <Position>6</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </column>
-    <column id="6271" parent="5729" name="FechaCreacion">
+    <column id="6248" parent="5726" name="FechaCreacion">
       <Position>7</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>933578364</DefaultConstraintId>
       <DefaultConstraintName>DF__Direccion__Fecha__37A5467C</DefaultConstraintName>
     </column>
-    <column id="6272" parent="5729" name="CreadoPor">
+    <column id="6249" parent="5726" name="CreadoPor">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6273" parent="5729" name="FechaModificacion">
+    <column id="6250" parent="5726" name="FechaModificacion">
       <Position>9</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6274" parent="5729" name="ModificadoPor">
+    <column id="6251" parent="5726" name="ModificadoPor">
       <Position>10</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <default id="6275" parent="5729" name="DF__Direccion__Fecha__37A5467C">
+    <default id="6252" parent="5726" name="DF__Direccion__Fecha__37A5467C">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.643</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>933578364</ObjectId>
     </default>
-    <index id="6276" parent="5729" name="PK__Direccio__3214EC27A6252C41">
+    <index id="6253" parent="5726" name="PK__Direccio__3214EC27A6252C41">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20389,7 +20288,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6277" parent="5729" name="PK__Direccio__3214EC27A6252C41">
+    <key id="6254" parent="5726" name="PK__Direccio__3214EC27A6252C41">
       <CreatedTimestamp>2025-02-08.07:23:09.640</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.640</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20397,64 +20296,64 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Direccio__3214EC27A6252C41</UnderlyingIndexName>
     </key>
-    <column id="6278" parent="5730" name="ID">
+    <column id="6255" parent="5727" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6279" parent="5730" name="PersonaID">
+    <column id="6256" parent="5727" name="PersonaID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6280" parent="5730" name="Puesto">
+    <column id="6257" parent="5727" name="Puesto">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </column>
-    <column id="6281" parent="5730" name="FechaContratacion">
+    <column id="6258" parent="5727" name="FechaContratacion">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="6282" parent="5730" name="Salario">
+    <column id="6259" parent="5727" name="Salario">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </column>
-    <column id="6283" parent="5730" name="Estado">
+    <column id="6260" parent="5727" name="Estado">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6284" parent="5730" name="CreadoPor">
+    <column id="6261" parent="5727" name="CreadoPor">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6285" parent="5730" name="FechaCreacion">
+    <column id="6262" parent="5727" name="FechaCreacion">
       <Position>8</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1157579162</DefaultConstraintId>
       <DefaultConstraintName>DF__Empleado__FechaC__44FF419A</DefaultConstraintName>
     </column>
-    <column id="6286" parent="5730" name="FechaModificacion">
+    <column id="6263" parent="5727" name="FechaModificacion">
       <Position>9</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6287" parent="5730" name="ModificadoPor">
+    <column id="6264" parent="5727" name="ModificadoPor">
       <Position>10</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <default id="6288" parent="5730" name="DF__Empleado__FechaC__44FF419A">
+    <default id="6265" parent="5727" name="DF__Empleado__FechaC__44FF419A">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1157579162</ObjectId>
     </default>
-    <foreign-key id="6289" parent="5730" name="FK_Empleado_Persona">
+    <foreign-key id="6266" parent="5727" name="FK_Empleado_Persona">
       <ColNames>PersonaID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
@@ -20463,7 +20362,7 @@ int</ExtendedProperties>
       <RefTableId>949578421</RefTableId>
       <RefTableName>Persona</RefTableName>
     </foreign-key>
-    <index id="6290" parent="5730" name="PK__Empleado__3214EC279784E6F3">
+    <index id="6267" parent="5727" name="PK__Empleado__3214EC279784E6F3">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20471,7 +20370,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6291" parent="5730" name="PK__Empleado__3214EC279784E6F3">
+    <key id="6268" parent="5727" name="PK__Empleado__3214EC279784E6F3">
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20479,58 +20378,58 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Empleado__3214EC279784E6F3</UnderlyingIndexName>
     </key>
-    <column id="6292" parent="5731" name="ID">
+    <column id="6269" parent="5728" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(2089)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6293" parent="5731" name="ClienteID">
+    <column id="6270" parent="5728" name="ClienteID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6294" parent="5731" name="Total">
+    <column id="6271" parent="5728" name="Total">
       <Position>5</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </column>
-    <column id="6295" parent="5731" name="MetodoPago">
+    <column id="6272" parent="5728" name="MetodoPago">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6296" parent="5731" name="Estado">
+    <column id="6273" parent="5728" name="Estado">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6297" parent="5731" name="FechaCreacion">
+    <column id="6274" parent="5728" name="FechaCreacion">
       <Position>9</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1413580074</DefaultConstraintId>
       <DefaultConstraintName>DF__Factura__FechaCr__5441852A</DefaultConstraintName>
     </column>
-    <column id="6298" parent="5731" name="FechaModificacion">
+    <column id="6275" parent="5728" name="FechaModificacion">
       <Position>10</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6299" parent="5731" name="CreadoPor">
+    <column id="6276" parent="5728" name="CreadoPor">
       <NotNull>1</NotNull>
       <Position>11</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6300" parent="5731" name="ModificadoPor">
+    <column id="6277" parent="5728" name="ModificadoPor">
       <Position>12</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <default id="6301" parent="5731" name="DF__Factura__FechaCr__5441852A">
+    <default id="6278" parent="5728" name="DF__Factura__FechaCr__5441852A">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.657</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1413580074</ObjectId>
     </default>
-    <foreign-key id="6302" parent="5731" name="FK_Factura_Cliente">
+    <foreign-key id="6279" parent="5728" name="FK_Factura_Cliente">
       <ColNames>ClienteID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.657</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.657</ModifiedTimestamp>
@@ -20539,7 +20438,7 @@ int</ExtendedProperties>
       <RefTableId>1061578820</RefTableId>
       <RefTableName>Cliente</RefTableName>
     </foreign-key>
-    <index id="6303" parent="5731" name="PK__Factura__3214EC2770D5F2BB">
+    <index id="6280" parent="5728" name="PK__Factura__3214EC2770D5F2BB">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20547,7 +20446,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6304" parent="5731" name="PK__Factura__3214EC2770D5F2BB">
+    <key id="6281" parent="5728" name="PK__Factura__3214EC2770D5F2BB">
       <CreatedTimestamp>2025-02-08.07:23:09.657</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.657</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20555,88 +20454,88 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Factura__3214EC2770D5F2BB</UnderlyingIndexName>
     </key>
-    <column id="6305" parent="5732" name="ID">
+    <column id="6282" parent="5729" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(1019)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6306" parent="5732" name="Nombre1">
+    <column id="6283" parent="5729" name="Nombre1">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6307" parent="5732" name="Nombre2">
+    <column id="6284" parent="5729" name="Nombre2">
       <Position>3</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6308" parent="5732" name="Apellido1">
+    <column id="6285" parent="5729" name="Apellido1">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6309" parent="5732" name="Apellido2">
+    <column id="6286" parent="5729" name="Apellido2">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6310" parent="5732" name="DocumentoIdentidad">
+    <column id="6287" parent="5729" name="DocumentoIdentidad">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </column>
-    <column id="6311" parent="5732" name="Telefono">
+    <column id="6288" parent="5729" name="Telefono">
       <Position>7</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </column>
-    <column id="6312" parent="5732" name="Email">
+    <column id="6289" parent="5729" name="Email">
       <Position>8</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </column>
-    <column id="6313" parent="5732" name="FechaNacimiento">
+    <column id="6290" parent="5729" name="FechaNacimiento">
       <Position>9</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6314" parent="5732" name="Genero">
+    <column id="6291" parent="5729" name="Genero">
       <Position>10</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6315" parent="5732" name="FechaCreacion">
+    <column id="6292" parent="5729" name="FechaCreacion">
       <Position>12</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1029578706</DefaultConstraintId>
       <DefaultConstraintName>DF__Persona__FechaCr__3D5E1FD2</DefaultConstraintName>
     </column>
-    <column id="6316" parent="5732" name="CreadoPor">
+    <column id="6293" parent="5729" name="CreadoPor">
       <NotNull>1</NotNull>
       <Position>13</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6317" parent="5732" name="FechaModificacion">
+    <column id="6294" parent="5729" name="FechaModificacion">
       <Position>14</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6318" parent="5732" name="ModificadoPor">
+    <column id="6295" parent="5729" name="ModificadoPor">
       <Position>15</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6319" parent="5732" name="DireccionID">
+    <column id="6296" parent="5729" name="DireccionID">
       <NotNull>1</NotNull>
       <Position>16</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6320" parent="5732" name="UsuarioID">
+    <column id="6297" parent="5729" name="UsuarioID">
       <Position>17</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <default id="6321" parent="5732" name="DF__Persona__FechaCr__3D5E1FD2">
+    <default id="6298" parent="5729" name="DF__Persona__FechaCr__3D5E1FD2">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1029578706</ObjectId>
     </default>
-    <foreign-key id="6322" parent="5732" name="FK_Direccion_Persona">
+    <foreign-key id="6299" parent="5729" name="FK_Direccion_Persona">
       <ColNames>DireccionID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
@@ -20645,7 +20544,7 @@ int</ExtendedProperties>
       <RefTableId>901578250</RefTableId>
       <RefTableName>Direccion</RefTableName>
     </foreign-key>
-    <foreign-key id="6323" parent="5732" name="FK_Persona_Usuario">
+    <foreign-key id="6300" parent="5729" name="FK_Persona_Usuario">
       <ColNames>UsuarioID</ColNames>
       <CreatedTimestamp>2025-02-17.15:54:56.677</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-17.15:54:56.677</ModifiedTimestamp>
@@ -20654,7 +20553,7 @@ int</ExtendedProperties>
       <RefTableId>1717581157</RefTableId>
       <RefTableName>Usuario</RefTableName>
     </foreign-key>
-    <index id="6324" parent="5732" name="PK__Persona__3214EC27B9AD6CFD">
+    <index id="6301" parent="5729" name="PK__Persona__3214EC27B9AD6CFD">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20662,21 +20561,21 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <index id="6325" parent="5732" name="UQ__Persona__A9D10534BCC19D27">
+    <index id="6302" parent="5729" name="UQ__Persona__A9D10534BCC19D27">
       <ColNames>Email</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <index id="6326" parent="5732" name="UQ__Persona__049E81A99F5E971F">
+    <index id="6303" parent="5729" name="UQ__Persona__049E81A99F5E971F">
       <ColNames>DocumentoIdentidad</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>3</Position>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6327" parent="5732" name="PK__Persona__3214EC27B9AD6CFD">
+    <key id="6304" parent="5729" name="PK__Persona__3214EC27B9AD6CFD">
       <CreatedTimestamp>2025-02-08.07:23:09.647</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.647</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20684,92 +20583,92 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Persona__3214EC27B9AD6CFD</UnderlyingIndexName>
     </key>
-    <key id="6328" parent="5732" name="UQ__Persona__049E81A99F5E971F">
+    <key id="6305" parent="5729" name="UQ__Persona__049E81A99F5E971F">
       <CreatedTimestamp>2025-02-08.07:23:09.650</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.650</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>997578592</ObjectId>
       <UnderlyingIndexName>UQ__Persona__049E81A99F5E971F</UnderlyingIndexName>
     </key>
-    <key id="6329" parent="5732" name="UQ__Persona__A9D10534BCC19D27">
+    <key id="6306" parent="5729" name="UQ__Persona__A9D10534BCC19D27">
       <CreatedTimestamp>2025-02-08.07:23:09.647</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.647</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>981578535</ObjectId>
       <UnderlyingIndexName>UQ__Persona__A9D10534BCC19D27</UnderlyingIndexName>
     </key>
-    <column id="6330" parent="5733" name="ID">
+    <column id="6307" parent="5730" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(84)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6331" parent="5733" name="NombreProducto">
+    <column id="6308" parent="5730" name="NombreProducto">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </column>
-    <column id="6332" parent="5733" name="Genero">
+    <column id="6309" parent="5730" name="Genero">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </column>
-    <column id="6333" parent="5733" name="SegmentoEdad">
+    <column id="6310" parent="5730" name="SegmentoEdad">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6334" parent="5733" name="TipoProducto">
+    <column id="6311" parent="5730" name="TipoProducto">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6335" parent="5733" name="Color">
+    <column id="6312" parent="5730" name="Color">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>nvarchar(30 char)|0s</StoredType>
     </column>
-    <column id="6336" parent="5733" name="Talla">
+    <column id="6313" parent="5730" name="Talla">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>nvarchar(20 char)|0s</StoredType>
     </column>
-    <column id="6337" parent="5733" name="UnidadesDisponibles">
+    <column id="6314" parent="5730" name="UnidadesDisponibles">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6338" parent="5733" name="Precio">
+    <column id="6315" parent="5730" name="Precio">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </column>
-    <column id="6339" parent="5733" name="Descripcion">
+    <column id="6316" parent="5730" name="Descripcion">
       <Position>10</Position>
       <StoredType>nvarchar(500 char)|0s</StoredType>
     </column>
-    <column id="6340" parent="5733" name="FechaCreacion">
+    <column id="6317" parent="5730" name="FechaCreacion">
       <Position>11</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1221579390</DefaultConstraintId>
       <DefaultConstraintName>DF__Producto__FechaC__48CFD27E</DefaultConstraintName>
     </column>
-    <column id="6341" parent="5733" name="FechaModificacion">
+    <column id="6318" parent="5730" name="FechaModificacion">
       <Position>12</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6342" parent="5733" name="ImagenUrl">
+    <column id="6319" parent="5730" name="ImagenUrl">
       <Position>13</Position>
       <StoredType>nvarchar(250 char)|0s</StoredType>
     </column>
-    <default id="6343" parent="5733" name="DF__Producto__FechaC__48CFD27E">
+    <default id="6320" parent="5730" name="DF__Producto__FechaC__48CFD27E">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1221579390</ObjectId>
     </default>
-    <index id="6344" parent="5733" name="PK__Producto__3214EC27B0C162C6">
+    <index id="6321" parent="5730" name="PK__Producto__3214EC27B0C162C6">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20777,7 +20676,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6345" parent="5733" name="PK__Producto__3214EC27B0C162C6">
+    <key id="6322" parent="5730" name="PK__Producto__3214EC27B0C162C6">
       <CreatedTimestamp>2025-02-08.07:23:09.653</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20785,66 +20684,66 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Producto__3214EC27B0C162C6</UnderlyingIndexName>
     </key>
-    <column id="6346" parent="5734" name="ID">
+    <column id="6323" parent="5731" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6347" parent="5734" name="NombreEmpresa">
+    <column id="6324" parent="5731" name="NombreEmpresa">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </column>
-    <column id="6348" parent="5734" name="NombreContacto">
+    <column id="6325" parent="5731" name="NombreContacto">
       <Position>3</Position>
       <StoredType>nvarchar(100 char)|0s</StoredType>
     </column>
-    <column id="6349" parent="5734" name="Telefono">
+    <column id="6326" parent="5731" name="Telefono">
       <Position>4</Position>
       <StoredType>nvarchar(15 char)|0s</StoredType>
     </column>
-    <column id="6350" parent="5734" name="Email">
+    <column id="6327" parent="5731" name="Email">
       <Position>5</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </column>
-    <column id="6351" parent="5734" name="DireccionID">
+    <column id="6328" parent="5731" name="DireccionID">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6352" parent="5734" name="Estado">
+    <column id="6329" parent="5731" name="Estado">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6353" parent="5734" name="FechaCreacion">
+    <column id="6330" parent="5731" name="FechaCreacion">
       <Position>8</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1685581043</DefaultConstraintId>
       <DefaultConstraintName>DF__Proveedor__Fecha__6477ECF3</DefaultConstraintName>
     </column>
-    <column id="6354" parent="5734" name="FechaModificacion">
+    <column id="6331" parent="5731" name="FechaModificacion">
       <Position>9</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="6355" parent="5734" name="CreadoPor">
+    <column id="6332" parent="5731" name="CreadoPor">
       <NotNull>1</NotNull>
       <Position>10</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6356" parent="5734" name="ModificadoPor">
+    <column id="6333" parent="5731" name="ModificadoPor">
       <Position>11</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <default id="6357" parent="5734" name="DF__Proveedor__Fecha__6477ECF3">
+    <default id="6334" parent="5731" name="DF__Proveedor__Fecha__6477ECF3">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.663</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1685581043</ObjectId>
     </default>
-    <foreign-key id="6358" parent="5734" name="FK_Proveedor_Direccion">
+    <foreign-key id="6335" parent="5731" name="FK_Proveedor_Direccion">
       <ColNames>DireccionID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.663</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.663</ModifiedTimestamp>
@@ -20853,7 +20752,7 @@ int</ExtendedProperties>
       <RefTableId>901578250</RefTableId>
       <RefTableName>Direccion</RefTableName>
     </foreign-key>
-    <index id="6359" parent="5734" name="PK__Proveedo__3214EC2714838B7B">
+    <index id="6336" parent="5731" name="PK__Proveedo__3214EC2714838B7B">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20861,7 +20760,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6360" parent="5734" name="PK__Proveedo__3214EC2714838B7B">
+    <key id="6337" parent="5731" name="PK__Proveedo__3214EC2714838B7B">
       <CreatedTimestamp>2025-02-08.07:23:09.660</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.660</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20869,55 +20768,55 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Proveedo__3214EC2714838B7B</UnderlyingIndexName>
     </key>
-    <column id="6361" parent="5735" name="ID">
+    <column id="6338" parent="5732" name="ID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(1033)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6362" parent="5735" name="NombreUsuario">
+    <column id="6339" parent="5732" name="NombreUsuario">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6363" parent="5735" name="ContrasenaHash">
+    <column id="6340" parent="5732" name="ContrasenaHash">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </column>
-    <column id="6364" parent="5735" name="Email">
+    <column id="6341" parent="5732" name="Email">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>nvarchar(255 char)|0s</StoredType>
     </column>
-    <column id="6365" parent="5735" name="Rol">
+    <column id="6342" parent="5732" name="Rol">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6366" parent="5735" name="Estado">
+    <column id="6343" parent="5732" name="Estado">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>nvarchar(50 char)|0s</StoredType>
     </column>
-    <column id="6367" parent="5735" name="FechaCreacion">
+    <column id="6344" parent="5732" name="FechaCreacion">
       <Position>7</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1781581385</DefaultConstraintId>
       <DefaultConstraintName>DF__Usuario__FechaCr__6A30C649</DefaultConstraintName>
     </column>
-    <column id="6368" parent="5735" name="FechaModificacion">
+    <column id="6345" parent="5732" name="FechaModificacion">
       <Position>8</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <default id="6369" parent="5735" name="DF__Usuario__FechaCr__6A30C649">
+    <default id="6346" parent="5732" name="DF__Usuario__FechaCr__6A30C649">
       <ColNames>FechaCreacion</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.663</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1781581385</ObjectId>
     </default>
-    <index id="6370" parent="5735" name="PK__Usuario__3214EC27FAFD91FA">
+    <index id="6347" parent="5732" name="PK__Usuario__3214EC27FAFD91FA">
       <Clustering>1</Clustering>
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -20925,21 +20824,21 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <index id="6371" parent="5735" name="UQ__Usuario__A9D10534036B09A6">
+    <index id="6348" parent="5732" name="UQ__Usuario__A9D10534036B09A6">
       <ColNames>Email</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <index id="6372" parent="5735" name="UQ__Usuario__6B0F5AE057D21B9D">
+    <index id="6349" parent="5732" name="UQ__Usuario__6B0F5AE057D21B9D">
       <ColNames>NombreUsuario</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>3</Position>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6373" parent="5735" name="PK__Usuario__3214EC27FAFD91FA">
+    <key id="6350" parent="5732" name="PK__Usuario__3214EC27FAFD91FA">
       <CreatedTimestamp>2025-02-08.07:23:09.663</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.663</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -20947,65 +20846,65 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Usuario__3214EC27FAFD91FA</UnderlyingIndexName>
     </key>
-    <key id="6374" parent="5735" name="UQ__Usuario__6B0F5AE057D21B9D">
+    <key id="6351" parent="5732" name="UQ__Usuario__6B0F5AE057D21B9D">
       <CreatedTimestamp>2025-02-08.07:23:09.663</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.663</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1765581328</ObjectId>
       <UnderlyingIndexName>UQ__Usuario__6B0F5AE057D21B9D</UnderlyingIndexName>
     </key>
-    <key id="6375" parent="5735" name="UQ__Usuario__A9D10534036B09A6">
+    <key id="6352" parent="5732" name="UQ__Usuario__A9D10534036B09A6">
       <CreatedTimestamp>2025-02-08.07:23:09.663</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.663</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1749581271</ObjectId>
       <UnderlyingIndexName>UQ__Usuario__A9D10534036B09A6</UnderlyingIndexName>
     </key>
-    <column id="6376" parent="5736" name="VentaID">
+    <column id="6353" parent="5733" name="VentaID">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6377" parent="5736" name="EmpleadoID">
+    <column id="6354" parent="5733" name="EmpleadoID">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6378" parent="5736" name="ClienteID">
+    <column id="6355" parent="5733" name="ClienteID">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6379" parent="5736" name="ProductoID">
+    <column id="6356" parent="5733" name="ProductoID">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6380" parent="5736" name="Cantidad">
+    <column id="6357" parent="5733" name="Cantidad">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6381" parent="5736" name="Total">
+    <column id="6358" parent="5733" name="Total">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>decimal(10,2)|0s</StoredType>
     </column>
-    <column id="6382" parent="5736" name="Fecha">
+    <column id="6359" parent="5733" name="Fecha">
       <Position>7</Position>
       <StoredType>datetime|0s</StoredType>
       <DefaultConstraintId>1269579561</DefaultConstraintId>
       <DefaultConstraintName>DF__Venta__Fecha__4BAC3F29</DefaultConstraintName>
     </column>
-    <default id="6383" parent="5736" name="DF__Venta__Fecha__4BAC3F29">
+    <default id="6360" parent="5733" name="DF__Venta__Fecha__4BAC3F29">
       <ColNames>Fecha</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>1269579561</ObjectId>
     </default>
-    <foreign-key id="6384" parent="5736" name="FK_Venta_Empleado">
+    <foreign-key id="6361" parent="5733" name="FK_Venta_Empleado">
       <ColNames>EmpleadoID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.653</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
@@ -21014,7 +20913,7 @@ int</ExtendedProperties>
       <RefTableId>1125579048</RefTableId>
       <RefTableName>Empleado</RefTableName>
     </foreign-key>
-    <foreign-key id="6385" parent="5736" name="FK_Venta_Cliente">
+    <foreign-key id="6362" parent="5733" name="FK_Venta_Cliente">
       <ColNames>ClienteID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.653</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
@@ -21023,7 +20922,7 @@ int</ExtendedProperties>
       <RefTableId>1061578820</RefTableId>
       <RefTableName>Cliente</RefTableName>
     </foreign-key>
-    <foreign-key id="6386" parent="5736" name="FK_Venta_Producto">
+    <foreign-key id="6363" parent="5733" name="FK_Venta_Producto">
       <ColNames>ProductoID</ColNames>
       <CreatedTimestamp>2025-02-08.07:23:09.653</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
@@ -21032,7 +20931,7 @@ int</ExtendedProperties>
       <RefTableId>1189579276</RefTableId>
       <RefTableName>Producto</RefTableName>
     </foreign-key>
-    <index id="6387" parent="5736" name="PK__Venta__5B41514CE2BF6A8E">
+    <index id="6364" parent="5733" name="PK__Venta__5B41514CE2BF6A8E">
       <Clustering>1</Clustering>
       <ColNames>VentaID</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -21040,7 +20939,7 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6388" parent="5736" name="PK__Venta__5B41514CE2BF6A8E">
+    <key id="6365" parent="5733" name="PK__Venta__5B41514CE2BF6A8E">
       <CreatedTimestamp>2025-02-08.07:23:09.653</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-08.07:23:09.653</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -21048,31 +20947,31 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__Venta__5B41514CE2BF6A8E</UnderlyingIndexName>
     </key>
-    <column id="6389" parent="5737" name="name">
+    <column id="6366" parent="5734" name="name">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>sysname|0s</StoredType>
     </column>
-    <column id="6390" parent="5737" name="principal_id">
+    <column id="6367" parent="5734" name="principal_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6391" parent="5737" name="diagram_id">
+    <column id="6368" parent="5734" name="diagram_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <SequenceIdentity>1(3)</SequenceIdentity>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6392" parent="5737" name="version">
+    <column id="6369" parent="5734" name="version">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="6393" parent="5737" name="definition">
+    <column id="6370" parent="5734" name="definition">
       <Position>5</Position>
       <StoredType>varbinary(max)|0s</StoredType>
     </column>
-    <index id="6394" parent="5737" name="PK__sysdiagr__C2B05B612E940AE4">
+    <index id="6371" parent="5734" name="PK__sysdiagr__C2B05B612E940AE4">
       <Clustering>1</Clustering>
       <ColNames>diagram_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -21080,14 +20979,14 @@ int</ExtendedProperties>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <index id="6395" parent="5737" name="UK_principal_name">
+    <index id="6372" parent="5734" name="UK_principal_name">
       <ColNames>principal_id
 name</ColNames>
       <Position>2</Position>
       <Unique>1</Unique>
       <PartitionDataSpaceId>1</PartitionDataSpaceId>
     </index>
-    <key id="6396" parent="5737" name="PK__sysdiagr__C2B05B612E940AE4">
+    <key id="6373" parent="5734" name="PK__sysdiagr__C2B05B612E940AE4">
       <CreatedTimestamp>2025-02-17.15:46:23.207</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-17.15:46:23.207</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -21095,7 +20994,7 @@ name</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__sysdiagr__C2B05B612E940AE4</UnderlyingIndexName>
     </key>
-    <key id="6397" parent="5737" name="UK_principal_name">
+    <key id="6374" parent="5734" name="UK_principal_name">
       <CreatedTimestamp>2025-02-17.15:46:23.207</CreatedTimestamp>
       <ModifiedTimestamp>2025-02-17.15:46:23.207</ModifiedTimestamp>
       <ObjectId>706101556</ObjectId>

@@ -11,6 +11,20 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 
     <style>
+
+        .logo-fade {
+            opacity: 0;
+            transform: translateY(4px);
+            animation: logoIn .55s ease forwards
+        }
+
+        @@keyframes logoIn {
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
         .dropdown-menu {
             opacity: 0;
             transform: translateY(10px);
@@ -95,7 +109,9 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top" role="navigation">
     <div class="container">
-        <a class="navbar-brand text-primary" asp-controller="Home" asp-action="Index">K_F_ClothingStore</a>
+        <a class="navbar-brand d-flex align-items-center gap-2" asp-controller="Home" asp-action="Index">
+            <img src="~/Img/logo-kf-horizontal.svg" alt="K_F_ClothingStore" height="32" class="logo-fade">
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,11 +123,13 @@
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Inicio</a></li>
                 @if (Context.Session.GetString("Rol") == "Admin")
                 {
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Producto")">Administrar
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Producto")">Administrar
                             Productos</a></li>
                 }
                 <li class="nav-item"><a class="nav-link" href="@Url.Action("MiCarrito", "Carrito")">Mi Carrito</a></li>
-                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Devolucion")">Historial de Compra</a></li>
+                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Historial")">Historial de
+                        Compra</a></li>
             </ul>
 
             @if (Context.Session.GetString("Email") != null)
@@ -127,11 +145,16 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="@Url.Action("Perfil", "Cliente")"><i class="fas fa-user"></i>
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action("Perfil", "Cliente")"><i class="fas fa-user"></i>
                                 Mi Perfil</a></li>
-                        <li><a class="dropdown-item" href="@Url.Action("MiCarrito", "Carrito")"><i
+                        <li>
+                            <a class="dropdown-item" href="@Url.Action("MiCarrito", "Carrito")">
+                                <i
                                     class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
-                        <li><a class="dropdown-item text-danger" href="@Url.Action("CerrarSesion", "Auth")"><i
+                        <li>
+                            <a class="dropdown-item text-danger" href="@Url.Action("CerrarSesion", "Auth")">
+                                <i
                                     class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
                     </ul>
                 </div>

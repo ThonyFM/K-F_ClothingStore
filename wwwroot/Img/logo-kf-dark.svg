@@ -1,0 +1,16 @@
+<svg width="1000" height="300" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#1f1f1f"></rect>
+    <defs>
+        <style>
+            .navy{stroke:#cdd8e0; fill:none; stroke-width:16; stroke-linecap:round; stroke-linejoin:round}
+            .navy-fill{fill:#cdd8e0}
+            .gold{fill:#d7c394; letter-spacing:4px}
+            .kfont{font-family:'Poppins','Segoe UI',Arial,sans-serif}
+        </style>
+    </defs>
+    <path class="navy" d="M150 78c0-30 46-35 66-17 11 10 11 27 0 37-8 7-22 14-38 21"></path>
+    <path class="navy" d="M75 205l175-95 175 95"></path>
+    <line class="navy" x1="120" y1="240" x2="380" y2="240"></line>
+    <text x="470" y="160" font-size="120" class="kfont navy-fill" font-weight="700">K&amp;F</text>
+    <text x="470" y="215" font-size="42" class="kfont gold" font-weight="700">CLOTHINGSTORE</text>
+</svg>

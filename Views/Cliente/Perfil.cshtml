@@ -14,24 +14,43 @@
     <link rel="stylesheet" href="~/css/estilos_personalizados.css"/>
 
 
-
-        <style>
+    <style>
         @@keyframes popIn {
-            from { transform: scale(.92); opacity: 0; }
-            to   { transform: scale(1);   opacity: 1; }
+            from {
+                transform: scale(.92);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-        .alert-pop { animation: popIn .28s ease-out both; }
+
+        .alert-pop {
+            animation: popIn .28s ease-out both;
+        }
 
         @@keyframes shake {
-            10%, 90% { transform: translateX(-1px); }
-            20%, 80% { transform: translateX(2px); }
-            30%, 50%, 70% { transform: translateX(-4px); }
-            40%, 60% { transform: translateX(4px); }
+            10%, 90% {
+                transform: translateX(-1px);
+            }
+            20%, 80% {
+                transform: translateX(2px);
+            }
+            30%, 50%, 70% {
+                transform: translateX(-4px);
+            }
+            40%, 60% {
+                transform: translateX(4px);
+            }
         }
-        .alert-shake { animation: shake .55s ease-in-out; }
+
+        .alert-shake {
+            animation: shake .55s ease-in-out;
+        }
     </style>
-       
  
+
 </head>
 
 <body class="bg-light">
@@ -59,15 +78,20 @@
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h4 class="mb-0">Información Personal</h4>
-                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#modalEditar">
                             <i class="fas fa-edit me-1"></i> Editar
                         </button>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <p><strong><i class="fas fa-user me-2"></i>Nombre:</strong> @Model.Persona?.Nombre1 @Model.Persona?.Nombre2</p>
-                            <p><strong><i class="fas fa-id-card me-2"></i>Apellidos:</strong> @Model.Persona?.Apellido1 @Model.Persona?.Apellido2</p>
+                            <p><strong><i
+                                        class="fas fa-user me-2"></i>Nombre:</strong> @Model.Persona?.Nombre1 @Model.Persona?.Nombre2
+                            </p>
+                            <p><strong><i
+                                        class="fas fa-id-card me-2"></i>Apellidos:</strong> @Model.Persona?.Apellido1 @Model.Persona?.Apellido2
+                            </p>
                         </div>
                         <div class="col-md-6">
                             <p><strong><i class="fas fa-phone me-2"></i>Teléfono:</strong> @Model.Persona?.Telefono</p>
@@ -105,54 +129,64 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- SIN Tag Helpers: action fijo y names para model binding -->
-                <form action="@Url.Action("GuardarPerfil","Cliente")" method="post" id="formEditar">
+                <form action="@Url.Action("GuardarPerfil", "Cliente")" method="post" id="formEditar">
                     @Html.AntiForgeryToken()
                     <div class="modal-header bg-primary text-white">
                         <h5 class="modal-title"><i class="fas fa-user-edit me-2"></i>Editar Perfil</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
                         <!-- Hidden IDs -->
-                        <input type="hidden" name="Usuario.ID"   value="@Model.Usuario?.ID" />
-                        <input type="hidden" name="Persona.ID"   value="@Model.Persona?.ID" />
-                        <input type="hidden" name="Direccion.ID" value="@Model.Direccion?.ID" />
-                        <input type="hidden" name="Cliente.ID"   value="@Model.Cliente?.ID" />
+                        <input type="hidden" name="Usuario.ID" value="@Model.Usuario?.ID"/>
+                        <input type="hidden" name="Persona.ID" value="@Model.Persona?.ID"/>
+                        <input type="hidden" name="Direccion.ID" value="@Model.Direccion?.ID"/>
+                        <input type="hidden" name="Cliente.ID" value="@Model.Cliente?.ID"/>
 
                         <!-- Datos de Usuario que no se editan aquí -->
-                        <input type="hidden" name="Usuario.Email"          value="@Model.Usuario?.Email" />
-                        <input type="hidden" name="Usuario.Rol"            value="@Model.Usuario?.Rol" />
-                        <input type="hidden" name="Usuario.NombreUsuario"  value="@Model.Usuario?.NombreUsuario" /> <!-- requerido -->
+                        <input type="hidden" name="Usuario.Email" value="@Model.Usuario?.Email"/>
+                        <input type="hidden" name="Usuario.Rol" value="@Model.Usuario?.Rol"/>
+                        <input type="hidden" name="Usuario.NombreUsuario" value="@Model.Usuario?.NombreUsuario"/>
+                        <!-- requerido -->
 
                         <h6 class="mb-3 text-primary">Información Personal</h6>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label>Primer Nombre</label>
-                                <input name="Persona.Nombre1" class="form-control" required value="@Model.Persona?.Nombre1" />
+                                <input name="Persona.Nombre1" class="form-control" required
+                                       value="@Model.Persona?.Nombre1"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Segundo Nombre</label>
-                                <input name="Persona.Nombre2" class="form-control" value="@Model.Persona?.Nombre2" />
+                                <input name="Persona.Nombre2" class="form-control" value="@Model.Persona?.Nombre2"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Primer Apellido</label>
-                                <input name="Persona.Apellido1" class="form-control" required value="@Model.Persona?.Apellido1" />
+                                <input name="Persona.Apellido1" class="form-control" required
+                                       value="@Model.Persona?.Apellido1"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Segundo Apellido</label>
-                                <input name="Persona.Apellido2" class="form-control" value="@Model.Persona?.Apellido2" />
+                                <input name="Persona.Apellido2" class="form-control" value="@Model.Persona?.Apellido2"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Teléfono</label>
-                                <input name="Persona.Telefono" class="form-control" required value="@Model.Persona?.Telefono" />
+                                <input name="Persona.Telefono" class="form-control" required
+                                       value="@Model.Persona?.Telefono"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Género</label>
                                 <select name="Persona.Genero" class="form-select" required>
                                     <option value="">Seleccione...</option>
-                                    <option value="Masculino" @(Model.Persona?.Genero=="Masculino"?"selected":null)>Masculino</option>
-                                    <option value="Femenino"  @(Model.Persona?.Genero=="Femenino" ?"selected":null)>Femenino</option>
-                                    <option value="Otro"      @(Model.Persona?.Genero=="Otro"     ?"selected":null)>Otro</option>
+                                    <option value="Masculino"
+                                            @(Model.Persona?.Genero == "Masculino" ? "selected" : null)>Masculino
+                                    </option>
+                                    <option value="Femenino" @(Model.Persona?.Genero == "Femenino" ? "selected" : null)>
+                                        Femenino
+                                    </option>
+                                    <option value="Otro" @(Model.Persona?.Genero == "Otro" ? "selected" : null)>Otro
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -163,27 +197,37 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label>Ciudad</label>
-                                <input name="Direccion.Ciudad" class="form-control" required value="@Model.Direccion?.Ciudad" />
+                                <input name="Direccion.Ciudad" class="form-control" required
+                                       value="@Model.Direccion?.Ciudad"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Estado</label>
-                                <input name="Direccion.Estado" class="form-control" required value="@Model.Direccion?.Estado" />
+                                <input name="Direccion.Estado" class="form-control" required
+                                       value="@Model.Direccion?.Estado"/>
                             </div>
                             <div class="col-md-6">
                                 <label>Código Postal</label>
-                                <input name="Direccion.CodigoPostal" class="form-control" required value="@Model.Direccion?.CodigoPostal" />
+                                <input name="Direccion.CodigoPostal" class="form-control" required
+                                       value="@Model.Direccion?.CodigoPostal"/>
                             </div>
                             <div class="col-md-6">
                                 <label>País</label>
-                                <input name="Direccion.Pais" class="form-control" required value="@Model.Direccion?.Pais" />
+                                <input name="Direccion.Pais" class="form-control" required
+                                       value="@Model.Direccion?.Pais"/>
                             </div>
                             <div class="col-12">
                                 <label>Tipo de Dirección</label>
                                 <select name="Direccion.TipoDireccion" class="form-select" required>
                                     <option value="">Seleccione...</option>
-                                    <option value="Casa"    @(Model.Direccion?.TipoDireccion=="Casa"   ?"selected":null)>Casa</option>
-                                    <option value="Trabajo" @(Model.Direccion?.TipoDireccion=="Trabajo"?"selected":null)>Trabajo</option>
-                                    <option value="Otro"    @(Model.Direccion?.TipoDireccion=="Otro"   ?"selected":null)>Otro</option>
+                                    <option value="Casa"
+                                            @(Model.Direccion?.TipoDireccion == "Casa" ? "selected" : null)>Casa
+                                    </option>
+                                    <option value="Trabajo"
+                                            @(Model.Direccion?.TipoDireccion == "Trabajo" ? "selected" : null)>Trabajo
+                                    </option>
+                                    <option value="Otro"
+                                            @(Model.Direccion?.TipoDireccion == "Otro" ? "selected" : null)>Otro
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -191,7 +235,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary" id="btnGuardar">
-                            <span class="spinner-border spinner-border-sm me-2 d-none" id="spGuardar" role="status" aria-hidden="true"></span>
+                            <span class="spinner-border spinner-border-sm me-2 d-none" id="spGuardar" role="status"
+                                  aria-hidden="true"></span>
                             <span>Guardar Cambios</span>
                         </button>
                     </div>
@@ -201,25 +246,30 @@
     </div>
 
     <!-- Modal Confirmar Eliminación -->
-    <div class="modal fade delete-modal" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+    <div class="modal fade delete-modal" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="@Url.Action("EliminarCuenta","Cliente")" method="post" id="formEliminar">
+                <form action="@Url.Action("EliminarCuenta", "Cliente")" method="post" id="formEliminar">
                     @Html.AntiForgeryToken()
-                    <input type="hidden" name="idUsuario" value="@Model.Usuario?.ID" />
+                    <input type="hidden" name="idUsuario" value="@Model.Usuario?.ID"/>
                     <div class="modal-header bg-danger text-white">
                         <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Eliminar Cuenta</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
                         <i class="fas fa-trash-alt fa-4x text-danger mb-3"></i>
                         <h5>¿Estás seguro que deseas eliminar tu cuenta?</h5>
                         <p class="text-muted">Esta acción es irreversible.</p>
-                        <input type="text" id="confirmText" class="form-control mt-3" placeholder="Escribe ELIMINAR para confirmar" required pattern="ELIMINAR"/>
+                        <input type="text" id="confirmText" class="form-control mt-3"
+                               placeholder="Escribe ELIMINAR para confirmar" required pattern="ELIMINAR"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-danger" id="btnConfirmarEliminar" disabled>Confirmar Eliminación</button>
+                        <button type="submit" class="btn btn-danger" id="btnConfirmarEliminar" disabled>Confirmar
+                            Eliminación
+                        </button>
                     </div>
                 </form>
             </div>
@@ -244,8 +294,12 @@
         $('#formEditar').on('submit', function (e) {
             let valid = true;
             $(this).find('[required]').each(function () {
-                if (!$(this).val()) { $(this).addClass('is-invalid'); valid = false; }
-                else { $(this).removeClass('is-invalid'); }
+                if (!$(this).val()) {
+                    $(this).addClass('is-invalid');
+                    valid = false;
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
             });
 
             if (!valid) {
@@ -262,10 +316,10 @@
         const err = document.getElementById('errorAlert');
 
         if (ok && window.confetti) {
-            confetti({ particleCount: 120, spread: 70, origin: { y: 0.25 } });
+            confetti({particleCount: 120, spread: 70, origin: {y: 0.25}});
         }
         if (err && window.confetti) {
-            confetti({ particleCount: 70, spread: 45, origin: { y: 0.25 }, colors: ['#dc3545', '#6c757d'] });
+            confetti({particleCount: 70, spread: 45, origin: {y: 0.25}, colors: ['#dc3545', '#6c757d']});
         }
     });
 </script>

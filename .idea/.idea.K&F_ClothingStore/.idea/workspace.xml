@@ -9,20 +9,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1fb7afb-7fb3-4df6-b333-d341ba0baf44" name="Changes" comment="Perfil de ususario funcional y parte del mudulo de productos">
+    <list default="true" id="e1fb7afb-7fb3-4df6-b333-d341ba0baf44" name="Changes" comment="Administrar productos funcional">
+      <change afterPath="$PROJECT_DIR$/Controllers/HistorialController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/HistorialViewModels.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Historial/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/Img/logo-kf-dark.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/Img/logo-kf-horizontal.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/Img/logo-kf-print.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/Img/logo_kf_clothingstore.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde/storage_v2/_src_/database/K_F_BD.ljI0gg/schema/dbo.sYMBAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/dataSources/42b873d7-f9a2-42fb-bb24-df1d6250dbde/storage_v2/_src_/database/K_F_BD.ljI0gg/schema/dbo.sYMBAA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.K&amp;F_ClothingStore/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ClienteController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ClienteController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/FacturacionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/FacturacionController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/ProductoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ProductoController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/AccesoDatos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AccesoDatos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Persona.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Persona.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Producto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Producto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Usuario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Usuario.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Cliente/Perfil.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Cliente/Perfil.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Producto/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Producto/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_CreateModal.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_CreateModal.cshtml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_DeleteModal.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_DeleteModal.cshtml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_DetailsModal.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_DetailsModal.cshtml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_EditModal.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Producto/_EditModal.cshtml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Producto/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Producto/Index.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/sytles.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/sytles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +100,7 @@
     ".NET Launch Settings Profile.K&F_ClothingStore: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "c29bcc06",
+    "git-widget-placeholder": "26eac96b",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -200,7 +210,7 @@
       <workItem from="1751675860375" duration="2558000" />
       <workItem from="1754373034818" duration="679000" />
       <workItem from="1755395222753" duration="9238000" />
-      <workItem from="1755569558409" duration="8152000" />
+      <workItem from="1755569558409" duration="17150000" />
     </task>
     <task id="LOCAL-00001" summary="Arregle una parte de facturacion que no se cuando me eche la verdad, tiro la toalla decepcionando a mi profesora, no logre que el usuario pudise modificar su perfil, es imposible y perdi mucho tiempo">
       <option name="closed" value="true" />
@@ -274,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755573054146</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Administrar productos funcional">
+      <option name="closed" value="true" />
+      <created>1755601204759</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1755601204759</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +322,7 @@
     <MESSAGE value="Arreglando el tema de las imagenes" />
     <MESSAGE value="Limpieza del formato, ademas pequeños arreglos en facturación" />
     <MESSAGE value="Perfil de ususario funcional y parte del mudulo de productos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Perfil de ususario funcional y parte del mudulo de productos" />
+    <MESSAGE value="Administrar productos funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Administrar productos funcional" />
   </component>
 </project>

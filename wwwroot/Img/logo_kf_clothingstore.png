@@ -1,0 +1,14 @@
+<svg width="1000" height="300" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .ink{stroke:#000; fill:none; stroke-width:16; stroke-linecap:round; stroke-linejoin:round}
+      .ink-fill{fill:#000}
+      .kfont{font-family:'Poppins','Segoe UI',Arial,sans-serif}
+    </style>
+  </defs>
+  <path class="ink" d="M150 78c0-30 46-35 66-17 11 10 11 27 0 37-8 7-22 14-38 21"></path>
+  <path class="ink" d="M75 205l175-95 175 95"></path>
+  <line class="ink" x1="120" y1="240" x2="380" y2="240"></line>
+  <text x="470" y="160" font-size="120" class="kfont ink-fill" font-weight="700">K&amp;F</text>
+  <text x="470" y="215" font-size="42" class="kfont ink-fill" font-weight="700" style="letter-spacing:4px">CLOTHINGSTORE</text>
+</svg>

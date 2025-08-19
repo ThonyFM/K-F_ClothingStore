@@ -660,6 +660,7 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
 }
+
 /* Estilos para la tabla */
 #productosTable {
     width: 100%;

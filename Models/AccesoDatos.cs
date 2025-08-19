@@ -44,7 +44,6 @@ public class AccesoDatos
     }
 
 
-
     public Direccion ObtenerDireccionPorId(int id)
     {
         Direccion direccion = null;
@@ -89,8 +88,6 @@ public class AccesoDatos
     }
 
 
-  
-
     // Métodos para la tabla Persona
     public void AgregarPersona(Persona persona)
     {
@@ -126,7 +123,6 @@ public class AccesoDatos
         }
     }
 
- 
 
     // Métodos para la tabla Cliente
     public void AgregarCliente(Cliente cliente)
@@ -195,8 +191,6 @@ public class AccesoDatos
         return cliente;
     }
 
-  
-   
 
     public void EliminarProducto(int id)
     {
@@ -250,6 +244,7 @@ public class AccesoDatos
 
         return facturaID;
     }
+
     public bool ActualizarPerfilUsuario(RegistroViewModel perfil)
     {
         using (var con = new SqlConnection(_conexion))
@@ -257,20 +252,20 @@ public class AccesoDatos
         {
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@PersonaID",      perfil.Persona.ID);
-            cmd.Parameters.AddWithValue("@Nombre1",        (object?)perfil.Persona.Nombre1      ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Nombre2",        (object?)perfil.Persona.Nombre2      ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Apellido1",      (object?)perfil.Persona.Apellido1    ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Apellido2",      (object?)perfil.Persona.Apellido2    ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Telefono",       (object?)perfil.Persona.Telefono     ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Genero",         (object?)perfil.Persona.Genero       ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@PersonaID", perfil.Persona.ID);
+            cmd.Parameters.AddWithValue("@Nombre1", (object?)perfil.Persona.Nombre1 ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Nombre2", (object?)perfil.Persona.Nombre2 ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Apellido1", (object?)perfil.Persona.Apellido1 ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Apellido2", (object?)perfil.Persona.Apellido2 ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Telefono", (object?)perfil.Persona.Telefono ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Genero", (object?)perfil.Persona.Genero ?? DBNull.Value);
 
-            cmd.Parameters.AddWithValue("@DireccionID",    perfil.Direccion.ID);
-            cmd.Parameters.AddWithValue("@Ciudad",         (object?)perfil.Direccion.Ciudad      ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Estado",         (object?)perfil.Direccion.Estado      ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@CodigoPostal",   (object?)perfil.Direccion.CodigoPostal?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@Pais",           (object?)perfil.Direccion.Pais        ?? DBNull.Value);
-            cmd.Parameters.AddWithValue("@TipoDireccion",  (object?)perfil.Direccion.TipoDireccion ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@DireccionID", perfil.Direccion.ID);
+            cmd.Parameters.AddWithValue("@Ciudad", (object?)perfil.Direccion.Ciudad ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Estado", (object?)perfil.Direccion.Estado ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@CodigoPostal", (object?)perfil.Direccion.CodigoPostal ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@Pais", (object?)perfil.Direccion.Pais ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@TipoDireccion", (object?)perfil.Direccion.TipoDireccion ?? DBNull.Value);
 
             var retorno = new SqlParameter("@ReturnValue", SqlDbType.Int)
             {
@@ -284,7 +279,6 @@ public class AccesoDatos
             return (int)retorno.Value == 1; // ✅ éxito/fracaso real
         }
     }
-
 
 
     public Factura ObtenerFacturaPorId(int id)
@@ -363,7 +357,7 @@ public class AccesoDatos
         }
     }
 
-  
+
     public DetalleFactura ObtenerDetalleFacturaPorId(int id)
     {
         DetalleFactura detalle = null;
@@ -407,8 +401,6 @@ public class AccesoDatos
         return detalle;
     }
 
-
-  
 
     public Usuario ObtenerUsuarioPorNombreUsuario(string? nombreUsuario)
     {
@@ -476,7 +468,6 @@ public class AccesoDatos
             }
         }
     }
-
 
 
     public Persona ObtenerPersonaPorCedula(string documentoIdentidad)
@@ -560,7 +551,6 @@ public class AccesoDatos
 
         return usuario;
     }
-
 
 
     public Persona ObtenerPersonaPorTelefono(string telefono)
@@ -1053,7 +1043,6 @@ public class AccesoDatos
     }
 
 
-
     public List<DetalleFactura> ObtenerProductosCompradosPorCliente(int clienteID)
     {
         List<DetalleFactura> productosComprados = new List<DetalleFactura>();
@@ -1096,116 +1085,121 @@ public class AccesoDatos
 
         return productosComprados;
     }
- 
+
 
 // using System.Data;
 // using System.Data.SqlClient;
-public void AgregarProducto(Producto producto)
-{
-    using (var con = new SqlConnection(_conexion))
+    public void AgregarProducto(Producto producto)
     {
-        try
+        using (var con = new SqlConnection(_conexion))
         {
-            var query = "Exec sp_InsertProducto @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion, @ImagenUrl";
-            using (var cmd = new SqlCommand(query, con))
+            try
             {
-                cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
-                cmd.Parameters.AddWithValue("@Genero", producto.Genero);
-                cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
-                cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
-                cmd.Parameters.AddWithValue("@Color", producto.Color);
-                cmd.Parameters.AddWithValue("@Talla", producto.Talla);
-                cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
-                cmd.Parameters.AddWithValue("@Precio", producto.Precio);
-                cmd.Parameters.AddWithValue("@Descripcion", (object?)producto.Descripcion ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@ImagenUrl", (object?)producto.ImagenUrl ?? DBNull.Value);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Error al agregar el producto: " + ex.Message);
-        }
-    }
-}
-
-public void ActualizarProducto(Producto producto)
-{
-    using (var con = new SqlConnection(_conexion))
-    {
-        try
-        {
-            var query = "Exec sp_UpdateProducto @ID, @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion, @ImagenUrl";
-            using (var cmd = new SqlCommand(query, con))
-            {
-                cmd.Parameters.AddWithValue("@ID", producto.ID);
-                cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
-                cmd.Parameters.AddWithValue("@Genero", producto.Genero);
-                cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
-                cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
-                cmd.Parameters.AddWithValue("@Color", producto.Color);
-                cmd.Parameters.AddWithValue("@Talla", producto.Talla);
-                cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
-                cmd.Parameters.AddWithValue("@Precio", producto.Precio);
-                cmd.Parameters.AddWithValue("@Descripcion", (object?)producto.Descripcion ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@ImagenUrl", (object?)producto.ImagenUrl ?? DBNull.Value);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Error al actualizar el producto: " + ex.Message);
-        }
-    }
-}
-
-public Producto ObtenerProductoPorId(int id)
-{
-    Producto producto = null;
-    using (var con = new SqlConnection(_conexion))
-    {
-        try
-        {
-            var query = "Exec sp_GetProductoById @ID";
-            using (var cmd = new SqlCommand(query, con))
-            {
-                cmd.Parameters.AddWithValue("@ID", id);
-                con.Open();
-                using (var rd = cmd.ExecuteReader())
+                var query =
+                    "Exec sp_InsertProducto @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion, @ImagenUrl";
+                using (var cmd = new SqlCommand(query, con))
                 {
-                    if (rd.Read())
+                    cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
+                    cmd.Parameters.AddWithValue("@Genero", producto.Genero);
+                    cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
+                    cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
+                    cmd.Parameters.AddWithValue("@Color", producto.Color);
+                    cmd.Parameters.AddWithValue("@Talla", producto.Talla);
+                    cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
+                    cmd.Parameters.AddWithValue("@Precio", producto.Precio);
+                    cmd.Parameters.AddWithValue("@Descripcion", (object?)producto.Descripcion ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ImagenUrl", (object?)producto.ImagenUrl ?? DBNull.Value);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar el producto: " + ex.Message);
+            }
+        }
+    }
+
+    public void ActualizarProducto(Producto producto)
+    {
+        using (var con = new SqlConnection(_conexion))
+        {
+            try
+            {
+                var query =
+                    "Exec sp_UpdateProducto @ID, @NombreProducto, @Genero, @SegmentoEdad, @TipoProducto, @Color, @Talla, @UnidadesDisponibles, @Precio, @Descripcion, @ImagenUrl";
+                using (var cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@ID", producto.ID);
+                    cmd.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
+                    cmd.Parameters.AddWithValue("@Genero", producto.Genero);
+                    cmd.Parameters.AddWithValue("@SegmentoEdad", producto.SegmentoEdad);
+                    cmd.Parameters.AddWithValue("@TipoProducto", producto.TipoProducto);
+                    cmd.Parameters.AddWithValue("@Color", producto.Color);
+                    cmd.Parameters.AddWithValue("@Talla", producto.Talla);
+                    cmd.Parameters.AddWithValue("@UnidadesDisponibles", producto.UnidadesDisponibles);
+                    cmd.Parameters.AddWithValue("@Precio", producto.Precio);
+                    cmd.Parameters.AddWithValue("@Descripcion", (object?)producto.Descripcion ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ImagenUrl", (object?)producto.ImagenUrl ?? DBNull.Value);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar el producto: " + ex.Message);
+            }
+        }
+    }
+
+    public Producto ObtenerProductoPorId(int id)
+    {
+        Producto producto = null;
+        using (var con = new SqlConnection(_conexion))
+        {
+            try
+            {
+                var query = "Exec sp_GetProductoById @ID";
+                using (var cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    con.Open();
+                    using (var rd = cmd.ExecuteReader())
                     {
-                        producto = new Producto
-                        {
-                            ID = rd.GetInt32(rd.GetOrdinal("ID")),
-                            NombreProducto = rd.GetString(rd.GetOrdinal("NombreProducto")),
-                            Genero = rd.GetString(rd.GetOrdinal("Genero")),
-                            SegmentoEdad = rd.GetString(rd.GetOrdinal("SegmentoEdad")),
-                            TipoProducto = rd.GetString(rd.GetOrdinal("TipoProducto")),
-                            Color = rd.GetString(rd.GetOrdinal("Color")),
-                            Talla = rd.GetString(rd.GetOrdinal("Talla")),
-                            UnidadesDisponibles = rd.GetInt32(rd.GetOrdinal("UnidadesDisponibles")),
-                            Precio = rd.GetDecimal(rd.GetOrdinal("Precio")),
-                            ImagenUrl = rd.IsDBNull(rd.GetOrdinal("ImagenUrl")) ? null : rd.GetString(rd.GetOrdinal("ImagenUrl")),
-                            Descripcion = rd.IsDBNull(rd.GetOrdinal("Descripcion")) ? null : rd.GetString(rd.GetOrdinal("Descripcion")),
-                            FechaCreacion = rd.GetDateTime(rd.GetOrdinal("FechaCreacion")),
-                            FechaModificacion = rd.IsDBNull(rd.GetOrdinal("FechaModificacion")) ? null : rd.GetDateTime(rd.GetOrdinal("FechaModificacion"))
-                        };
+                        if (rd.Read())
+                            producto = new Producto
+                            {
+                                ID = rd.GetInt32(rd.GetOrdinal("ID")),
+                                NombreProducto = rd.GetString(rd.GetOrdinal("NombreProducto")),
+                                Genero = rd.GetString(rd.GetOrdinal("Genero")),
+                                SegmentoEdad = rd.GetString(rd.GetOrdinal("SegmentoEdad")),
+                                TipoProducto = rd.GetString(rd.GetOrdinal("TipoProducto")),
+                                Color = rd.GetString(rd.GetOrdinal("Color")),
+                                Talla = rd.GetString(rd.GetOrdinal("Talla")),
+                                UnidadesDisponibles = rd.GetInt32(rd.GetOrdinal("UnidadesDisponibles")),
+                                Precio = rd.GetDecimal(rd.GetOrdinal("Precio")),
+                                ImagenUrl = rd.IsDBNull(rd.GetOrdinal("ImagenUrl"))
+                                    ? null
+                                    : rd.GetString(rd.GetOrdinal("ImagenUrl")),
+                                Descripcion = rd.IsDBNull(rd.GetOrdinal("Descripcion"))
+                                    ? null
+                                    : rd.GetString(rd.GetOrdinal("Descripcion")),
+                                FechaCreacion = rd.GetDateTime(rd.GetOrdinal("FechaCreacion")),
+                                FechaModificacion = rd.IsDBNull(rd.GetOrdinal("FechaModificacion"))
+                                    ? null
+                                    : rd.GetDateTime(rd.GetOrdinal("FechaModificacion"))
+                            };
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el producto por ID: " + ex.Message);
+            }
         }
-        catch (Exception ex)
-        {
-            throw new Exception("Error al obtener el producto por ID: " + ex.Message);
-        }
-    }
-    return producto;
-}
 
-   
+        return producto;
+    }
 }

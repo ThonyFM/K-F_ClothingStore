@@ -1,0 +1,279 @@
+@model IEnumerable<HistorialCompraVm>
+@{
+    ViewData["Title"] = "Historial de compras";
+    var Brand = "#17394a";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+
+<style>
+    .fade-in-up {
+        animation: fadeInUp .5s ease both;
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 10px, 0)
+        }
+        to {
+            opacity: 1;
+            transform: none
+        }
+    }
+
+    .badge-status {
+        font-weight: 600
+    }
+
+    .badge-status.pendiente {
+        background: #fff3cd;
+        color: #856404
+    }
+
+    .badge-status.pagada {
+        background: #d1e7dd;
+        color: #0f5132
+    }
+
+    .badge-status.anulada {
+        background: #f8d7da;
+        color: #842029
+    }
+
+    .factura-card {
+        border: 1px solid #e9ecef;
+        border-left: 4px solid @Brand;
+        border-radius: 10px
+    }
+
+    .factura-card:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+        transform: translateY(-1px);
+        transition: all .2s ease
+    }
+
+    .item-card {
+        border: 1px solid #eef2f6;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff
+    }
+
+    .item-card .thumb {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 10px
+    }
+
+    .item-row:hover {
+        background: #f6f8fa;
+        border-radius: 12px;
+        transition: background .2s ease
+    }
+
+    .filter-pill {
+        border: 1px solid #dee2e6;
+        border-radius: 999px;
+        padding: .5rem .75rem;
+        background: #fff
+    }
+
+    .filter-pill .form-control, .filter-pill .form-select {
+        border: none;
+        box-shadow: none
+    }
+
+    .filter-pill:focus-within {
+        outline: 2px solid @Brand
+    }
+
+    .btn-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem
+    }
+</style>
+
+<div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2 class="mb-0 text-primary"><i class="fa-solid fa-clock-rotate-left me-2"></i>Historial de compras</h2>
+        <div class="d-flex gap-2">
+            <button id="btnExpandAll" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus-square"></i> Expandir
+                todo
+            </button>
+            <button id="btnCollapseAll" class="btn btn-outline-secondary btn-sm"><i class="fa fa-minus-square"></i>
+                Colapsar todo
+            </button>
+            <a class="btn btn-outline-dark btn-sm" href="@Url.Action("Index", "Home")"><i class="fa fa-home me-1"></i>
+                Inicio</a>
+        </div>
+    </div>
+
+    <!-- Filtros (opcionales, no paginan nada) -->
+    <form method="get" class="row g-2 align-items-center mb-4 fade-in-up">
+        <div class="col-md-4">
+            <div class="filter-pill">
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-0"><i class="fa fa-search"></i></span>
+                    <input type="text" name="q" class="form-control" placeholder="Buscar factura o producto..."
+                           value="@Context.Request.Query["q"]">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="filter-pill">
+                <input type="date" name="desde" class="form-control" value="@Context.Request.Query["desde"]">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="filter-pill">
+                <input type="date" name="hasta" class="form-control" value="@Context.Request.Query["hasta"]">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="filter-pill">
+                <select name="estado" class="form-select">
+                    <option value="">Estado</option>
+                    <option value="Pendiente" @(Context.Request.Query["estado"] == "Pendiente" ? "selected" : null)>
+                        Pendiente
+                    </option>
+                    <option value="Pagada" @(Context.Request.Query["estado"] == "Pagada" ? "selected" : null)>Pagada
+                    </option>
+                    <option value="Anulada" @(Context.Request.Query["estado"] == "Anulada" ? "selected" : null)>
+                        Anulada
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2 text-end">
+            <button class="btn btn-primary btn-icon"><i class="fa fa-filter"></i> Aplicar</button>
+        </div>
+    </form>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info fade-in-up">
+            <i class="fa fa-info-circle"></i> No hay compras que coincidan con el filtro.
+        </div>
+    }
+
+    <div class="accordion" id="accHistorial">
+        @{
+            var i = 0;
+            var expandAll = ViewBag.ExpandAll == null ? false : (bool)ViewBag.ExpandAll;
+        }
+        @foreach (var f in Model)
+        {
+            var itemId = $"f{i++}";
+            var estadoCss = (f.Estado ?? "").Trim().ToLower() switch
+            {
+                "pagada" => "pagada",
+                "anulada" => "anulada",
+                _ => "pendiente"
+            };
+            <div class="accordion-item factura-card mb-3 fade-in-up">
+                <h2 class="accordion-header" id="h-@itemId">
+                    <button class="accordion-button @(expandAll ? "" : "collapsed")" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#c-@itemId"
+                            aria-expanded="@(expandAll ? "true" : "false")" aria-controls="c-@itemId">
+                        <div class="w-100">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center flex-wrap gap-3">
+                                    <span class="badge badge-status @estadoCss text-uppercase">@f.Estado</span>
+                                    <strong>Factura #@f.FacturaID</strong>
+                                    <span class="text-muted"><i
+                                            class="fa-regular fa-calendar"></i> @f.Fecha.ToString("dd/MM/yyyy")</span>
+                                    <span class="text-muted"><i
+                                            class="fa-regular fa-credit-card"></i> @f.MetodoPago</span>
+                                </div>
+                                <div class="fs-5 fw-bold text-primary">₡@f.Total.ToString("N2")</div>
+                            </div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="c-@itemId" class="accordion-collapse collapse @(expandAll ? "show" : "")"
+                     aria-labelledby="h-@itemId" data-bs-parent="#accHistorial">
+                    <div class="accordion-body">
+                        <div class="row g-3">
+                            @foreach (var it in f.Items)
+                            {
+                                var img = Url.Content("~/Img/" + (string.IsNullOrEmpty(it.ImagenUrl) ? "placeholder.png" : it.ImagenUrl));
+                                <div class="col-12 item-row">
+                                    <div class="d-flex align-items-center gap-3 p-2 item-card">
+                                        <img src="@img"
+                                             class="thumb"
+                                             alt="@it.Nombre"
+                                             loading="lazy"
+                                             onerror="this.onerror=null;this.src='@Url.Content("~/Img/placeholder.png")';"/>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                                <div>
+                                                    <div class="fw-semibold">@it.Nombre</div>
+                                                    <div class="small text-muted">
+                                                        @if (!string.IsNullOrEmpty(it.Color))
+                                                        {
+                                                            <span>Color: @it.Color</span>
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(it.Talla))
+                                                        {
+                                                            <span class="ms-2">Talla: @it.Talla</span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="small text-muted">Precio</div>
+                                                    <div class="fw-semibold">₡@it.PrecioUnitario.ToString("N2")</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="small text-muted">Cantidad</div>
+                                                    <div class="fw-semibold">@it.Cantidad</div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="small text-muted">Subtotal</div>
+                                                    <div class="fw-bold text-primary">₡@it.Subtotal.ToString("N2")</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <a class="btn btn-outline-primary btn-sm btn-icon"
+                               href="@Url.Action("Factura", "Historial", new { id = f.FacturaID })">
+                                <i class="fa-regular fa-eye"></i> Ver detalle
+                            </a>
+                            <a class="btn btn-outline-secondary btn-sm btn-icon"
+                               href="@Url.Action("DescargarExcel", "Historial", new { id = f.FacturaID })">
+                                <i class="fa-regular fa-file-excel"></i> Excel
+                            </a>
+                            <a class="btn btn-primary btn-sm btn-icon"
+                               href="@Url.Action("DescargarPdf", "Historial", new { id = f.FacturaID })">
+                                <i class="fa-regular fa-file-pdf"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Expandir/Colapsar todo (sin recargar)
+    document.getElementById('btnExpandAll').addEventListener('click', () => {
+        document.querySelectorAll('.accordion-collapse').forEach(c => {
+            if (!c.classList.contains('show')) new bootstrap.Collapse(c, {toggle: true});
+        });
+    });
+    document.getElementById('btnCollapseAll').addEventListener('click', () => {
+        document.querySelectorAll('.accordion-collapse.show').forEach(c => {
+            new bootstrap.Collapse(c, {toggle: true});
+        });
+    });
+</script>
